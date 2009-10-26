@@ -14,7 +14,7 @@ public class Fetion {
 	int errCount = 0;
 
 	public void runFetion() {
-		fetionSocket = new FetionSocket("15913145875", "77663267");
+		fetionSocket = new FetionSocket("号码", "密码");
 		try {
 			// init();
 			errMsg = "初始化出错";

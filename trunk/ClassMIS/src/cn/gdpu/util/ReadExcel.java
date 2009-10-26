@@ -6,6 +6,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
+import org.apache.poi.hssf.usermodel.HSSFCell;
 import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
@@ -45,6 +46,7 @@ public class ReadExcel {
 
 		HSSFSheet sheet = null;
 		HSSFRow row = null;
+		HSSFCell cell = null;
 		int sheetNo = excel.getNumberOfSheets();
 		int sheetRows;
 		int rowCells;
@@ -55,7 +57,17 @@ public class ReadExcel {
 				row = sheet.getRow(j);
 				rowCells = row.getPhysicalNumberOfCells();
 				for (int k = 0; k < rowCells; k++) {
-					System.out.println("row  " + j + "  cell  " + k +"  "+ row.getCell(k).toString());
+					cell = row.getCell(k);
+					if (cell == null)
+						continue;
+					switch (cell.getCellType()) {
+					case HSSFCell.CELL_TYPE_NUMERIC:
+						System.out.println("row  " + j + "  cell  " + k + "  " + cell.getNumericCellValue());
+						break;
+					case HSSFCell.CELL_TYPE_STRING:
+						System.out.println("row  " + j + "  cell  " + k + "  " + cell);
+						break;
+					}
 				}
 			}
 		}

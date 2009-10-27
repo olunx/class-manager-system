@@ -3,8 +3,6 @@ package com.fatkun.fetion;
 import java.io.*;
 import java.net.*;
 import java.util.ArrayList;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 /**
  * 飞信初始化
@@ -14,17 +12,6 @@ import java.util.regex.Pattern;
 class FetionInit {
 	String sipc_proxy = "", ssi_app_sign_in = "", ssi_app_sign_out = "", uri = "", sid = "";
 	static String sysConfigUrl = "http://nav.fetion.com.cn/nav/getsystemconfig.aspx";
-
-	// 正则得到匹配的内容
-	public static ArrayList<String> centerStr(String sourceStr, String patternStr) {
-		Pattern pattern = Pattern.compile(patternStr);
-		Matcher matcher = pattern.matcher(sourceStr);
-		ArrayList<String> list = new ArrayList<String>();
-		if (matcher.find())
-			for (int i = 0; i <= matcher.groupCount(); i++)
-				list.add(matcher.group(i));
-		return list;
-	}
 
 	public String postUrl(String urlStr, String sendData) throws IOException {
 		URL url;
@@ -70,13 +57,13 @@ class FetionInit {
 		ArrayList<String> loginInfo = new ArrayList<String>();
 
 		loginResult = postUrl(sysConfigUrl, sysConfigArg);
-		sipc_proxy = centerStr(loginResult, "<sipc-proxy>(.*?)</sipc-proxy>").get(1);
-		ssi_app_sign_in = centerStr(loginResult, "<ssi-app-sign-in>(.*?)</ssi-app-sign-in>").get(1);
-		ssi_app_sign_out = centerStr(loginResult, "<ssi-app-sign-out>(.*?)</ssi-app-sign-out>").get(1);
+		sipc_proxy = FetionUtil.getInstance().centerStr(loginResult, "<sipc-proxy>(.*?)</sipc-proxy>").get(0);
+		ssi_app_sign_in = FetionUtil.getInstance().centerStr(loginResult, "<ssi-app-sign-in>(.*?)</ssi-app-sign-in>").get(0);
+		ssi_app_sign_out = FetionUtil.getInstance().centerStr(loginResult, "<ssi-app-sign-out>(.*?)</ssi-app-sign-out>").get(0);
 		ssi_app_sign_in = ssi_app_sign_in.replace("https", "http");
 		
 		sidResult = postUrl(ssi_app_sign_in, "mobileno=" + phone + "&pwd=" + passwd + "");
-		sid = centerStr(sidResult, "<user uri=\"sip:([0-9]+)@fetion.com.cn;p=[0-9]+\"").get(1);
+		sid = FetionUtil.getInstance().centerStr(sidResult, "<user uri=\"sip:([0-9]+)@fetion.com.cn;p=[0-9]+\"").get(0);
 
 		loginInfo.add(sipc_proxy);
 		loginInfo.add(ssi_app_sign_in);

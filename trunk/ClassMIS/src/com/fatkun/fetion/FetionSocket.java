@@ -5,6 +5,8 @@ import java.net.Socket;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.util.ArrayList;
+import java.util.List;
+
 import com.fatkun.fetion.FetionUtil;
 
 /**
@@ -13,12 +15,12 @@ import com.fatkun.fetion.FetionUtil;
  * 
  */
 public class FetionSocket {
-	private String sid = "644879824";// 飞信号
+	private String sid;// 飞信号
 	private String phone;// 手机号
-	private String tophone;// 发送到谁
 	private String domain = "fetion.com.cn";
 	private String passwd;// 密码
 	private String sipc_proxy = "221.130.46.141:8080";// 登陆地址
+	public static List<ContactGroup> contactList = new ArrayList<ContactGroup>();// 所有联系人
 	// private String ssi_app_sign_in =
 	// "http://uid.fetion.com.cn/ssiportal/SSIAppSignIn.aspx";
 	// private String ssi_app_sign_out =
@@ -38,14 +40,9 @@ public class FetionSocket {
 	private DataInputStream fetionDis;
 	private DataOutputStream fetionDos;
 
-	public FetionSocket(String phone, String passwd, String tophone) {
-		this.phone = phone;
-		this.tophone = tophone;
-		this.passwd = passwd;
-	}
-
 	public FetionSocket(String phone, String passwd) {
-		this(phone, passwd, phone);
+		this.phone = phone;
+		this.passwd = passwd;
 	}
 
 	public boolean openSocket(String _sipc_proxy) {
@@ -105,14 +102,15 @@ public class FetionSocket {
 			// System.out.println(newLine);
 			if (newLine.length() > 0) {
 				if (newLine.charAt(0) == 'W') {
-					FNonce = FetionUtil.getInstance().centerStr(newLine, "nonce=\"(.*?)\"").get(1);
+					FNonce = FetionUtil.getInstance().centerStr(newLine, "nonce=\"(.*?)\"").get(0);
+				} else if (newLine.charAt(0) == 'L') {
+					msgLen = Integer.parseInt(FetionUtil.getInstance().centerStr(newLine, "L: (\\d+)").get(0));
 				}
-				if (newLine.charAt(0) == 'L') {
-					msgLen = Integer.parseInt(FetionUtil.getInstance().centerStr(newLine, "L: (\\d+)").get(1));
-				}
+			} else {
+				break;
 			}
 		} while (!readStr.contains("\r\n\r\n"));
-		//如果需要接收字节流(有L参数)
+		// 如果需要接收字节流(有L参数)
 		if (msgLen > 0) {
 			byte[] buf = new byte[msgLen];
 			int size = 0;
@@ -126,11 +124,12 @@ public class FetionSocket {
 			recStr = new String(buf);
 			readStr += recStr;
 		}
-		System.out.println("[REC]<<<<=====================================");
-		System.out.println(readStr);
-		System.out.println("==============================================");
+		// System.out.println("[REC]<<<<=====================================");
+		// System.out.println(reqID+reqCode);
+		// System.out.println(readStr);
+		// System.out.println("==============================================");
 
-		return recStr;
+		return readStr;
 	}
 
 	public String build_reponse_A() {
@@ -152,41 +151,48 @@ public class FetionSocket {
 	}
 
 	// 登陆飞信
-	public void login() throws IOException {
-		socketWrite(FetionUtil.getInstance().buildSIPPRequest("R", new String[] { "F: " + sid }, loginStr));
+	public boolean login() throws IOException {
+		socketWrite(FetionUtil.getInstance().buildSIPPRequest("R", new String[] { "F: " + sid, "I: 1" }, loginStr));
 		socketRead();
-		socketWrite(FetionUtil.getInstance().buildSIPPRequest("R", new String[] { "F: " + sid, "A: " + build_reponse_A() }, loginStr));
-		socketRead();
+		socketWrite(FetionUtil.getInstance().buildSIPPRequest("R", new String[] { "F: " + sid, "A: " + build_reponse_A(), "I: 1" }, loginStr));
+		return FetionUtil.getInstance().getSIPPResponse(socketRead());
 	}
 
 	// 退出飞信
 	public void logout() throws IOException {
-		socketWrite(FetionUtil.getInstance().buildSIPPRequest("R", new String[] { "F: " + sid, "X: 0" }, ""));
+		socketWrite(FetionUtil.getInstance().buildSIPPRequest("R", new String[] { "F: " + sid, "X: 0", "I: 1" }, ""));
 		socketRead();
 	}
 
 	// 得到联系人
-	public void getContacts() throws IOException {
-		socketWrite(FetionUtil.getInstance().buildSIPPRequest("S", new String[] { "F: " + sid, "N: GetContactList" }, contactsStr));
-		socketRead();
+	public List<ContactGroup> getContacts() throws IOException {
+		socketWrite(FetionUtil.getInstance().buildSIPPRequest("S", new String[] { "F: " + sid, "N: GetContactList", "I: 3" }, contactsStr));
+		if (FetionUtil.getInstance().getSIPPResponse(socketRead()))
+			return contactList;
+		else
+			return null;
 	}
 
 	// 得到自己的详细信息
 	public void getPersonalInfo() throws IOException {
-		socketWrite(FetionUtil.getInstance().buildSIPPRequest("S", new String[] { "F: " + sid, "N: GetPersonalInfo" }, personalInfoStr));
+		socketWrite(FetionUtil.getInstance().buildSIPPRequest("S", new String[] { "F: " + sid, "N: GetPersonalInfo", "I: 1" }, personalInfoStr));
 		socketRead();
 	}
 
 	// 得到联系人详细信息
 	public void getContactsInfo(String userSid) throws IOException {
-		socketWrite(FetionUtil.getInstance().buildSIPPRequest("S", new String[] { "F: " + sid, "N: GetContactsInfo" }, String.format(contactInfoStr, userSid)));
+		socketWrite(FetionUtil.getInstance().buildSIPPRequest("S", new String[] { "F: " + sid, "N: GetContactsInfo", "I: 1" }, String.format(contactInfoStr, userSid)));
 		socketRead();
 		socketRead();
 	}
 
 	// 发送消息
-	public void sendMsg(String msg) throws IOException {
-		socketWrite(FetionUtil.getInstance().buildSIPPRequest("M", new String[] { "F: " + sid, "T: tel:" + tophone, "N: SendSMS" }, msg));
+	public void sendMsg(String msg, String to) throws IOException {
+		if (to.length() == 11)
+			to = "tel:" + to;
+		else
+			to = "sip:" + to + "@fetion.com.cn;p=1234";
+		socketWrite(FetionUtil.getInstance().buildSIPPRequest("M", new String[] { "F: " + sid, "T: " + to, "N: SendSMS", "I: 1" }, msg));
 		socketRead();
 	}
 

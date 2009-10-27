@@ -1,4 +1,4 @@
-package cn.gdpu.dao.imp;
+package cn.gdpu.dao.impl;
 
 import java.util.List;
 
@@ -8,7 +8,7 @@ import cn.gdpu.dao.UserDAO;
 import cn.gdpu.vo.User;
 
 
-public class UserDAOIMP extends HibernateDaoSupport implements UserDAO {
+public class UserDAOIMPL extends HibernateDaoSupport implements UserDAO {
 
 	// private static final String QUERYALL_HQL = "from User";
 

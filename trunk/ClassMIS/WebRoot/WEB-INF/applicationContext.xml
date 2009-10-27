@@ -14,8 +14,7 @@
 			http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
 			http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
 
-	<bean name="userDAOIMP" class="cn.gdpu.dao.imp.UserDAOIMP"
-		scope="prototype">
+	<bean name="userDAOIMP" class="cn.gdpu.dao.imp.UserDAOIMP" scope="prototype">
 		<property name="sessionFactory" ref="sf"></property>
 	</bean>
 
@@ -66,5 +65,5 @@
 		<aop:pointcut id="allMethod" expression="execution(* dao.imp.*.*(..))" />
 		<aop:advisor pointcut-ref="allMethod" advice-ref="txAdvice" />
 	</aop:config>
-	
+
 </beans>

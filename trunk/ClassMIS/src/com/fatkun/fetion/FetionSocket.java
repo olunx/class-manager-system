@@ -124,10 +124,9 @@ public class FetionSocket {
 			recStr = new String(buf);
 			readStr += recStr;
 		}
-		// System.out.println("[REC]<<<<=====================================");
-		// System.out.println(reqID+reqCode);
-		// System.out.println(readStr);
-		// System.out.println("==============================================");
+		 System.out.println("[REC]<<<<=====================================");
+		 System.out.println(readStr);
+		 System.out.println("==============================================");
 
 		return readStr;
 	}

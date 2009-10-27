@@ -8,7 +8,7 @@ public class TestFetion extends TestCase {
 		FetionSocket fetionSocket;
 		String errMsg = null;
 		int errCount = 0;
-		fetionSocket = new FetionSocket("手机号", "密码");
+		fetionSocket = new FetionSocket("15913145871", "");
 		try {
 			errMsg = "初始化出错";
 			fetionSocket.init();
@@ -23,9 +23,9 @@ public class TestFetion extends TestCase {
 			// }
 			// }
 			// fetionSocket.getPersonalInfo();
-			// fetionSocket.getContactsInfo("sip:293048753@fetion.com.cn;p=4165");
+			fetionSocket.getContactsInfo("sip:293048753@fetion.com.cn;p=4165");
 			errMsg = "发送短信失败";
-			fetionSocket.sendMsg("测试发送短信" + new java.util.Date(),"手机号或飞信号");
+			//fetionSocket.sendMsg("测试发送短信" + new java.util.Date(),"手机号或飞信号");
 			fetionSocket.logout();
 			fetionSocket.socketClose();
 		} catch (Exception e) {
@@ -34,7 +34,7 @@ public class TestFetion extends TestCase {
 		}
 		String result = "";
 		if (errCount > 0) {
-			result = "发送失败，请检查密码是否正确。错误信息：" + errMsg;
+			result = "发送失败，错误信息：" + errMsg;
 		} else {
 			result = "飞信发送成功!";
 		}

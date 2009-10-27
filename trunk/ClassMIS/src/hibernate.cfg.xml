@@ -10,6 +10,5 @@
 		org.hibernate.dialect.MySQLDialect
 	</property>
 	<mapping resource="cn/gdpu/vo/User.hbm.xml" />
-	<mapping resource="cn/gdpu/vo/Student.hbm.xml" />
 </session-factory>
 </hibernate-configuration>

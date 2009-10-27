@@ -13,17 +13,8 @@ import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 
 public class ReadExcel {
 
-	/**
-	 * @param args
-	 */
-	public static void main(String[] args) {
-		ReadExcel re = new ReadExcel();
-		StringBuffer result = re.readExcel("E:\\olunx\\医软07-通讯录.xls");
-		System.out.println(result.toString());
-	}
-
 	// 读取Excel的内容，参数：文件路径
-	private StringBuffer readExcel(String filePath) {
+	public StringBuffer readExcel(String filePath) {
 
 		// 用于保存返回的数据
 		StringBuffer result = new StringBuffer();
@@ -62,15 +53,19 @@ public class ReadExcel {
 						continue;
 					switch (cell.getCellType()) {
 					case HSSFCell.CELL_TYPE_NUMERIC:
-						System.out.println("row  " + j + "  cell  " + k + "  " + cell.getNumericCellValue());
+						System.out.println("行  " + j + "  列  " + k + "  " + (int)cell.getNumericCellValue());
 						break;
 					case HSSFCell.CELL_TYPE_STRING:
-						System.out.println("row  " + j + "  cell  " + k + "  " + cell);
+						System.out.println("行  " + j + "  列  " + k + "  " + cell);
+						break;
+					case HSSFCell.CELL_TYPE_BLANK:
+						System.out.println("行  " + j + "  列  " + k + "  " + "null");
 						break;
 					}
 				}
 			}
 		}
+
 		return result;
 	}
 }

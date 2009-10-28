@@ -53,7 +53,7 @@ public class StudentServiceTest{
 		 */
 
 		Student stu = new Student();
-		stu.setRealName("QQ");
+		stu.setRealName("添加学生后所");
 		stu.setQq(12345678);
 		studentService.add(stu);
 		System.out.println("添加学生后所有学生信息：");

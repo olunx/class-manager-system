@@ -7,11 +7,11 @@
 		Date time; private String content;
 	-->
 	<class name="Post" table="t_post">
-		<id name="id" column="id">
+		<id name="pid" column="pid">
 			<generator class="native" />
 		</id>
 		<many-to-one name="author" column="stuId" />
-		<many-to-one name="parent" column="pid" />
+		<many-to-one name="parent" column="parentid" />
 		<property name="time" />
 		<property name="content" />
 	</class>

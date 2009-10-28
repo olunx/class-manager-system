@@ -7,7 +7,7 @@
 		private String content; private Post comment;
 	-->
 	<class name="Notice" table="t_notice">
-		<id name="id" column="id">
+		<id name="nid" column="nid">
 			<generator class="native" />
 		</id>
 		<many-to-one name="author" column="stuId" />
@@ -15,7 +15,7 @@
 		<property name="time" />
 		<property name="content" />
 		<list name="comment" inverse="true">
-			<key column="id" />
+			<key column="parentid" />
 			<list-index column="commentlistid"/>
 			<one-to-many class="Post" />
 		</list>

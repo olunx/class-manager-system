@@ -101,6 +101,7 @@ public class FetionUtil {
 	 * @param xmlStr
 	 * @return
 	 */
+	@SuppressWarnings("unchecked")
 	public List<ContactGroup> getContactsList(String xmlStr) {
 		List<ContactGroup> groups = new ArrayList<ContactGroup>();
 		try {
@@ -194,9 +195,9 @@ public class FetionUtil {
 		boolean result = false;
 		int reqCode = 0;
 		int reqI = 0;
-		int reqL = 0;
+		//int reqL = 0;
 		String reqArgs = "";
-		String reqQ = "";
+		//String reqQ = "";
 		ArrayList<String> list = centerStr(data, "([^\r\n]+)\r\n");
 		String dataLine = "";
 		// System.out.println(data);
@@ -205,11 +206,11 @@ public class FetionUtil {
 			if (i == 0) {
 				reqCode = Integer.parseInt(FetionUtil.getInstance().centerStr(dataLine, " (\\d+) ").get(0));
 			} else if (dataLine.charAt(0) == 'Q') {
-				reqQ = FetionUtil.getInstance().centerStr(dataLine, "Q: \\d+ ([a-zA-Z]+)").get(0);
+				//reqQ = FetionUtil.getInstance().centerStr(dataLine, "Q: \\d+ ([a-zA-Z]+)").get(0);
 			} else if (dataLine.charAt(0) == 'I') {
 				reqI = Integer.parseInt(FetionUtil.getInstance().centerStr(dataLine, "I: (\\d+)").get(0));
 			} else if (dataLine.charAt(0) == 'L') {
-				reqL = Integer.parseInt(FetionUtil.getInstance().centerStr(dataLine, "L: (\\d+)").get(0));
+				//reqL = Integer.parseInt(FetionUtil.getInstance().centerStr(dataLine, "L: (\\d+)").get(0));
 				reqArgs = FetionUtil.getInstance().centerStr(data, "\r\n\r\n(.*)").get(0);
 				System.out.println(reqArgs);
 			}

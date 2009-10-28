@@ -13,6 +13,10 @@
 			<result name="success">/regSuc.jsp</result>
 			<result name="error">/regFail.jsp</result>
 		</action>
+		<action name="fileUpload" class="cn.gdpu.action.FileUploadAction">
+			<result name="success">/regSuc.jsp</result>
+			<result name="error">/regFail.jsp</result>
+		</action>
 	</package>
 
 </struts>    

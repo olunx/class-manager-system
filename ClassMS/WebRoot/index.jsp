@@ -16,7 +16,7 @@
 		<h1>
 			注册
 		</h1>
-		<form action="<%=path%>/reg.action" method="get">
+		<form action="<%=path %>/reg.action" method="get">
 			用户名：
 			<input type="text" name="username" />
 			<br />
@@ -29,7 +29,7 @@
 		<h1>
 			学生对象
 		</h1>
-		<form action="<%=path%>/student.action" method="get">
+		<form action="<%=path %>/student.action" method="get">
 			用户名：
 			<input type="text" name="username" />
 			<br />
@@ -37,6 +37,12 @@
 			<input type="password" name="password" />
 			<br />
 			<input type="submit" value="提交" />
+		</form>
+		<form action="fileupload" method="post"
+			enctype="multipart/form-data">
+			<!-- file对应的input必须有name属性,否则不能上传 -->
+			<input type="file" name="file" />
+			<input type="submit" value="submit" />
 		</form>
 	</body>
 </html>

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-module
   type="WEB"
-  name="ClassMS"
-  id="myeclipse.1256725054234"
-  context-root="/ClassMS"
+  name="ClassMIS"
+  id="myeclipse.1256707050203"
+  context-root="/ClassMIS"
   j2ee-spec="5.0"
-  archive="ClassMS.war">
+  archive="ClassMIS.war">
   <attributes>
     <attribute name="webrootdir" value="WebRoot" />
   </attributes>

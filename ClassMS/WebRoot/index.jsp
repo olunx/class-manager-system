@@ -38,10 +38,9 @@
 			<br />
 			<input type="submit" value="提交" />
 		</form>
-		<form action="fileupload" method="post"
-			enctype="multipart/form-data">
+		<form action="fileUpload" method="post" enctype="multipart/form-data">
 			<!-- file对应的input必须有name属性,否则不能上传 -->
-			<input type="file" name="file" />
+			<input type="file" name="documents" />
 			<input type="submit" value="submit" />
 		</form>
 	</body>

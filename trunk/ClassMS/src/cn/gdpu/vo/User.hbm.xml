@@ -6,9 +6,7 @@
 		<id name="id">
 			<generator class="native" />
 		</id>
-		<property column="username" generated="never" lazy="false"
-			name="username" not-null="true" />
-		<property column="password" generated="never" lazy="false"
-			name="password" not-null="true" />
+		<property name="username" not-null="true" />
+		<property name="password" not-null="true" />
 	</class>
 </hibernate-mapping>

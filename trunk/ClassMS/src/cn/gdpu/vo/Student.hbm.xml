@@ -6,24 +6,15 @@
 		<id name="stuId" column="stuId">
 			<generator class="native" />
 		</id>
-		<many-to-one name="duty" column="dutyId" not-null="false" />
-		<property column="avatar" generated="never" lazy="false"
-			name="avatar" not-null="false" />
-		<property column="username" generated="never" lazy="false"
-			name="username" not-null="false" />
-		<property column="password" generated="never" lazy="false"
-			name="password" not-null="false" />
-		<property column="sno" generated="never" lazy="false" name="sno"
-			not-null="false" />
-		<property column="realName" generated="never" lazy="false"
-			name="realName" not-null="false" />
-		<property column="dorm" generated="never" lazy="false" name="dorm"
-			not-null="false" />
-		<property column="phoneNo" generated="never" lazy="false"
-			name="phoneNo" not-null="false" />
-		<property column="qq" generated="never" lazy="false" name="qq"
-			not-null="false" />
-		<property column="mail" generated="never" lazy="false" name="mail"
-			not-null="false" />
+		<many-to-one name="duty" column="dutyId" />
+		<property name="avatar" />
+		<property name="username" />
+		<property name="password" />
+		<property name="sno" />
+		<property name="realName" />
+		<property name="dorm" />
+		<property name="phoneNo" />
+		<property name="qq" />
+		<property name="mail" />
 	</class>
 </hibernate-mapping>

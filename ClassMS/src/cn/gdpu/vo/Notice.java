@@ -1,6 +1,7 @@
 package cn.gdpu.vo;
 
 import java.util.Date;
+import java.util.List;
 
 public class Notice {
 	private int id;
@@ -8,7 +9,7 @@ public class Notice {
 	private String title;
 	private Date time;
 	private String content;
-	private Post comment;
+	private List<Post> comment;
 
 	public Student getAuthor() {
 		return author;
@@ -42,20 +43,20 @@ public class Notice {
 		this.content = content;
 	}
 
-	public Post getComment() {
-		return comment;
-	}
-
-	public void setComment(Post comment) {
-		this.comment = comment;
-	}
-
 	public int getId() {
 		return id;
 	}
 
 	public void setId(int id) {
 		this.id = id;
+	}
+
+	public List<Post> getComment() {
+		return comment;
+	}
+
+	public void setComment(List<Post> comment) {
+		this.comment = comment;
 	}
 
 }

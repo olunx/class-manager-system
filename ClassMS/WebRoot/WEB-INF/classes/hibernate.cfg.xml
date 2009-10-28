@@ -5,15 +5,13 @@
 <hibernate-configuration>
 	<session-factory>
 		<property name="show_sql">true</property>
-		<property name="hbm2ddl.auto">create</property>
-		<property name="dialect">
-			org.hibernate.dialect.MySQLDialect
-	</property>
+		<property name="hbm2ddl.auto">update</property>
+		<property name="dialect">org.hibernate.dialect.MySQLDialect</property>
 		<mapping resource="cn/gdpu/vo/User.hbm.xml" />
 		<mapping resource="cn/gdpu/vo/Student.hbm.xml" />
 		<mapping resource="cn/gdpu/vo/Duty.hbm.xml" />
 		<mapping resource="cn/gdpu/vo/Notice.hbm.xml" />
 		<mapping resource="cn/gdpu/vo/Post.hbm.xml" />
-		
+
 	</session-factory>
 </hibernate-configuration>

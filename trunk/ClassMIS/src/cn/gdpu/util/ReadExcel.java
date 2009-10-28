@@ -5,6 +5,8 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.apache.poi.hssf.usermodel.HSSFCell;
 import org.apache.poi.hssf.usermodel.HSSFRow;
@@ -14,10 +16,10 @@ import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 public class ReadExcel {
 
 	// 读取Excel的内容，参数：文件路径
-	public StringBuffer readExcel(String filePath) {
+	public List<Object> readExcel(String filePath) {
 
 		// 用于保存返回的数据
-		StringBuffer result = new StringBuffer();
+		List<Object> result = new ArrayList<Object>();
 
 		BufferedInputStream in = null;
 		try {
@@ -39,8 +41,8 @@ public class ReadExcel {
 		HSSFRow row = null;
 		HSSFCell cell = null;
 		int sheetNo = excel.getNumberOfSheets();
-		int sheetRows;
-		int rowCells;
+		int sheetRows = 0;
+		int rowCells = 0;
 		for (int i = 0; i < sheetNo; i++) {
 			sheet = excel.getSheetAt(i);
 			sheetRows = sheet.getPhysicalNumberOfRows();
@@ -53,19 +55,24 @@ public class ReadExcel {
 						continue;
 					switch (cell.getCellType()) {
 					case HSSFCell.CELL_TYPE_NUMERIC:
-						System.out.println("行  " + j + "  列  " + k + "  " + (int)cell.getNumericCellValue());
+						//System.out.println("行  " + j + "  列  " + k + "  " + (int)cell.getNumericCellValue());
+						result.add((int)cell.getNumericCellValue());
 						break;
 					case HSSFCell.CELL_TYPE_STRING:
-						System.out.println("行  " + j + "  列  " + k + "  " + cell);
+						//System.out.println("行  " + j + "  列  " + k + "  " + cell);
+						result.add(cell);
 						break;
 					case HSSFCell.CELL_TYPE_BLANK:
-						System.out.println("行  " + j + "  列  " + k + "  " + "null");
+						//System.out.println("行  " + j + "  列  " + k + "  " + "null");
+						result.add("null");
 						break;
 					}
 				}
 			}
 		}
 
+		result.add(rowCells);//获取参数个数
+		
 		return result;
 	}
 }

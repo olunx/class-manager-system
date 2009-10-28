@@ -5,7 +5,7 @@
 <struts>
 
 	<package name="login" extends="struts-default">
-		<action name="reg" class="cn.gdpu.action.UserAction">
+		<action name="student" class="cn.gdpu.action.StudentAction">
 			<result name="success">/regSuc.jsp</result>
 			<result name="error">/regFail.jsp</result>
 		</action>

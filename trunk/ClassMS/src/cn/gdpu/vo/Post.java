@@ -48,5 +48,4 @@ public class Post {
 	public void setPid(int pid) {
 		this.pid = pid;
 	}
-
 }

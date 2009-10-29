@@ -12,20 +12,6 @@
 	</head>
 	<body>
 
-
-		<h1>
-			注册
-		</h1>
-		<form action="<%=path %>/reg.action" method="post">
-			用户名：
-			<input type="text" name="username" />
-			<br />
-			密 码：
-			<input type="password" name="password" />
-			<br />
-			<input type="submit" value="提交" />
-		</form>
-
 		<h1>
 			学生对象
 		</h1>

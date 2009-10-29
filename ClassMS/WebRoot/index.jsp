@@ -16,7 +16,7 @@
 		<h1>
 			注册
 		</h1>
-		<form action="<%=path %>/reg.action" method="get">
+		<form action="<%=path %>/reg.action" method="post">
 			用户名：
 			<input type="text" name="username" />
 			<br />
@@ -29,7 +29,7 @@
 		<h1>
 			学生对象
 		</h1>
-		<form action="<%=path %>/student.action" method="get">
+		<form action="<%=path %>/student.action" method="post">
 			用户名：
 			<input type="text" name="username" />
 			<br />

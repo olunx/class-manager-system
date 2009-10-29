@@ -35,6 +35,8 @@ public class FileUploadAction implements ServletContextAware {
 
 	public String execute() throws Exception {
 
+		if(documents == null ) {return "error";}
+		
 		String targetDirectory = context.getRealPath("/upload");
 
 		File target = null;

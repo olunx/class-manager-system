@@ -8,7 +8,8 @@ import javax.servlet.ServletContext;
 import org.apache.commons.io.FileUtils;
 import org.apache.struts2.util.ServletContextAware;
 
-public class FileUploadAction implements ServletContextAware {
+
+public class FileUploadAction implements ServletContextAware{
 
 	private List<File> documents;
 	private List<String> fileName;
@@ -16,6 +17,7 @@ public class FileUploadAction implements ServletContextAware {
 	private List<String> contentType;
 
 	private ServletContext context;
+	
 
 	public void setDocuments(List<File> file) {
 		this.documents = file;
@@ -46,8 +48,11 @@ public class FileUploadAction implements ServletContextAware {
 		for (int i = 0; i < n; i++) {
 			target = new File(targetDirectory, fileName.get(i));
 			FileUtils.copyFile(documents.get(i), target);
-		}
+			
+			context.setAttribute("fileName", fileName.get(i));
 
+		}
+		
 		return "success";
 	}
 

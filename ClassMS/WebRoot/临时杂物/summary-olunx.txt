@@ -1,0 +1,25 @@
+-------------------------------------
+0,action向前台传数据
+-------------------------------------
+	继承接口：ServletContextAware,RequestAware,ApplicationAware,SessionAware
+	看数据保存时间的需要来选择
+-------------------------------------
+1,action间传递类型
+-------------------------------------
+redirect-action，plaintext已经不推荐使用了 
+<result-types> 
+	<result-type name="chain" class="com.opensymphony.xwork2.ActionChainResult"/> 
+	<result-type name="dispatcher" class="org.apache.struts2.dispatcher.ServletDispatcherResult" default="true"/> 
+	<result-type name="freemarker" class="org.apache.struts2.views.freemarker.FreemarkerResult"/> 
+	<result-type name="httpheader" class="org.apache.struts2.dispatcher.HttpHeaderResult"/> 
+	<result-type name="redirect" class="org.apache.struts2.dispatcher.ServletRedirectResult"/> 
+	<result-type name="redirectAction" class="org.apache.struts2.dispatcher.ServletActionRedirectResult"/> 
+	<result-type name="stream" class="org.apache.struts2.dispatcher.StreamResult"/> 
+	<result-type name="velocity" class="org.apache.struts2.dispatcher.VelocityResult"/> 
+	<result-type name="xslt" class="org.apache.struts2.views.xslt.XSLTResult"/> 
+	<result-type name="plainText" class="org.apache.struts2.dispatcher.PlainTextResult" /> 
+	<!-- Deprecated name form scheduled for removal in Struts 2.1.0. The camelCase versions are preferred. ...--> 
+	<result-type name="redirect-action" class="org.apache.struts2.dispatcher.ServletActionRedirectResult"/> 
+	<result-type name="plaintext" class="org.apache.struts2.dispatcher.PlainTextResult" /> 
+</result-types> 
+-------------------------------------

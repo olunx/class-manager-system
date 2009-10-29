@@ -9,5 +9,6 @@
 </head>
 <body>
 上传的文件名为：${fileName}
+<div>${fileData}</div>
 </body>
 </html>

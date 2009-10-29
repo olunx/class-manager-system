@@ -10,7 +10,6 @@
 			<key column="dutyId" />
 			<one-to-many class="Student" />
 		</set>
-		<property column="job" generated="never" lazy="false" name="job"
-			not-null="false" />
+		<property name="job"/>
 	</class>
 </hibernate-mapping>

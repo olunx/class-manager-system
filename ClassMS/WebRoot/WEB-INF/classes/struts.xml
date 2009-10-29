@@ -3,20 +3,9 @@
 	PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
 	"http://struts.apache.org/dtds/struts-2.1.dtd" >
 <struts>
+	<include file="struts-config/struts-*.xml"/>
 
-	<package name="login" extends="struts-default">
-		<action name="reg" class="cn.gdpu.action.UserAction">
-			<result name="success">/regSuc.jsp</result>
-			<result name="error">/regFail.jsp</result>
-		</action>
-		<action name="student" class="cn.gdpu.action.StudentAction">
-			<result name="success">/regSuc.jsp</result>
-			<result name="error">/regFail.jsp</result>
-		</action>
-		<action name="fileUpload" class="cn.gdpu.action.FileUploadAction">
-			<result name="success">/regSuc.jsp</result>
-			<result name="error">/regFail.jsp</result>
-		</action>
+	<package name="demo" extends="struts-default">
 	</package>
 
 </struts>    

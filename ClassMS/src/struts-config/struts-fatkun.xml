@@ -4,8 +4,10 @@
 	"http://struts.apache.org/dtds/struts-2.1.dtd" >
 <struts>
 
-	<package name="notice" extends="struts-default">
-
+	<package name="notice" extends="struts-default" namespace="notice">
+		<action name="list" class="cn.gdpu.action.NoticeAction" method="list">
+			<result name="success">/regSuc.jsp</result>
+		</action>
 	</package>
 
 </struts>    

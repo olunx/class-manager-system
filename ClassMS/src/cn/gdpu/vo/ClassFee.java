@@ -3,10 +3,20 @@ package cn.gdpu.vo;
 import java.util.Date;
 
 public class ClassFee {
-	private Student cmaker;
-	private int fee;
-	private String event;
-	private Date time;
+	private String fid;              //费用ID
+	private Student cmaker;       //经手人
+	private int fee;			  //费用
+	private String event;		  //执行事件
+	private Date time;			  //事件执行时间
+	
+
+	public String getFid() {
+		return fid;
+	}
+
+	public void setFid(String fid) {
+		this.fid = fid;
+	}
 
 	public Student getCmaker() {
 		return cmaker;
@@ -39,6 +49,5 @@ public class ClassFee {
 	public void setTime(Date time) {
 		this.time = time;
 	}
-
 
 }

@@ -7,7 +7,7 @@ import cn.gdpu.service.NoticeService;
 import cn.gdpu.vo.Notice;
 
 public class NoticeServiceImpl implements NoticeService {
-	
+
 	private NoticeDao noticeDao;
 
 	public void add(Notice notice) {
@@ -15,8 +15,7 @@ public class NoticeServiceImpl implements NoticeService {
 	}
 
 	public void delete(int nid) {
-		// TODO Auto-generated method stub
-
+		noticeDao.deleteNoticeByID(nid);
 	}
 
 	public Notice getNotice(int id) {
@@ -24,13 +23,11 @@ public class NoticeServiceImpl implements NoticeService {
 	}
 
 	public List<Notice> getAllNotices() {
-		// TODO Auto-generated method stub
-		return null;
+		return noticeDao.queryAllNotices();
 	}
 
 	public void update(Notice notice) {
-		// TODO Auto-generated method stub
-
+		noticeDao.updateNotice(notice);
 	}
 
 	public NoticeDao getNoticeDao() {

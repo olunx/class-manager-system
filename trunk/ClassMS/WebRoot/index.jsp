@@ -39,9 +39,10 @@
 			<input type="submit" value="提交" />
 		</form>
 		<form action="fileUpload" method="post" enctype="multipart/form-data">
-			<!-- file对应的input必须有name属性,否则不能上传 -->
+			<!-- file对应的input必须有name属性,name的值必须和action中的变量对应 -->
 			<input type="file" name="documents" />
 			<input type="submit" value="submit" />
 		</form>
+		<div>${excel_data}</div>
 	</body>
 </html>

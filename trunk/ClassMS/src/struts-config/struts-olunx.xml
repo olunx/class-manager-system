@@ -10,10 +10,9 @@
 			<result name="error">/regFail.jsp</result>
 		</action>
 		<action name="fileUpload" class="cn.gdpu.action.FileUploadAction">
-			
 			<interceptor-ref name="fileUpload">
 				<param name="allowedTypes">application/vnd.ms-excel,application/msword,application/octet-stream</param>
-				<param name="maximumSize">10485760</param>
+				<param name="maximumSize">4096000</param>
 			</interceptor-ref>
 			<interceptor-ref name="defaultStack"></interceptor-ref>
 			<result name="success">/uploadSuc.jsp</result>

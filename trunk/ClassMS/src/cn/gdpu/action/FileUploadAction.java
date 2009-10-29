@@ -39,12 +39,13 @@ public class FileUploadAction implements ServletContextAware {
 
 	public String execute() throws Exception {
 
-		List<String> fileData = null;
+		List<Object> fileData = null;
 
 		if (documents == null) {
 			return "error";
 		}
 
+		//获取在服务器中的目录
 		String targetDirectory = context.getRealPath("/upload");
 
 		File target = null;
@@ -55,22 +56,24 @@ public class FileUploadAction implements ServletContextAware {
 			target = new File(targetDirectory, fileName.get(i));
 			FileUtils.copyFile(documents.get(i), target);
 			
-			fileData = getExcelData(targetDirectory + fileName.get(i));
+			//读取刚上传的excel文件数据
+			fileData = getExcelData(targetDirectory +"/"+ fileName.get(i));
 			
 			context.setAttribute("fileName", fileName.get(i));
 		}
-		if(fileData != null)
-			context.setAttribute("fileData", fileData.toString());
+		
+		if(fileData != null) {context.setAttribute("fileData", fileData.toString());}
+			
 		return "success";
 	}
 
-	private List<String> getExcelData(String filePath) {
+	private List<Object> getExcelData(String filePath) {
 
 		ReadExcel re = new ReadExcel();
 		List<Object> result = re.readExcel(filePath);
 
 		if (result != null) {
-			List<String> data = new ArrayList<String>();
+			List<Object> data = new ArrayList<Object>();
 
 			int resultLength = result.size();
 			int columns = Integer.parseInt(result.get(resultLength - 1)
@@ -98,7 +101,10 @@ public class FileUploadAction implements ServletContextAware {
 
 			int lastLoop = resultLength - columns;
 			for (int i = columns, j = 1; i < lastLoop; j++) {
-				data.add((String) result.get(i + name));
+				data.add(result.get(i + name));
+				data.add(result.get(i + dorm));
+				data.add(result.get(i + qq));
+				data.add(result.get(i + phone));
 				System.out.println(j + " dorm: " + result.get(i + dorm));
 				System.out.println(j + " name: " + result.get(i + name));
 				System.out.println(j + " qq: " + result.get(i + qq));

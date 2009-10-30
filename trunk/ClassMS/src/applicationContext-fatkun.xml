@@ -18,5 +18,8 @@
 	<bean id="noticeService" class="cn.gdpu.service.impl.NoticeServiceImpl" scope="prototype">
 		<property name="noticeDao" ref="noticeDaoImpl"></property>
 	</bean>
+	<bean id="NoticeAction" class="cn.gdpu.action.NoticeAction" scope="prototype">
+		<property name="noticeService" ref="noticeService"></property>
+	</bean>
 
 </beans>

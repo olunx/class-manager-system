@@ -12,37 +12,28 @@ import cn.gdpu.vo.Student;
 public class StudentDaoImpl extends HibernateDaoSupport implements StudentDao {  
   
     public void insertStudent(Student student) {  
-        // TODO Auto-generated method stub  
     	this.getHibernateTemplate().save(student);  
     }  
   
     public void delStudentBySno(int sno) {  
     	this.getHibernateTemplate().delete(this.getHibernateTemplate().load(Student.class, sno));  
     }  
+    
     @SuppressWarnings("unchecked")
 	public List<Student> queryAllStudents() {  
-		// TODO Auto-generated method stub
-        List<Student> stuList = null;  
-		stuList = this.getHibernateTemplate().find("from Student");  
-        return stuList;  
+        return this.getHibernateTemplate().find("from Student");  
     }  
   
     public Student queryStudentBySno(int sno) {  
-        Student student=null;  
-        student = (Student)this.getHibernateTemplate().get(Student.class, sno);  
-        return student;  
+        return (Student)this.getHibernateTemplate().get(Student.class, sno);  
     }  
   
     @SuppressWarnings("unchecked")
 	public List<Student> queryStudentByName(String name) {  
-        // TODO Auto-generated method stub  
-        List<Student> stuList = null;  
-        stuList = this.getHibernateTemplate().find("from Student s where s.realName like '%"+name+"%'");
-        return stuList;  
+        return this.getHibernateTemplate().find("from Student s where s.realName like '%"+name+"%'");  
     }  
   
-    public void updateStudentBySno(Student student) {  
-        // TODO Auto-generated method stub  
+    public void updateStudent(Student student) {  
     	this.getHibernateTemplate().update(student);  
     }  
 }  

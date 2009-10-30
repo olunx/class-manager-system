@@ -4,8 +4,13 @@
 	"http://struts.apache.org/dtds/struts-2.1.dtd" >
 <struts>
 
-	<package name="classfee" extends="struts-default">
-
+	<package name="classfee" extends="struts-default" >
+		<action name="*classFee" class="cn.gdpu.action.ClassFeeAction" method="{1}">
+			<result name="success">/classfeeSuc.jsp?value={1}</result>
+			<result name="error">/classfeeFail.jsp</result>
+			<result name="input">/classfee.jsp</result>
+		</action> 
+					
 	</package>
 
 </struts>    

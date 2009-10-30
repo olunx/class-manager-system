@@ -12,11 +12,39 @@
 	</head>
 	<body>
 		<h1><s:text name="添加班费开支"></s:text> </h1>
-		<s:form action="/<%=path %>/classfee.action" method="POST">
-			<s:textfield name="cmaker" label="经手人" />
-			<s:textfield name="event" label="班费使用记录" />
-			<s:textfield name="fee" label="班费" />
-			<s:textfield name="remarks" label="备注" />
+		<div style="color:red">
+    		<s:fielderror />
+		</div>
+		<s:form action="addclassFee.action" method="POST">
+			<s:textfield name="classFee.event" label="班费使用记录" />
+			<s:textfield name="classFee.fee" label="班费" />
+			<s:textfield name="classFee.remarks" label="备注" />
+			<s:submit value="提交" />
+		</s:form>
+		<hr />
+		<h1><s:text name="班费记录"/></h1>
+		<s:form action="queryAllclassFee.action" method="POST" >
+			<s:submit value="查看所有班费记录" />
+		</s:form>
+		<br />
+		<br />
+		<s:form action="queryclassFee.action" method="POST" >
+			<s:textfield name="fid" label="输入你想查询的班费记录的ID" />
+			<s:submit value="提交" />
+		</s:form>
+		<hr />
+		<<h1><s:text name="删除班费记录"></s:text></h1>
+		<s:form action="deleteclassFee.action" method="POST" >
+			<s:textfield name="fid" label="输入你想查询的班费记录的ID" />
+			<s:submit value="提交" />
+		</s:form>
+		<hr />
+		<h1><s:text name="修改班费记录"/></h1>
+		<s:form action="modifyclassFee.action" method="POST">
+			<s:textfield name="classFee.fid" label="班费记录ID" />
+			<s:textfield name="classFee.event" label="班费使用记录" />
+			<s:textfield name="classFee.fee" label="班费" />
+			<s:textfield name="classFee.remarks" label="备注" />
 			<s:submit value="提交" />
 		</s:form>
 	</body>

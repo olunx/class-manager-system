@@ -5,11 +5,11 @@
 <struts>
 
 	<package name="login" extends="struts-default">
-		<action name="student" class="cn.gdpu.action.StudentAction">
+		<action name="student" class="cn.gdpu.action.StudentAction" method="register">
 			<result name="success">/regSuc.jsp</result>
 			<result name="error">/regFail.jsp</result>
 		</action>
-		<action name="studentReg" class="cn.gdpu.action.StudentsRegAction">
+		<action name="studentReg" class="cn.gdpu.action.StudentAction" method="registers">
 			<result name="success">/regSuc.jsp</result>
 			<result name="error">/regFail.jsp</result>
 		</action>
@@ -19,6 +19,8 @@
 				<param name="maximumSize">4096000</param>
 			</interceptor-ref>
 			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<!-- Action中的savePath属性的值 --> 
+			<param name="savePath">/upload</param>
 			<result name="success">/uploadSuc.jsp</result>
 			<result name="error">/regFail.jsp</result>
 		</action>

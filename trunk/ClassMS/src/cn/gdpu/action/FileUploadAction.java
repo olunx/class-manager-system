@@ -9,16 +9,33 @@ import javax.servlet.ServletContext;
 import org.apache.commons.io.FileUtils;
 import org.apache.struts2.util.ServletContextAware;
 
+import com.opensymphony.xwork2.ActionSupport;
+
 import cn.gdpu.util.ReadExcel;
 
-public class FileUploadAction implements ServletContextAware {
+public class FileUploadAction extends ActionSupport implements ServletContextAware {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
 	private List<File> documents;
 	private List<String> fileName;
 	@SuppressWarnings("unused")
 	private List<String> contentType;
 
 	private ServletContext context;
+	
+	private String savePath;
+
+	public String getSavePath() {
+		return savePath;
+	}
+
+	public void setSavePath(String savePath) {
+		this.savePath = savePath;
+	}
 
 	public void setDocuments(List<File> file) {
 		this.documents = file;
@@ -45,7 +62,7 @@ public class FileUploadAction implements ServletContextAware {
 		}
 
 		// 获取在服务器中的目录
-		String targetDirectory = context.getRealPath("/upload");
+		String targetDirectory = context.getRealPath(getSavePath());
 
 		File target = null;
 
@@ -68,7 +85,7 @@ public class FileUploadAction implements ServletContextAware {
 			filePath = targetDirectory + "/" + targetFile;
 			
 			// 读取刚上传的excel文件数据
-			fileData = ReadExcel.getReadExcel().getExcelData(filePath);
+			fileData = ReadExcel.getReadExcel().readExcel(filePath);
 
 			//减去最后保存列数的一位
 			int resultLength = fileData.size() - 1;
@@ -81,7 +98,7 @@ public class FileUploadAction implements ServletContextAware {
 				if (j % columns == 0)
 					sb.append("<tr>");
 					sb.append("<td>" + fileData.get(j) + "</td>");
-				if (j % columns == 3)
+				if (j % columns == columns-1)
 					sb.append("</tr>");
 			}
 			sb.append("</table>");

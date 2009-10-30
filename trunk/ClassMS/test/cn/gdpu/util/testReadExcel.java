@@ -39,9 +39,13 @@ public class testReadExcel extends TestCase {
 			int lastLoop = resultLength - columns;
 			for (int i = columns, j = 1; i < lastLoop; j++) {
 
+				if (dorm != -1)
 				System.out.println(j + " dorm: " + result.get(i + dorm));
+				if (name != -1)
 				System.out.println(j + " name: " + result.get(i + name));
+				if (qq != -1)
 				System.out.println(j + " qq: " + result.get(i + qq));
+				if (phone != -1)
 				System.out.println(j + " phone: " + result.get(i + phone));
 				System.out.println();
 				

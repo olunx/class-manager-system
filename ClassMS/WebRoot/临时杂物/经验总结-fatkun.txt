@@ -33,3 +33,21 @@
 5，改变Myeclipse默认的JSP打开方式
 -------------------------------------
 	1.在设置里“preferences->General->editors->Files Associations”设置*.jsp打开方式为Myeclipse Web Editor为默认(default)
+	
+-------------------------------------
+6，使用Spring的CharacterEncodingFilter应注意的问题 
+-------------------------------------
+	应该把它放在Struts的前面，否则会出现乱码
+	<!-- spring Encode -->
+	<filter>
+		<filter-name>encoding</filter-name>
+		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>UTF-8</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>encoding</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>

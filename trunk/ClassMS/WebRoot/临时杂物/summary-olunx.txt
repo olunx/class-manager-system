@@ -41,3 +41,9 @@ redirect-action，plaintext已经不推荐使用了
 
 注：在tomcat6.0.20中出现文件不支持的问题，6.0.18却没有这样的问题。
 -------------------------------------
+3,myeclipse8.0绿色版
+-------------------------------------
+解压路径为 D:\MyEclipse 8.0 ，解压到其他路径的话，会无法运行。如果需要改变路径的话，将下列位置的内容替换成你想要的就可以了：
+1.D:\MyEclipse8\MyEclipse\myeclipse.ini 中的第7行 D:/MyEclipse 8.0 、第9行 D:/MyEclipse 8.0
+2.D:\MyEclipse 8.0\MyEclipse\configuration\config.ini 中的第16行 D\:/MyEclipse 8.0、18行 D\:\\MyEclipse 8.0
+3.D:\MyEclipse 8.0\MyEclipse\configuration\org.eclipse.equinox.simpleconfigurator\bundles.info中所有的 D:/MyEclipse 8.0

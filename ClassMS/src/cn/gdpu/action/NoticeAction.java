@@ -14,12 +14,21 @@ public class NoticeAction extends ActionSupport implements RequestAware {
 	private static final long serialVersionUID = 1L;
 	private NoticeService noticeService;
 	private Map<String, Object> request;
+	private Notice notice;
 
 	public String doList() throws Exception {
-		@SuppressWarnings("unused")
 		List<Notice> notices = null;
 		notices = noticeService.getAllNotices();
 		request.put("notices", notices);
+		return SUCCESS;
+	}
+	
+	public String doAdd() throws Exception {
+		return SUCCESS;
+	}
+	
+	public String doSave() throws Exception {
+		noticeService.add(notice);
 		return SUCCESS;
 	}
 
@@ -29,6 +38,10 @@ public class NoticeAction extends ActionSupport implements RequestAware {
 
 	public void setRequest(Map<String, Object> request) {
 		this.request = request;
+	}
+
+	public void setNotice(Notice notice) {
+		this.notice = notice;
 	}
 	
 	

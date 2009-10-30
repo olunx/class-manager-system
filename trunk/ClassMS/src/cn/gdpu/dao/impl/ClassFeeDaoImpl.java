@@ -10,7 +10,7 @@ import cn.gdpu.vo.ClassFee;
 
 public class ClassFeeDaoImpl extends HibernateDaoSupport implements ClassFeeDao {
 
-	public void deleteClassFeeByID(int fid) {
+	public void deleteClassFeeByID(String fid) {
 		ClassFee classFee = null;
 		classFee = (ClassFee)this.getHibernateTemplate().get(ClassFee.class, fid);
 		if(classFee != null)
@@ -28,7 +28,7 @@ public class ClassFeeDaoImpl extends HibernateDaoSupport implements ClassFeeDao 
 		return classFees;
 	}
 
-	public ClassFee queryClassFeeByID(int fid) {
+	public ClassFee queryClassFeeByID(String fid) {
 		ClassFee classFee = null;
 		classFee = (ClassFee)this.getHibernateTemplate().get(ClassFee.class, fid);
 		return classFee;

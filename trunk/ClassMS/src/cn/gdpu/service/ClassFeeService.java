@@ -18,7 +18,7 @@ public interface ClassFeeService {
 	 * 根据ID删除班费
 	 * @param fid
 	 */
-	public abstract void delete(int fid);
+	public abstract void delete(String fid);
 	
 	/**
 	 * 更新班费
@@ -30,7 +30,7 @@ public interface ClassFeeService {
 	 * 根据ID获取班费
 	 * @param fid
 	 */
-	public abstract ClassFee getClassFee(int fid);
+	public abstract ClassFee getClassFee(String fid);
 	
 	/**
 	 * 获取所有班费

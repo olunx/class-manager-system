@@ -29,5 +29,7 @@
 			<input type="file" name="documents" />
 			<input type="submit" value="submit" />
 		</form>
+		<br />
+		<a href="<%=path %>/classfee.jsp">班费管理</a>
 	</body>
 </html>

@@ -14,7 +14,7 @@ public class ClassFeeServiceImpl implements ClassFeeService {
 		classFeeDao.insertClassFee(classFee);
 	}
 
-	public void delete(int fid) {
+	public void delete(String fid) {
 		classFeeDao.deleteClassFeeByID(fid);
 	}
 
@@ -22,7 +22,7 @@ public class ClassFeeServiceImpl implements ClassFeeService {
 		return classFeeDao.queryAllClassFees();
 	}
 
-	public ClassFee getClassFee(int fid) {
+	public ClassFee getClassFee(String fid) {
 		return classFeeDao.queryClassFeeByID(fid);
 	}
 

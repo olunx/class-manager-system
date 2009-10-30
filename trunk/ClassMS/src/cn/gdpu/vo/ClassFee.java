@@ -8,7 +8,7 @@ public class ClassFee {
 	private int fee;			  //费用
 	private String event;		  //执行事件
 	private Date time;			  //事件执行时间
-	
+	private String remarks;		  //班费备注
 
 	public String getFid() {
 		return fid;
@@ -48,6 +48,14 @@ public class ClassFee {
 
 	public void setTime(Date time) {
 		this.time = time;
+	}
+
+	public String getRemarks() {
+		return remarks;
+	}
+
+	public void setRemarks(String remarks) {
+		this.remarks = remarks;
 	}
 
 }

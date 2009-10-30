@@ -9,6 +9,7 @@
 </head>
 <body>
 	<h1>本页面fatkun跳转专用(测试)</h1>
+	<a href="notice/add.action">添加公告</a>
 	<a href="notice/list.action">列出所有公告</a>
 </body>
 </html>

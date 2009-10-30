@@ -12,7 +12,10 @@
 			<c:forEach items="${notices}" var="notice">
 				<tr>
 					<td>
-						${notice.title}
+						<a href="detail.action?id=${notice.nid}">${notice.title}</a>
+					</td>
+					<td>
+						${notice.content}
 					</td>
 					<td>
 						${notice.time}

@@ -17,7 +17,7 @@ public interface ClassFeeDao {
 	 * 根据ID删除班费
 	 * @param fid
 	 */
-	public abstract void deleteClassFeeByID(int fid);
+	public abstract void deleteClassFeeByID(String fid);
 	
 	/**
 	 * 更新班费
@@ -29,7 +29,7 @@ public interface ClassFeeDao {
 	 * 根据ID获取班费
 	 * @param fid
 	 */
-	public abstract ClassFee queryClassFeeByID(int fid);
+	public abstract ClassFee queryClassFeeByID(String fid);
 	
 	/**
 	 * 获取所有班费

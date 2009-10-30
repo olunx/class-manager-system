@@ -9,7 +9,7 @@ public class testReadExcel extends TestCase {
 
 	public void testExcel() {
 		ReadExcel re = new ReadExcel();
-		List<Object> result = re.readExcel("E:\\olunx\\医软07-通讯录-测试.xls");
+		List<String> result = re.readExcel("E:\\olunx\\医软07-通讯录-测试.xls");
 
 		if (result != null) {
 
@@ -23,7 +23,7 @@ public class testReadExcel extends TestCase {
 
 			String text;
 			for (int i = 0; i < columns; i++) {
-				text = result.get(i).toString();
+				text = result.get(i);
 				// System.out.println(text);
 				if (text.contains("宿舍")) {
 					dorm = i;

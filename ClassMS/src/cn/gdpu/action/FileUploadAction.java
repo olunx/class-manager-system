@@ -1,14 +1,13 @@
 package cn.gdpu.action;
 
 import java.io.File;
-import java.util.ArrayList;
+import java.io.IOException;
 import java.util.List;
 
 import javax.servlet.ServletContext;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.struts2.util.ServletContextAware;
-
 
 import cn.gdpu.util.ReadExcel;
 
@@ -37,87 +36,73 @@ public class FileUploadAction implements ServletContextAware {
 		this.context = context;
 	}
 
-	public String execute() throws Exception {
+	public String execute() {
 
-		List<Object> fileData = null;
+		List<String> fileData = null;
 
 		if (documents == null) {
 			return "error";
 		}
 
-		//获取在服务器中的目录
+		// 获取在服务器中的目录
 		String targetDirectory = context.getRealPath("/upload");
 
 		File target = null;
 
 		int n = documents.size();
-
+		String filePath = null;
+		StringBuffer sb = new StringBuffer();
+		String targetFile = null;
 		for (int i = 0; i < n; i++) {
-			target = new File(targetDirectory, fileName.get(i));
-			FileUtils.copyFile(documents.get(i), target);
 			
-			//读取刚上传的excel文件数据
-			fileData = getExcelData(targetDirectory +"/"+ fileName.get(i));
+			targetFile = generateFileName(fileName.get(i));
+			target = new File(targetDirectory, targetFile);
 			
-			context.setAttribute("fileName", fileName.get(i));
+			try {
+				FileUtils.copyFile(documents.get(i), target);
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+			filePath = targetDirectory + "/" + targetFile;
+			
+			// 读取刚上传的excel文件数据
+			fileData = ReadExcel.getReadExcel().getExcelData(filePath);
+
+			//减去最后保存列数的一位
+			int resultLength = fileData.size() - 1;
+			
+			// 获取保存的属性列数
+			int columns = Integer.parseInt(fileData.get(resultLength).toString());
+
+			sb.append("<table border=\"1\">");
+			for (int j = 0; j < resultLength; j++) {
+				if (j % columns == 0)
+					sb.append("<tr>");
+					sb.append("<td>" + fileData.get(j) + "</td>");
+				if (j % columns == 3)
+					sb.append("</tr>");
+			}
+			sb.append("</table>");
+
+			context.setAttribute("filePath", filePath);
 		}
-		
-		if(fileData != null) {context.setAttribute("fileData", fileData.toString());}
-			
+
+		if (fileData != null) {
+			context.setAttribute("fileData", sb.toString());
+		}
+
 		return "success";
 	}
-
-	private List<Object> getExcelData(String filePath) {
-
-		ReadExcel re = new ReadExcel();
-		List<Object> result = re.readExcel(filePath);
-
-		if (result != null) {
-			List<Object> data = new ArrayList<Object>();
-
-			int resultLength = result.size();
-			int columns = Integer.parseInt(result.get(resultLength - 1)
-					.toString());
-
-			System.out.println("columns  " + columns);
-			System.out.println("result  " + result);
-
-			int dorm = -1, name = -1, qq = -1, phone = -1;
-
-			String text;
-			for (int i = 0; i < columns; i++) {
-				text = result.get(i).toString();
-				// System.out.println(text);
-				if (text.contains("宿舍")) {
-					dorm = i;
-				} else if (text.contains("姓名")) {
-					name = i;
-				} else if (text.contains("QQ")) {
-					qq = i;
-				} else if (text.contains("手机")) {
-					phone = i;
-				}
-			}
-
-			int lastLoop = resultLength - columns;
-			for (int i = columns, j = 1; i < lastLoop; j++) {
-				data.add(result.get(i + name));
-				data.add(result.get(i + dorm));
-				data.add(result.get(i + qq));
-				data.add(result.get(i + phone));
-				System.out.println(j + " dorm: " + result.get(i + dorm));
-				System.out.println(j + " name: " + result.get(i + name));
-				System.out.println(j + " qq: " + result.get(i + qq));
-				System.out.println(j + " phone: " + result.get(i + phone));
-				System.out.println();
-
-				i = i + columns;
-			}
-
-			return data;
-		}
-
-		return null;
-	}
+	
+	//产生唯一的文件名  
+    private synchronized String generateFileName(String filename)  
+    {  
+        int position=filename.lastIndexOf(".");  
+        String ext=filename.substring(position);  
+          
+        return System.nanoTime()+ext;  
+    }  
 
 }

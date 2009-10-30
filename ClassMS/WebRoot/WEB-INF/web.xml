@@ -44,4 +44,9 @@
 		<param-name>contextConfigLocation</param-name>
 		<param-value>classpath*:applicationContext-*.xml</param-value>
 	</context-param>
+
+	<mime-mapping>
+		<extension>xls</extension>
+		<mime-type>application/vnd.ms-excel</mime-type>
+	</mime-mapping>
 </web-app>

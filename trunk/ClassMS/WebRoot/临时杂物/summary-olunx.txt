@@ -38,4 +38,6 @@ redirect-action，plaintext已经不推荐使用了
 		<mime-type>application/vnd.ms-excel</mime-type>
 	</mime-mapping>
 文件类型可以再tomcat根目录/conf/web.xml中找到
+
+注：在tomcat6.0.20中出现文件不支持的问题，6.0.18却没有这样的问题。
 -------------------------------------

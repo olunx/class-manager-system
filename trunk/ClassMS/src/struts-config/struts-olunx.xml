@@ -9,6 +9,10 @@
 			<result name="success">/regSuc.jsp</result>
 			<result name="error">/regFail.jsp</result>
 		</action>
+		<action name="studentReg" class="cn.gdpu.action.StudentsRegAction">
+			<result name="success">/regSuc.jsp</result>
+			<result name="error">/regFail.jsp</result>
+		</action>
 		<action name="fileUpload" class="cn.gdpu.action.FileUploadAction">
 			<interceptor-ref name="fileUpload">
 				<param name="allowedTypes">application/vnd.ms-excel,application/msword,application/octet-stream</param>

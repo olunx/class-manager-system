@@ -29,6 +29,5 @@
 			<input type="file" name="documents" />
 			<input type="submit" value="submit" />
 		</form>
-		<div>${excel_data}</div>
 	</body>
 </html>

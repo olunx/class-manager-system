@@ -22,7 +22,7 @@ public interface StudentDao {
      * 更新学生信息 
      * @param student 
      */  
-    public void updateStudentBySno(Student student);  
+    public void updateStudent(Student student);  
   
     /** 
      * 根据学号获取学生信息 

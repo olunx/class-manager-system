@@ -114,10 +114,14 @@ public class ReadExcel {
 			// 获取保存的属性列数
 			int columns = Integer.parseInt(result.get(resultLength - 1).toString());
 
-			// System.out.println("columns  " + columns);
-			// System.out.println("result  " + result);
+			System.out.println("columns  " + columns);
+			System.out.println("result  " + result);
 
-			int dormOffset = -1, nameOffset = -1, qqOffset = -1, phoneOffset = -1;
+			int dormOffset = -1;
+			int nameOffset = -1;
+			int qqOffset = -1;
+			int phoneOffset = -1;
+			int snoOffset = -1;
 
 			String text;
 			// 记录实际获取到的属性列数
@@ -137,12 +141,16 @@ public class ReadExcel {
 				} else if (text.contains("手机")) {
 					phoneOffset = index;
 					resultColumn++;
+				} else if (text.contains("学号")) {
+					snoOffset = index;
+					resultColumn++;
 				}
 			}
 
 			// 去掉最后一次循环
 			int lastLoop = resultLength - columns;
 			Student stu;
+			String temp;
 			for (int index = columns; index < lastLoop;) {
 				stu = new Student();
 				if (nameOffset != -1)
@@ -153,8 +161,15 @@ public class ReadExcel {
 					stu.setQq(Long.parseLong(result.get(index + qqOffset)));
 				if (phoneOffset != -1)
 					stu.setPhoneNo(Long.parseLong(result.get(index + phoneOffset)));
+				if(snoOffset != -1){
+					temp = result.get(index + snoOffset);
+					stu.setSno(Long.parseLong(temp));
+					stu.setUsername(temp);
+					stu.setPassword(temp);
+				}
+					
 				resultData.add(stu);
-				//System.out.println(stu.toString());
+				System.out.println(stu.toString());
 				index = index + columns;
 			}
 

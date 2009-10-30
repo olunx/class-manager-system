@@ -21,7 +21,7 @@ public class StudentServiceImpl implements StudentService {
 	}
 
 	public void update(Student student) {
-		studentDao.updateStudentBySno(student);
+		studentDao.updateStudent(student);
 	}
 
 	public Student getStudent(Integer sno) {

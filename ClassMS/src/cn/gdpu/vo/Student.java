@@ -102,4 +102,11 @@ public class Student {
 		this.mail = mail;
 	}
 
+	@Override
+	public String toString() {
+		return "Student [avatar=" + avatar + ", dorm=" + dorm + ", duty=" + duty + ", mail=" + mail + ", password=" + password
+				+ ", phoneNo=" + phoneNo + ", qq=" + qq + ", realName=" + realName + ", sno=" + sno + ", stuId=" + stuId + ", username="
+				+ username + "]";
+	}
+
 }

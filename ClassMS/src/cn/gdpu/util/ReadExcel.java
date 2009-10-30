@@ -13,12 +13,14 @@ import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 
+import cn.gdpu.vo.Student;
+
 public class ReadExcel {
-	
+
 	private static ReadExcel readExcel;
-	
+
 	public static ReadExcel getReadExcel() {
-		if(readExcel == null) {
+		if (readExcel == null) {
 			readExcel = new ReadExcel();
 		}
 		return readExcel;
@@ -67,15 +69,18 @@ public class ReadExcel {
 						continue;
 					switch (cell.getCellType()) {
 					case HSSFCell.CELL_TYPE_NUMERIC:
-						//System.out.println("行  " + j + "  列  " + k + "  " + (long)cell.getNumericCellValue());
-						resultData.add(String.valueOf((long)cell.getNumericCellValue()));
+						// System.out.println("行  " + j + "  列  " + k + "  " +
+						// (long)cell.getNumericCellValue());
+						resultData.add(String.valueOf((long) cell.getNumericCellValue()));
 						break;
 					case HSSFCell.CELL_TYPE_STRING:
-						//System.out.println("行  " + j + "  列  " + k + "  " + cell);
+						// System.out.println("行  " + j + "  列  " + k + "  " +
+						// cell);
 						resultData.add(cell.toString());
 						break;
 					case HSSFCell.CELL_TYPE_BLANK:
-						//System.out.println("行  " + j + "  列  " + k + "  " + "null");
+						// System.out.println("行  " + j + "  列  " + k + "  " +
+						// "null");
 						resultData.add("0");
 						break;
 					}
@@ -95,27 +100,27 @@ public class ReadExcel {
 	 * @param filePath
 	 * @return
 	 */
-	public List<String> getExcelData(String filePath) {
+	public List<Student> getExcelData(String filePath) {
 
-		//获取原始数据
+		// 获取原始数据
 		List<String> result = readExcel(filePath);
 
 		if (result != null) {
-			
-			//用于保存返回的数据
-			List<String> resultData = new ArrayList<String>();
+
+			// 用于保存返回的数据
+			List<Student> resultData = new ArrayList<Student>();
 
 			int resultLength = result.size();
-			//获取保存的属性列数
+			// 获取保存的属性列数
 			int columns = Integer.parseInt(result.get(resultLength - 1).toString());
 
-			System.out.println("columns  " + columns);
-			System.out.println("result  " + result);
+			// System.out.println("columns  " + columns);
+			// System.out.println("result  " + result);
 
 			int dormOffset = -1, nameOffset = -1, qqOffset = -1, phoneOffset = -1;
 
 			String text;
-			//记录实际获取到的属性列数
+			// 记录实际获取到的属性列数
 			int resultColumn = 0;
 			for (int index = 0; index < columns; index++) {
 				text = result.get(index).toString();
@@ -135,25 +140,23 @@ public class ReadExcel {
 				}
 			}
 
-			//去掉最后一次循环
+			// 去掉最后一次循环
 			int lastLoop = resultLength - columns;
-			
-			for (int index = 0; index < lastLoop;) {
-				resultData.add(result.get(index + nameOffset));
-				resultData.add(result.get(index + dormOffset));
-				resultData.add(result.get(index + qqOffset));
-				resultData.add(result.get(index + phoneOffset));
-				System.out.println(" name: " + result.get(index + nameOffset));
-				System.out.println(" dorm: " + result.get(index + dormOffset));
-				System.out.println(" qq: " + result.get(index + qqOffset));
-				System.out.println(" phone: " + result.get(index + phoneOffset));
-				System.out.println();
-
+			Student stu;
+			for (int index = columns; index < lastLoop;) {
+				stu = new Student();
+				if (nameOffset != -1)
+					stu.setRealName(result.get(index + nameOffset));
+				if (dormOffset != -1)
+					stu.setDorm(result.get(index + dormOffset));
+				if (qqOffset != -1)
+					stu.setQq(Long.parseLong(result.get(index + qqOffset)));
+				if (phoneOffset != -1)
+					stu.setPhoneNo(Long.parseLong(result.get(index + phoneOffset)));
+				resultData.add(stu);
+				//System.out.println(stu.toString());
 				index = index + columns;
 			}
-			
-			//保存属性列数
-			resultData.add(String.valueOf(resultColumn));
 
 			return resultData;
 		}

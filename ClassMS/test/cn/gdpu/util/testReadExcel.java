@@ -2,12 +2,13 @@ package cn.gdpu.util;
 
 import java.util.List;
 
-import cn.gdpu.util.ReadExcel;
+import cn.gdpu.util.excel.ReadExcel;
+import cn.gdpu.util.excel.StudentExcel;
 import junit.framework.TestCase;
 
 public class testReadExcel extends TestCase {
 
-	public void testExcel() {
+	public void testRegExcel() {
 		ReadExcel re = new ReadExcel();
 		List<String> result = re.readExcel("E:\\olunx\\医软07-通讯录-测试.xls");
 
@@ -54,5 +55,9 @@ public class testReadExcel extends TestCase {
 
 		}
 
+	}
+	
+	public void testScoreExcel() {
+		StudentExcel.getStudentRegExcel().getScoreData("E:\\olunx\\智能手机参数.XLS");
 	}
 }

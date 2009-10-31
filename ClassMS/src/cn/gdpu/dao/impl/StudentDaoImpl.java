@@ -11,7 +11,7 @@ import cn.gdpu.vo.Student;
 @Transactional  
 public class StudentDaoImpl extends HibernateDaoSupport implements StudentDao {  
   
-    public void insertStudent(Student student) {  
+    public void insertStudent(Student student) {
     	this.getHibernateTemplate().save(student);  
     }  
   

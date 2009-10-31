@@ -11,7 +11,7 @@
 <body>
 <div>${fileData}</div>
 <form action="<%=path %>/studentReg.action" method="post">
-<input type="hidden" value="${filePath}" name="filePath" />
+<input type="hidden" value="${fileName}" name="fileName" />
 <input type="submit" value="确定" /></form>
 </body>
 </html>

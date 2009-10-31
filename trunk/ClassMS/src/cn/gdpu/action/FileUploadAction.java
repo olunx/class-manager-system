@@ -7,13 +7,13 @@ import java.util.List;
 import javax.servlet.ServletContext;
 
 import org.apache.commons.io.FileUtils;
-import org.apache.struts2.util.ServletContextAware;
+import org.apache.struts2.ServletActionContext;
 
 import com.opensymphony.xwork2.ActionSupport;
 
-import cn.gdpu.util.ReadExcel;
+import cn.gdpu.util.excel.StudentExcel;
 
-public class FileUploadAction extends ActionSupport implements ServletContextAware {
+public class FileUploadAction extends ActionSupport {
 
 	/**
 	 * 
@@ -24,14 +24,8 @@ public class FileUploadAction extends ActionSupport implements ServletContextAwa
 	private List<String> fileName;
 	@SuppressWarnings("unused")
 	private List<String> contentType;
-
-	private ServletContext context;
 	
 	private String savePath;
-
-	public String getSavePath() {
-		return savePath;
-	}
 
 	public void setSavePath(String savePath) {
 		this.savePath = savePath;
@@ -49,9 +43,6 @@ public class FileUploadAction extends ActionSupport implements ServletContextAwa
 		this.contentType = contentType;
 	}
 
-	public void setServletContext(ServletContext context) {
-		this.context = context;
-	}
 
 	public String execute() {
 
@@ -61,19 +52,21 @@ public class FileUploadAction extends ActionSupport implements ServletContextAwa
 			return "error";
 		}
 
+		ServletContext context = ServletActionContext.getServletContext();
+		
 		// 获取在服务器中的目录
-		String targetDirectory = context.getRealPath(getSavePath());
+		String targetDirectory = context.getRealPath(savePath);
 
 		File target = null;
 
 		int n = documents.size();
 		String filePath = null;
 		StringBuffer sb = new StringBuffer();
-		String targetFile = null;
+		String targetFileName = null;
 		for (int i = 0; i < n; i++) {
 			
-			targetFile = generateFileName(fileName.get(i));
-			target = new File(targetDirectory, targetFile);
+			targetFileName = generateFileName(fileName.get(i));
+			target = new File(targetDirectory, targetFileName);
 			
 			try {
 				FileUtils.copyFile(documents.get(i), target);
@@ -82,10 +75,10 @@ public class FileUploadAction extends ActionSupport implements ServletContextAwa
 				e.printStackTrace();
 			}
 
-			filePath = targetDirectory + "/" + targetFile;
+			filePath = targetDirectory + "/" + targetFileName;
 			
 			// 读取刚上传的excel文件数据
-			fileData = ReadExcel.getReadExcel().readExcel(filePath);
+			fileData = StudentExcel.getStudentRegExcel().readExcel(filePath);
 
 			//减去最后保存列数的一位
 			int resultLength = fileData.size() - 1;
@@ -103,7 +96,7 @@ public class FileUploadAction extends ActionSupport implements ServletContextAwa
 			}
 			sb.append("</table>");
 
-			context.setAttribute("filePath", filePath);
+			context.setAttribute("fileName", targetFileName);
 		}
 
 		if (fileData != null) {
@@ -120,6 +113,6 @@ public class FileUploadAction extends ActionSupport implements ServletContextAwa
         String ext=filename.substring(position);  
           
         return System.nanoTime()+ext;  
-    }  
+    }
 
 }

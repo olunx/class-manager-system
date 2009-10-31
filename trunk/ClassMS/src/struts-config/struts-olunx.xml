@@ -12,6 +12,8 @@
 		<action name="studentReg" class="cn.gdpu.action.StudentAction" method="registers">
 			<result name="success">/regSuc.jsp</result>
 			<result name="error">/regFail.jsp</result>
+			<!-- Action中的savePath属性的值 --> 
+			<param name="savePath">/upload</param>
 		</action>
 		<action name="fileUpload" class="cn.gdpu.action.FileUploadAction">
 			<interceptor-ref name="fileUpload">

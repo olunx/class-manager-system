@@ -6,7 +6,7 @@ public class Student {
 	private String avatar;
 	private String username;
 	private String password;
-	private long sno;
+	private String sno;
 	private String realName;
 	private String dorm;
 	private Duty duty;
@@ -46,11 +46,11 @@ public class Student {
 		this.password = password;
 	}
 
-	public long getSno() {
+	public String getSno() {
 		return sno;
 	}
 
-	public void setSno(long sno) {
+	public void setSno(String sno) {
 		this.sno = sno;
 	}
 

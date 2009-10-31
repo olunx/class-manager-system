@@ -28,4 +28,10 @@
 		<property name="studentDao" ref="studentDaoImpl"></property>
 	</bean>
 
+	<bean name="dutyDaoImpl" class="cn.gdpu.dao.impl.DutyDaoImpl" scope="prototype">
+		<property name="sessionFactory" ref="sf"></property>
+	</bean>
+	<bean id="dutyService" class="cn.gdpu.service.impl.DutyServiceImpl" scope="prototype">
+		<property name="dutyDao" ref="dutyDaoImpl"></property>
+	</bean>
 </beans>

@@ -4,7 +4,24 @@ public class Duty {
 
 	private int dutyId;
 	private Student student;
+	private String dutyName;
 	private String job;
+
+	public String getJob() {
+		return job;
+	}
+
+	public void setJob(String job) {
+		this.job = job;
+	}
+
+	public String getDutyName() {
+		return dutyName;
+	}
+
+	public void setDutyName(String dutyName) {
+		this.dutyName = dutyName;
+	}
 
 	public int getDutyId() {
 		return dutyId;
@@ -22,11 +39,5 @@ public class Duty {
 		this.student = student;
 	}
 
-	public String getJob() {
-		return job;
-	}
 
-	public void setJob(String job) {
-		this.job = job;
-	}
 }

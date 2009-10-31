@@ -10,36 +10,36 @@ public interface StudentDao {
      * 保存学生信息 
      * @param student 
      */  
-    public void insertStudent(Student student);  
+    public abstract void insertStudent(Student student);  
   
     /** 
      * 根据学号删除学生信息 
      * @param studentId 
      */  
-    public void delStudentBySno(int sno);  
+    public abstract void delStudentBySno(int sno);  
   
     /** 
      * 更新学生信息 
      * @param student 
      */  
-    public void updateStudent(Student student);  
+    public abstract void updateStudent(Student student);  
   
     /** 
      * 根据学号获取学生信息 
      * @param studentId 
      */  
-    public Student queryStudentBySno(int sno);  
+    public abstract Student queryStudentBySno(int sno);  
       
     /** 
      * 根据姓名获取学生信息 
      * @param studentId 
      */  
-    public List<Student> queryStudentByName(String name);  
+    public abstract List<Student> queryStudentByName(String name);  
       
     /** 
      * 获取全部学生信息 
      * @param studentId 
      */  
-    public List<Student> queryAllStudents();  
+    public abstract List<Student> queryAllStudents();  
   
 }  

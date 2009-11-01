@@ -38,4 +38,12 @@ public class NoticeServiceImpl implements NoticeService {
 		this.noticeDao = noticeDao;
 	}
 
+	public void save(Notice notice) {
+		if (notice.getNid() != 0) {
+			noticeDao.updateNotice(notice);
+		} else {
+			noticeDao.insertNotice(notice);
+		}
+	}
+
 }

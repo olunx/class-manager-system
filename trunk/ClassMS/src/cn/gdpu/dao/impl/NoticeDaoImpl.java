@@ -12,6 +12,7 @@ public class NoticeDaoImpl extends HibernateDaoSupport implements NoticeDao {
 	public void deleteNoticeByID(int nid) {
 		Notice notice = null;
 		notice = queryNoticeByID(nid);
+		System.out.println("notice:"+notice);
 		if (notice != null)
 			this.getHibernateTemplate().delete(notice);
 	}

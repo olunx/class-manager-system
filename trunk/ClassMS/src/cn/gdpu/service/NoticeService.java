@@ -3,6 +3,7 @@ package cn.gdpu.service;
 import java.util.List;
 
 import cn.gdpu.vo.Notice;
+import cn.gdpu.vo.Post;
 
 public interface NoticeService {
 	
@@ -14,9 +15,9 @@ public interface NoticeService {
 	
 	/**
 	 * 根据ID删除公告
-	 * @param nid
+	 * @param id
 	 */
-	public abstract void delete(int nid);
+	public abstract void delete(int id);
 	
 	/**
 	 * 更新公告
@@ -40,5 +41,11 @@ public interface NoticeService {
 	 * @param notice
 	 */
 	public abstract void save(Notice notice);
+	
+	/**
+	 * 根据公告ID得到所有评论
+	 * @param id
+	 */
+	public abstract List<Post> getPosts(int id);
 
 }

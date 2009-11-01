@@ -20,6 +20,12 @@
 					<td>
 						${notice.time}
 					</td>
+					<td>
+						<a href="modify.action?id=${notice.nid }">编辑</a>
+					</td>
+					<td>
+						<a href="del.action?id=${notice.nid }">删除</a>
+					</td>
 				</tr>
 			</c:forEach>
 		</table>

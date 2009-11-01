@@ -34,5 +34,11 @@ public interface NoticeService {
 	 * 获取所有公告
 	 */
 	public abstract List<Notice> getAllNotices();
+	
+	/**
+	 * 保存公告(add或update)
+	 * @param notice
+	 */
+	public abstract void save(Notice notice);
 
 }

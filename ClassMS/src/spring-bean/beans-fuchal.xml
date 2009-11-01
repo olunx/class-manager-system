@@ -15,7 +15,7 @@
 			http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
 
 	<bean name="classFeeDaoImpl" class="cn.gdpu.dao.impl.ClassFeeDaoImpl" scope="prototype">
-		<property name="sessionFactory" ref="sf"/>
+		<property name="sessionFactory" ref="sessionFactory"/>
 	</bean>
 	
 	<bean name="classFeeService" class="cn.gdpu.service.impl.ClassFeeServiceImpl" scope="prototype">

@@ -3,6 +3,7 @@ package cn.gdpu.dao;
 import java.util.List;
 
 import cn.gdpu.vo.Notice;
+import cn.gdpu.vo.Post;
 
 public interface NoticeDao {
 	
@@ -16,7 +17,7 @@ public interface NoticeDao {
 	 * 根据ID删除公告
 	 * @param nid
 	 */
-	public abstract void deleteNoticeByID(int nid);
+	public abstract void deleteNoticeByID(int id);
 	
 	/**
 	 * 更新公告
@@ -34,5 +35,11 @@ public interface NoticeDao {
 	 * 获取所有公告
 	 */
 	public abstract List<Notice> queryAllNotices();
+	
+	/**
+	 * 获取该公告的所有评论
+	 * @return
+	 */
+	public abstract List<Post> queryPostsByID(int id);
 
 }

@@ -8,6 +8,7 @@ import org.apache.struts2.interceptor.RequestAware;
 
 import cn.gdpu.service.NoticeService;
 import cn.gdpu.vo.Notice;
+import cn.gdpu.vo.Post;
 
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -79,6 +80,19 @@ public class NoticeAction extends ActionSupport implements RequestAware {
 		System.out.println("action-------" + id);
 		noticeService.delete(id);
 		return "list";
+	}
+	
+	/**
+	 * 详细信息，显示评论
+	 * @return
+	 * @throws Exception
+	 */
+	public String doDetail() throws Exception {
+		Notice notice = noticeService.getNotice(id);
+		List<Post> posts = noticeService.getPosts(id);
+		request.put("notice", notice);
+		request.put("posts", posts);
+		return SUCCESS;
 	}
 
 	public void setNoticeService(NoticeService noticeService) {

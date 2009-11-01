@@ -30,7 +30,7 @@
 	</bean>
 
 	<!-- 配置SessionFactory -->
-	<bean id="sf" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
 		<property name="dataSource" ref="dataSource"></property>
 		<property name="configLocation" value="classpath:hibernate.cfg.xml"></property>
 	</bean>
@@ -39,7 +39,7 @@
 	<bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
 		<property name="dataSource" ref="dataSource" />
 		<property name="sessionFactory">
-			<ref bean="sf" />
+			<ref bean="sessionFactory" />
 		</property>
 	</bean>
 
@@ -49,13 +49,15 @@
 			<tx:method name="modify*" propagation="REQUIRED" />
 			<tx:method name="delete*" propagation="REQUIRED" />
 			<tx:method name="query*" propagation="REQUIRED" />
-			<tx:method name="*" read-only="true" />
+			<tx:method name="*" propagation="SUPPORTS" read-only="false" />
 		</tx:attributes>
 	</tx:advice>
 
 	<aop:config>
-		<aop:pointcut id="allMethod" expression="execution(* dao.imp.*.*(..))" />
+		<aop:pointcut id="allMethod" expression="execution(* cn.gdpu.dao.impl.*.*(..))" />
+		<aop:pointcut id="allServiceMethod" expression="execution(* cn.gdpu.service.impl.*.*(..))" />
 		<aop:advisor pointcut-ref="allMethod" advice-ref="txAdvice" />
+		<aop:advisor pointcut-ref="allServiceMethod" advice-ref="txAdvice" />
 	</aop:config>
 
 </beans>

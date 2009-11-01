@@ -5,6 +5,7 @@ import java.util.List;
 import cn.gdpu.dao.NoticeDao;
 import cn.gdpu.service.NoticeService;
 import cn.gdpu.vo.Notice;
+import cn.gdpu.vo.Post;
 
 public class NoticeServiceImpl implements NoticeService {
 
@@ -14,8 +15,8 @@ public class NoticeServiceImpl implements NoticeService {
 		noticeDao.insertNotice(notice);
 	}
 
-	public void delete(int nid) {
-		noticeDao.deleteNoticeByID(nid);
+	public void delete(int id) {
+		noticeDao.deleteNoticeByID(id);
 	}
 
 	public Notice getNotice(int id) {
@@ -44,6 +45,10 @@ public class NoticeServiceImpl implements NoticeService {
 		} else {
 			noticeDao.insertNotice(notice);
 		}
+	}
+
+	public List<Post> getPosts(int id) {
+		return noticeDao.queryPostsByID(id);
 	}
 
 }

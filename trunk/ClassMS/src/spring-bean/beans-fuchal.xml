@@ -13,7 +13,8 @@
 			http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
 			http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
 			http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
-
+	
+	<!-- 班费系统bean -->
 	<bean name="classFeeDaoImpl" class="cn.gdpu.dao.impl.ClassFeeDaoImpl" scope="prototype">
 		<property name="sessionFactory" ref="sessionFactory"/>
 	</bean>
@@ -21,5 +22,15 @@
 	<bean name="classFeeService" class="cn.gdpu.service.impl.ClassFeeServiceImpl" scope="prototype">
 		<property name="classFeeDao" ref="classFeeDaoImpl"></property>	
 	</bean>	
+
+	<!-- 投票系统bean -->
+	<bean name="voteDaoImpl" class="cn.gdpu.dao.impl.VoteDaoImpl" scope="prototype">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	
+	<bean name="voteService" class="cn.gdpu.service.impl.VoteServiceImpl" scope="prototype">
+		<property name="voteDao" ref="voteDaoImpl"></property>	
+	</bean>
+	
 
 </beans>

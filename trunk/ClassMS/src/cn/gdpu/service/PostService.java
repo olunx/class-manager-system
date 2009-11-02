@@ -16,7 +16,7 @@ public interface PostService {
 	 * 根据ID删除评论
 	 * @param nid
 	 */
-	public abstract void delete(int nid);
+	public abstract void delete(int id);
 	
 	/**
 	 * 更新评论

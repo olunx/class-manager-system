@@ -18,7 +18,7 @@ public class TestNoticeService {
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
 		try {
-			ApplicationContext ctx = new ClassPathXmlApplicationContext("applicationContext-*.xml");
+			ApplicationContext ctx = new ClassPathXmlApplicationContext("applicationContext.xml");
 			noticeService = (NoticeService) ctx.getBean("noticeService");
 		} catch (RuntimeException e) {
 			e.printStackTrace();
@@ -38,10 +38,11 @@ public class TestNoticeService {
 	}
 
 	@Test
-	public void getNotice() {
-		Notice notice = noticeService.getNotice(1);
+	public Notice getNotice() {
+		Notice notice = noticeService.getNotice(27);
 		if (notice != null)
 			System.out.println(notice.getContent());
+		return notice;
 	}
 
 	@Test

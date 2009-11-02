@@ -11,14 +11,14 @@ import cn.gdpu.vo.Post;
 public class PostDaoImpl extends HibernateDaoSupport implements PostDao {
 
 	public void deletePostByID(int pid) {
-		Post post = (Post) this.getHibernateTemplate().get(Post.class, pid);
-		Notice notice = post.getParent();
-		List<Post> list = notice.getComment();
-		if (list.contains(post)) {
-			list.remove(post);
-			notice.setComment(list);
-			this.getHibernateTemplate().save(notice);
-		}
+		Post post = queryPostByID(pid);
+//		Notice notice = post.getParent();
+//		List<Post> list = notice.getComment();
+//		if (list.contains(post)) {
+//			list.remove(post);
+//			notice.setComment(list);
+//			this.getHibernateTemplate().update(notice);
+//		}
 		this.getHibernateTemplate().delete(post);
 	}
 
@@ -27,8 +27,8 @@ public class PostDaoImpl extends HibernateDaoSupport implements PostDao {
 		List<Post> list = notice.getComment();
 		list.add(post);
 		notice.setComment(list);
-		this.getHibernateTemplate().save(post);
-		this.getHibernateTemplate().save(notice);
+		//this.getHibernateTemplate().save(post);
+		this.getHibernateTemplate().update(notice);
 	}
 
 	public List<Post> queryAllPosts() {
@@ -37,13 +37,12 @@ public class PostDaoImpl extends HibernateDaoSupport implements PostDao {
 	}
 
 	public Post queryPostByID(int pid) {
-		// TODO Auto-generated method stub
-		return null;
+		Post post = (Post) this.getHibernateTemplate().get(Post.class, pid);
+		return post;
 	}
 
 	public void updatePost(Post post) {
-		// TODO Auto-generated method stub
-
+		this.getHibernateTemplate().update(post);
 	}
 
 }

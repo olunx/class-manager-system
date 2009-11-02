@@ -20,7 +20,17 @@
 		<action name="detail" class="cn.gdpu.action.NoticeAction" method="detail">
 			<result name="success">/WEB-INF/model/noticeDetail.jsp</result>
 		</action>
-
+	</package>
+	<package name="post" extends="struts-default" namespace="/notice">
+		<global-results>
+			<result name="detail" type="redirectAction">detail?id=${id}</result>
+		</global-results>
+		<action name="addPost" class="cn.gdpu.action.PostAction" method="addPost"></action>
+		<action name="delPost" class="cn.gdpu.action.PostAction" method="delPost"></action>
+		<action name="modifyPost" class="cn.gdpu.action.PostAction" method="modifyPost">
+			<result name="success">/WEB-INF/model/postModify.jsp</result>
+		</action>
+		<action name="updatePost" class="cn.gdpu.action.PostAction" method="updatePost"></action>
 	</package>
 
 </struts>    

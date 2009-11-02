@@ -11,7 +11,7 @@
 			<generator class="native" />
 		</id>
 		<many-to-one name="author" column="stuId" />
-		<many-to-one name="parent" column="parentid" />
+		<many-to-one name="parent" column="parentid"/>
 		<property name="time" />
 		<property name="content" />
 	</class>

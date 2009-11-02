@@ -40,7 +40,7 @@ public class NoticeServiceImpl implements NoticeService {
 	}
 
 	public void save(Notice notice) {
-		if (notice.getNid() != 0) {
+		if (notice.getNid() > 0) {
 			noticeDao.updateNotice(notice);
 		} else {
 			noticeDao.insertNotice(notice);

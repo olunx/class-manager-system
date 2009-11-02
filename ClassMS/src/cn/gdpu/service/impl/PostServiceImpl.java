@@ -2,19 +2,19 @@ package cn.gdpu.service.impl;
 
 import java.util.List;
 
+import cn.gdpu.dao.PostDao;
 import cn.gdpu.service.PostService;
 import cn.gdpu.vo.Post;
 
 public class PostServiceImpl implements PostService {
+	PostDao postDao;
 
 	public void add(Post post) {
-		// TODO Auto-generated method stub
-
+		postDao.insertPost(post);
 	}
 
-	public void delete(int nid) {
-		// TODO Auto-generated method stub
-
+	public void delete(int id) {
+		postDao.deletePostByID(id);
 	}
 
 	public List<Post> getAllPosts() {
@@ -23,18 +23,20 @@ public class PostServiceImpl implements PostService {
 	}
 
 	public Post getPost(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		Post post = postDao.queryPostByID(id);
+		return post;
 	}
 
 	public void save(Post post) {
-		// TODO Auto-generated method stub
-
+		
 	}
 
 	public void update(Post post) {
-		// TODO Auto-generated method stub
+		postDao.updatePost(post);
+	}
 
+	public void setPostDao(PostDao postDao) {
+		this.postDao = postDao;
 	}
 
 }

@@ -8,11 +8,35 @@
 		<title>Insert title here</title>
 	</head>
 	<body>
-	<div>
-		<div><h1>${notice.title }</h1>${notice.content }</div>
-		<c:forEach items="${posts}" var="post">
-		<div>${post.content }</div>
-		</c:forEach>
-	</div>
+	<a href="list.action">公告列表</a>
+		<div>
+			<div>
+				<h1>
+					${notice.title }
+				</h1>
+				${notice.content }
+			</div>
+			<hr />
+
+			<c:forEach items="${posts}" var="post">
+				
+					<div>
+						<div>
+							${post.time}
+						</div>
+						${post.content}
+						<a href="delPost.action?id=${param.id }&pid=${post.pid }">删除</a>
+						<a href="modifyPost.action?id=${param.id }&pid=${post.pid }">编辑</a>
+					</div>
+			</c:forEach>
+		</div>
+		<div>
+			<form action="addPost.action" method="post">
+				评论：
+				<input type="hidden" name="id" value="${param.id }" />
+				<textarea rows="10" cols="10" name="content"></textarea>
+				<input type="submit" value="写好了，保存" />
+			</form>
+		</div>
 	</body>
 </html>

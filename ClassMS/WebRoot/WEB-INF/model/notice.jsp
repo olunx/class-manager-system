@@ -8,26 +8,34 @@
 		<title>班务系统</title>
 	</head>
 	<body>
-		<table>
-			<c:forEach items="${notices}" var="notice">
-				<tr>
-					<td>
-						<a href="detail.action?id=${notice.nid}">${notice.title}</a>
-					</td>
-					<td>
-						${notice.content}
-					</td>
-					<td>
-						${notice.time}
-					</td>
-					<td>
-						<a href="modify.action?id=${notice.nid }">编辑</a>
-					</td>
-					<td>
-						<a href="del.action?id=${notice.nid }">删除</a>
-					</td>
-				</tr>
-			</c:forEach>
-		</table>
+		<a href="add.action">添加公告</a>
+		<c:choose>
+			<c:when test="${notices==null}">
+					还没有公告呢！
+			</c:when>
+			<c:otherwise>
+				<table>
+					<c:forEach items="${notices}" var="notice">
+						<tr>
+							<td>
+								<a href="detail.action?id=${notice.nid}">${notice.title}</a>
+							</td>
+							<td>
+								${notice.content}
+							</td>
+							<td>
+								${notice.time}
+							</td>
+							<td>
+								<a href="modify.action?id=${notice.nid }">编辑</a>
+							</td>
+							<td>
+								<a href="del.action?id=${notice.nid }">删除</a>
+							</td>
+						</tr>
+					</c:forEach>
+				</table>
+			</c:otherwise>
+		</c:choose>
 	</body>
 </html>

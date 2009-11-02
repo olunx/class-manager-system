@@ -29,6 +29,8 @@ public class NoticeAction extends ActionSupport implements RequestAware {
 	public String doList() throws Exception {
 		List<Notice> notices = null;
 		notices = noticeService.getAllNotices();
+		if (notices.size() == 0)
+			notices = null;
 		request.put("notices", notices);
 		return SUCCESS;
 	}
@@ -51,7 +53,10 @@ public class NoticeAction extends ActionSupport implements RequestAware {
 	 */
 	public String doSave() throws Exception {
 		Notice notice = new Notice();
-		notice.setNid(id);
+		System.out.println("id:" + id);
+		if (id > 0) {
+			notice = noticeService.getNotice(id);
+		}
 		notice.setTitle(title);
 		notice.setContent(content);
 		notice.setTime(new Date());
@@ -61,6 +66,7 @@ public class NoticeAction extends ActionSupport implements RequestAware {
 
 	/**
 	 * 修改页面跳转
+	 * 
 	 * @return
 	 * @throws Exception
 	 */
@@ -81,9 +87,10 @@ public class NoticeAction extends ActionSupport implements RequestAware {
 		noticeService.delete(id);
 		return "list";
 	}
-	
+
 	/**
 	 * 详细信息，显示评论
+	 * 
 	 * @return
 	 * @throws Exception
 	 */

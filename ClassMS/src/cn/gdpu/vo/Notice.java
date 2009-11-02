@@ -1,5 +1,6 @@
 package cn.gdpu.vo;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -9,7 +10,7 @@ public class Notice {
 	private String title;
 	private Date time;
 	private String content;
-	private List<Post> comment;
+	private List<Post> comment = new ArrayList<Post>();
 
 	public Student getAuthor() {
 		return author;

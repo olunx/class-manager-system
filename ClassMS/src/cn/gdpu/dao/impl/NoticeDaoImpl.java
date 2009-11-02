@@ -1,5 +1,7 @@
 package cn.gdpu.dao.impl;
 
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
@@ -43,7 +45,16 @@ public class NoticeDaoImpl extends HibernateDaoSupport implements NoticeDao {
 		Notice notice = null;
 		notice = (Notice) this.getHibernateTemplate().get(Notice.class, id);
 		List<Post> list = notice.getComment();
-		return list;
+		// 评论中可能不是连续的列表（被删除某条后）
+		List<Post> list2 = new ArrayList<Post>();
+		Iterator<Post> iter = list.iterator();
+		while (iter.hasNext()) {
+			Post post = iter.next();
+			if (post != null) {
+				list2.add(post);
+			}
+		}
+		return list2;
 	}
 
 }

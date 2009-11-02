@@ -11,15 +11,29 @@
 			http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
 			http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
 
-
+	
+	<!-- notice公告 -->
 	<bean name="noticeDaoImpl" class="cn.gdpu.dao.impl.NoticeDaoImpl" scope="prototype">
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
 	<bean id="noticeService" class="cn.gdpu.service.impl.NoticeServiceImpl" scope="prototype">
 		<property name="noticeDao" ref="noticeDaoImpl"></property>
 	</bean>
-	<bean id="NoticeAction" class="cn.gdpu.action.NoticeAction" scope="prototype">
+	<bean id="noticeAction" class="cn.gdpu.action.NoticeAction" scope="prototype">
 		<property name="noticeService" ref="noticeService"></property>
 	</bean>
+	
+	<!-- post评论 -->
+	<bean name="postDaoImpl" class="cn.gdpu.dao.impl.PostDaoImpl" scope="prototype">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="postService" class="cn.gdpu.service.impl.PostServiceImpl" scope="prototype">
+		<property name="postDao" ref="postDaoImpl"></property>
+	</bean>
+	<bean id="postAction" class="cn.gdpu.action.PostAction" scope="prototype">
+		<property name="noticeService" ref="noticeService"></property>
+		<property name="postService" ref="postService"></property>
+	</bean>
+
 
 </beans>

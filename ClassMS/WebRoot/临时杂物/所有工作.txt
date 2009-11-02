@@ -18,7 +18,7 @@
 
 4，成绩的发送（飞信）
 
-5，班费管理（ClassFee）
+5，班费管理（ClassFee）//fuchal20091030完成CRUD
 	1.saveClassFee()
 	2.getClassFee()
 	3.getClassFee(根据条件)
@@ -39,7 +39,7 @@
 	3.modifyCommentByID()
 	4.findCommentByID()
 
-8，投票与投票选项(Voting)
+8，投票与投票选项(Vote||VoteItem)//fuchal20091101开始
 	1.saveVote()
 	2.delVote()
 	3.modifyVote()

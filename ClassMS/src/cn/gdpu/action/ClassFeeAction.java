@@ -26,76 +26,76 @@ public class ClassFeeAction extends ActionSupport implements RequestAware{
 	String fid;
 	
 
-	//CRUD add() 添加班费记录
+	//CRUD add() 娣诲姞鐝垂璁板綍
 	public String doAdd() throws Exception{
 		try {
 			classFee.setTime(new Date());
 			classFeeService.add(classFee);
-			System.out.println("-----------添加班费记录成功-----------");
+			System.out.println("-----------娣诲姞鐝垂璁板綍鎴愬姛-----------");
 			return SUCCESS;
 		} catch (RuntimeException e) {
-			System.out.println("-----------添加班费记录失败-----------");
+			System.out.println("-----------娣诲姞鐝垂璁板綍澶辫触-----------");
 			e.printStackTrace();
 		}
 		return ERROR;
 	}
 	
-	//CRUD delete()
+	//CRUD delete() 鍒犻櫎鐝垂璁板綍
 	public String doDelete() throws Exception{
 		try {
 			classFeeService.delete(fid);
-			System.out.println("-------删除班费记录成功--------");
+			System.out.println("-------鍒犻櫎鐝垂璁板綍" + fid + "--------");
 			return SUCCESS;
 		} catch (Exception e) {
-			System.out.println("-------删除班费记录失败--------");
+			System.out.println("-------鍒犻櫎鐝垂璁板綍澶辫触--------");
 			e.printStackTrace();
 		}
 		return ERROR;
 	}
 	
-	//CRUD modify()
+	//CRUD modify() 淇敼鐝垂璁板綍
 	public String doModify() throws Exception{
 		if(classFeeService.getClassFee(classFee.getFid()) != null){
 			try {
 				classFee.setTime(new Date());
 				classFeeService.update(classFee);
-				System.out.println("-----------班费记录修改成功-----------");
+				System.out.println("-----------淇敼鐝垂璁板綍鎴愬姛-----------");
 				return SUCCESS;
 			} catch (RuntimeException e) {
-				System.out.println("-----------班费记录修改失败-----------");
+				System.out.println("-----------淇敼鐝垂璁板綍澶辫触-----------");
 				e.printStackTrace();
 			}
 			return ERROR;
 		}else {
-			System.out.println("-----------班费记录修改失败.找不到该ID-----------");
+			System.out.println("-----------淇敼鐝垂璁板綍澶辫触.鎵句笉鍒癐D=" + classFee.getFid() + "-----------");
 			return ERROR;
 		}
 	}
 	
-	//CRUD query() 按ID查询班费记录
+	//CRUD query() 鏌ヨ鐝垂璁板綍
 	public String doQuery() throws Exception{
 		try {
 			classFee = classFeeService.getClassFee(fid);
 			request.put("req", classFee);
-			System.out.println("-------查询班费记录成功--------");
+			System.out.println("-------鏌ヨ鐝垂璁板綍鎴愬姛--------");
 			return SUCCESS;
 		} catch (Exception e) {
-			System.out.println("-------查询班费记录失败--------");
+			System.out.println("-------鏌ヨ鐝垂璁板綍澶辫触--------");
 			e.printStackTrace();
 		}
 		return ERROR;
 	}
 	
-	//CRUD queryAll() 查询全部班费记录
+	//CRUD queryAll() 鏌ヨ鍏ㄩ儴鐝垂璁板綍
 	public String doQueryAll() throws Exception{
 		try {
 			List<ClassFee> classFees = new ArrayList<ClassFee>();
 			classFees = classFeeService.getAllClassFees();
 			request.put("req", classFees);
-			System.out.println("-------查询全部班费记录成功--------");
+			System.out.println("-------鏌ヨ鍏ㄩ儴鐝垂璁板綍鎴愬姛--------");
 			return SUCCESS;
 		} catch (Exception e) {
-			System.out.println("-------查询全部班费记录失败--------");
+			System.out.println("-------鏌ヨ鍏ㄩ儴鐝垂璁板綍澶辫触--------");
 			e.printStackTrace();
 		}
 		return ERROR;

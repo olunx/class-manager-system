@@ -10,15 +10,15 @@ import cn.gdpu.vo.ClassFee;
 
 public class ClassFeeDaoImpl extends HibernateDaoSupport implements ClassFeeDao {
 
+	public void insertClassFee(ClassFee classFee) {
+		this.getHibernateTemplate().save(classFee);
+	}
+	
 	public void deleteClassFeeByID(String fid) {
 		ClassFee classFee = null;
 		classFee = (ClassFee)this.getHibernateTemplate().get(ClassFee.class, fid);
 		if(classFee != null)
 			this.getHibernateTemplate().delete(classFee);
-	}
-
-	public void insertClassFee(ClassFee classFee) {
-		this.getHibernateTemplate().save(classFee);
 	}
 	
 	@SuppressWarnings("unchecked")

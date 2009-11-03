@@ -38,4 +38,11 @@
 	<bean id="leaderService" class="cn.gdpu.service.impl.LeaderServiceImpl" scope="prototype">
 		<property name="leaderDao" ref="leaderDaoImpl"></property>
 	</bean>
+	
+	<bean name="attendanceDaoImpl" class="cn.gdpu.dao.impl.AttendanceDaoImpl" scope="prototype">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="attendanceService" class="cn.gdpu.service.impl.AttendanceServiceImpl" scope="prototype">
+		<property name="attendanceDao" ref="attendanceDaoImpl"></property>
+	</bean>
 </beans>

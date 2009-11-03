@@ -14,7 +14,7 @@ public class StudentServiceTest{
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
 		try {
-			ApplicationContext ctx = new ClassPathXmlApplicationContext("applicationContext-*.xml");
+			ApplicationContext ctx = new ClassPathXmlApplicationContext("applicationContext.xml");
 			System.out.println("ctx: " + ctx);
 			studentService = (StudentService) ctx.getBean("studentService");
 		} catch (RuntimeException e) {

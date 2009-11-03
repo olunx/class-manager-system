@@ -29,11 +29,11 @@ public interface DutyDao {
 	 * @param dutyName
 	 * @return
 	 */
-	public abstract Duty queryStudentByName(String dutyName);
+	public abstract Duty queryDutyByName(String dutyName);
 	
 	/**
 	 * 获取所有职责信息
 	 * @return
 	 */
-	public abstract List<Duty> queryAllStudent();
+	public abstract List<Duty> queryAllDutys();
 }

@@ -4,12 +4,12 @@
 	"http://struts.apache.org/dtds/struts-2.1.dtd" >
 <struts>
 
-	<package name="login" extends="struts-default">
-		<action name="student" class="cn.gdpu.action.StudentAction" method="register">
+	<package name="register" extends="struts-default">
+		<action name="studentReg" class="cn.gdpu.action.RegisterAction" method="stuReg">
 			<result name="success">/regSuc.jsp</result>
 			<result name="error">/regFail.jsp</result>
 		</action>
-		<action name="studentReg" class="cn.gdpu.action.StudentAction" method="registers">
+		<action name="studentsReg" class="cn.gdpu.action.RegisterAction" method="studentsReg">
 			<result name="success">/regSuc.jsp</result>
 			<result name="error">/regFail.jsp</result>
 			<!-- Action中的savePath属性的值 --> 

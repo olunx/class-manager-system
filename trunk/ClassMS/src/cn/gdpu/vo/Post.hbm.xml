@@ -13,6 +13,6 @@
 		<many-to-one name="author" column="stuId" />
 		<many-to-one name="parent" column="parentid"/>
 		<property name="time" />
-		<property name="content" />
+		<property name="content" type="text"/>
 	</class>
 </hibernate-mapping>

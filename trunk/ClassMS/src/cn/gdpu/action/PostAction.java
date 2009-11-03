@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.Map;
 
 import org.apache.struts2.interceptor.RequestAware;
+import org.apache.struts2.interceptor.validation.SkipValidation;
 
 import cn.gdpu.service.NoticeService;
 import cn.gdpu.service.PostService;
@@ -25,7 +26,7 @@ public class PostAction extends ActionSupport implements RequestAware {
 	 * @return
 	 * @throws Exception
 	 */
-	public String doAddPost() throws Exception {
+	public String addPost() throws Exception {
 		Post post = new Post();
 		post.setAuthor(null);
 		post.setContent(content);
@@ -42,7 +43,8 @@ public class PostAction extends ActionSupport implements RequestAware {
 	 * @return
 	 * @throws Exception
 	 */
-	public String doDelPost() throws Exception {
+	@SkipValidation
+	public String delPost() throws Exception {
 		postService.delete(pid);
 		return "detail";
 	}
@@ -52,7 +54,8 @@ public class PostAction extends ActionSupport implements RequestAware {
 	 * @return
 	 * @throws Exception
 	 */
-	public String doModifyPost() throws Exception {
+	@SkipValidation
+	public String modifyPost() throws Exception {
 		Post post = postService.getPost(pid);
 		request.put("post", post);
 		return SUCCESS;
@@ -63,7 +66,7 @@ public class PostAction extends ActionSupport implements RequestAware {
 	 * @return
 	 * @throws Exception
 	 */
-	public String doUpdatePost() throws Exception {
+	public String updatePost() throws Exception {
 		Post post = postService.getPost(pid);
 		post.setContent(content);
 		postService.update(post);
@@ -101,6 +104,10 @@ public class PostAction extends ActionSupport implements RequestAware {
 
 	public void setPid(int pid) {
 		this.pid = pid;
+	}
+
+	public String getContent() {
+		return content;
 	}
 
 }

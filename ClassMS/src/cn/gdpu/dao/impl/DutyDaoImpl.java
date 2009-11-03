@@ -21,12 +21,12 @@ public class DutyDaoImpl extends HibernateDaoSupport implements DutyDao {
 		this.getHibernateTemplate().update(duty);
 	}
 
-	public Duty queryStudentByName(String dutyName) {
+	public Duty queryDutyByName(String dutyName) {
 		return (Duty) this.getHibernateTemplate().get(Duty.class, dutyName);
 	}
 
 	@SuppressWarnings("unchecked")
-	public List<Duty> queryAllStudent() {
+	public List<Duty> queryAllDutys() {
 		return this.getHibernateTemplate().find("from Duty");
 	}
 

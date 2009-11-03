@@ -27,11 +27,11 @@ public class DutyServiceImpl implements DutyService {
 	}
 
 	public List<Duty> getAllDutys() {
-		return dutyDao.queryAllStudent();
+		return dutyDao.queryAllDutys();
 	}
 
 	public Duty getDutyByName(String dutyName) {
-		return dutyDao.queryStudentByName(dutyName);
+		return dutyDao.queryDutyByName(dutyName);
 	}
 
 	public void update(Duty duty) {

@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 	<!--
-		- Application context definition for JPetStore's business layer. -
-		Contains bean references to the transaction manager and to the DAOs in
-		- dataAccessContext-local/jta.xml (see web.xml's
-		"contextConfigLocation").
+		- Application context definition for JPetStore's business layer. - Contains bean references to the transaction manager and to the DAOs in
+		- dataAccessContext-local/jta.xml (see web.xml's "contextConfigLocation").
 	-->
-<beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
 	xmlns:tx="http://www.springframework.org/schema/tx"
 	xsi:schemaLocation="
 			http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
@@ -20,7 +17,7 @@
 	<bean name="reg" class="cn.gdpu.action.UserAction" scope="prototype">
 		<property name="userDAOIMP" ref="userDAOIMP"></property>
 	</bean>
-	
+
 	<bean name="studentDaoImpl" class="cn.gdpu.dao.impl.StudentDaoImpl" scope="prototype">
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
@@ -33,5 +30,12 @@
 	</bean>
 	<bean id="dutyService" class="cn.gdpu.service.impl.DutyServiceImpl" scope="prototype">
 		<property name="dutyDao" ref="dutyDaoImpl"></property>
+	</bean>
+
+	<bean name="leaderDaoImpl" class="cn.gdpu.dao.impl.LeaderDaoImpl" scope="prototype">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="leaderService" class="cn.gdpu.service.impl.LeaderServiceImpl" scope="prototype">
+		<property name="leaderDao" ref="leaderDaoImpl"></property>
 	</bean>
 </beans>

@@ -13,7 +13,7 @@
 		<many-to-one name="author" column="stuId" />
 		<property name="title" />
 		<property name="time" />
-		<property name="content" />
+		<property name="content" type="text" />
 		<list name="comment" inverse="false" lazy="false" cascade="all">
 			<key column="parentid" />
 			<list-index column="commentlistid"/>

@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.struts2.interceptor.RequestAware;
+import org.apache.struts2.interceptor.validation.SkipValidation;
 
 import cn.gdpu.service.NoticeService;
 import cn.gdpu.vo.Notice;
@@ -26,7 +27,8 @@ public class NoticeAction extends ActionSupport implements RequestAware {
 	 * @return
 	 * @throws Exception
 	 */
-	public String doList() throws Exception {
+	@SkipValidation
+	public String list() throws Exception {
 		List<Notice> notices = null;
 		notices = noticeService.getAllNotices();
 		if (notices.size() == 0)
@@ -41,7 +43,8 @@ public class NoticeAction extends ActionSupport implements RequestAware {
 	 * @return
 	 * @throws Exception
 	 */
-	public String doAdd() throws Exception {
+	@SkipValidation
+	public String add() throws Exception {
 		return "add";
 	}
 
@@ -51,13 +54,13 @@ public class NoticeAction extends ActionSupport implements RequestAware {
 	 * @return
 	 * @throws Exception
 	 */
-	public String doSave() throws Exception {
+	public String save() throws Exception {
 		Notice notice = new Notice();
 		System.out.println("id:" + id);
 		if (id > 0) {
 			notice = noticeService.getNotice(id);
 		}
-		notice.setTitle(title);
+		notice.setTitle(title.trim());
 		notice.setContent(content);
 		notice.setTime(new Date());
 		noticeService.save(notice);
@@ -70,9 +73,12 @@ public class NoticeAction extends ActionSupport implements RequestAware {
 	 * @return
 	 * @throws Exception
 	 */
-	public String doModify() throws Exception {
+	@SkipValidation
+	public String modify() throws Exception {
 		Notice notice = noticeService.getNotice(id);
-		request.put("notice", notice);
+		title = notice.getTitle();
+		content = notice.getContent();
+		//request.put("notice", notice);
 		return "add";
 	}
 
@@ -82,8 +88,8 @@ public class NoticeAction extends ActionSupport implements RequestAware {
 	 * @return
 	 * @throws Exception
 	 */
-	public String doDel() throws Exception {
-		System.out.println("action-------" + id);
+	@SkipValidation
+	public String del() throws Exception {
 		noticeService.delete(id);
 		return "list";
 	}
@@ -94,7 +100,8 @@ public class NoticeAction extends ActionSupport implements RequestAware {
 	 * @return
 	 * @throws Exception
 	 */
-	public String doDetail() throws Exception {
+	@SkipValidation
+	public String detail() throws Exception {
 		Notice notice = noticeService.getNotice(id);
 		List<Post> posts = noticeService.getPosts(id);
 		request.put("notice", notice);
@@ -111,14 +118,8 @@ public class NoticeAction extends ActionSupport implements RequestAware {
 	}
 
 	@Override
-	public void validate() {
-		// TODO Auto-generated method stub
-		super.validate();
-	}
-
-	@Override
 	public String doDefault() throws Exception {
-		return doList();
+		return list();
 	}
 
 	public void setContent(String content) {
@@ -131,6 +132,14 @@ public class NoticeAction extends ActionSupport implements RequestAware {
 
 	public void setId(int id) {
 		this.id = id;
+	}
+
+	public String getContent() {
+		return content;
+	}
+
+	public String getTitle() {
+		return title;
 	}
 
 }

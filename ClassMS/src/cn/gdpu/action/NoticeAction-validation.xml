@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!DOCTYPE validators PUBLIC 
+          "-//OpenSymphony Group//XWork Validator 1.0//EN" 
+          "http://www.opensymphony.com/xwork/xwork-validator-1.0.dtd" >
+<validators>
+	<field name="title">
+		<field-validator type="requiredstring">
+			<param name="trim">true</param>
+			<message>标题必须填写</message>
+		</field-validator>
+		<field-validator type="stringlength">
+			<param name="maxLength">250</param>
+			<message>标题最大250字符</message>
+		</field-validator>
+	</field>
+	<field name="content">
+		<field-validator type="requiredstring">
+			<param name="trim">true</param>
+			<message>内容必须填写</message>
+		</field-validator>
+	</field>
+</validators>

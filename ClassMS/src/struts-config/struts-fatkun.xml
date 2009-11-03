@@ -9,6 +9,7 @@
 		<global-results>
 			<result type="redirectAction" name="list">list</result>
 			<result name="add">/WEB-INF/model/noticeAdd.jsp</result>
+			<result name="input">/WEB-INF/model/noticeAdd.jsp</result>
 		</global-results>
 		<action name="list" class="cn.gdpu.action.NoticeAction" method="list">
 			<result name="success">/WEB-INF/model/notice.jsp</result>
@@ -25,12 +26,16 @@
 		<global-results>
 			<result name="detail" type="redirectAction">detail?id=${id}</result>
 		</global-results>
-		<action name="addPost" class="cn.gdpu.action.PostAction" method="addPost"></action>
+		<action name="addPost" class="cn.gdpu.action.PostAction" method="addPost">
+			<result name="input" >/WEB-INF/model/noticeDetail.jsp</result>
+		</action>
 		<action name="delPost" class="cn.gdpu.action.PostAction" method="delPost"></action>
 		<action name="modifyPost" class="cn.gdpu.action.PostAction" method="modifyPost">
-			<result name="success">/WEB-INF/model/postModify.jsp</result>
+			<result name="success">/WEB-INF/model/postInput.jsp</result>
 		</action>
-		<action name="updatePost" class="cn.gdpu.action.PostAction" method="updatePost"></action>
+		<action name="updatePost" class="cn.gdpu.action.PostAction" method="updatePost">
+			<result name="input">/WEB-INF/model/postInput.jsp</result>
+		</action>
 	</package>
 
 </struts>    

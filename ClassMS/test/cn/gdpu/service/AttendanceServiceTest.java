@@ -1,5 +1,6 @@
 package cn.gdpu.service;
 
+import java.util.Date;
 import java.util.HashSet;
 
 import org.junit.BeforeClass;
@@ -35,13 +36,15 @@ public class AttendanceServiceTest {
 		attendance.setWeek("1");
 		attendance.setDay("1");
 		attendance.setLesson("1,2,3,4");
+		attendance.setTime(new Date());
 		HashSet<Student> students = new HashSet<Student>();
 //		List<Student> stus = studentService.getStudents();
 //		for(int i=0;i<stus.size();i++) {
 //			students.add(stus.get(i));
 //		}
 		;
-		students.add(studentService.getStudent(0707501131));
+		System.out.println(studentService.getStudentsByName("陈伦瑶").get(0));
+		students.add(studentService.getStudentsByName("陈伦瑶").get(0));
 		attendance.setStudents(students);
 		attendanceService.add(attendance);
 	}

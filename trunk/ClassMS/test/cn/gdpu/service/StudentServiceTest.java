@@ -32,7 +32,7 @@ public class StudentServiceTest{
 
 	@Test
 	public void queryStudentBySno() {
-		Student stu = studentService.getStudent(1);
+		Student stu = studentService.getStudent("");
 		System.out.println(stu);
 	}
 
@@ -40,7 +40,7 @@ public class StudentServiceTest{
 	public void deleteStudentBySno() {
 		System.out.println("--------------删除前所有学生信息：");
 		queryAllStudents();
-		studentService.delete(11);
+		studentService.delete("");
 		System.out.println("--------------删除后所有学生信息：");
 		queryAllStudents();
 	}
@@ -62,11 +62,11 @@ public class StudentServiceTest{
 
 	@Test
 	public void updateStudent() {
-		Student stu = studentService.getStudent(11);
+		Student stu = studentService.getStudent("");
 		System.out.println("更新前学生姓名：" + stu.getRealName());
 		stu.setRealName("我是长弓");
 		studentService.update(stu);
-		stu = studentService.getStudent(11);
+		stu = studentService.getStudent("");
 		System.out.println("更新后学生姓名：" + stu.getRealName());
 	}
 

@@ -16,7 +16,7 @@ public interface StudentDao {
      * 根据学号删除学生信息 
      * @param studentId 
      */  
-    public abstract void delStudentBySno(int sno);  
+    public abstract void delStudentBySno(String sno);  
   
     /** 
      * 更新学生信息 
@@ -28,7 +28,7 @@ public interface StudentDao {
      * 根据学号获取学生信息 
      * @param studentId 
      */  
-    public abstract Student queryStudentBySno(int sno);  
+    public abstract Student queryStudentBySno(String sno);  
       
     /** 
      * 根据姓名获取学生信息 

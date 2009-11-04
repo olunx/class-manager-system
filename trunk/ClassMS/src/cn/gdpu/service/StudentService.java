@@ -16,7 +16,7 @@ public interface StudentService {
      * 根据学号删除学生信息 
      * @param studentId 
      */  
-    public abstract void delete(Integer sno);  
+    public abstract void delete(String sno);  
   
     /** 
      * 更新学生信息 
@@ -28,7 +28,7 @@ public interface StudentService {
      * 根据学号获取学生信息 
      * @param studentId 
      */  
-    public abstract Student getStudent(Integer sno);  
+    public abstract Student getStudent(String sno);  
   
     /** 
      * 获取全部学生信息 

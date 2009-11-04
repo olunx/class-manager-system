@@ -16,7 +16,7 @@ public class StudentServiceImpl implements StudentService {
 		studentDao.insertStudent(student);
 	}
 
-	public void delete(Integer sno) {
+	public void delete(String sno) {
 		studentDao.delStudentBySno(sno);
 	}
 
@@ -24,7 +24,7 @@ public class StudentServiceImpl implements StudentService {
 		studentDao.updateStudent(student);
 	}
 
-	public Student getStudent(Integer sno) {
+	public Student getStudent(String sno) {
 		return studentDao.queryStudentBySno(sno);
 	}
 
@@ -44,4 +44,6 @@ public class StudentServiceImpl implements StudentService {
 		// TODO Auto-generated method stub
 		return studentDao.queryStudentByName(name);
 	}
+
+
 }

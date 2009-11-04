@@ -10,17 +10,20 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import cn.gdpu.vo.ClassFee;
+import cn.gdpu.vo.Student;
 
 
 public class ClassFeeServiceTest {
 
 	private static ClassFeeService classFeeService;
+	private static StudentService studentService;
 
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
 		try {
 			ApplicationContext ctx = new ClassPathXmlApplicationContext("applicationContext.xml");
 			classFeeService = (ClassFeeService) ctx.getBean("classFeeService");
+			studentService = (StudentService) ctx.getBean("studentService");
 		} catch (RuntimeException e) {
 			e.printStackTrace();
 		}
@@ -30,8 +33,9 @@ public class ClassFeeServiceTest {
 	//测试添加班费开支
 	@Test
 	public void insertClassFee(){
+		Student cmaker = studentService.getStudent(1);
 		ClassFee classFee = new ClassFee();
-		classFee.setCmaker(null);
+		classFee.setCmaker(cmaker);
 		classFee.setEvent("收班费");
 		classFee.setFee(200);
 		classFee.setTime(new Date());

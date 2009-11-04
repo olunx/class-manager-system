@@ -55,10 +55,14 @@ public class ClassFeeAction extends ActionSupport implements RequestAware{
 	
 	//CRUD modify() 修改班费记录
 	public String doModify() throws Exception{
-		if(classFeeService.getClassFee(classFee.getFid()) != null){
+		ClassFee classFee1 = classFeeService.getClassFee(classFee.getFid()) ;
+		if(classFee1 != null){
 			try {
-				classFee.setTime(new Date());
-				classFeeService.update(classFee);
+				classFee1.setEvent(classFee.getEvent());
+				classFee1.setFee(classFee.getFee());
+				classFee1.setRemarks(classFee.getRemarks());
+				classFee1.setTime(new Date());
+				classFeeService.update(classFee1);
 				System.out.println("-----------修改班费记录成功-----------");
 				return SUCCESS;
 			} catch (RuntimeException e) {

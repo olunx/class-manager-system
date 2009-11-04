@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="cn.gdpu.vo">
+	<!--
+		private Student author; private String title; private Date time;
+		private String content; private Post comment;
+	-->
+	<class name="ActivityApply" table="t_activity">
+		<id name="aid" column="aid">
+			<generator class="native" />
+		</id>
+		<many-to-one name="student" column="student_id" lazy="false"/>
+		<property name="mark" />
+		<property name="reason" />
+		<property name="pass" />
+	</class>
+</hibernate-mapping>

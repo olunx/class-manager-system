@@ -1,7 +1,9 @@
 -------------------------------------
 0，SVN的基本用法(fatkun)
 -------------------------------------
-	新建的文件需要add进来才会上传
+	1.每次commit前update一下没坏处~
+	2.新建的文件需要add进来才会上传或者在commit时选择non-version的文件
+	3.当出现很奇异的问题时，最最有效最无耻的方法是把本地文件删除，然后update（注意保留自己修改的部分）
 -------------------------------------
 1，SVN冲突处理(fatkun)
 -------------------------------------
@@ -51,3 +53,88 @@
 		<filter-name>encoding</filter-name>
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
+-------------------------------------
+7，配置OpenSessionInViewFilter（解决Hibernate懒加载带来的问题）
+-------------------------------------
+	在web.xml下加入
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+	
+	<!--配置OpenSessionInView，为了避免Hibernate的延迟加载产生问题-->
+	<filter>
+		<filter-name>hibernateFilter</filter-name>
+		<filter-class>org.springframework.orm.hibernate3.support.OpenSessionInViewFilter</filter-class>
+		<init-param>
+			<param-name>singleSession</param-name>
+			<param-value>true</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>hibernateFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	
+	--------------------------
+	
+	spring配置文件下，一定要配置事务，不然会出现写数据库时错误 
+	<!-- 配置SessionFactory -->
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<property name="dataSource" ref="dataSource"></property>
+		<property name="configLocation" value="classpath:hibernate.cfg.xml"></property>
+	</bean>
+
+	<!-- 配置事务管理器-->
+	<bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="dataSource" ref="dataSource" />
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+
+	<tx:advice id="txAdvice" transaction-manager="transactionManager">
+		<tx:attributes>
+			<tx:method name="insert*" propagation="REQUIRED" />
+			<tx:method name="modify*" propagation="REQUIRED" />
+			<tx:method name="delete*" propagation="REQUIRED" />
+			<tx:method name="query*" propagation="REQUIRED" read-only="true" />
+			<tx:method name="get*" propagation="REQUIRED" read-only="true" />
+			<tx:method name="*" propagation="SUPPORTS"/>
+		</tx:attributes>
+	</tx:advice>
+
+	<aop:config>
+		<aop:pointcut id="allMethod" expression="execution(* cn.gdpu.dao.impl.*.*(..))" />
+		<aop:pointcut id="allServiceMethod" expression="execution(* cn.gdpu.service.impl.*.*(..))" />
+		<aop:advisor pointcut-ref="allMethod" advice-ref="txAdvice" />
+		<aop:advisor pointcut-ref="allServiceMethod" advice-ref="txAdvice" />
+	</aop:config>
+-------------------------------------
+8，hibernate中映射text类型
+-------------------------------------
+	当内容超过定义的长度，错误：org.springframework.dao.DataIntegrityViolationException
+	使用text可以输入更多的文字
+	<property name="content" type="text"/>
+-------------------------------------
+9，使用验证框架 validation
+-------------------------------------
+	建立个XXXAction-validation.xml(XXXAction是Action的文件名)
+	<?xml version="1.0" encoding="UTF-8" ?> 
+	<!DOCTYPE validators PUBLIC 
+	          "-//OpenSymphony Group//XWork Validator 1.0//EN" 
+	          "http://www.opensymphony.com/xwork/xwork-validator-1.0.dtd" >
+	<validators>
+		<field name="title">
+			<field-validator type="requiredstring">
+				<param name="trim">true</param>
+				<message>标题必须填写</message>
+			</field-validator>
+			<field-validator type="stringlength">
+				<param name="maxLength">250</param>
+				<message>标题最大250字符</message>
+			</field-validator>
+		</field>
+	</validators>
+	1.如果只想对指定的方法验证，可以把文件名改为XXXAction-方法名-validation.xml(方法名是指struts.xml对应action的name)
+	2.或者在不需要验证的方法加入@SkipValidation
+	注意：如果验证不通过，会自动跳到<result name="input">的页面，所以必须在struts.xml配置，另外各个方法不可以使用“doAdd()”这种名字，要改为“add()”

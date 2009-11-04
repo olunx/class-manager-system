@@ -14,14 +14,11 @@
 	<body>
 
 		<div>
-			<form id="noticeform" action="save.action" method="post">
+			<form id="postform" action="updatePost.action" method="post">
 				<input name="id" type="hidden" value="${param.id==null?0:param.id}" />
-				<p>
-					标题：<s:fielderror><s:param>title</s:param></s:fielderror>
-					<input name="title" type="text" value="${title}" />
-				</p>
+				<input name="pid" type="hidden" value="${param.pid==null?0:param.pid}" />
 				内容:<s:fielderror><s:param>content</s:param></s:fielderror>
-				<textarea name="content" id="content" rows="50" cols="152" style="width: 900px; height: 295px">${content}</textarea>
+				<textarea name="content" id="content" rows="50" cols="152" style="width: 900px; height: 295px">${post.content}</textarea>
 				<p>
 					<input id="submit-btn" type="submit" value="保存" />
 				</p>

@@ -5,11 +5,11 @@
 <struts>
 
 	<package name="register" extends="struts-default">
-		<action name="studentReg" class="cn.gdpu.action.RegisterAction" method="register">
+		<action name="studentReg" class="cn.gdpu.action.RegisterAction" method="stuReg">
 			<result name="success">/regSuc.jsp</result>
 			<result name="error">/regFail.jsp</result>
 		</action>
-		<action name="studentsReg" class="cn.gdpu.action.RegisterAction" method="registers">
+		<action name="studentsReg" class="cn.gdpu.action.RegisterAction" method="studentsReg">
 			<result name="success">/regSuc.jsp</result>
 			<result name="error">/regFail.jsp</result>
 			<!-- Action中的savePath属性的值 --> 

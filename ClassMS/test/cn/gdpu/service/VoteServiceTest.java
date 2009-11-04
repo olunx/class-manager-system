@@ -12,6 +12,7 @@ import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import cn.gdpu.vo.Student;
 import cn.gdpu.vo.Vote;
 import cn.gdpu.vo.VoteItem;
 
@@ -20,12 +21,14 @@ import cn.gdpu.vo.VoteItem;
 public class VoteServiceTest {
 
 	private static VoteService voteService;
+	private static StudentService studentService;
 
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
 		try {
 			ApplicationContext ctx = new ClassPathXmlApplicationContext("applicationContext.xml");
 			voteService = (VoteService) ctx.getBean("voteService");
+			studentService = (StudentService) ctx.getBean("studentService");
 		} catch (RuntimeException e) {
 			e.printStackTrace();
 		}
@@ -35,6 +38,7 @@ public class VoteServiceTest {
 	//测试新建投票
 	@Test
 	public void insertVote(){
+		Student author = studentService.getStudent(1);
 		Vote vote = new Vote();
 		HashSet<VoteItem> items = new HashSet<VoteItem>();
 		Calendar cal = Calendar.getInstance();
@@ -45,10 +49,12 @@ public class VoteServiceTest {
 		cal.set(Calendar.DATE,(cal.get(Calendar.DATE)+1));
 		vote.setDeadline(cal.getTime());
 		
+		vote.setAuthor(author);
 		vote.setPicType("柱形图");
 		vote.setSummary("你对这个投票系统是否满意？");
 		vote.setTitle("测试投票系统");
 		vote.setType("单项");
+		
 		
 		VoteItem voteItem1 = new VoteItem();
 		voteItem1.setNum(0);
@@ -73,6 +79,11 @@ public class VoteServiceTest {
 
 		
 		vote.setItems(items);		
+		
+		HashSet<Student> voters = new HashSet<Student>();
+		Student voter = studentService.getStudent(1);
+		voters.add(voter);
+		vote.setVoters(voters);
 		
 		voteService.addVote(vote);
 		System.out.println("-----insertVote()-----");

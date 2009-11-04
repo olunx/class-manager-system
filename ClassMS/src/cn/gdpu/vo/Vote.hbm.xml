@@ -22,8 +22,8 @@
 		<property name="picType" />
 		<property name="airTime" />
 		<property name="deadline" />
-		<set name="voters" table="t_vote_student" inverse="true" cascade="all">
-			<key column="voterId" />
+		<set name="voters" table="t_vote_student"  cascade="all">
+			<key column="vid" />
 			<many-to-many class="Student" column="stuId" />
 		</set>
 	</class>

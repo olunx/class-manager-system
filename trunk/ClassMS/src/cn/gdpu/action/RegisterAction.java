@@ -1,16 +1,27 @@
 package cn.gdpu.action;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.struts2.ServletActionContext;
 
+import com.opensymphony.xwork2.ActionSupport;
+
 import cn.gdpu.service.StudentService;
 import cn.gdpu.util.excel.StudentExcel;
+import cn.gdpu.vo.ClassFee;
 import cn.gdpu.vo.Student;
 
-public class RegisterAction {
+public class RegisterAction extends ActionSupport {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	private StudentService studentService;
+	private Map<String, Object> request;
 
 	private String username;
 	private String password;
@@ -19,6 +30,10 @@ public class RegisterAction {
 
 	public void setStudentService(StudentService studentService) {
 		this.studentService = studentService;
+	}
+
+	public void setRequest(Map<String, Object> request) {
+		this.request = request;
 	}
 
 	public void setUsername(String username) {
@@ -50,21 +65,36 @@ public class RegisterAction {
 
 	// 批量注册
 	public String doStudentsReg() {
-		
+
 		if (fileName == null) {
 			return "error";
 		}
 
-		String filePath = ServletActionContext.getServletContext().getRealPath(savePath) + "/" +fileName;
+		String filePath = ServletActionContext.getServletContext().getRealPath(savePath) + "/" + fileName;
 		List<Student> students = StudentExcel.getStudentRegExcel().getRegData(filePath);
-		
+
 		int resultLength = students.size();
-		
+
 		for (int i = 0; i < resultLength; i++) {
 			studentService.add(students.get(i));
 		}
 
 		return "success";
+	}
+
+	// 查询全部学生
+	public String doQueryAll() throws Exception {
+		try {
+			List<Student> students = new ArrayList<Student>();
+			students = studentService.getStudents();
+			request.put("req", students);
+			
+			return SUCCESS;
+		} catch (Exception e) {
+			
+			e.printStackTrace();
+		}
+		return ERROR;
 	}
 
 }

@@ -9,8 +9,12 @@
 			<result name="success">/classfeeSuc.jsp?value={1}</result>
 			<result name="error">/classfeeFail.jsp</result>
 			<result name="input">/classfee.jsp</result>
-		</action> 
-					
+		</action> 					
 	</package>
 
+	<package name="vote" extends="struts-default" >
+		<action name="*vote" class="cn.gdpu.action.VoteAction" method="{1}">
+			<result name="success" >/voteSuc.jsp?value={1}</result>
+		</action>
+	</package>
 </struts>    

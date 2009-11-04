@@ -34,6 +34,13 @@
 		<property name="noticeService" ref="noticeService"></property>
 		<property name="postService" ref="postService"></property>
 	</bean>
-
+	
+	<!-- activity 分数申请 -->
+	<bean name="activityApplyDaoImpl" class="cn.gdpu.dao.impl.ActivityApplyDaoImpl" scope="prototype">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="activityApplyService" class="cn.gdpu.service.impl.ActivityApplyServiceImpl" scope="prototype">
+		<property name="activityApplyDao" ref="activityApplyDaoImpl"></property>
+	</bean>
 
 </beans>

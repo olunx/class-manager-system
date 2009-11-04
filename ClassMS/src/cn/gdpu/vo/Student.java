@@ -1,5 +1,8 @@
 package cn.gdpu.vo;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class Student {
 
 	private int stuId;
@@ -13,6 +16,7 @@ public class Student {
 	private long phoneNo;
 	private long qq;
 	private String mail;
+	private Set<ActivityApply> activityApplys = new HashSet<ActivityApply>();
 
 	public int getStuId() {
 		return stuId;
@@ -107,6 +111,14 @@ public class Student {
 		return "Student [avatar=" + avatar + ", dorm=" + dorm + ", duty=" + duty + ", mail=" + mail + ", password=" + password
 				+ ", phoneNo=" + phoneNo + ", qq=" + qq + ", realName=" + realName + ", sno=" + sno + ", stuId=" + stuId + ", username="
 				+ username + "]";
+	}
+
+	public void setActivityApplys(Set<ActivityApply> activityApplys) {
+		this.activityApplys = activityApplys;
+	}
+
+	public Set<ActivityApply> getActivityApplys() {
+		return activityApplys;
 	}
 
 }

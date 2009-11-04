@@ -16,5 +16,9 @@
 		<property name="phoneNo" />
 		<property name="qq" />
 		<property name="mail" />
+		<set name="activityApplys" inverse="true" cascade="all" lazy="false">
+			<key column="student_id"></key>
+			<one-to-many class="ActivityApply"/>
+		</set>
 	</class>
 </hibernate-mapping>

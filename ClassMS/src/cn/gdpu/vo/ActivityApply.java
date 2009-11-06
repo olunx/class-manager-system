@@ -15,6 +15,9 @@ public class ActivityApply {
 	public double getMark() {
 		return mark;
 	}
+	public void setMark(String str) {
+		this.mark = Double.parseDouble(str.trim());
+	}
 	public void setMark(double d) {
 		this.mark = d;
 	}

@@ -22,6 +22,7 @@
 			<result name="success">/WEB-INF/model/noticeDetail.jsp</result>
 		</action>
 	</package>
+	
 	<package name="post" extends="struts-default" namespace="/notice">
 		<global-results>
 			<result name="detail" type="redirectAction">detail?id=${id}</result>
@@ -35,6 +36,18 @@
 		</action>
 		<action name="updatePost" class="cn.gdpu.action.PostAction" method="updatePost">
 			<result name="input">/WEB-INF/model/postInput.jsp</result>
+		</action>
+	</package>
+	
+	<package name="activity" extends="struts-default" namespace="/activity">
+	<global-results>
+		<result name="input">/WEB-INF/model/activityApplyInput.jsp</result>
+		<result name="liststuAction" type="redirectAction">listStu?sno=${sno}</result>
+	</global-results>
+		<action name="*" class="cn.gdpu.action.ActivityApplyAction" method="{1}">
+			<result name="list">/WEB-INF/model/activityApply.jsp</result>
+			<result name="liststu">/WEB-INF/model/activityApplyView.jsp</result>
+			<result name="success">/WEB-INF/model/activityApply.jsp</result>
 		</action>
 	</package>
 

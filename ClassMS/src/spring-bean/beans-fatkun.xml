@@ -42,5 +42,9 @@
 	<bean id="activityApplyService" class="cn.gdpu.service.impl.ActivityApplyServiceImpl" scope="prototype">
 		<property name="activityApplyDao" ref="activityApplyDaoImpl"></property>
 	</bean>
-
+	<bean id="activityApplyAction" class="cn.gdpu.action.ActivityApplyAction" scope="prototype">
+		<property name="studentService" ref="studentService"></property>
+		<property name="activityApplyService" ref="activityApplyService"></property>
+	</bean>
+	
 </beans>

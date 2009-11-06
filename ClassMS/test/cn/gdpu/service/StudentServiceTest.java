@@ -32,7 +32,7 @@ public class StudentServiceTest{
 
 	@Test
 	public void queryStudentBySno() {
-		Student stu = studentService.getStudent("");
+		Student stu = studentService.getStudent("0707501111");
 		System.out.println(stu);
 	}
 

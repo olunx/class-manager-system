@@ -11,5 +11,7 @@
 	<h1>本页面fatkun跳转专用(测试)</h1>
 	<a href="notice/add.action">添加公告</a>
 	<a href="notice/list.action">列出所有公告</a>
+	
+	<a href="activity/list.action">活动加分申请</a>
 </body>
 </html>

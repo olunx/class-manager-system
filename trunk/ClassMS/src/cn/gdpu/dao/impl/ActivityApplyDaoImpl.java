@@ -11,7 +11,10 @@ import cn.gdpu.vo.Student;
 public class ActivityApplyDaoImpl extends HibernateDaoSupport implements ActivityApplyDao {
 
 	public void deleteActivityApplyByID(int aid) {
-		ActivityApply activityApply = (ActivityApply) this.getHibernateTemplate().get(ActivityApply.class, aid);
+		ActivityApply activityApply = queryActivityApply(aid);
+		Student stu = activityApply.getStudent();
+		stu.getActivityApplys().remove(activityApply);
+		activityApply.setStudent(null);
 		this.getHibernateTemplate().delete(activityApply);
 	}
 

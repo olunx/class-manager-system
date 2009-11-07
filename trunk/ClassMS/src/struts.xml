@@ -4,6 +4,7 @@
 	"http://struts.apache.org/dtds/struts-2.1.dtd" >
 <struts>
 	<include file="struts-config/struts-*.xml"/>
+
 	
 	<package name="demo" extends="struts-default">
 	</package>

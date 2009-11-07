@@ -29,5 +29,8 @@
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/commons-io-1.3.2.jar"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/jstl-api-1.2.jar"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/jstl-impl-1.2.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/jcommon-1.0.12.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/jfreechart-1.0.9.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/struts2-jfreechart-plugin-2.0.11.1.jar"/>
 	<classpathentry kind="output" path="WebRoot/WEB-INF/classes"/>
 </classpath>

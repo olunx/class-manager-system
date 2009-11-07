@@ -1,0 +1,16 @@
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+    <package name="jfreechart" extends="struts-default" namespace="/">
+        <result-types>
+            <result-type name="chart" class="org.apache.struts2.dispatcher.ChartResult"></result-type>
+        </result-types>
+        <action name="jfreechart" class="cn.gdpu.action.JFreeChartAction">
+              <result name="success" type="chart"> 
+                   <param name="width">400</param>
+                   <param name="height">300</param>
+            </result>
+        </action>
+    </package>
+</struts>

@@ -5,7 +5,7 @@ import java.util.Date;
 public class ClassFee {
 	private String fid;              //费用ID
 	private Student cmaker;       //经手人
-	private int fee;			  //费用
+	private double fee;			  //费用
 	private String event;		  //执行事件
 	private Date time;			  //事件执行时间
 	private String remarks;		  //班费备注
@@ -26,11 +26,11 @@ public class ClassFee {
 		this.cmaker = cmaker;
 	}
 
-	public int getFee() {
+	public double getFee() {
 		return fee;
 	}
 
-	public void setFee(int fee) {
+	public void setFee(double fee) {
 		this.fee = fee;
 	}
 

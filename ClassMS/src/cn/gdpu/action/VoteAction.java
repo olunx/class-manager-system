@@ -147,6 +147,15 @@ public class VoteAction extends ActionSupport implements RequestAware {
 		return ERROR;
 	}
 	
+	public String voting() throws Exception {
+		voteItem = voteService.getVoteItem(time);
+		voteItem.setNum(voteItem.getNum()+1);
+		voteService.updateVoteItem(voteItem);
+		vote = voteItem.getVote();
+		request.put("req", vote);
+		return SUCCESS;
+	}
+	
 	//Getter and Setter
 
 	public Vote getVote() {

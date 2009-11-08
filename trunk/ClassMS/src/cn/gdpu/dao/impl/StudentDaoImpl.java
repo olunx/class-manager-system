@@ -45,4 +45,13 @@ public class StudentDaoImpl extends HibernateDaoSupport implements StudentDao {
 	public void updateStudent(Student student) {
 		this.getHibernateTemplate().update(student);
 	}
+
+	public Student queryStudentByUsernameAndPassword(String username, String password) {
+		Student stu = null;
+		List list = this.getHibernateTemplate().find("from Student s where s.username='" + username + "' and s.password='" + password + "'");
+		if (list != null && list.size() > 0) {
+			stu = (Student) list.get(0);
+		}
+		return stu;
+	}
 }

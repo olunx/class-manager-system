@@ -10,7 +10,7 @@
 </head>
 <body>
 <div>${fileData}</div>
-<form action="<%=path %>/studentsReg.action" method="post">
+<form action="<%=path %>/reg/studentsReg.action" method="post">
 <input type="hidden" value="${fileName}" name="fileName" />
 <input type="submit" value="确定" /></form>
 </body>

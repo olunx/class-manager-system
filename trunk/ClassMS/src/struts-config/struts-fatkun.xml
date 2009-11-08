@@ -8,18 +8,18 @@
 		<default-action-ref name="list" />
 		<global-results>
 			<result type="redirectAction" name="list">list</result>
-			<result name="add">/WEB-INF/model/noticeAdd.jsp</result>
-			<result name="input">/WEB-INF/model/noticeAdd.jsp</result>
+			<result name="add">/WEB-INF/model/notice/noticeAdd.jsp</result>
+			<result name="input">/WEB-INF/model/notice/noticeAdd.jsp</result>
 		</global-results>
 		<action name="list" class="cn.gdpu.action.NoticeAction" method="list">
-			<result name="success">/WEB-INF/model/notice.jsp</result>
+			<result name="success">/WEB-INF/model/notice/notice.jsp</result>
 		</action>
-		<action name="add" class="cn.gdpu.action.NoticeAction" method="add"></action>
+		<action name="addLink" class="cn.gdpu.action.NoticeAction" method="addLink"></action>
 		<action name="save" class="cn.gdpu.action.NoticeAction" method="save"></action>
 		<action name="modify" class="cn.gdpu.action.NoticeAction" method="modify"></action>
 		<action name="del" class="cn.gdpu.action.NoticeAction" method="del"></action>
 		<action name="detail" class="cn.gdpu.action.NoticeAction" method="detail">
-			<result name="success">/WEB-INF/model/noticeDetail.jsp</result>
+			<result name="success">/WEB-INF/model/notice/noticeDetail.jsp</result>
 		</action>
 	</package>
 	
@@ -28,27 +28,28 @@
 			<result name="detail" type="redirectAction">detail?id=${id}</result>
 		</global-results>
 		<action name="addPost" class="cn.gdpu.action.PostAction" method="addPost">
-			<result name="input" >/WEB-INF/model/noticeDetail.jsp</result>
+			<result name="input" >/WEB-INF/model/notice/noticeDetail.jsp</result>
 		</action>
 		<action name="delPost" class="cn.gdpu.action.PostAction" method="delPost"></action>
 		<action name="modifyPost" class="cn.gdpu.action.PostAction" method="modifyPost">
-			<result name="success">/WEB-INF/model/postInput.jsp</result>
+			<result name="success">/WEB-INF/model/notice/postInput.jsp</result>
 		</action>
 		<action name="updatePost" class="cn.gdpu.action.PostAction" method="updatePost">
-			<result name="input">/WEB-INF/model/postInput.jsp</result>
+			<result name="input">/WEB-INF/model/notice/postInput.jsp</result>
 		</action>
 	</package>
 	
 	<package name="activity" extends="struts-default" namespace="/activity">
 	<global-results>
-		<result name="input">/WEB-INF/model/activityApplyInput.jsp</result>
+		<result name="input">/WEB-INF/model/activity/activityApplyInput.jsp</result>
 		<result name="liststuAction" type="redirectAction">listStu?sno=${sno}</result>
 	</global-results>
 		<action name="*" class="cn.gdpu.action.ActivityApplyAction" method="{1}">
-			<result name="list">/WEB-INF/model/activityApply.jsp</result>
-			<result name="liststu">/WEB-INF/model/activityApplyView.jsp</result>
-			<result name="success">/WEB-INF/model/activityApply.jsp</result>
+			<result name="list">/WEB-INF/model/activity/activityApply.jsp</result>
+			<result name="liststu">/WEB-INF/model/activity/activityApplyView.jsp</result>
+			<result name="success">/WEB-INF/model/activity/activityApply.jsp</result>
 		</action>
 	</package>
+	
 
 </struts>    

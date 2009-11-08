@@ -51,6 +51,14 @@ public class RegisterAction extends ActionSupport {
 	public void setSavePath(String savePath) {
 		this.savePath = savePath;
 	}
+	
+	/**
+	 * 注册跳转
+	 * @return
+	 */
+	public String regLink() {
+		return INPUT;
+	}
 
 	// 单个注册
 	public String doStuReg() {

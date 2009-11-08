@@ -8,7 +8,6 @@
 		<title>班务系统</title>
 	</head>
 	<body>
-		<a href="add.action">添加公告</a>
 		<c:choose>
 			<c:when test="${notices==null}">
 					还没有公告呢！

@@ -11,7 +11,7 @@
 			http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
 			http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
 
-	
+
 	<!-- notice公告 -->
 	<bean name="noticeDaoImpl" class="cn.gdpu.dao.impl.NoticeDaoImpl" scope="prototype">
 		<property name="sessionFactory" ref="sessionFactory"></property>
@@ -22,7 +22,7 @@
 	<bean id="noticeAction" class="cn.gdpu.action.NoticeAction" scope="prototype">
 		<property name="noticeService" ref="noticeService"></property>
 	</bean>
-	
+
 	<!-- post评论 -->
 	<bean name="postDaoImpl" class="cn.gdpu.dao.impl.PostDaoImpl" scope="prototype">
 		<property name="sessionFactory" ref="sessionFactory"></property>
@@ -34,7 +34,7 @@
 		<property name="noticeService" ref="noticeService"></property>
 		<property name="postService" ref="postService"></property>
 	</bean>
-	
+
 	<!-- activity 分数申请 -->
 	<bean name="activityApplyDaoImpl" class="cn.gdpu.dao.impl.ActivityApplyDaoImpl" scope="prototype">
 		<property name="sessionFactory" ref="sessionFactory"></property>
@@ -46,5 +46,9 @@
 		<property name="studentService" ref="studentService"></property>
 		<property name="activityApplyService" ref="activityApplyService"></property>
 	</bean>
-	
+
+	<!-- 登陆 -->
+	<bean id="LoginAction" class="cn.gdpu.action.LoginAction" scope="prototype">
+		<property name="studentService" ref="studentService"></property>
+	</bean>
 </beans>

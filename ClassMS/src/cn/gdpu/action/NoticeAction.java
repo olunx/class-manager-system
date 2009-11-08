@@ -44,7 +44,7 @@ public class NoticeAction extends ActionSupport implements RequestAware {
 	 * @throws Exception
 	 */
 	@SkipValidation
-	public String add() throws Exception {
+	public String addLink() throws Exception {
 		return "add";
 	}
 

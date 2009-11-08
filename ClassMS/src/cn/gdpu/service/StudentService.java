@@ -29,6 +29,8 @@ public interface StudentService {
      * @param studentId 
      */  
     public abstract Student getStudent(String sno);  
+    
+    public abstract Student getStudentByUsernameAndPassword(String username,String password);  
   
     /** 
      * 获取全部学生信息 

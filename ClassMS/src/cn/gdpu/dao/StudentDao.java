@@ -28,7 +28,15 @@ public interface StudentDao {
      * 根据学号获取学生信息 
      * @param studentId 
      */  
-    public abstract Student queryStudentBySno(String sno);  
+    public abstract Student queryStudentBySno(String sno); 
+    
+    /**
+     * 根据用户名和密码查询用户
+     * @param username
+     * @param password
+     * @return
+     */
+    public abstract Student queryStudentByUsernameAndPassword(String username,String password);  
       
     /** 
      * 根据姓名获取学生信息 

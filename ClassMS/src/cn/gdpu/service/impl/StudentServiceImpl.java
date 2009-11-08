@@ -45,5 +45,9 @@ public class StudentServiceImpl implements StudentService {
 		return studentDao.queryStudentByName(name);
 	}
 
+	public Student getStudentByUsernameAndPassword(String username, String password) {
+		return studentDao.queryStudentByUsernameAndPassword(username, password);
+	}
+
 
 }

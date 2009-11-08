@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts 
+	PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+	"http://struts.apache.org/dtds/struts-2.1.dtd" >
+<struts>
+	<package name="login" extends="struts-default" namespace="/">
+		<action name="login" class="cn.gdpu.action.LoginAction" method="login">
+			<result name="success">/WEB-INF/main.jsp</result>
+			<result name="input">/login.jsp</result>
+		</action>
+	</package>
+	
+	<package name="register" extends="struts-default" namespace="/reg">
+		<global-results>
+			<result name="input">/WEB-INF/model/reg/regInput.jsp</result>
+		</global-results>
+		<action name="regLink" class="cn.gdpu.action.RegisterAction" method="regLink"></action>
+		<action name="studentReg" class="cn.gdpu.action.RegisterAction" method="stuReg">
+			<result name="success">/WEB-INF/model/reg/regSuc.jsp</result>
+			<result name="error">/WEB-INF/model/reg/regFail.jsp</result>
+		</action>
+		<action name="studentsReg" class="cn.gdpu.action.RegisterAction" method="studentsReg">
+			<result name="success">/WEB-INF/model/reg/regSuc.jsp</result>
+			<result name="error">/WEB-INF/model/reg/regFail.jsp</result>
+			<!-- Action中的savePath属性的值 --> 
+			<param name="savePath">/upload</param>
+		</action>
+		<action name="fileUpload" class="cn.gdpu.action.FileUploadAction">
+			<interceptor-ref name="fileUpload">
+				<param name="allowedTypes">application/vnd.ms-excel,application/msword,application/octet-stream</param>
+				<param name="maximumSize">4096000</param>
+			</interceptor-ref>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<!-- Action中的savePath属性的值 --> 
+			<param name="savePath">/upload</param>
+			<result name="success">/WEB-INF/model/reg/uploadSuc.jsp</result>
+			<result name="error">/WEB-INF/model/reg/regFail.jsp</result>
+		</action>
+	</package>
+</struts>

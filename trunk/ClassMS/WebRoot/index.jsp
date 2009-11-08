@@ -32,6 +32,9 @@
 		<br />
 		<a href="<%=path %>/classfee.jsp">班费管理</a>
 		<a href="<%=path %>/vote.jsp">投票管理</a>
-		<a href="f.jsp">fatkun</a>
+		<a href="f.jsp">fatkun</a> <br />
+		<a href="<%=path %>/content/kissy/kissy.jsp">kissy test</a>
+
+		
 	</body>
 </html>

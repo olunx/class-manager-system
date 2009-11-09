@@ -5,11 +5,13 @@
 <struts>
 	<package name="login" extends="struts-default" namespace="/">
 		<action name="login" class="cn.gdpu.action.LoginAction" method="login">
-			<result name="success">/WEB-INF/main.jsp</result>
+			<result name="student">/WEB-INF/main.jsp</result>
+			<result name="leader">/WEB-INF/header.jsp</result>
+			<result name="admin">/WEB-INF/header.jsp</result>
 			<result name="input">/login.jsp</result>
 		</action>
 	</package>
-	
+
 	<package name="register" extends="struts-default" namespace="/reg">
 		<global-results>
 			<result name="input">/WEB-INF/model/reg/regInput.jsp</result>
@@ -22,7 +24,7 @@
 		<action name="studentsReg" class="cn.gdpu.action.RegisterAction" method="studentsReg">
 			<result name="success">/WEB-INF/model/reg/regSuc.jsp</result>
 			<result name="error">/WEB-INF/model/reg/regFail.jsp</result>
-			<!-- Action中的savePath属性的值 --> 
+			<!-- Action中的savePath属性的值 -->
 			<param name="savePath">/upload</param>
 		</action>
 		<action name="fileUpload" class="cn.gdpu.action.FileUploadAction">
@@ -31,7 +33,7 @@
 				<param name="maximumSize">4096000</param>
 			</interceptor-ref>
 			<interceptor-ref name="defaultStack"></interceptor-ref>
-			<!-- Action中的savePath属性的值 --> 
+			<!-- Action中的savePath属性的值 -->
 			<param name="savePath">/upload</param>
 			<result name="success">/WEB-INF/model/reg/uploadSuc.jsp</result>
 			<result name="error">/WEB-INF/model/reg/regFail.jsp</result>

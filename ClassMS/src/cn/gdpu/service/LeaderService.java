@@ -32,6 +32,13 @@ public interface LeaderService {
 	public abstract Leader getLeaderByName(String leaderName);
 	
 	/**
+	 * @param username
+	 * @param password
+	 * @return
+	 */
+	public abstract Leader getLeaderByUsernameAndPassword(String username, String password);
+	
+	/**
 	 * 获取所有领导
 	 * @return
 	 */

@@ -5,7 +5,7 @@ public class Admin {
 	private int adminId;
 	private String username;
 	private String password;
-	private String leaderName;
+	private String adminName;
 	private String remark;
 
 	public int getAdminId() {
@@ -32,12 +32,12 @@ public class Admin {
 		this.password = password;
 	}
 
-	public String getLeaderName() {
-		return leaderName;
+	public String getAdminName() {
+		return adminName;
 	}
 
-	public void setLeaderName(String leaderName) {
-		this.leaderName = leaderName;
+	public void setAdminName(String adminName) {
+		this.adminName = adminName;
 	}
 
 	public String getRemark() {

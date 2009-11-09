@@ -32,5 +32,12 @@
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/jcommon-1.0.12.jar"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/jfreechart-1.0.9.jar"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/struts2-jfreechart-plugin-2.0.11.1.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/mail.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/dsn.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/imap.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/mailapi.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/pop3.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/smtp.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/commons-email-1.2.jar"/>
 	<classpathentry kind="output" path="WebRoot/WEB-INF/classes"/>
 </classpath>

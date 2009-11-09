@@ -1,20 +1,10 @@
 package cn.gdpu.action;
 
-import java.awt.Font;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
 import java.util.Iterator;
 
 import org.jfree.chart.ChartFactory;
-import org.jfree.chart.ChartUtilities;
 import org.jfree.chart.JFreeChart;
-import org.jfree.chart.axis.CategoryAxis;
-import org.jfree.chart.axis.CategoryLabelPositions;
-import org.jfree.chart.axis.NumberAxis;
-import org.jfree.chart.plot.CategoryPlot;
 import org.jfree.chart.plot.PlotOrientation;
-import org.jfree.chart.title.TextTitle;
 import org.jfree.data.category.CategoryDataset;
 import org.jfree.data.category.DefaultCategoryDataset;
 
@@ -55,6 +45,7 @@ public class JFreeChartAction extends ActionSupport {
 		return chart;
 	}
 	
+	@SuppressWarnings("unchecked")
 	private CategoryDataset getDataSet(Vote vote){
 		DefaultCategoryDataset dataset = new DefaultCategoryDataset(); 		
 		for(Iterator iter = vote.getItems().iterator();iter.hasNext(); ){

@@ -8,10 +8,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.struts2.interceptor.RequestAware;
-import org.hibernate.classic.Session;
-
 import cn.gdpu.service.VoteService;
-import cn.gdpu.vo.ClassFee;
 import cn.gdpu.vo.Vote;
 import cn.gdpu.vo.VoteItem;
 
@@ -27,6 +24,7 @@ public class VoteAction extends ActionSupport implements RequestAware {
 	String[] content;	
 	int time;
 	int vid;
+	@SuppressWarnings("unchecked")
 	Map request;
 	
 	
@@ -37,6 +35,7 @@ public class VoteAction extends ActionSupport implements RequestAware {
 	 * @throws Exception
 	 */
 	
+	@SuppressWarnings("unchecked")
 	public String doAdd() throws Exception {
 		vote.setAirTime(new Date());
 		Calendar cal = Calendar.getInstance();
@@ -62,6 +61,7 @@ public class VoteAction extends ActionSupport implements RequestAware {
 	 * @return
 	 * @throws Exception
 	 */
+	@SuppressWarnings("unchecked")
 	public String doDelete() throws Exception {
 		try {
 			request.put("req", vid);
@@ -74,6 +74,7 @@ public class VoteAction extends ActionSupport implements RequestAware {
 		}
 		return ERROR;
 	}
+	@SuppressWarnings("unchecked")
 	public String doModify() throws Exception {
 		Vote vote1 = voteService.getVote(vote.getVid());
 		if(vote1 != null){
@@ -115,6 +116,7 @@ public class VoteAction extends ActionSupport implements RequestAware {
 	 * @return
 	 * @throws Exception
 	 */
+	@SuppressWarnings("unchecked")
 	public String doQuery() throws Exception {
 		try {
 			vote = voteService.getVote(vid);
@@ -133,6 +135,7 @@ public class VoteAction extends ActionSupport implements RequestAware {
 	 * @return
 	 * @throws Exception
 	 */
+	@SuppressWarnings("unchecked")
 	public String doQueryAll() throws Exception {
 		try {
 			List<Vote> votes= new ArrayList<Vote>();
@@ -147,6 +150,7 @@ public class VoteAction extends ActionSupport implements RequestAware {
 		return ERROR;
 	}
 	
+	@SuppressWarnings("unchecked")
 	public String voting() throws Exception {
 		voteItem = voteService.getVoteItem(time);
 		voteItem.setNum(voteItem.getNum()+1);
@@ -189,10 +193,12 @@ public class VoteAction extends ActionSupport implements RequestAware {
 		this.content = content;
 	}
 
+	@SuppressWarnings("unchecked")
 	public Map getRequest() {
 		return request;
 	}
 
+	@SuppressWarnings("unchecked")
 	public void setRequest(Map request) {
 		this.request = request;
 	}

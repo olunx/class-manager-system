@@ -19,9 +19,10 @@
 	<bean id="noticeService" class="cn.gdpu.service.impl.NoticeServiceImpl" scope="prototype">
 		<property name="noticeDao" ref="noticeDaoImpl"></property>
 	</bean>
+	<!-- 
 	<bean id="noticeAction" class="cn.gdpu.action.NoticeAction" scope="prototype">
 		<property name="noticeService" ref="noticeService"></property>
-	</bean>
+	</bean>-->
 
 	<!-- post评论 -->
 	<bean name="postDaoImpl" class="cn.gdpu.dao.impl.PostDaoImpl" scope="prototype">
@@ -30,10 +31,10 @@
 	<bean id="postService" class="cn.gdpu.service.impl.PostServiceImpl" scope="prototype">
 		<property name="postDao" ref="postDaoImpl"></property>
 	</bean>
-	<bean id="postAction" class="cn.gdpu.action.PostAction" scope="prototype">
+	<!-- <bean id="postAction" class="cn.gdpu.action.PostAction" scope="prototype">
 		<property name="noticeService" ref="noticeService"></property>
 		<property name="postService" ref="postService"></property>
-	</bean>
+	</bean>-->
 
 	<!-- activity 分数申请 -->
 	<bean name="activityApplyDaoImpl" class="cn.gdpu.dao.impl.ActivityApplyDaoImpl" scope="prototype">
@@ -42,13 +43,15 @@
 	<bean id="activityApplyService" class="cn.gdpu.service.impl.ActivityApplyServiceImpl" scope="prototype">
 		<property name="activityApplyDao" ref="activityApplyDaoImpl"></property>
 	</bean>
+	<!-- 
 	<bean id="activityApplyAction" class="cn.gdpu.action.ActivityApplyAction" scope="prototype">
 		<property name="studentService" ref="studentService"></property>
 		<property name="activityApplyService" ref="activityApplyService"></property>
-	</bean>
+	</bean>-->
 
 	<!-- 登陆 -->
+	<!-- 
 	<bean id="LoginAction" class="cn.gdpu.action.LoginAction" scope="prototype">
 		<property name="studentService" ref="studentService"></property>
-	</bean>
+	</bean>-->
 </beans>

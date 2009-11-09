@@ -9,7 +9,7 @@
 		<property name="dialect">org.hibernate.dialect.MySQLDialect</property>
 		<property name="connection.useUnicode">true</property>
 		<property name="connection.characterEncoding">UTF-8</property>
-		<mapping resource="cn/gdpu/vo/User.hbm.xml" />
+		<mapping resource="cn/gdpu/vo/Admin.hbm.xml" />
 		<mapping resource="cn/gdpu/vo/Student.hbm.xml" />
 		<mapping resource="cn/gdpu/vo/Duty.hbm.xml" />
 		<mapping resource="cn/gdpu/vo/Notice.hbm.xml" />

@@ -16,7 +16,7 @@ public interface DutyDao {
 	 * 删除一个职责
 	 * @param dutyName
 	 */
-	public abstract void deleteDutyByName(String dutyName);
+	public abstract void deleteDutyById(int dutyId);
 
 	/**
 	 * 更新一个职责

@@ -22,8 +22,15 @@ public class AttendanceDaoImpl extends HibernateDaoSupport implements Attendance
 		return this.getHibernateTemplate().find("form Attendance");
 	}
 
+	@SuppressWarnings("unchecked")
 	public Attendance queryAttendanceByWeekDay(int week, int day) {
-		return (Attendance) this.getHibernateTemplate().find("form Attendance where week=='" + week + "'&day=='" + day + "'").get(0);
+		//return (Attendance) this.getHibernateTemplate().find("form Attendance where week=='" + week + "'&day=='" + day + "'").get(0);
+		Attendance attendance = null;
+		List list = this.getHibernateTemplate().find("form Attendance where week=='" + week + "'&day=='" + day + "'");
+		if (list != null && list.size() > 0) {
+			attendance = (Attendance) list.get(0);
+		}
+		return attendance;
 	}
 
 	public void updateAttendance(Attendance attendance) {

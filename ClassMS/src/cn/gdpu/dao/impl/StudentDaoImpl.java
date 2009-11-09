@@ -24,6 +24,7 @@ public class StudentDaoImpl extends HibernateDaoSupport implements StudentDao {
 		return this.getHibernateTemplate().find("from Student");
 	}
 
+	@SuppressWarnings("unchecked")
 	public Student queryStudentBySno(String sno) {
 		// return (Student)this.getHibernateTemplate().get(Student.class, sno);
 		// return (Student)
@@ -46,6 +47,7 @@ public class StudentDaoImpl extends HibernateDaoSupport implements StudentDao {
 		this.getHibernateTemplate().update(student);
 	}
 
+	@SuppressWarnings("unchecked")
 	public Student queryStudentByUsernameAndPassword(String username, String password) {
 		Student stu = null;
 		List list = this.getHibernateTemplate().find("from Student s where s.username='" + username + "' and s.password='" + password + "'");

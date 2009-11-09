@@ -13,16 +13,23 @@ public class DutyDaoImpl extends HibernateDaoSupport implements DutyDao {
 		this.getHibernateTemplate().save(duty);
 	}
 
-	public void deleteDutyByName(String dutyName) {
-		this.getHibernateTemplate().delete(this.getHibernateTemplate().load(Duty.class, dutyName));
+	public void deleteDutyById(int dutyId) {
+		this.getHibernateTemplate().delete(this.getHibernateTemplate().load(Duty.class, dutyId));
 	}
 
 	public void updateDuty(Duty duty) {
 		this.getHibernateTemplate().update(duty);
 	}
 
+	@SuppressWarnings("unchecked")
 	public Duty queryDutyByName(String dutyName) {
-		return (Duty) this.getHibernateTemplate().get(Duty.class, dutyName);
+		//return (Duty) this.getHibernateTemplate().get(Duty.class, dutyName);
+		Duty duty = null;
+		List list = this.getHibernateTemplate().find("form Duty where dutyName=='" + dutyName + "'");
+		if (list != null && list.size() > 0) {
+			duty = (Duty) list.get(0);
+		}
+		return duty;
 	}
 
 	@SuppressWarnings("unchecked")

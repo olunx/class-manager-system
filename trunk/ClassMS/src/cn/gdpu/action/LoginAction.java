@@ -27,7 +27,7 @@ public class LoginAction extends ActionSupport implements SessionAware {
 	public String login() throws Exception {
 		
 		switch (userType) {
-		// student
+			// student
 		case 0: {
 			Student stu = studentService.getStudentByUsernameAndPassword(username, password);
 			if (stu != null) {

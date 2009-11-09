@@ -1,6 +1,7 @@
 package cn.gdpu.service;
 
 import java.util.List;
+import java.util.Set;
 
 import cn.gdpu.vo.Student;
 
@@ -43,5 +44,12 @@ public interface StudentService {
      * @param studentId 
      */  
     public abstract List<Student> getStudentsByName(String name);  
+    
+    /**
+     * 通过学号字符串获得学生信息，分隔符半角逗号。
+     * @param snos
+     * @return
+     */
+    public abstract Set<Student> getStudentsBySnoString(String snos);
   
 }  

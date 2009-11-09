@@ -3,6 +3,18 @@
 	PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
 	"http://struts.apache.org/dtds/struts-2.1.dtd" >
 <struts>
-
+	<package name="attendancte" extends="struts-default">
+		<global-results>
+			<result name="success">/WEB-INF/model/attendance/attendance.jsp?value=success</result>
+		</global-results>
+		<action name="*Attendance" class="cn.gdpu.action.AttendanceAction" method="{1}">
+			<result name="error">/WEB-INF/model/attendance/attendance.jsp?value=error</result>
+			<result name="list">/WEB-INF/model/attendance/attendance.jsp?value=list</result>
+		</action>
+		<action name="attendance" class="cn.gdpu.action.AttendanceAction" method="link"></action>
+		<action name="attendanceAdd" class="cn.gdpu.action.AttendanceAction" method="addlink">
+			<result name="addlink">/WEB-INF/model/attendance/attendanceAdd.jsp</result>
+		</action>
+	</package>
 
 </struts>    

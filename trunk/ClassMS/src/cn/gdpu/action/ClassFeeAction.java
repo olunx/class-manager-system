@@ -21,6 +21,7 @@ public class ClassFeeAction extends ActionSupport implements RequestAware{
 	
 	ClassFee classFee = null;
 	
+	@SuppressWarnings("unchecked")
 	Map request;
 	
 	String fid;
@@ -77,6 +78,7 @@ public class ClassFeeAction extends ActionSupport implements RequestAware{
 	}
 	
 	//CRUD query() 查询班费记录
+	@SuppressWarnings("unchecked")
 	public String doQuery() throws Exception{
 		try {
 			classFee = classFeeService.getClassFee(fid);
@@ -91,11 +93,12 @@ public class ClassFeeAction extends ActionSupport implements RequestAware{
 	}
 	
 	//CRUD queryAll() 查询全部班费记录
+	@SuppressWarnings("unchecked")
 	public String doQueryAll() throws Exception{
 		try {
 			List<ClassFee> classFees = new ArrayList<ClassFee>();
 			classFees = classFeeService.getAllClassFees();
-			request.put("req", classFees);
+			request.put("classFees", classFees);
 			System.out.println("-------查询全部班费记录成功--------");
 			return SUCCESS;
 		} catch (Exception e) {
@@ -122,10 +125,12 @@ public class ClassFeeAction extends ActionSupport implements RequestAware{
 		this.classFee = classFee;
 	}
 	
+	@SuppressWarnings("unchecked")
 	public void setRequest(Map request) {
 		this.request = request;
 	}
 
+	@SuppressWarnings("unchecked")
 	public Map getRequest() {
 		return request;
 	}

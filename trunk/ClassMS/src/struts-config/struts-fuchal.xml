@@ -6,9 +6,9 @@
 
 	<package name="classfee" extends="struts-default" >
 		<action name="*classFee" class="cn.gdpu.action.ClassFeeAction" method="{1}">
-			<result name="success">/classfeeSuc.jsp?value={1}</result>
-			<result name="error">/classfeeFail.jsp</result>
-			<result name="input">/classfee.jsp</result>
+			<result name="success">/WEB-INF/model/classfee/classfee.jsp?value={1}</result>
+			<result name="error">/WEB-INF/model/classfee/classfeeFail.jsp</result>
+			<result name="input">/WEB-INF/model/classfee/classfee.jsp?value=input</result>
 		</action> 					
 	</package>
 

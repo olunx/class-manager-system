@@ -20,6 +20,7 @@
 					<li><a href="<%=path %>\reg\regLink">注册学生</a></li>
 					<li><a href="<%=path %>\notice\list">公告管理</a> - <a href="<%=path %>\notice\addLink">添加</a></li>
 					<li><a href="<%=path %>\activity\listStu?sno=${sessionScope.student.sno}">活动加分</a> - <a href="<%=path %>\activity\addLink?sno=${sessionScope.student.sno}">申请</a></li>
+					<li><a href="<%=path %>\classfee\queryAllclassFee.action">投票管理</a> -  </li>
 				</ul>
 			</div>
 			<div id="main"><iframe name="frame" id="frame" src="#"></iframe></div>

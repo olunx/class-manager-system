@@ -10,7 +10,6 @@ import com.opensymphony.xwork2.ActionSupport;
 
 import cn.gdpu.service.StudentService;
 import cn.gdpu.util.excel.StudentExcel;
-import cn.gdpu.vo.ClassFee;
 import cn.gdpu.vo.Student;
 
 public class RegisterAction extends ActionSupport {

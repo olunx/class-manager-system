@@ -25,7 +25,7 @@ public class AdminDaoImpl extends HibernateDaoSupport implements AdminDao {
 	public Admin queryAdminByName(String adminName) {
 		//return (Duty) this.getHibernateTemplate().get(Duty.class, dutyName);
 		Admin admin = null;
-		List list = this.getHibernateTemplate().find("form Duty where dutyName=='" + adminName + "'");
+		List list = this.getHibernateTemplate().find("form Admin where adminName=='" + adminName + "'");
 		if (list != null && list.size() > 0) {
 			admin = (Admin) list.get(0);
 		}

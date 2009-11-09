@@ -1,6 +1,8 @@
 package cn.gdpu.service.impl;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.annotation.Resource;
 
@@ -41,12 +43,24 @@ public class StudentServiceImpl implements StudentService {
 	}
 
 	public List<Student> getStudentsByName(String name) {
-		// TODO Auto-generated method stub
 		return studentDao.queryStudentByName(name);
 	}
 
 	public Student getStudentByUsernameAndPassword(String username, String password) {
 		return studentDao.queryStudentByUsernameAndPassword(username, password);
+	}
+
+	public Set<Student> getStudentsBySnoString(String snos) {
+
+		String[] stuSnos = snos.split("\\,");
+
+		Set<Student> stus = new HashSet<Student>();
+		
+		for(int i=0;i<stuSnos.length;i++) {
+			stus.add(studentDao.queryStudentBySno(stuSnos[i]));
+		}
+		
+		return stus;
 	}
 
 

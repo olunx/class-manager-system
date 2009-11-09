@@ -32,6 +32,14 @@ public interface LeaderDao {
 	public abstract Leader queryLeaderByName(String leaderName);
 	
 	/**
+	 * 登录时使用
+	 * @param username
+	 * @param password
+	 * @return
+	 */
+	public abstract Leader queryLeaderByNameAndPassword(String username, String password);
+	
+	/**
 	 * 获取所有领导信息
 	 * @return
 	 */

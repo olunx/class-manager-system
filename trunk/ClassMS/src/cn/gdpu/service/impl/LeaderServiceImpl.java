@@ -38,4 +38,8 @@ public class LeaderServiceImpl implements LeaderService {
 		leaderDao.updateLeader(leader);
 	}
 
+	public Leader getLeaderByUsernameAndPassword(String username, String password) {
+		return leaderDao.queryLeaderByNameAndPassword(username, password);
+	}
+
 }

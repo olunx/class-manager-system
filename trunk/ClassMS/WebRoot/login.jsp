@@ -12,8 +12,14 @@
 <body>
 	<div>
 		<form action="login.action" method="post">
-			学号：<input type="text" name="stu.username" /><br/>
-			密码：<input type="text" name="stu.password" /><br/>
+			用户名：<input type="text" name="username" /><br/>
+			密码：<input type="text" name="password" /><br/>
+			身份：<select size="1" name="userType">
+			<option value="0">学生</option>
+			<option value="1">辅导员</option>
+			<option value="2">管理员</option>
+			</select>
+			<br/>
 			<input type="submit" value="登陆" /><a href="reg/regLink">注册</a>
 		</form>
 		

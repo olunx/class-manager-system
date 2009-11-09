@@ -37,4 +37,14 @@ public class LeaderDaoImpl extends HibernateDaoSupport implements LeaderDao {
 		this.getHibernateTemplate().update(leader);
 	}
 
+	@SuppressWarnings("unchecked")
+	public Leader queryLeaderByNameAndPassword(String username, String password) {
+		Leader leader = null;
+		List list = this.getHibernateTemplate().find("from Leader l where l.username='" + username + "' and l.password='" + password + "'");
+		if (list != null && list.size() > 0) {
+			leader = (Leader) list.get(0);
+		}
+		return leader;
+	}
+
 }

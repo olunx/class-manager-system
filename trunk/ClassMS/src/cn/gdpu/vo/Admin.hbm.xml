@@ -2,11 +2,13 @@
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
                                    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping package="cn.gdpu.vo">
-	<class name="User" table="t_user">
-		<id name="id">
+	<class name="Admin" table="t_admin">
+		<id name="adminId">
 			<generator class="native" />
 		</id>
 		<property name="username" not-null="true" />
 		<property name="password" not-null="true" />
+		<property name="leaderName"/>
+		<property name="remark"/>
 	</class>
 </hibernate-mapping>

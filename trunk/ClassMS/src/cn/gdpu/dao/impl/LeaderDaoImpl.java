@@ -22,8 +22,15 @@ public class LeaderDaoImpl extends HibernateDaoSupport implements LeaderDao {
 		return this.getHibernateTemplate().find("from Leader");
 	}
 
+	@SuppressWarnings("unchecked")
 	public Leader queryLeaderByName(String leaderName) {
-		return (Leader) this.getHibernateTemplate().get(Leader.class, leaderName);
+		//return (Leader) this.getHibernateTemplate().get(Leader.class, leaderName);
+		Leader leader = null;
+		List list = this.getHibernateTemplate().find("form Leader where leaderName=='" + leaderName + "'");
+		if (list != null && list.size() > 0) {
+			leader = (Leader) list.get(0);
+		}
+		return leader;
 	}
 
 	public void updateLeader(Leader leader) {

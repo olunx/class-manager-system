@@ -22,8 +22,8 @@ public class DutyServiceImpl implements DutyService {
 		dutyDao.insertDuty(duty);
 	}
 
-	public void delete(String dutyName) {
-		dutyDao.deleteDutyByName(dutyName);
+	public void delete(int dutyId) {
+		dutyDao.deleteDutyById(dutyId);
 	}
 
 	public List<Duty> getAllDutys() {

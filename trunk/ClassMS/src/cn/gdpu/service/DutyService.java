@@ -16,7 +16,7 @@ public interface DutyService {
 	 * 删除一个职责
 	 * @param dutyName
 	 */
-	public abstract void delete(String dutyName);
+	public abstract void delete(int dutyId);
 	
 	/**
 	 * 更新一个职责

@@ -5,13 +5,12 @@ import java.util.Date;
 import java.util.List;
 
 import org.apache.commons.mail.EmailException;
-import org.apache.commons.mail.SimpleEmail;
 
 import junit.framework.TestCase;
 
 public class testSendMail extends TestCase {
-
-	public void testSendMail() {
+	
+	public void testSendOneMail() {
 		try {
 			List<String> list = new ArrayList<String>();
 			list.add("fatkun8@gmail.com");

@@ -77,4 +77,10 @@ public class Attendance {
 		this.lesson = lesson;
 	}
 
+	@Override
+	public String toString() {
+		return "Attendance [aid=" + aid + ", clerk=" + clerk + ", day=" + day + ", lesson=" + lesson + ", students=" + students
+				+ ", subject=" + subject + ", time=" + time + ", week=" + week + "]";
+	}
+
 }

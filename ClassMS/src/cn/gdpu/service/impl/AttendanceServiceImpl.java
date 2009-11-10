@@ -30,12 +30,16 @@ public class AttendanceServiceImpl implements AttendanceService {
 		return attendanceDao.queryAllAttendances();
 	}
 
-	public Attendance getLeaderByWeekDay(int week, int day) {
+	public Attendance getAttendanceByWeekDay(int week, int day) {
 		return attendanceDao.queryAttendanceByWeekDay(week, day);
 	}
 
 	public void update(Attendance attendance) {
 		attendanceDao.updateAttendance(attendance);
+	}
+
+	public Attendance getAttendanceByAid(int aid) {
+		return attendanceDao.queryAttendanceByAid(aid);
 	}
 
 }

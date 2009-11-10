@@ -32,6 +32,13 @@ public interface AttendanceDao {
 	public abstract Attendance queryAttendanceByWeekDay(int week, int day);
 	
 	/**
+	 * 获取一条考勤记录
+	 * @param aid
+	 * @return
+	 */
+	public abstract Attendance queryAttendanceByAid(int aid);
+	
+	/**
 	 * 获取所有考勤记录
 	 * @return
 	 */

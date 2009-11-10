@@ -9,7 +9,8 @@
 	xsi:schemaLocation="
 			http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
 			http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
-			http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
+			http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd"
+	default-lazy-init="true">
 
 	<bean name="userDAOIMP" class="cn.gdpu.dao.impl.UserDAOIMPL" scope="prototype">
 		<property name="sessionFactory" ref="sessionFactory"></property>
@@ -38,7 +39,7 @@
 	<bean id="leaderService" class="cn.gdpu.service.impl.LeaderServiceImpl" scope="prototype">
 		<property name="leaderDao" ref="leaderDaoImpl"></property>
 	</bean>
-	
+
 	<bean name="attendanceDaoImpl" class="cn.gdpu.dao.impl.AttendanceDaoImpl" scope="prototype">
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>

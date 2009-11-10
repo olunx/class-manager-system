@@ -10,7 +10,7 @@
 		<property name="avatar" />
 		<property name="username" />
 		<property name="password" />
-		<property name="sno" />
+		<property name="sno" type="string"/>
 		<property name="realName" />
 		<property name="dorm" />
 		<property name="phoneNo" />

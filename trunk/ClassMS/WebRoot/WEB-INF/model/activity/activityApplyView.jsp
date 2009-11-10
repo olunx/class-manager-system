@@ -8,18 +8,50 @@
 		<title>班务系统</title>
 	</head>
 	<body>
-		<h2>${student.realName }</h2>
-		<div><a href="addLink.action?sno=${sno}">添加</a></div>
-		<c:choose>
-			<c:when test="${activityApplys eq null}">
-				暂时没有信息
-			</c:when>
-			<c:otherwise>
-				<c:forEach items="${activityApplys}" var="activity">
-					${activity.mark } - ${activity.reason } <a href="del.action?aid=${activity.aid }&sno=${sno}">删除</a>
-					<br/>
-				</c:forEach>
-			</c:otherwise>
-		</c:choose>
+		<h2>
+			${student.realName }
+		</h2>
+		
+			<c:choose>
+				<c:when test="${activityApplys eq null}">
+							暂时没有信息
+				</c:when>
+				<c:otherwise>
+					<form action="batch?sno=${sno}" method="post">
+					<table>
+					<tr><th></th><th>类型</th><th>分数</th><th>加分原因</th><th>状态</th><th>删除</th></tr>
+					<c:forEach items="${activityApplys}" var="activity">
+						<tr>
+							<td>
+								<input type="checkbox" name="aids" value="${activity.aid }" />
+							</td>
+							<td>
+								${activity.type }
+							</td>
+							<td>
+								${activity.mark }
+							</td>
+							<td>
+								${activity.reason }
+							</td>
+							<td>
+								<c:if test="${activity.pass==0}">未审核</c:if>
+								<c:if test="${activity.pass==1}">通过</c:if>
+								<c:if test="${activity.pass==2}">拒绝</c:if>
+							</td>
+							<td><a href="del.action?aid=${activity.aid }&sno=${sno}">删除</a></td>
+						</tr>
+					</c:forEach>
+					</table>
+					<select name="cmd">
+						<option value="0" selected="selected">批量操作，请选择</option>
+						<option value="1">设为通过</option>
+						<option value="2">设为拒绝</option>
+						<option value="3">删除</option>
+					</select>
+					<input type="submit" value="确定" />
+					</form>
+				</c:otherwise>
+			</c:choose>
 	</body>
 </html>

@@ -6,7 +6,7 @@
 		<id name="aid" column="aid" >
 			<generator class="native" />
 		</id>
-		<set name="students" table="t_attendance_student" cascade="all" >
+		<set name="students" table="t_attendance_student" >
 			<key column="aid" />
 			<many-to-many class="Student" column="stuId" />
 		</set>

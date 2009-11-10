@@ -29,7 +29,14 @@ public interface AttendanceService {
 	 * @param week,day
 	 * @return
 	 */
-	public abstract Attendance getLeaderByWeekDay(int week, int day);
+	public abstract Attendance getAttendanceByWeekDay(int week, int day);
+	
+	/**
+	 * 获取一条考勤信息
+	 * @param aid
+	 * @return
+	 */
+	public abstract Attendance getAttendanceByAid(int aid);
 	
 	/**
 	 * 获取所有考勤信息

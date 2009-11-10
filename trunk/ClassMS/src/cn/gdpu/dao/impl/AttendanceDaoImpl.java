@@ -19,14 +19,14 @@ public class AttendanceDaoImpl extends HibernateDaoSupport implements Attendance
 
 	@SuppressWarnings("unchecked")
 	public List<Attendance> queryAllAttendances() {
-		return this.getHibernateTemplate().find("form Attendance");
+		return this.getHibernateTemplate().find("from Attendance");
 	}
 
 	@SuppressWarnings("unchecked")
 	public Attendance queryAttendanceByWeekDay(int week, int day) {
 		//return (Attendance) this.getHibernateTemplate().find("form Attendance where week=='" + week + "'&day=='" + day + "'").get(0);
 		Attendance attendance = null;
-		List list = this.getHibernateTemplate().find("form Attendance where week=='" + week + "'&day=='" + day + "'");
+		List list = this.getHibernateTemplate().find("from Attendance where week=='" + week + "'&day=='" + day + "'");
 		if (list != null && list.size() > 0) {
 			attendance = (Attendance) list.get(0);
 		}
@@ -35,6 +35,10 @@ public class AttendanceDaoImpl extends HibernateDaoSupport implements Attendance
 
 	public void updateAttendance(Attendance attendance) {
 		this.getHibernateTemplate().update(attendance);
+	}
+
+	public Attendance queryAttendanceByAid(int aid) {
+		return (Attendance) this.getHibernateTemplate().load(Attendance.class, aid);
 	}
 
 }

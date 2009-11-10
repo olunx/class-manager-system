@@ -6,10 +6,17 @@
 
 	<package name="classfee" extends="struts-default" >
 		<action name="*classFee" class="cn.gdpu.action.ClassFeeAction" method="{1}">
-			<result name="success">/WEB-INF/model/classfee/classfee.jsp?value={1}</result>
+			<result name="success">/WEB-INF/model/classfee/classfeeSuc.jsp?value={1}</result>
+			<result name="queryall">/WEB-INF/model/classfee/classfee.jsp</result>
+			<result name="query">/WEB-INF/model/classfee/classfeeDetail.jsp</result>
 			<result name="error">/WEB-INF/model/classfee/classfeeFail.jsp</result>
-			<result name="input">/WEB-INF/model/classfee/classfee.jsp?value=input</result>
-		</action> 					
+			<result name="modifylink">/WEB-INF/model/classfee/classfeeModify.jsp</result>
+		</action> 			
+				
+		<action name="addLink">
+			<result>/WEB-INF/model/classfee/classfeeAdd.jsp</result>
+		</action>
+		
 	</package>
 
 	<package name="vote" extends="struts-default" >

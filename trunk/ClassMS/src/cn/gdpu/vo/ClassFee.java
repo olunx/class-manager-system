@@ -1,13 +1,12 @@
 package cn.gdpu.vo;
 
-import java.util.Date;
 
 public class ClassFee {
 	private String fid;              //费用ID
 	private Student cmaker;       //经手人
 	private double fee;			  //费用
 	private String event;		  //执行事件
-	private Date time;			  //事件执行时间
+	private String time;			  //事件执行时间
 	private String remarks;		  //班费备注
 
 	public String getFid() {
@@ -42,12 +41,12 @@ public class ClassFee {
 		this.event = event;
 	}
 
-	public Date getTime() {
+	public String getTime() {
 		return time;
 	}
 
-	public void setTime(Date time) {
-		this.time = time;
+	public void setTime(String date) {
+		this.time = date;
 	}
 
 	public String getRemarks() {

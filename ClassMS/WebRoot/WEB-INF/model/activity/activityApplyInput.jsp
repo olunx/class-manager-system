@@ -11,11 +11,29 @@
 		<form action="add.action" method="post">
 		<input name="sno" type="hidden" value="${param.sno }" />
 			原因：<input type="text" name="reason" />
-			分数：<input type="text" name="mark" /><br/>
+			分数：<input type="text" name="mark" />
+			<select name="type">
+				<option value="德育">德育</option>
+				<option value="活动">活动</option>
+				<option value="文体">文体</option>
+			</select>
+			<br/>
 			原因：<input type="text" name="reason" />
-			分数：<input type="text" name="mark" /><br/>
+			分数：<input type="text" name="mark" />
+			<select name="type">
+				<option value="德育">德育</option>
+				<option value="活动">活动</option>
+				<option value="文体">文体</option>
+			</select>
+			<br/>
 			原因：<input type="text" name="reason" />
-			分数：<input type="text" name="mark" /><br/>
+			分数：<input type="text" name="mark" />
+			<select name="type">
+				<option value="德育">德育</option>
+				<option value="活动">活动</option>
+				<option value="文体">文体</option>
+			</select>
+			<br/>
 			<input type="submit" value="提交申请" />
 		</form>
 	</body>

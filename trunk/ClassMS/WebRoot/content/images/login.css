@@ -1,0 +1,56 @@
+@charset "utf-8";
+/* CSS Document */
+
+body{
+	background:#333;
+}
+
+#container{
+	background-color:#000;
+	width:550px;
+	height:400px;
+	margin:0 auto;
+	margin-top:100px;
+}
+
+#c_top {
+	margin-top:0;
+	height:40px;
+	background:#999;
+}
+#c_bottom{
+	margin-bottom:0;
+	height:40px;
+	background:#999;
+}
+
+#c_middle{
+	height:320px;
+}
+#m_logo{
+	width:300px;
+	height:180px;
+	margin:0 auto;
+	background:#F00;
+}
+
+#m_login{
+	width:300px;
+	height:140px;
+	background:#00F;
+	float:right;
+}
+#l_input{
+	height:110px;
+	margin:15px;
+}
+#l_input span{
+	margin-right:5px;
+}
+#i_button{
+	width:130px;
+	height:30px;
+	margin:0 auto;
+	margin-top:10px;
+}
+

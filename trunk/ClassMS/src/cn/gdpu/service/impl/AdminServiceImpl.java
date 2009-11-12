@@ -14,7 +14,7 @@ public class AdminServiceImpl implements AdminService {
 		return adminDao;
 	}
 
-	public void setDutyDao(AdminDao adminDao) {
+	public void setAdminDao(AdminDao adminDao) {
 		this.adminDao = adminDao;
 	}
 
@@ -39,6 +39,7 @@ public class AdminServiceImpl implements AdminService {
 	}
 
 	public Admin getAdminByUsernameAndPassword(String username, String password) {
+		System.out.println("adminServiceImpl");
 		return adminDao.queryAdminByUsernameAndPassword(username, password);
 	}
 

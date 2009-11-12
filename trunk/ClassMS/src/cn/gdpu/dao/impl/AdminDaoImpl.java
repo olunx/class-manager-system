@@ -42,6 +42,7 @@ public class AdminDaoImpl extends HibernateDaoSupport implements AdminDao {
 
 		Admin admin = null;
 		List list = this.getHibernateTemplate().find("from Admin a where a.username='" + username + "' and a.password='" + password + "'");
+		System.out.println("list size:"+list.size());
 		if (list != null && list.size() > 0) {
 			admin = (Admin) list.get(0);
 		}

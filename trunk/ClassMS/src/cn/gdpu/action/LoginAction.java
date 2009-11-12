@@ -34,6 +34,7 @@ public class LoginAction extends ActionSupport implements SessionAware {
 				session.put("student", stu);
 				return "student";
 			}
+			break;
 		}
 			// leader
 		case 1: {
@@ -46,6 +47,7 @@ public class LoginAction extends ActionSupport implements SessionAware {
 		}
 			// admin
 		case 2: {
+			System.out.println("2222222");
 			Admin admin = adminService.getAdminByUsernameAndPassword(username, password);
 			if (admin != null) {
 				session.put("admin", admin);

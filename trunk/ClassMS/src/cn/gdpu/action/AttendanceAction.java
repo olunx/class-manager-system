@@ -1,5 +1,6 @@
 package cn.gdpu.action;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -20,7 +21,10 @@ public class AttendanceAction extends ActionSupport implements RequestAware {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	private Attendance attendance;// 接收传来的学生对象
+	// private Attendance attendance;// 接收传来的学生对象
+	private String week;
+	private String day;
+	private String lesson;
 	private String students;// 接收传来的学生学号字符串
 	private String clerk;// 接收传来的数据录入人员
 	private int aid = -1;// 接收传来的考勤信息ID号
@@ -32,17 +36,17 @@ public class AttendanceAction extends ActionSupport implements RequestAware {
 
 	// 添加考勤信息
 	public String add() {
-		if (students != null && !students.equals("") && students != "") {
-			if (attendance != null) {
-				attendance.setStudents(studentService.getStudentsBySnoString(students));
-				attendance.setClerk(studentService.getStudent(clerk));
-				attendanceService.add(attendance);
-				return SUCCESS;
-			}
-			return ERROR;
-		}
 
-		return ERROR;
+		Attendance attendance = new Attendance();
+		attendance.setWeek(week);
+		attendance.setDay(day);
+		attendance.setLesson(lesson);
+		attendance.setStudents(studentService.getStudentsBySnoString(students));
+		attendance.setClerk(studentService.getStudent(clerk));
+		attendance.setTime(new Date());
+		attendanceService.add(attendance);
+
+		return "index";
 	}
 
 	// 获取一条考勤信息，用于修改
@@ -58,24 +62,28 @@ public class AttendanceAction extends ActionSupport implements RequestAware {
 			students = students + stu.getSno() + ",";
 		}
 		String clerk = null;
-		if(attendance.getClerk() != null) {
+		if (attendance.getClerk() != null) {
 			clerk = attendance.getClerk().getSno();
 		}
-		
+
 		request.put("attendance", attendance);
 		request.put("students", students);
 		request.put("clerk", clerk);
 
-		return "attendanceUpdate";
+		return "updateLink";
 	}
 
 	// 修改考勤信息
 	public String update() {
-		if (attendance != null) {
-			attendanceService.update(attendance);
-			return "index";
-		}
-		return ERROR;
+		Attendance attendance = attendanceService.getAttendanceByAid(aid);
+		attendance.setWeek(week);
+		attendance.setDay(day);
+		attendance.setLesson(lesson);
+		attendance.setStudents(studentService.getStudentsBySnoString(students));
+		attendance.setClerk(studentService.getStudent(clerk));
+		attendance.setTime(new Date());
+		attendanceService.update(attendance);
+		return "index";
 	}
 
 	// 删除考勤信息
@@ -95,36 +103,82 @@ public class AttendanceAction extends ActionSupport implements RequestAware {
 	}
 
 	// 跳转到添加页
-	public String jumpAdd() {
-		return "attendanceAdd";
+	public String addLink() {
+		return "addLink";
 	}
 
-	public void setRequest(Map<String, Object> request) {
-		this.request = request;
+	//生成get/set
+	
+	public String getWeek() {
+		return week;
 	}
 
-	public void setAttendance(Attendance attendance) {
-		this.attendance = attendance;
+	public void setWeek(String week) {
+		this.week = week;
+	}
+
+	public String getDay() {
+		return day;
+	}
+
+	public void setDay(String day) {
+		this.day = day;
+	}
+
+	public String getLesson() {
+		return lesson;
+	}
+
+	public void setLesson(String lesson) {
+		this.lesson = lesson;
+	}
+
+	public String getStudents() {
+		return students;
 	}
 
 	public void setStudents(String students) {
 		this.students = students;
 	}
 
+	public String getClerk() {
+		return clerk;
+	}
+
+	public void setClerk(String clerk) {
+		this.clerk = clerk;
+	}
+
+	public int getAid() {
+		return aid;
+	}
+
 	public void setAid(int aid) {
 		this.aid = aid;
+	}
+
+	public AttendanceService getAttendanceService() {
+		return attendanceService;
 	}
 
 	public void setAttendanceService(AttendanceService attendanceService) {
 		this.attendanceService = attendanceService;
 	}
 
+	public StudentService getStudentService() {
+		return studentService;
+	}
+
 	public void setStudentService(StudentService studentService) {
 		this.studentService = studentService;
 	}
 
-	public void setClerk(String clerk) {
-		this.clerk = clerk;
+	public Map<String, Object> getRequest() {
+		return request;
+	}
+
+	public void setRequest(Map<String, Object> request) {
+		this.request = request;
 	}
 
 }

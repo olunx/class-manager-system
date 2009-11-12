@@ -15,7 +15,7 @@
 	
 		<div id="header">dddddddddddddddddddddd</div>
 		<div id="content">
-			<div id="sidebar">
+			<div id="sidebar" style="float:left;width:200px;">
 				<ul>
 					<li><a href="<%=path %>/reg/addLinkReg">注册学生</a></li>
 					<li><a href="<%=path %>/notice/list">公告管理</a> - <a href="<%=path %>/notice/addLink">添加</a></li>
@@ -24,7 +24,7 @@
 					<li><a href="<%=path %>/attendance/listAttendance">考勤管理</a> - <a href="<%=path %>/attendance/addLinkAttendance">添加</a> </li>
 				</ul>
 			</div>
-			<div id="main"><iframe name="frame" id="frame" src="#"></iframe></div>
+			<div id="main" style="float:right;width:1000px;height:600px;"><iframe name="frame" src="#" style="width:100%;height:100%;"></iframe></div>
 		</div>
 	</body>
 </html>

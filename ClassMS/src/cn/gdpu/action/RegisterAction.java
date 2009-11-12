@@ -55,12 +55,12 @@ public class RegisterAction extends ActionSupport {
 	 * 注册跳转
 	 * @return
 	 */
-	public String regLink() {
-		return INPUT;
+	public String addLink() {
+		return "addLink";
 	}
 
 	// 单个注册
-	public String doStuReg() {
+	public String oneStu() {
 
 		Student stu = new Student();
 		stu.setUsername(username);
@@ -71,7 +71,7 @@ public class RegisterAction extends ActionSupport {
 	}
 
 	// 批量注册
-	public String doStudentsReg() {
+	public String manyStu() {
 
 		if (fileName == null) {
 			return "error";

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!DOCTYPE validators PUBLIC 
+          "-//OpenSymphony Group//XWork Validator 1.0//EN" 
+          "http://www.opensymphony.com/xwork/xwork-validator-1.0.dtd" >
+<validators>
+<!-- 
+	<field name="week">
+		<field-validator type="requiredstring">
+			<param name="trim">true</param>
+			<message>请填入第几周</message>
+		</field-validator>
+	</field>
+	<field name="day">
+		<field-validator type="requiredstring">
+			<param name="trim">true</param>
+			<message>请填入星期几</message>
+		</field-validator>
+	</field>
+	<field name="lesson">
+		<field-validator type="requiredstring">
+			<param name="trim">true</param>
+			<message>请选择旷课课时</message>
+		</field-validator>
+	</field>
+	<field name="students">
+		<field-validator type="requiredstring">
+			<param name="trim">true</param>
+			<message>请填入逃课的学生学号</message>
+		</field-validator>
+	</field>
+ -->
+</validators>

@@ -47,3 +47,18 @@ redirect-action，plaintext已经不推荐使用了
 1.D:\MyEclipse8\MyEclipse\myeclipse.ini 中的第7行 D:/MyEclipse 8.0 、第9行 D:/MyEclipse 8.0
 2.D:\MyEclipse 8.0\MyEclipse\configuration\config.ini 中的第16行 D\:/MyEclipse 8.0、18行 D\:\\MyEclipse 8.0
 3.D:\MyEclipse 8.0\MyEclipse\configuration\org.eclipse.equinox.simpleconfigurator\bundles.info中所有的 D:/MyEclipse 8.0
+-------------------------------------
+4,No result defined for action.....and result input 
+-------------------------------------
+在最近的strut2练习中遇到了一个非常隐蔽的问题，这个问题几乎花了我一天的时间。问题&解决方法如下：（project中的一部分代码）
+    创建了一个用于跳转的PoiterAction，代码再简单不过了，只有一个返回SUCCESS字符串的execute方法。
+    在struts.xml配置文件中配置了和SUCCESS对应的实体页面
+    <result name="success">xxxxx.jsp</result>
+    然后运行应用的时候调用该action时出现了 No result defined for action.....and result input 的错误。这个错误是没有在配置文件中给action添加所需要的
+<result name="input">xxxxx.jsp</result>元素。
+    这就觉得奇怪了！我并没有任何数据需要提交到该action中啊。
+    最后做了很多的测试。原因是工程里有一个BaseAction的类，并且BaseAction使用了验证框架，有一个BaseAction-validation.xml的文件。
+    而PoiterAction正好是BaseAction的一个子类，也继承了父类的验证框架，因此按照验证框架的运行流程来看这个问题就很明显了。由于验证框架在调用子类的时候首先加载父类的验证规则，然后等待输入，系统会找到input元素制定的JSP文件的输入信息，但是PoiterAction并没有input项，所以系统抛出No result defined for action.....and result input。
+    删除了BaseAction-validation.xml文件后就可以正常运行了。
+
+    结论：在开发的时候应该尽量不对基类做任何验证，虽然使用继承基类的验证框架可以减少工作量，但是有时会出现不必要的麻烦。应该对具体类实施验证。

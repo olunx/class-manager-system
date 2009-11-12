@@ -9,11 +9,11 @@
 </head>
 <body>
 <form action="updateAttendance" method="post">
-考勤信息串号：<input type="text" name="attendance.aid" value="${attendance.aid}" readonly="readonly"/> <br />
+考勤信息串号：<input type="text" name="aid" value="${attendance.aid}" readonly="readonly"/> <br />
 记录人员：<input type="text" name="clerk" value="${clerk}" /> <br />
-第几周：<input type="text" name="attendance.week" value="${attendance.week}" /> <br />
-星期几：<input type="text" name="attendance.day" value="${attendance.day}" /> <br />
-逃课课时：<input type="text" name="attendance.day" value="${attendance.lesson}" /> <br />
+第几周：<input type="text" name="week" value="${attendance.week}" /> <br />
+星期几：<input type="text" name="day" value="${attendance.day}" /> <br />
+逃课课时：<input type="text" name="lesson" value="${attendance.lesson}" /> <br />
 逃课人员：<input type="text" name="students" value="${students}" /> <br />
 <input type="submit" value="提交" /><input type="reset" value="重置"/>
 </form>

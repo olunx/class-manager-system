@@ -11,7 +11,7 @@
 		<form action="addAttendance" method="post">
 			<div style="float: left">
 				第
-				<select size="1" name="attendance.week">
+				<select size="1" name="week">
 					<option selected="selected">
 						1
 					</option>
@@ -41,7 +41,7 @@
 			</div>
 			<div style="float: left">
 				星期
-				<select size="1" name="attendance.day">
+				<select size="1" name="day">
 					<option selected="selected">
 						一
 					</option>
@@ -68,7 +68,7 @@
 			</div>
 			<div style="float: left">
 				第
-				<select size="8" multiple="multiple" name="attendance.lesson">
+				<select size="8" multiple="multiple" name="lesson">
 					<option selected="selected">
 						1
 					</option>

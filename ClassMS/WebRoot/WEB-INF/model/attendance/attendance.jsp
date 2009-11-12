@@ -2,9 +2,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%
-	String path = request.getContextPath();
-%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -13,9 +10,7 @@
 </head>
 <body>
 
-<a href="<%=path %>/jumpAddAttendance">添加考勤信息</a>
-<a href="<%=path %>/jumpAddAttendance">修改考勤信息</a>
-<a href="<%=path %>/jumpListAttendance">查看考勤信息</a>
+<a href="addLinkAttendance">添加考勤信息</a>
 
 		<c:choose>
 			<c:when test="${attendances==null}">
@@ -36,6 +31,9 @@
 							</td>
 							<td>
 								${attendance.lesson}
+							</td>
+							<td>
+								${attendance.time}
 							</td>
 							<td>
 								<a href="getAttendance?aid=${attendance.aid}">编辑</a>

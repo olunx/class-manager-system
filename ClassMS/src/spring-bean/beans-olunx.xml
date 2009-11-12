@@ -26,18 +26,25 @@
 		<property name="studentDao" ref="studentDaoImpl"></property>
 	</bean>
 
-	<bean name="dutyDaoImpl" class="cn.gdpu.dao.impl.DutyDaoImpl" scope="prototype">
-		<property name="sessionFactory" ref="sessionFactory"></property>
-	</bean>
-	<bean id="dutyService" class="cn.gdpu.service.impl.DutyServiceImpl" scope="prototype">
-		<property name="dutyDao" ref="dutyDaoImpl"></property>
-	</bean>
-
 	<bean name="leaderDaoImpl" class="cn.gdpu.dao.impl.LeaderDaoImpl" scope="prototype">
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
 	<bean id="leaderService" class="cn.gdpu.service.impl.LeaderServiceImpl" scope="prototype">
 		<property name="leaderDao" ref="leaderDaoImpl"></property>
+	</bean>
+	
+	<bean name="adminDaoImpl" class="cn.gdpu.dao.impl.AdminDaoImpl" scope="prototype">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="adminService" class="cn.gdpu.service.impl.AdminServiceImpl" scope="prototype">
+		<property name="adminDao" ref="adminDaoImpl"></property>
+	</bean>
+	
+	<bean name="dutyDaoImpl" class="cn.gdpu.dao.impl.DutyDaoImpl" scope="prototype">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="dutyService" class="cn.gdpu.service.impl.DutyServiceImpl" scope="prototype">
+		<property name="dutyDao" ref="dutyDaoImpl"></property>
 	</bean>
 
 	<bean name="attendanceDaoImpl" class="cn.gdpu.dao.impl.AttendanceDaoImpl" scope="prototype">

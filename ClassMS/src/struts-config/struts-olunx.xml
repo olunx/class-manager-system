@@ -7,9 +7,10 @@
 		<global-results>
 			<result name="success" >/WEB-INF/model/attendance/attendance.jsp</result>
 			<result name="error">/WEB-INF/model/attendance/attendance.jsp</result>
-			<result name="attendanceAdd">/WEB-INF/model/attendance/attendanceAdd.jsp</result>
-			<result name="attendanceUpdate">/WEB-INF/model/attendance/attendanceUpdate.jsp</result>
+			<result name="addLink">/WEB-INF/model/attendance/attendanceAdd.jsp</result>
+			<result name="updateLink">/WEB-INF/model/attendance/attendanceUpdate.jsp</result>
 			<result name="index" type="redirectAction">listAttendance</result>
+			<result name="input">/WEB-INF/model/attendance/attendance.jsp</result>
 		</global-results>
 		<action name="*Attendance" class="cn.gdpu.action.AttendanceAction" method="{1}">
 		</action>

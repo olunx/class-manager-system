@@ -20,8 +20,11 @@ public class ActivityApplyAction extends ActionSupport implements RequestAware {
 	private Map<String, Object> request;
 	private String[] reason;
 	private String[] mark;
+	private String[] type;
 	private String sno;
 	private int aid;
+	private int[] aids;
+	private int cmd;// 批量操作命令
 
 	/**
 	 * 列出所有学生
@@ -43,7 +46,9 @@ public class ActivityApplyAction extends ActionSupport implements RequestAware {
 	public String listStu() throws Exception {
 		Student stu = studentService.getStudent(sno);
 		Set<ActivityApply> activityApplys = new HashSet<ActivityApply>();
-		activityApplys = stu.getActivityApplys();
+		if (stu != null) {
+			activityApplys = stu.getActivityApplys();
+		}
 		if (activityApplys.size() == 0)
 			activityApplys = null;
 		request.put("student", stu);
@@ -53,6 +58,7 @@ public class ActivityApplyAction extends ActionSupport implements RequestAware {
 
 	/**
 	 * 添加链接
+	 * 
 	 * @return
 	 * @throws Exception
 	 */
@@ -62,6 +68,7 @@ public class ActivityApplyAction extends ActionSupport implements RequestAware {
 
 	/**
 	 * 添加
+	 * 
 	 * @return
 	 * @throws Exception
 	 */
@@ -74,19 +81,48 @@ public class ActivityApplyAction extends ActionSupport implements RequestAware {
 				activityApply.setReason(reason[i].trim());
 				activityApply.setStudent(stu);
 				activityApply.setPass(0);
+				activityApply.setType(type[i].trim());
 				activityApplyService.addActivityApply(activityApply);
 			}
 		}
 		return "liststuAction";
 	}
-	
+
 	/**
 	 * 删除
+	 * 
 	 * @return
 	 * @throws Exception
 	 */
 	public String del() throws Exception {
 		activityApplyService.delActivityApplyByID(aid);
+		return "liststuAction";
+	}
+
+	/**
+	 * 批量操作
+	 * 
+	 * @return
+	 * @throws Exception
+	 */
+	public String batch() throws Exception {
+		
+		if (aids != null && aids.length > 0) {
+			for (int i = 0; i < aids.length; i++) {
+				switch (cmd) {
+				case 1:
+					activityApplyService.setActivityApplyPass(aids[i], 1);
+					break;
+				case 2:
+					activityApplyService.setActivityApplyPass(aids[i], 2);
+					break;
+				case 3:
+					activityApplyService.delActivityApplyByID(aids[i]);
+					break;
+				}
+			}
+		}
+		System.out.println(sno);
 		return "liststuAction";
 	}
 
@@ -137,5 +173,29 @@ public class ActivityApplyAction extends ActionSupport implements RequestAware {
 
 	public void setAid(int aid) {
 		this.aid = aid;
+	}
+
+	public void setAids(int[] aids) {
+		this.aids = aids;
+	}
+
+	public int[] getAids() {
+		return aids;
+	}
+
+	public int getCmd() {
+		return cmd;
+	}
+
+	public void setCmd(int cmd) {
+		this.cmd = cmd;
+	}
+
+	public String[] getType() {
+		return type;
+	}
+
+	public void setType(String[] type) {
+		this.type = type;
 	}
 }

@@ -7,34 +7,33 @@
 </head>
 <body>
 <div id="container">
-  <div id="c_top">top</div>
-  <div id="c_middle">
-    <div id="m_logo">logo</div>
-    <div id="m_login">
-      <div id="l_input">
-        <form action="login.action" method="post">
-          <span>帐号：</span>
+  <div id="m_login">
+    <form action="login.action" method="post">
+      <p>
+        <label>帐号：
           <input type="text" name="username" value="0707501101" />
-          <br/>
-          <span>密码：</span>
+        </label>
+      </p>
+      <p>
+        <label>密码：
           <input type="text" name="password"  value="0707501101" />
-          <br/>
-          <span>身份：</span>
+        </label>
+      </p>
+      <p>
+        <label>身份：
           <select name="userType">
             <option value="0">学生</option>
             <option value="1">辅导员</option>
             <option value="2">管理员</option>
           </select>
-          <br/>
-          <div id="i_button">
-            <button type="submit">登陆</button>
-            <button type="reset">重置</button>
-          </div>
-        </form>
+        </label>
+      </p>
+      <div id="i_button">
+        <button type="submit" id="login_btn">登陆</button>
+        <button type="reset">重置</button>
       </div>
-    </div>
+    </form>
   </div>
-  <div id="c_bottom">bottom</div>
 </div>
 </body>
 </html>

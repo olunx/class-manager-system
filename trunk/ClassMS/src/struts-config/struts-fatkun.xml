@@ -22,13 +22,13 @@
 			<result name="success">/WEB-INF/model/notice/noticeDetail.jsp</result>
 		</action>
 	</package>
-	
+
 	<package name="post" extends="struts-default" namespace="/notice">
 		<global-results>
 			<result name="detail" type="redirectAction">detail?id=${id}</result>
 		</global-results>
 		<action name="addPost" class="cn.gdpu.action.PostAction" method="addPost">
-			<result name="input" >/WEB-INF/model/notice/noticeDetail.jsp</result>
+			<result name="input">/WEB-INF/model/notice/noticeDetail.jsp</result>
 		</action>
 		<action name="delPost" class="cn.gdpu.action.PostAction" method="delPost"></action>
 		<action name="modifyPost" class="cn.gdpu.action.PostAction" method="modifyPost">
@@ -38,18 +38,24 @@
 			<result name="input">/WEB-INF/model/notice/postInput.jsp</result>
 		</action>
 	</package>
-	
+
 	<package name="activity" extends="struts-default" namespace="/activity">
-	<global-results>
-		<result name="input">/WEB-INF/model/activity/activityApplyInput.jsp</result>
-		<result name="liststuAction" type="redirectAction">listStu?sno=${sno}</result>
-	</global-results>
+		<global-results>
+			<result name="input">/WEB-INF/model/activity/activityApplyInput.jsp</result>
+			<result name="liststuAction" type="redirect">listStu?sno=${sno}</result>
+		</global-results>
 		<action name="*" class="cn.gdpu.action.ActivityApplyAction" method="{1}">
 			<result name="list">/WEB-INF/model/activity/activityApply.jsp</result>
 			<result name="liststu">/WEB-INF/model/activity/activityApplyView.jsp</result>
 			<result name="success">/WEB-INF/model/activity/activityApply.jsp</result>
 		</action>
 	</package>
-	
+
+	<package name="install" extends="struts-default" namespace="/">
+		<action name="install" class="cn.gdpu.action.InstallAction">
+			<result name="success">/WEB-INF/model/install/install.jsp</result>
+		</action>
+	</package>
+
 
 </struts>    

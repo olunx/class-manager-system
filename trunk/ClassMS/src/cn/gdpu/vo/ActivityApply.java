@@ -5,7 +5,9 @@ public class ActivityApply {
 	private Student student;
 	private double mark;
 	private String reason;
-	public int pass;//0：默认值(未审核),1:通过,2不通过
+	private int pass;//0：默认值(未审核),1:通过,2不通过
+	private String type;
+	
 	public Student getStudent() {
 		return student;
 	}
@@ -43,6 +45,12 @@ public class ActivityApply {
 	@Override
 	public String toString() {
 		return "ActivityApply [aid=" + aid + ", mark=" + mark + ", pass=" + pass + ", reason=" + reason + ", student=" + student + "]";
+	}
+	public String getType() {
+		return type;
+	}
+	public void setType(String type) {
+		this.type = type;
 	}
 
 }

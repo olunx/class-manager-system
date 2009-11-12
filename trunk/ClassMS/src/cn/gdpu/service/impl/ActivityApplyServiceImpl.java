@@ -41,4 +41,10 @@ public class ActivityApplyServiceImpl implements ActivityApplyService {
 		this.activityApplyDao = activityApplyDao;
 	}
 
+	public void setActivityApplyPass(int aid,int pass) {
+		ActivityApply activityApply = activityApplyDao.queryActivityApply(aid);
+		activityApply.setPass(pass);
+		activityApplyDao.updateActivityApply(activityApply);
+	}
+
 }

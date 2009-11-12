@@ -43,4 +43,10 @@ public interface ActivityApplyService {
 	 * @return
 	 */
 	public abstract Set<ActivityApply> getActivityApplysByStuID(int sid);
+	
+	/**
+	 * 设置申请的状态
+	 * @param pass
+	 */
+	public abstract void setActivityApplyPass(int aid,int pass);
 }

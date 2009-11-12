@@ -1,56 +1,34 @@
 @charset "utf-8";
 /* CSS Document */
-
+*{ margin:0; padding:0;}
 body{
-	background:#333;
+	background:#152652 url(login_bg.png) repeat-x;
+	font-size:12px; color:#adc2d2;
 }
 
 #container{
-	background-color:#000;
-	width:550px;
-	height:400px;
+	background:url(login_bg2.png) no-repeat;
+	width:1003px;
+	height:613px;
 	margin:0 auto;
-	margin-top:100px;
-}
-
-#c_top {
-	margin-top:0;
-	height:40px;
-	background:#999;
-}
-#c_bottom{
-	margin-bottom:0;
-	height:40px;
-	background:#999;
-}
-
-#c_middle{
-	height:320px;
-}
-#m_logo{
-	width:300px;
-	height:180px;
-	margin:0 auto;
-	background:#F00;
+	position:relative;
 }
 
 #m_login{
-	width:300px;
-	height:140px;
-	background:#00F;
-	float:right;
+	position:absolute;
+	top:325px;
+	left:470px;
+	width:180px;
+	padding:5px;
 }
-#l_input{
-	height:110px;
-	margin:15px;
-}
-#l_input span{
-	margin-right:5px;
-}
+#m_login input{ border: solid 1px #153966; background:#87adbf; width:120px; padding:2px;}
+#m_login p{padding-bottom:2px;}
+
+
 #i_button{
-	width:130px;
+	width:150px;
 	height:30px;
 	margin:0 auto;
-	margin-top:10px;
 }
-
+#i_button button{ background:url(login_btn.png) no-repeat; width:57px; height:20px; border:0; padding:0; color:#adc2d2;}
+#login_btn{ margin-right:27px;}

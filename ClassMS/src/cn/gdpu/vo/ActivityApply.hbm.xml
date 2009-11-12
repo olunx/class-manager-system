@@ -14,5 +14,6 @@
 		<property name="mark" />
 		<property name="reason" />
 		<property name="pass" />
+		<property name="type" />
 	</class>
 </hibernate-mapping>

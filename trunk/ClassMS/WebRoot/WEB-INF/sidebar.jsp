@@ -9,7 +9,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>Insert title here</title>
-<link href="../content/images/main.css" rel="stylesheet" type="text/css" />
+<link href="content/images/main.css" rel="stylesheet" type="text/css" />
 <base target="content"></base>
 </head>
 <body id="sidebar_body">

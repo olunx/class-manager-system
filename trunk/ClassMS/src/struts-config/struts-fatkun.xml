@@ -56,6 +56,11 @@
 			<result name="success">/WEB-INF/model/install/install.jsp</result>
 		</action>
 	</package>
-
+	
+	<package name="jump" extends="struts-default" namespace="/">
+		<action name="jump" class="cn.gdpu.action.JumpAction">
+			<result name="success">/WEB-INF/${url}</result>
+		</action>
+	</package>
 
 </struts>    

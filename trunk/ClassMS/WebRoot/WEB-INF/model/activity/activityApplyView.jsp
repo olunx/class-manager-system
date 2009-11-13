@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8" ?>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -6,10 +5,11 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 		<title>班务系统</title>
+		<link href="../content/images/content.css" rel="stylesheet" type="text/css" />
 	</head>
 	<body>
-		<h2>
-			${student.realName }
+		<h2 class="caption">
+			活动加分申请情况  - ${student.realName }
 		</h2>
 		
 			<c:choose>
@@ -18,7 +18,7 @@
 				</c:when>
 				<c:otherwise>
 					<form action="batch?sno=${sno}" method="post">
-					<table>
+					<table class="table">
 					<tr><th></th><th>类型</th><th>分数</th><th>加分原因</th><th>状态</th><th>删除</th></tr>
 					<c:forEach items="${activityApplys}" var="activity">
 						<tr>

@@ -1,6 +1,6 @@
-@charset "utf-8";
+﻿@charset "utf-8";
 *{ margin:0; padding:0;}
-body{ background:url(right_bg.png) right repeat-y; padding:3px 11px 3px 3px;}
+body{ padding:3px;}
 
 .caption { background:#353c44; font-size:14px; color:#FFF; padding:5px; margin-bottom:3px;}
 

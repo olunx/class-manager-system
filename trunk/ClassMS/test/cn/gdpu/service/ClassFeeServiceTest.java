@@ -1,6 +1,7 @@
 package cn.gdpu.service;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.junit.BeforeClass;
@@ -36,8 +37,8 @@ public class ClassFeeServiceTest {
 		ClassFee classFee = new ClassFee();
 		classFee.setCmaker(cmaker);
 		classFee.setEvent("收班费");
-		classFee.setFee(200);
-		classFee.setTime("");
+		classFee.setFee(200);		
+		classFee.setTime(new Date());
 		classFeeService.add(classFee);
 		System.out.println("-----insertClassFee-----");
 	}
@@ -82,7 +83,7 @@ public class ClassFeeServiceTest {
 		classFee.setEvent("买水");
 		classFee.setFee(50);
 		classFee.setCmaker(null);
-		classFee.setTime("");
+		classFee.setTime(new Date());
 		try {
 			classFeeService.update(classFee);
 			System.out.println("-------------修改成功----------------");

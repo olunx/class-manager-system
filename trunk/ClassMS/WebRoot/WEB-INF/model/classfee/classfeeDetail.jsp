@@ -13,20 +13,20 @@
 		<title>班费系统</title>
 	</head>
 	<body>
-		<div> <a href="<%=path %>/classfee/queryAllclassFee">返回列表</a> </div>
+		<div> <a href="<%=path %>/classfee/listclassFee">返回列表</a> </div>
 		<div>
-			<ol>
+			<ul>
 				<li>班费串号：${classFee.fid }</li>
 				<li>班费事件：${classFee.event }</li>
 				<li>费用：${classFee.fee }</li>
 				<li>备注：${classFee.remarks }</li>
 				<li>经手人：${classFee.cmaker.realName }</li>
 				<li>创建时间：${classFee.time }</li>
-			</ol>
+			</ul>
 		</div>
 		<div>
-			<a href="<%=path %>/modifyLinkclassFee.action?fid=${classFee.fid }">修改</a>						
-			<a href="<%=path %>/deleteclassFee.action?fid=${classFee.fid }">删除</a>
+			<a href="<%=path %>/classfee/modifyLinkclassFee.action?fid=${classFee.fid }">修改</a>						
+			<a href="<%=path %>/classfee/deleteclassFee.action?fid=${classFee.fid }">删除</a>
 		</div>
 	</body>
 </html>

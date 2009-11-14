@@ -41,9 +41,9 @@ public class ClassFeeAction extends ActionSupport implements RequestAware,Sessio
 			System.out.println(Double.parseDouble(fee));
 			classFee.setFee(Double.parseDouble(fee));
 			classFee.setCmaker(cmaker );
-			String date = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
+			Date date = new Date();
 			classFee.setTime(date);
-			String remarks = date + "：" + cmaker.getRealName() + "，创建班费记录；";
+			String remarks = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(date) + "：" + cmaker.getRealName() + "，创建班费记录；";
 			classFee.setRemarks(remarks);
 			classFeeService.add(classFee);
 			System.out.println("-----------添加班费记录成功-----------");
@@ -122,7 +122,7 @@ public class ClassFeeAction extends ActionSupport implements RequestAware,Sessio
 	
 	//CRUD queryAll() 查询全部班费记录
 	@SuppressWarnings("unchecked")
-	public String queryAll() throws Exception{
+	public String list() throws Exception{
 		try {
 			List<ClassFee> classFees = new ArrayList<ClassFee>();
 			classFees = classFeeService.getAllClassFees();

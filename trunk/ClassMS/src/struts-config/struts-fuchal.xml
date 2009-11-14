@@ -4,7 +4,7 @@
 	"http://struts.apache.org/dtds/struts-2.1.dtd" >
 <struts>
 
-	<package name="classfee" extends="struts-default" >
+	<package name="classfee" extends="struts-default" namespace="/classfee">
 		<action name="*classFee" class="cn.gdpu.action.ClassFeeAction" method="{1}">
 			<result name="success">/WEB-INF/model/classfee/classfeeSuc.jsp?value={1}</result>
 			<result name="queryall">/WEB-INF/model/classfee/classfee.jsp</result>
@@ -19,18 +19,20 @@
 		
 	</package>
 
-	<package name="vote" extends="struts-default" >
+	<package name="vote" extends="struts-default" namespace="/vote">
 		<action name="*vote" class="cn.gdpu.action.VoteAction" method="{1}">
-			<result name="success" >/voteSuc.jsp?value={1}</result>
+			<result name="success" >/WEB-INF/model/vote/voteSuc.jsp?value={1}</result>
+			<result name="list">/WEB-INF/model/vote/vote.jsp</result>
+			<result name="query">/WEB-INF/model/vote/voteDetail.jsp</result>
+			<result name="modifylink">/WEB-INF/model/vote/voteModify.jsp</result>
+			<result name="votinglink">/WEB-INF/model/vote/voteLink.jsp</result>
+			<result name="voterexist">/WEB-INF/model/vote/voteErr.jsp?error=voterExist </result>
 		</action>
-	</package>
-	
-	<package name="kissy" extends="struts-default" >
-		<action name="kissyUpload" class="cn.gdpu.action.KissyUploadAction" >
-			<param name="savePath">/content/images</param>
-			<result name="success">/content/kissy/kissyRes.jsp?status=0</result>
-			<result name="error">/content/kissy/kissyRes.jsp?status=1</result>
+		
+		<action name="addLink">
+			<result>/WEB-INF/model/vote/voteAdd.jsp</result>
 		</action>
+
 	</package>
 	
 </struts>    

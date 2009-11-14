@@ -10,7 +10,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-		<title>班费系统</title>
+		<title>投票管理</title>
+		
 		<!-- 1. 页头引入 editor css -->
 		<link rel="stylesheet" href="<%=path %>/content/kissy/themes/default/editor-min.css" type="text/css"/>
 		<style type="text/css">
@@ -39,18 +40,25 @@
 		</style>
 	</head>
 	<body>
-		<div> <a href="<%=path %>/classfee/listclassFee">返回列表</a> </div>
-		<div><h1>修改班费记录</h1> </div>
+		<div> <a href="<%=path %>/vote/listvote">返回列表</a> </div>
+		<div><h1>新建投票</h1> </div>
 		<div>
-			<form action="<%=path %>/classfee/modifyclassFee" method="post">
-				班费串号：<input type="text" name="classFee.fid" value="${classFee.fid}" readonly="readonly"/> <br />
-				班费事件：<textarea name="classFee.event" id="demo" rows="50" cols="152" style="width: 900px; height: 295px">${classFee.event }</textarea> <br />
-				班费费用：<input type="text" name="fee" value="${classFee.fee }" /> <br />
-				备注：${classFee.remarks} <br />
-				          <input type="submit" value="提交" />
-				          <input type="reset" value="重置"/>
+			<form action="<%=path %>/vote/addvote.action" method="post">
+			投票主题：<input type="text" name="vote.title" /> <br />
+			描述内容：<textarea name="vote.summary" id="demo" rows="50" cols="152" style="width: 900px; height: 295px"></textarea>	<br />	
+			投票方式：<input type="radio" name="vote.type" value="0" checked="checked"/>单选
+						<input type="radio" name="vote.type" value="radio" />多选 <br />    	
+				选项1：<input type="text" name="content" /> <br />
+				选项2：<input type="text" name="content" /> <br />
+				选项3：<input type="text" name="content" /> <br />
+				选项4：<input type="text" name="content" /> <br />
+													
+			结束时间：<input type="text" name="time"/> <br />
+					 <input type="submit" value="发布投票"/>
 			</form>
+
 		</div>
+		
 		<!-- 2. 页尾引入 editor js and init code -->
 		<script type="text/javascript" src="<%=path %>/content/kissy/editor-aio.js"></script>
 		<script type="text/javascript">

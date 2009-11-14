@@ -3,9 +3,11 @@ package cn.gdpu.action;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.interceptor.RequestAware;
 
 import cn.gdpu.service.StudentService;
+import cn.gdpu.util.excel.StudentExcel;
 import cn.gdpu.vo.Duty;
 import cn.gdpu.vo.Student;
 
@@ -30,9 +32,46 @@ public class StudentAction extends ActionSupport implements RequestAware {
 	private long qq;
 	private String mail;
 
+	private String fileName;
 	private StudentService studentService;
 
 	private Map<String, Object> request;
+	
+	//添加一个学生信息
+	public String add() {
+		
+		Student s = new Student();
+		s.setAvatar(avatar);
+		s.setUsername(username);
+		s.setPassword(password);
+		s.setSno(sno);
+		s.setRealName(realName);
+		s.setDorm(dorm);
+		s.setPhoneNo(phoneNo);
+		s.setQq(qq);
+		s.setMail(mail);
+		
+		studentService.add(s);
+		return "index";
+	}
+	
+	public String addMany() {
+		
+		if (fileName == null) {
+			return "error";
+		}
+
+		String filePath = ServletActionContext.getServletContext().getRealPath("/upload") + "/" + fileName;
+		List<Student> students = StudentExcel.getStudentRegExcel().getRegData(filePath);
+
+		int resultLength = students.size();
+
+		for (int i = 0; i < resultLength; i++) {
+			studentService.add(students.get(i));
+		}
+
+		return "index";
+	}
 
 	// 获取一条考勤信息，用于修改
 	public String get() {
@@ -147,14 +186,6 @@ public class StudentAction extends ActionSupport implements RequestAware {
 		this.dorm = dorm;
 	}
 
-	public Duty getDuty() {
-		return duty;
-	}
-
-	public void setDuty(Duty duty) {
-		this.duty = duty;
-	}
-
 	public long getPhoneNo() {
 		return phoneNo;
 	}
@@ -199,5 +230,12 @@ public class StudentAction extends ActionSupport implements RequestAware {
 		return serialVersionUID;
 	}
 
+	public String getFileName() {
+		return fileName;
+	}
+
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
+	}
 
 }

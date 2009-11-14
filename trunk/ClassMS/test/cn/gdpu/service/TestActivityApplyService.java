@@ -28,7 +28,7 @@ public class TestActivityApplyService {
 	@Test
 	public void addActivityApply() {
 		ActivityApply activityApply = new ActivityApply();
-		activityApply.setStudent(studentService.getStudent(""));
+		activityApply.setStudent(studentService.getStudentBySno(""));
 		activityApply.setMark(0.2);
 		activityApply.setReason("加分原因OxxxOXX");
 		activityApply.setPass(0);

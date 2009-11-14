@@ -38,7 +38,7 @@ public class VoteServiceTest {
 	//测试新建投票
 	@Test
 	public void insertVote(){
-		Student author = studentService.getStudent("");
+		Student author = studentService.getStudentBySno("");
 		Vote vote = new Vote();
 		HashSet<VoteItem> items = new HashSet<VoteItem>();
 		Calendar cal = Calendar.getInstance();
@@ -81,7 +81,7 @@ public class VoteServiceTest {
 		vote.setItems(items);		
 		
 		HashSet<Student> voters = new HashSet<Student>();
-		Student voter = studentService.getStudent("");
+		Student voter = studentService.getStudentBySno("");
 		voters.add(voter);
 		vote.setVoters(voters);
 		

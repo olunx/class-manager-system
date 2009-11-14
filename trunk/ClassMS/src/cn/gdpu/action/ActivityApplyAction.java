@@ -44,7 +44,7 @@ public class ActivityApplyAction extends ActionSupport implements RequestAware {
 	 * @throws Exception
 	 */
 	public String listStu() throws Exception {
-		Student stu = studentService.getStudent(sno);
+		Student stu = studentService.getStudentBySno(sno);
 		Set<ActivityApply> activityApplys = new HashSet<ActivityApply>();
 		if (stu != null) {
 			activityApplys = stu.getActivityApplys();
@@ -73,7 +73,7 @@ public class ActivityApplyAction extends ActionSupport implements RequestAware {
 	 * @throws Exception
 	 */
 	public String add() throws Exception {
-		Student stu = studentService.getStudent(sno);
+		Student stu = studentService.getStudentBySno(sno);
 		for (int i = 0; i < reason.length; i++) {
 			if (!reason[i].trim().equals("") && !mark[i].trim().equals("")) {
 				ActivityApply activityApply = new ActivityApply();

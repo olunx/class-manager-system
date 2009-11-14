@@ -6,9 +6,11 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 		<title>班务系统</title>
 		<link href="../content/images/content.css" rel="stylesheet" type="text/css" />
+        <script language="javascript" type="text/javascript" src="../content/js/jquery.min.js"></script>
+		<script language="javascript" type="text/javascript" src="../content/js/common.js"></script>
 	</head>
 	<body>
-		<h2 class="caption">
+		<h2 class="caption"><div class="float_right"><a class="btn btn_add" href="#">添加</a></div>
 			活动加分申请情况  - ${student.realName }
 		</h2>
 		
@@ -17,7 +19,7 @@
 							暂时没有信息
 				</c:when>
 				<c:otherwise>
-					<form action="batch?sno=${sno}" method="post">
+					<form name="form1" action="batch?sno=${sno}" method="post">
 					<table class="table">
 					<tr><th></th><th>类型</th><th>分数</th><th>加分原因</th><th>状态</th><th>删除</th></tr>
 					<c:forEach items="${activityApplys}" var="activity">

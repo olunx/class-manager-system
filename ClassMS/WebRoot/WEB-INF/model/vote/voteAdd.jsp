@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8" ?>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
@@ -11,33 +10,12 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 		<title>投票管理</title>
-		
+		<link href="../content/images/content.css" rel="stylesheet" type="text/css" />
+        <script language="javascript" type="text/javascript" src="../content/js/jquery.min.js"></script>
+		<script language="javascript" type="text/javascript" src="../content/js/common.js"></script>
 		<!-- 1. 页头引入 editor css -->
 		<link rel="stylesheet" href="<%=path %>/content/kissy/themes/default/editor-min.css" type="text/css"/>
-		<style type="text/css">
-		    #demo-page {
-		        padding: 50px 20px;
-		        width: 1080px;
-		        margin: 0 auto;
-		        line-height: 18px;
-		    }
-		    #demo-page h1,
-		    #demo-page h2,
-		    #demo-page h3 {
-		        margin: 1em 0 0.3em;
-		    }
-		    #demo-page .section ol {
-		        margin: 5px 20px;
-		    }
-		    #demo-page .section ol li {
-		        list-style: decimal inside;
-		        margin: 5px 0;
-		    }
-		    #demo-page #submit-btn {
-		        padding: 4px 20px;
-		        margin: 10px 5px;
-		    }
-		</style>
+
 	</head>
 	<body>
 		<div> <a href="<%=path %>/vote/listvote">返回列表</a> </div>
@@ -47,12 +25,14 @@
 			投票主题：<input type="text" name="vote.title" /> <br />
 			描述内容：<textarea name="vote.summary" id="demo" rows="50" cols="152" style="width: 900px; height: 295px"></textarea>	<br />	
 			投票方式：<input type="radio" name="vote.type" value="0" checked="checked"/>单选
-						<input type="radio" name="vote.type" value="radio" />多选 <br />    	
-				选项1：<input type="text" name="content" /> <br />
-				选项2：<input type="text" name="content" /> <br />
-				选项3：<input type="text" name="content" /> <br />
-				选项4：<input type="text" name="content" /> <br />
-													
+						<input type="radio" name="vote.type" value="radio" />多选 <br />
+			<div id="voteitem">
+				<div>选项：<input type="text" name="content" /> <a href="#" class="btn_del" onclick="return delVote(this)">删除</a></div>
+				<div>选项：<input type="text" name="content" /> <a href="#" class="btn_del" onclick="return delVote(this)">删除</a></div>
+				<div>选项：<input type="text" name="content" /> <a href="#" class="btn_del" onclick="return delVote(this)">删除</a></div>
+			</div>
+			<a href="#" class="btn_add" onclick="return addNewVote('voteitem');">再添加三项</a>
+			<br/>
 			结束时间：<input type="text" name="time"/> <br />
 					 <input type="submit" value="发布投票"/>
 			</form>

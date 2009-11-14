@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="/struts-tags" prefix="s" %>
 
 <%
 	String path = request.getContextPath();
@@ -40,11 +41,13 @@
 	</head>
 	<body>
 		<div> <a href="<%=path %>/classfee/listclassFee">返回列表</a> </div>
-		<div><h1>新建班费记录</h1> </div>
 		<div>
-			<form action="<%=path %>/classfee/addclassFee" method="post">
-				班费事件：<textarea name="classFee.event" id="demo" rows="50" cols="152" style="width: 900px; height: 295px"></textarea>	<br />
-				班费费用：<input type="text" name="fee" /> <br />
+			<form action="<%=path %>/classfee/saveclassFee" method="post">
+				<input name="fid" type="hidden" value="${classFee.fid }" />
+				班费事件：<s:fielderror><s:param>classFee.event</s:param></s:fielderror>
+						 <textarea name="classFee.event" id="demo" rows="50" cols="152" style="width: 900px; height: 295px">${classFee.event }</textarea>	<br />
+				班费费用：<s:fielderror><s:param>fee</s:param></s:fielderror>
+						  <input type="text" name="fee" value="${classFee.fee }"/> <br />
 				          <input type="submit" value="提交" />
 				          <input type="reset" value="重置"/>
 			</form>

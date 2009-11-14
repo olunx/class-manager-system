@@ -3,5 +3,20 @@
           "-//OpenSymphony Group//XWork Validator 1.0//EN" 
           "http://www.opensymphony.com/xwork/xwork-validator-1.0.dtd" >
 <validators>
-	
+	<field name="classFee.event">
+		<field-validator type="requiredstring">
+			<param name="trim">true</param>
+			<message>内容必须填写</message>
+		</field-validator>
+	</field>
+	<field name="fee">
+		<field-validator type="requiredstring">
+			<param name="trim">true</param>
+			<message>班费不能为空</message>
+		</field-validator>
+		<field-validator type="regex">
+			<param name="expression">^\-?([1-9]\d*|0)(\.\d*)?$</param>
+			<message>班费只能为实数</message>
+		</field-validator>
+	</field>
 </validators>

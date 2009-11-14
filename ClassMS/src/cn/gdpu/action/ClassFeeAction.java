@@ -34,9 +34,15 @@ public class ClassFeeAction extends ActionSupport implements RequestAware,Sessio
 	String fid;
 	
 
-	//CRUD add() 添加班费记录
-	public String add() throws Exception{
-		try {
+	/**
+	 * 保存班费记录
+	 * 
+	 * @return
+	 * @throws Exception
+	 */	
+	@SuppressWarnings("unchecked")
+	public String save() throws Exception{
+		if(fid == null || fid.trim().equals("")){                    //新建班费
 			Student cmaker = (Student) session.get("student");
 			System.out.println(Double.parseDouble(fee));
 			classFee.setFee(Double.parseDouble(fee));
@@ -46,26 +52,32 @@ public class ClassFeeAction extends ActionSupport implements RequestAware,Sessio
 			String remarks = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(date) + "：" + cmaker.getRealName() + "，创建班费记录；";
 			classFee.setRemarks(remarks);
 			classFeeService.add(classFee);
-			System.out.println("-----------添加班费记录成功-----------");
-			return SUCCESS;
-		} catch (RuntimeException e) {
-			System.out.println("-----------添加班费记录失败-----------");
-			e.printStackTrace();
+			return "addsuc";
 		}
-		return ERROR;
+		else {															//修改班费
+			ClassFee classFee1 = classFeeService.getClassFee(fid) ;
+			classFee1.setEvent(classFee.getEvent());
+			classFee1.setFee(Double.parseDouble(fee));
+			String remarks = classFee1.getRemarks() +new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()) + "：" + classFee1.getCmaker().getRealName() + "，修改了班费记录；";
+			classFee1.setRemarks(remarks);
+			classFeeService.update(classFee1);
+			request.put("classFee", classFee1);
+			return "modifysuc";					
+		} 
+		
 	}
 	
-	//CRUD delete() 删除班费记录
-	public String delete() throws Exception{
-		try {
-			classFeeService.delete(fid);
-			System.out.println("-------删除班费记录" + fid + "--------");
-			return SUCCESS;
-		} catch (Exception e) {
-			System.out.println("-------删除班费记录失败--------");
-			e.printStackTrace();
-		}
-		return ERROR;
+	
+	/**
+	 * 删除班费记录
+	 * 
+	 * @return
+	 * @throws Exception
+	 */	
+	@SkipValidation
+	public String delete() throws Exception{	
+		classFeeService.delete(fid);
+		return SUCCESS;
 	}
 	
 	/**
@@ -74,68 +86,43 @@ public class ClassFeeAction extends ActionSupport implements RequestAware,Sessio
 	 * @return
 	 * @throws Exception
 	 */
-	@SuppressWarnings("unchecked")
 	@SkipValidation
+	@SuppressWarnings("unchecked")
 	public String modifyLink() throws Exception {
 		ClassFee classFee = classFeeService.getClassFee(fid);
 		request.put("classFee", classFee);
 		return "modifylink";
 	}
 	
-	//CRUD modify() 修改班费记录
-	public String modify() throws Exception{
-		ClassFee classFee1 = classFeeService.getClassFee(classFee.getFid()) ;
-		if(classFee1 != null){
-			try {
-				classFee1.setEvent(classFee.getEvent());
-				classFee1.setFee(Double.parseDouble(fee));
-				String remarks = classFee1.getRemarks() +new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()) + "：" + classFee1.getCmaker().getRealName() + "，修改了班费记录；";
-				classFee1.setRemarks(remarks);
-				classFeeService.update(classFee1);
-				System.out.println("-----------修改班费记录成功-----------");
-				return SUCCESS;
-			} catch (RuntimeException e) {
-				System.out.println("-----------修改班费记录失败-----------");
-				e.printStackTrace();
-			}
-			return ERROR;
-		}else {
-			System.out.println("-----------修改班费记录失败.找不到ID=" + classFee.getFid() + "-----------");
-			return ERROR;
-		}
+	/**
+	 * 按ID查询班费记录
+	 * 
+	 * @return
+	 * @throws Exception
+	 */	
+	@SkipValidation
+	@SuppressWarnings("unchecked")
+	public String query() throws Exception{		
+		classFee = classFeeService.getClassFee(fid);
+		request.put("classFee", classFee);
+		return "query";	
 	}
 	
-	//CRUD query() 按ID查询班费记录
+	/**
+	 * 列出所有班费
+	 * 
+	 * @return
+	 * @throws Exception
+	 */
+	@SkipValidation
 	@SuppressWarnings("unchecked")
-	public String query() throws Exception{
-		try {
-			classFee = classFeeService.getClassFee(fid);
-			request.put("req", classFee);
-			System.out.println("-------查询班费记录成功--------");
-			return "query";
-		} catch (Exception e) {
-			System.out.println("-------查询班费记录失败--------");
-			e.printStackTrace();
-		}
-		return ERROR;
-	}
-	
-	//CRUD queryAll() 查询全部班费记录
-	@SuppressWarnings("unchecked")
-	public String list() throws Exception{
-		try {
-			List<ClassFee> classFees = new ArrayList<ClassFee>();
-			classFees = classFeeService.getAllClassFees();
-			if (classFees.size() == 0)
-				classFees = null;
-			request.put("classFees", classFees);
-			System.out.println("-------查询全部班费记录成功--------");
-			return "queryall";
-		} catch (Exception e) {
-			System.out.println("-------查询全部班费记录失败--------");
-			e.printStackTrace();
-		}
-		return ERROR;
+	public String list() throws Exception{		
+		List<ClassFee> classFees = new ArrayList<ClassFee>();
+		classFees = classFeeService.getAllClassFees();
+		if (classFees.size() == 0)
+			classFees = null;
+		request.put("classFees", classFees);
+		return "queryall";	
 	}
 	
 	//getter,setter	

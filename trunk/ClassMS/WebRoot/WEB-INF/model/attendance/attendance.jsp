@@ -10,12 +10,13 @@
 <title>考勤</title>
 </head>
 <body>
-
+<h2 class="caption"><div class="float_right"><a class="btn btn_add" href="addLinkAttendance">添加</a></div>
 		<c:choose>
 			<c:when test="${attendances==null}">
-					没有发现考勤信息！
+			没有数据	</h2> 
 			</c:when>
 			<c:otherwise>
+			考勤管理	</h2> 
 			<form action="deleteManyAttendance" method="post">
 				<table class="table">
 					<tr>
@@ -27,6 +28,8 @@
 					<th>逃课人员</th>
 					<th>记录者</th>
 					<th>时间</th>
+					<th>修改</th>
+					<th>删除</th>
 					</tr>
 					
 					<c:forEach items="${attendances}" var="attendance">
@@ -39,8 +42,8 @@
 							<td><c:forEach items="${attendance.students}" var="s">${s.realName},</c:forEach></td>
 							<td>${attendance.clerk.realName}</td>
 							<td>${attendance.time}</td>
-							<td><a href="getAttendance?aid=${attendance.aid}">编辑</a>							</td>
-							<td><a href="deleteAttendance?aid=${attendance.aid}">删除</a>							</td>
+							<td><a href="getAttendance?aid=${attendance.aid}" class="btn_edit"></a></td>
+							<td><a href="deleteAttendance?aid=${attendance.aid}" class="btn_del"></a></td>
 						</tr>
 					</c:forEach>
 				</table>

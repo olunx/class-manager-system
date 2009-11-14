@@ -10,11 +10,13 @@
 <title>学生</title>
 </head>
 <body>
+<h2 class="caption"><div class="float_right"><a class="btn btn_add" href="addLinkStudent">添加</a></div>
 		<c:choose>
 			<c:when test="${students==null}">
-					没有发现学生信息！
+			没有数据	</h2> 
 			</c:when>
 			<c:otherwise>
+			学生管理</h2> 
 				<form action="deleteManyStudent" method="post">
 				<table class="table">
 					<tr>
@@ -30,6 +32,8 @@
 					<th>手机</th>
 					<th>QQ</th>
 					<th>邮箱</th>
+					<th>修改</th>
+					<th>删除</th>
 					</tr>
 					<c:forEach items="${students}" var="student">
 						<tr>
@@ -45,8 +49,8 @@
 							<td>${student.phoneNo}</td>
 							<td>${student.qq}</td>
 							<td>${student.mail}	</td>
-							<td><a href="getStudent?stuId=${student.stuId}">编辑</a>	</td>
-							<td><a href="deleteStudent?aId=${student.stuId}">删除</a></td>
+							<td><a href="getStudent?stuId=${student.stuId}" class="btn_edit"></a></td>
+							<td><a href="deleteStudent?aId=${student.stuId}" class="btn_del"></a></td>
 						</tr>
 					</c:forEach>
 				</table>

@@ -15,10 +15,20 @@ public class StudentDaoImpl extends HibernateDaoSupport implements StudentDao {
 		this.getHibernateTemplate().save(student);
 	}
 
+	@SuppressWarnings("unchecked")
 	public void delStudentBySno(String sno) {
-		this.getHibernateTemplate().delete((Student) this.getHibernateTemplate().find("from Student s where s.sno = '" + sno + "'").get(0));
+		Student stu = null;
+		List list = this.getHibernateTemplate().find("from Student s where s.sno='" + sno + "'");
+		if (list != null && list.size() > 0) {
+			stu = (Student) list.get(0);
+		}
+		this.getHibernateTemplate().delete(stu);
 	}
 
+	public void delStudentById(int stuId) {
+		this.getHibernateTemplate().delete(this.getHibernateTemplate().load(Student.class, stuId));
+	}
+	
 	@SuppressWarnings("unchecked")
 	public List<Student> queryAllStudents() {
 		return this.getHibernateTemplate().find("from Student");
@@ -56,4 +66,10 @@ public class StudentDaoImpl extends HibernateDaoSupport implements StudentDao {
 		}
 		return stu;
 	}
+
+	public Student queryStudentById(int stuId) {
+		return (Student) this.getHibernateTemplate().load(Student.class, stuId);
+	}
+
+
 }

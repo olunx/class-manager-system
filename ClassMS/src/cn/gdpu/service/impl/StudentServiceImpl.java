@@ -18,15 +18,19 @@ public class StudentServiceImpl implements StudentService {
 		studentDao.insertStudent(student);
 	}
 
-	public void delete(String sno) {
+	public void deleteBySno(String sno) {
 		studentDao.delStudentBySno(sno);
 	}
 
+	public void deleteById(int stuId) {
+		studentDao.delStudentById(stuId);
+	}
+	
 	public void update(Student student) {
 		studentDao.updateStudent(student);
 	}
 
-	public Student getStudent(String sno) {
+	public Student getStudentBySno(String sno) {
 		return studentDao.queryStudentBySno(sno);
 	}
 
@@ -61,6 +65,10 @@ public class StudentServiceImpl implements StudentService {
 		}
 		
 		return stus;
+	}
+
+	public Student getStudentById(int stuId) {
+		return studentDao.queryStudentById(stuId);
 	}
 
 

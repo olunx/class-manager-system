@@ -18,12 +18,24 @@ public interface StudentDao {
      */  
     public abstract void delStudentBySno(String sno);  
   
+    /**根据id删除学生信息 
+     * @param stuId
+     */
+    public abstract void delStudentById(int stuId);  
+    
     /** 
      * 更新学生信息 
      * @param student 
      */  
     public abstract void updateStudent(Student student);  
   
+    /**
+     * 根据id获取学生信息 
+     * @param stuId
+     * @return
+     */
+    public abstract Student queryStudentById(int stuId);
+    
     /** 
      * 根据学号获取学生信息 
      * @param studentId 

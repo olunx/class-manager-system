@@ -5,6 +5,10 @@ import java.util.Set;
 
 import cn.gdpu.vo.Student;
 
+/**
+ * @author olunx
+ *
+ */
 public interface StudentService {  
 	  
     /** 
@@ -17,19 +21,28 @@ public interface StudentService {
      * 根据学号删除学生信息 
      * @param studentId 
      */  
-    public abstract void delete(String sno);  
+    public abstract void deleteBySno(String sno);  
   
+    public abstract void deleteById(int stuId);  
+    
     /** 
      * 更新学生信息 
      * @param student 
      */  
     public abstract void update(Student student);  
   
+    /**
+     * 根据id获取学生信息 
+     * @param stuId
+     * @return
+     */
+    public abstract Student getStudentById(int stuId);  
+    
     /** 
      * 根据学号获取学生信息 
      * @param studentId 
      */  
-    public abstract Student getStudent(String sno);  
+    public abstract Student getStudentBySno(String sno);  
     
     public abstract Student getStudentByUsernameAndPassword(String username,String password);  
   

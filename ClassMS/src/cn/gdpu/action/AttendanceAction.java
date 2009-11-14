@@ -42,7 +42,7 @@ public class AttendanceAction extends ActionSupport implements RequestAware {
 		attendance.setDay(day);
 		attendance.setLesson(lesson);
 		attendance.setStudents(studentService.getStudentsBySnoString(students));
-		attendance.setClerk(studentService.getStudent(clerk));
+		attendance.setClerk(studentService.getStudentBySno(clerk));
 		attendance.setTime(new Date());
 		attendanceService.add(attendance);
 
@@ -80,7 +80,7 @@ public class AttendanceAction extends ActionSupport implements RequestAware {
 		attendance.setDay(day);
 		attendance.setLesson(lesson);
 		attendance.setStudents(studentService.getStudentsBySnoString(students));
-		attendance.setClerk(studentService.getStudent(clerk));
+		attendance.setClerk(studentService.getStudentBySno(clerk));
 		attendance.setTime(new Date());
 		attendanceService.update(attendance);
 		return "index";

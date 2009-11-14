@@ -33,7 +33,7 @@ public class ClassFeeServiceTest {
 	//测试添加班费开支
 	@Test
 	public void insertClassFee(){
-		Student cmaker = studentService.getStudent("");
+		Student cmaker = studentService.getStudentBySno("");
 		ClassFee classFee = new ClassFee();
 		classFee.setCmaker(cmaker);
 		classFee.setEvent("收班费");

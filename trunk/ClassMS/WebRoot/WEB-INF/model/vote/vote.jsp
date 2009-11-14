@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8" ?>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
@@ -11,6 +10,9 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 		<title>投票管理</title>
+		<link href="../content/images/content.css" rel="stylesheet" type="text/css" />
+        <script language="javascript" type="text/javascript" src="../content/js/jquery.min.js"></script>
+		<script language="javascript" type="text/javascript" src="../content/js/common.js"></script>
 	</head>
 	<body>
 	
@@ -20,15 +22,15 @@
 					还没有投票记录呢！<a href="<%=path %>/vote/addLink">新建投票？</a>
 			</c:when>
 			<c:otherwise>
-				<table>
+				<table class="table">
 					<tr>
-						<td>投票主题</td>
-						<td>投票描述</td>
-						<td>创建人</td>
-						<td>创建日期</td>
-						<td>结束日期</td>
-						<td>删除</td>
-						<td>投票</td>
+						<th>投票主题</th>
+						<th>投票描述</th>
+						<th>创建人</th>
+						<th>创建日期</th>
+						<th>结束日期</th>
+						<th>删除</th>
+						<th>投票</th>
 					</tr>
 					<c:forEach items="${votes }" var="vote">
 						<tr>

@@ -16,7 +16,9 @@ public interface LeaderDao {
 	 * 删除一个领导
 	 * @param leaderName
 	 */
-	public abstract void deleteLeaderByName(String leaderName);
+	public abstract void deleteLeaderByName(String realName);
+	
+	public abstract void deleteLeaderById(int leaderId);
 
 	/**
 	 * 更新一个领导
@@ -29,7 +31,9 @@ public interface LeaderDao {
 	 * @param leaderName
 	 * @return
 	 */
-	public abstract Leader queryLeaderByName(String leaderName);
+	public abstract Leader queryLeaderByName(String realName);
+	
+	public abstract Leader queryLeaderById(int leaderId);
 	
 	/**
 	 * 登录时使用

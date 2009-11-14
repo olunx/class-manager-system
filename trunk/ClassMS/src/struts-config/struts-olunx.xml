@@ -6,8 +6,6 @@
 
 	<package name="student" extends="struts-default" namespace="/student">
 		<global-results>
-			<result name="success" >/WEB-INF/model/student/student.jsp</result>
-			<result name="error">/WEB-INF/model/student/student.jsp</result>
 			<result name="addLink">/WEB-INF/model/student/studentAdd.jsp</result>
 			<result name="updateLink">/WEB-INF/model/student/studentUpdate.jsp</result>
 			<result name="index" type="redirectAction">listStudent</result>
@@ -24,10 +22,32 @@
 			<param name="savePath">/upload</param>
 		</action>
 	</package>
+
+	<package name="admin" extends="struts-default" namespace="/admin">
+		<global-results>
+			<result name="addLink">/WEB-INF/model/admin/adminAdd.jsp</result>
+			<result name="updateLink">/WEB-INF/model/admin/adminUpdate.jsp</result>
+			<result name="index" type="redirectAction">listAdmin</result>
+			<result name="input">/WEB-INF/model/admin/admin.jsp</result>
+		</global-results>
+		<action name="*Admin" class="cn.gdpu.action.AdminAction" method="{1}">
+		</action>
+	</package>
+
+	<package name="leader" extends="struts-default" namespace="/leader">
+		<global-results>
+			<result name="addLink">/WEB-INF/model/leader/leaderAdd.jsp</result>
+			<result name="updateLink">/WEB-INF/model/leader/leaderUpdate.jsp</result>
+			<result name="index" type="redirectAction">listLeader</result>
+			<result name="input">/WEB-INF/model/leader/leader.jsp</result>
+		</global-results>
+		<action name="*Leader" class="cn.gdpu.action.LeaderAction" method="{1}">
+		</action>
+	</package>
 	
 	<package name="attendancte" extends="struts-default" namespace="/attendance">
 		<global-results>
-			<result name="success" >/WEB-INF/model/attendance/attendance.jsp</result>
+			<result name="success">/WEB-INF/model/attendance/attendance.jsp</result>
 			<result name="error">/WEB-INF/model/attendance/attendance.jsp</result>
 			<result name="addLink">/WEB-INF/model/attendance/attendanceAdd.jsp</result>
 			<result name="updateLink">/WEB-INF/model/attendance/attendanceUpdate.jsp</result>

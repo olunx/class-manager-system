@@ -6,6 +6,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="../content/images/content.css" rel="stylesheet" type="text/css" /> 
 <title>学生</title>
 </head>
 <body>
@@ -14,51 +15,47 @@
 					没有发现学生信息！
 			</c:when>
 			<c:otherwise>
-				<table>
+				<form action="deleteManyStudent" method="post">
+				<table class="table">
+					<tr>
+					<th></th>
+					<th>ID</th>				
+					<th>学号</th>
+					<th>姓名</th>
+					<th>用户名</th>
+					<th>密码</th>
+					<th>头像</th>
+					<th>宿舍</th>
+					<th>职位</th>
+					<th>手机</th>
+					<th>QQ</th>
+					<th>邮箱</th>
+					</tr>
 					<c:forEach items="${students}" var="student">
 						<tr>
-							<td>
-								${student.stuId}
-							</td>
-							<td>
-								${student.avatar}
-							</td>
-							<td>
-								${student.username}
-							</td>
-							<td>
-								${student.password}
-							</td>
-							<td>
-								${student.sno}
-							</td>
-							<td>
-								${student.realName}
-							</td>
-							<td>
-								${student.dorm}
-							</td>
-							<td>
-								${duty}
-							</td>
-							<td>
-								${student.phoneNo}
-							</td>
-							<td>
-								${student.qq}
-							</td>
-							<td>
-								${student.mail}
-							</td>
-							<td>
-								<a href="getStudent?stuId=${student.stuId}">编辑</a>
-							</td>
-							<td>
-								<a href="deleteStudent?stuId=${student.stuId}">删除</a>
-							</td>
+							<td><input type="checkbox" name="stuIds" value="${student.stuId}" /></td>
+							<td>${student.stuId}</td>
+							<td>${student.sno}</td>
+							<td>${student.realName}</td>
+							<td>${student.username}</td>
+							<td>${student.password}</td>
+							<td>${student.avatar}</td>
+							<td>${student.dorm}</td>
+							<td>${duty}</td>
+							<td>${student.phoneNo}</td>
+							<td>${student.qq}</td>
+							<td>${student.mail}	</td>
+							<td><a href="getStudent?stuId=${student.stuId}">编辑</a>	</td>
+							<td><a href="deleteStudent?aId=${student.stuId}">删除</a></td>
 						</tr>
 					</c:forEach>
 				</table>
+					<select name="cmd"> 
+						<option value="0" selected="selected">批量操作，请选择</option> 
+						<option value="1">删除</option> 
+					</select> 
+					<input type="submit" value="确定" /> 
+				</form>
 			</c:otherwise>
 		</c:choose>
 </body>

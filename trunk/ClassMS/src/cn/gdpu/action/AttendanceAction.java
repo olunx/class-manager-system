@@ -29,6 +29,7 @@ public class AttendanceAction extends ActionSupport implements RequestAware {
 	private String clerk;// 接收传来的数据录入人员
 	private int aid = -1;// 接收传来的考勤信息ID号
 
+	private int[] aids;
 	private AttendanceService attendanceService;
 	private StudentService studentService;
 
@@ -92,11 +93,21 @@ public class AttendanceAction extends ActionSupport implements RequestAware {
 		return "index";
 	}
 
+	//批量删除
+	public String deleteMany() {
+		for(int i=0; i<aids.length; i++) {
+			attendanceService.delete(aids[i]);
+		}
+		return "index";
+	}
+	
 	// 列出考勤信息
 	public String list() {
 		List<Attendance> list = attendanceService.getAllAttendances();
 		if (list != null && list.size() > 0) {
+			
 			request.put("attendances", list);
+			
 			return SUCCESS;
 		}
 		return ERROR;
@@ -179,6 +190,14 @@ public class AttendanceAction extends ActionSupport implements RequestAware {
 
 	public void setRequest(Map<String, Object> request) {
 		this.request = request;
+	}
+
+	public int[] getAids() {
+		return aids;
+	}
+
+	public void setAids(int[] aids) {
+		this.aids = aids;
 	}
 
 }

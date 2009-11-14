@@ -1,28 +1,13 @@
 package cn.gdpu.vo;
 
 public class Leader {
-	
+
 	private int leaderId;
 	private String username;
 	private String password;
-	private String leaderName;
+	private String realName;
+	private String avatar;
 	private String remark;
-
-	public String getLeaderName() {
-		return leaderName;
-	}
-
-	public void setLeaderName(String leaderName) {
-		this.leaderName = leaderName;
-	}
-
-	public String getRemark() {
-		return remark;
-	}
-
-	public void setRemark(String remark) {
-		this.remark = remark;
-	}
 
 	public int getLeaderId() {
 		return leaderId;
@@ -46,6 +31,30 @@ public class Leader {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public String getRealName() {
+		return realName;
+	}
+
+	public void setRealName(String realName) {
+		this.realName = realName;
+	}
+
+	public String getRemark() {
+		return remark;
+	}
+
+	public void setRemark(String remark) {
+		this.remark = remark;
+	}
+
+	public String getAvatar() {
+		return avatar;
+	}
+
+	public void setAvatar(String avatar) {
+		this.avatar = avatar;
 	}
 
 }

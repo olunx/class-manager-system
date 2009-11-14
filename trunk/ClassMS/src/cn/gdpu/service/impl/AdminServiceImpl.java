@@ -22,7 +22,7 @@ public class AdminServiceImpl implements AdminService {
 		adminDao.insertAdmin(admin);
 	}
 
-	public void delete(int adminId) {
+	public void deleteById(int adminId) {
 		adminDao.deleteAdminById(adminId);
 	}
 
@@ -39,8 +39,11 @@ public class AdminServiceImpl implements AdminService {
 	}
 
 	public Admin getAdminByUsernameAndPassword(String username, String password) {
-		System.out.println("adminServiceImpl");
 		return adminDao.queryAdminByUsernameAndPassword(username, password);
+	}
+
+	public Admin getAdminById(int adminId) {
+		return adminDao.queryAdminById(adminId);
 	}
 
 }

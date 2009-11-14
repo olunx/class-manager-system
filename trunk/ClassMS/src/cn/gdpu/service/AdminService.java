@@ -18,7 +18,7 @@ public interface AdminService {
 	 * 
 	 * @param adminId
 	 */
-	public abstract void delete(int adminId);
+	public abstract void deleteById(int adminId);
 
 	/**
 	 * 更新一个管理员
@@ -26,7 +26,15 @@ public interface AdminService {
 	 * @param admin
 	 */
 	public abstract void update(Admin admin);
+	
 
+	/**
+	 * @param adminId
+	 * @return
+	 */
+	public abstract Admin getAdminById(int adminId);
+	
+	
 	/**
 	 * 获取一个管理员
 	 * 

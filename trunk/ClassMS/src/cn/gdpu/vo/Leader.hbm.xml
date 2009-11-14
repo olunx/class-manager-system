@@ -8,7 +8,8 @@
 		</id>
 		<property name="username" not-null="true"/>
 		<property name="password" not-null="true"/>
-		<property name="leaderName"/>
+		<property name="realName"/>
+		<property name="avatar" />
 		<property name="remark"/>
 	</class>
 </hibernate-mapping>

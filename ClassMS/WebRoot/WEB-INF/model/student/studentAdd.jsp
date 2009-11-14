@@ -6,10 +6,11 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-		<title>添加一个学生</title>
+		<link href="../content/images/content.css" rel="stylesheet" type="text/css" /> 
+		<title>添加学生</title>
 	</head>
 	<body>
-	<h1>添加一个学生</h1>
+	<h2 class="caption">添加学生</h2>
 		<form action="addStudent" method="post">
 avatar：<input type="text" name="avatar"  /> <br />
 username：<input type="text" name="username"  /> <br />

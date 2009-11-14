@@ -5,53 +5,53 @@ import java.util.Map;
 
 import org.apache.struts2.interceptor.RequestAware;
 
-import cn.gdpu.service.LeaderService;
-import cn.gdpu.vo.Leader;
+import cn.gdpu.service.AdminService;
+import cn.gdpu.vo.Admin;
 
 import com.opensymphony.xwork2.ActionSupport;
 
-public class LeaderAction extends ActionSupport implements RequestAware {
+public class AdminAction extends ActionSupport implements RequestAware {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 
-	private int leaderId = -1;
+	private int adminId = -1;
 	private String username;
 	private String password;
 	private String realName;
 	private String avatar;
 	private String remark;
 
-	private int[] leaderIds;
-	private LeaderService leaderService;
+	private int[] adminIds;
+	private AdminService adminService;
 
 	private Map<String, Object> request;
 
 	// 添加管理员
 	public String add() {
 
-		Leader l = new Leader();
-		l.setUsername(username);
-		l.setPassword(password);
-		l.setRealName(realName);
-		l.setAvatar(avatar);
-		l.setRemark(remark);
-		leaderService.add(l);
+		Admin a = new Admin();
+		a.setUsername(username);
+		a.setPassword(password);
+		a.setRealName(realName);
+		a.setAvatar(avatar);
+		a.setRemark(remark);
+		adminService.add(a);
 		
 		return "index";
 	}
 
 	// 获取管理员
 	public String get() {
-		if (leaderId < 0) {
+		if (adminId < 0) {
 			return "input";
 		}
 		
-		Leader l = leaderService.getLeaderById(leaderId);
+		Admin a = adminService.getAdminById(adminId);
 
-		request.put("leader", l);
+		request.put("admin", a);
 
 		return "updateLink";
 	}
@@ -59,36 +59,36 @@ public class LeaderAction extends ActionSupport implements RequestAware {
 	// 修改管理员
 	public String update() {
 		
-		Leader l = leaderService.getLeaderById(leaderId);
-		l.setUsername(username);
-		l.setPassword(password);
-		l.setRealName(realName);
-		l.setAvatar(avatar);
-		l.setRemark(remark);
-		leaderService.update(l);
+		Admin a = adminService.getAdminById(adminId);
+		a.setUsername(username);
+		a.setPassword(password);
+		a.setRealName(realName);
+		a.setAvatar(avatar);
+		a.setRemark(remark);
+		adminService.update(a);
 		
 		return "index";
 	}
 
 	// 删除管理员信息
 	public String delete() {
-		leaderService.deleteById(leaderId);
+		adminService.deleteById(adminId);
 		return "index";
 	}
 
 	//批量删除
 	public String deleteMany() {
-		for(int i=0; i<leaderIds.length; i++) {
-			leaderService.deleteById(leaderIds[i]);
+		for(int i=0; i<adminIds.length; i++) {
+			adminService.deleteById(adminIds[i]);
 		}
 		return "index";
 	}
 	
 	// 列出管理员信息
 	public String list() {
-		List<Leader> list = leaderService.getAllLeaders();
+		List<Admin> list = adminService.getAllAdmins();
 		if (list != null && list.size() > 0) {
-			request.put("leaders", list);
+			request.put("admins", list);
 		}
 		return "input";
 	}
@@ -100,12 +100,12 @@ public class LeaderAction extends ActionSupport implements RequestAware {
 
 	//生成get/set
 	
-	public int getLeaderId() {
-		return leaderId;
+	public int getAdminId() {
+		return adminId;
 	}
 
-	public void setLeaderId(int leaderId) {
-		this.leaderId = leaderId;
+	public void setAdminId(int adminId) {
+		this.adminId = adminId;
 	}
 
 	public String getUsername() {
@@ -148,20 +148,20 @@ public class LeaderAction extends ActionSupport implements RequestAware {
 		this.remark = remark;
 	}
 
-	public int[] getLeaderIds() {
-		return leaderIds;
+	public int[] getAdminIds() {
+		return adminIds;
 	}
 
-	public void setLeaderIds(int[] leaderIds) {
-		this.leaderIds = leaderIds;
+	public void setAdminIds(int[] adminIds) {
+		this.adminIds = adminIds;
 	}
 
-	public LeaderService getLeaderService() {
-		return leaderService;
+	public AdminService getAdminService() {
+		return adminService;
 	}
 
-	public void setLeaderService(LeaderService leaderService) {
-		this.leaderService = leaderService;
+	public void setAdminService(AdminService adminService) {
+		this.adminService = adminService;
 	}
 
 	public Map<String, Object> getRequest() {

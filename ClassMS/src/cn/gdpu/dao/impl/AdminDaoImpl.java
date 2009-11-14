@@ -21,6 +21,10 @@ public class AdminDaoImpl extends HibernateDaoSupport implements AdminDao {
 		this.getHibernateTemplate().update(admin);
 	}
 
+	public Admin queryAdminById(int adminId) {
+		return (Admin) this.getHibernateTemplate().load(Admin.class, adminId);
+	}
+	
 	@SuppressWarnings("unchecked")
 	public Admin queryAdminByName(String adminName) {
 		//return (Duty) this.getHibernateTemplate().get(Duty.class, dutyName);

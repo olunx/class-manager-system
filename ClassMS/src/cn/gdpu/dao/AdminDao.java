@@ -24,6 +24,13 @@ public interface AdminDao {
 	 */
 	public abstract void updateAdmin(Admin admin);
 	
+	
+	/**
+	 * @param id
+	 * @return
+	 */
+	public abstract Admin queryAdminById(int adminId);
+	
 	/**
 	 * 获取一个管理员
 	 * @param adminName

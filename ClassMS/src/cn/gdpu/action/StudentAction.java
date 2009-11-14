@@ -8,7 +8,6 @@ import org.apache.struts2.interceptor.RequestAware;
 
 import cn.gdpu.service.StudentService;
 import cn.gdpu.util.excel.StudentExcel;
-import cn.gdpu.vo.Duty;
 import cn.gdpu.vo.Student;
 
 import com.opensymphony.xwork2.ActionSupport;
@@ -27,11 +26,12 @@ public class StudentAction extends ActionSupport implements RequestAware {
 	private String sno;
 	private String realName;
 	private String dorm;
-	private Duty duty;
+	//private Duty duty;
 	private long phoneNo;
 	private long qq;
 	private String mail;
 
+	private int[] stuIds;
 	private String fileName;
 	private StudentService studentService;
 
@@ -58,7 +58,7 @@ public class StudentAction extends ActionSupport implements RequestAware {
 	public String addMany() {
 		
 		if (fileName == null) {
-			return "error";
+			return "input";
 		}
 
 		String filePath = ServletActionContext.getServletContext().getRealPath("/upload") + "/" + fileName;
@@ -76,12 +76,12 @@ public class StudentAction extends ActionSupport implements RequestAware {
 	// 获取一条考勤信息，用于修改
 	public String get() {
 		if (stuId < 0) {
-			return ERROR;
+			return "input";
 		}
 		System.out.println("stuId: " + stuId);
 		Student s = studentService.getStudentById(stuId);
 		if (s == null) {
-			return ERROR;
+			return "input";
 		}
 		
 		request.put("student", s);
@@ -112,15 +112,21 @@ public class StudentAction extends ActionSupport implements RequestAware {
 		studentService.deleteById(stuId);
 		return "index";
 	}
+	
+	public String deleteMany() {
+		for(int i=0;i<stuIds.length;i++) {
+			studentService.deleteById(stuIds[i]);
+		}
+		return "index";
+	}
 
 	// 列出所有学生
 	public String list() {
 		List<Student> list = studentService.getStudents();
 		if (list != null && list.size() > 0) {
 			request.put("students", list);
-			return SUCCESS;
 		}
-		return ERROR;
+		return "input";
 	}
 
 	// 跳转到添加页
@@ -236,6 +242,14 @@ public class StudentAction extends ActionSupport implements RequestAware {
 
 	public void setFileName(String fileName) {
 		this.fileName = fileName;
+	}
+
+	public int[] getStuIds() {
+		return stuIds;
+	}
+
+	public void setStuIds(int[] stuIds) {
+		this.stuIds = stuIds;
 	}
 
 }

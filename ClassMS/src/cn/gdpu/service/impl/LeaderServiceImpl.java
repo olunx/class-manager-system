@@ -22,16 +22,24 @@ public class LeaderServiceImpl implements LeaderService {
 		leaderDao.insertLeader(leader);
 	}
 
-	public void delete(String leaderName) {
-		leaderDao.deleteLeaderByName(leaderName);
+	public void deleteByName(String realName) {
+		leaderDao.deleteLeaderByName(realName);
+	}
+	
+	public void deleteById(int leaderId) {
+		leaderDao.deleteLeaderById(leaderId);
 	}
 
 	public List<Leader> getAllLeaders() {
 		return leaderDao.queryAllLeaders();
 	}
 
-	public Leader getLeaderByName(String leaderName) {
-		return leaderDao.queryLeaderByName(leaderName);
+	public Leader getLeaderByName(String realName) {
+		return leaderDao.queryLeaderByName(realName);
+	}
+	
+	public Leader getLeaderById(int leaderId) {
+		return leaderDao.queryLeaderById(leaderId);
 	}
 
 	public void update(Leader leader) {

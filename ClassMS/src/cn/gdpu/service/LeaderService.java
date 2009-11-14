@@ -16,7 +16,9 @@ public interface LeaderService {
 	 * 删除一个领导
 	 * @param leaderName
 	 */
-	public abstract void delete(String leaderName);
+	public abstract void deleteByName(String realName);
+	
+	public abstract void deleteById(int leaderId);
 	
 	/**
 	 * 更新一个领导
@@ -29,7 +31,9 @@ public interface LeaderService {
 	 * @param leaderName
 	 * @return
 	 */
-	public abstract Leader getLeaderByName(String leaderName);
+	public abstract Leader getLeaderByName(String realName);
+	
+	public abstract Leader getLeaderById(int leaderId);
 	
 	/**
 	 * @param username

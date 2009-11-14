@@ -14,7 +14,7 @@ public class InstallAction extends ActionSupport {
 		Admin admin = new Admin();
 		admin.setUsername("admin");
 		admin.setPassword("admin");
-		admin.setAdminName("测试管理员");
+		admin.setRealName("测试管理员");
 		adminService.add(admin);
 		return SUCCESS;
 	}

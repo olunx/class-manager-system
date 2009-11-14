@@ -13,6 +13,10 @@ public class LeaderDaoImpl extends HibernateDaoSupport implements LeaderDao {
 		this.getHibernateTemplate().delete(this.getHibernateTemplate().load(Leader.class, leaderName));
 	}
 
+	public void deleteLeaderById(int leaderId) {
+		this.getHibernateTemplate().delete(this.getHibernateTemplate().load(Leader.class, leaderId));
+	}
+	
 	public void insertLeader(Leader leader) {
 		this.getHibernateTemplate().save(leader);
 	}
@@ -23,16 +27,20 @@ public class LeaderDaoImpl extends HibernateDaoSupport implements LeaderDao {
 	}
 
 	@SuppressWarnings("unchecked")
-	public Leader queryLeaderByName(String leaderName) {
+	public Leader queryLeaderByName(String realName) {
 		//return (Leader) this.getHibernateTemplate().get(Leader.class, leaderName);
 		Leader leader = null;
-		List list = this.getHibernateTemplate().find("form Leader where leaderName=='" + leaderName + "'");
+		List list = this.getHibernateTemplate().find("form Leader where leaderName=='" + realName + "'");
 		if (list != null && list.size() > 0) {
 			leader = (Leader) list.get(0);
 		}
 		return leader;
 	}
 
+	public Leader queryLeaderById(int leaderId) {
+		return (Leader) this.getHibernateTemplate().load(Leader.class, leaderId);
+	}
+	
 	public void updateLeader(Leader leader) {
 		this.getHibernateTemplate().update(leader);
 	}

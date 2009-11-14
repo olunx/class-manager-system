@@ -103,7 +103,7 @@ public class FileUploadAction extends ActionSupport {
 			context.setAttribute("fileData", sb.toString());
 		}
 
-		return "success";
+		return "index";
 	}
 	
 	//产生唯一的文件名  

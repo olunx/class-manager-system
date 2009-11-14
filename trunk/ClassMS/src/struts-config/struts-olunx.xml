@@ -13,7 +13,15 @@
 			<result name="index" type="redirectAction">listStudent</result>
 			<result name="input">/WEB-INF/model/student/student.jsp</result>
 		</global-results>
-		<action name="*Student" class="cn.gdpu.action.StudentAction" method="{1}">
+		<action name="*Student" class="cn.gdpu.action.StudentAction" method="{1}"></action>
+		<action name="fileUpload" class="cn.gdpu.action.FileUploadAction">
+			<interceptor-ref name="fileUpload">
+				<param name="allowedTypes">application/vnd.ms-excel,application/msword,application/octet-stream</param>
+				<param name="maximumSize">4096000</param>
+			</interceptor-ref>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<!-- Action中的savePath属性的值 -->
+			<param name="savePath">/upload</param>
 		</action>
 	</package>
 	

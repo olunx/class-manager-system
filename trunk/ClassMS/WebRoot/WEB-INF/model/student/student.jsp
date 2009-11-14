@@ -9,12 +9,9 @@
 <title>学生</title>
 </head>
 <body>
-
-<a href="addLinkStudent">注册学生</a>
-
 		<c:choose>
 			<c:when test="${students==null}">
-					没有发现考勤信息！
+					没有发现学生信息！
 			</c:when>
 			<c:otherwise>
 				<table>
@@ -54,10 +51,10 @@
 								${student.mail}
 							</td>
 							<td>
-								<a href="getAttendance?aid=${attendance.aid}">编辑</a>
+								<a href="getStudent?stuId=${student.stuId}">编辑</a>
 							</td>
 							<td>
-								<a href="deleteAttendance?aid=${attendance.aid}">删除</a>
+								<a href="deleteStudent?stuId=${student.stuId}">删除</a>
 							</td>
 						</tr>
 					</c:forEach>

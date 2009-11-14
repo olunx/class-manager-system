@@ -5,19 +5,30 @@ a:link,a:visited{ color:#000; text-decoration:none;}
 a:hover{ color:#0CF}
 
 #header{background:url(header_bg.png) repeat-x; position:relative; }
-#header_tool{ position:absolute; left:200px; top:65px;}
+
+#header_tool{ position:absolute; left:200px; top:68px;}
+#header_tool a{ color:#FFF;}
+#header_tool a:hover{ color:#FC3;}
+#btn_main{ background:url(main.gif) no-repeat; line-height:19px; padding-left:25px; margin-right:10px;}
+#btn_back{ background:url(back.gif) no-repeat; line-height:19px; padding-left:25px; margin-right:10px;}
+#btn_forward{ background:url(forward.gif) no-repeat; line-height:19px; padding-left:25px;}
+
 #header_right{ width:281px; height:97px; position:absolute; right:0; top:0; background:url(header_right.jpg) no-repeat;}
 #header_user { position:absolute; right:10px; top:35px;}
+#btn_modifypass{ background:url(pass.gif) no-repeat; width:69px; height:17px; display:block; text-indent:-9999px;float:right; padding-right:5px;}
+#btn_user{ background:url(user.gif) no-repeat; width:69px; height:17px; display:block; text-indent:-9999px;float:right; padding-right:5px;}
+#btn_logout{ background:url(quit.gif) no-repeat; width:69px; height:17px; display:block; text-indent:-9999px; float:right; padding-right:5px;}
 #header_datetime{ position:absolute; right:24px; top:68px; color:#FFF;}
+
 #header_toolbar{position:relative; background:url(header_menubg.png) repeat-x;}
 #header_toolbar_menu{ background:url(header_menu.png) no-repeat; height:29px; width:165px;}
 #header_toolbar_right{ background:url(header_menu_right.png) no-repeat; height:29px; width:13px; float:right;}
-#header_toolbar_content{ position:absolute; top:5px; left:200px;}
+#header_toolbar_content{ position:absolute; top:8px; right:50px; padding-left:10px; background:url(sj.gif) left center no-repeat;}
 
 #sidebar{width:147px;}
 .menu{ background:url(sidebar_menu.jpg) no-repeat; width:147px; height:23px; line-height:23px; text-align:center; font-size:14px; }
 #sidebar ul{ margin:8px;}
-#sidebar li{ font-size:14px; line-height:170%;}
+#sidebar li{ font-size:14px; line-height:170%; background:url(tb.gif) 0 3px no-repeat; padding-left:20px;}
 
 #center_sidebar{ width:147px; height:100%; padding:0px 10px 0px 8px; background:url(sidebar_bg.jpg) repeat-y;}
 #center_content{ height:100%; padding-right:8px; background:url(right_bg.png) right repeat-y;}

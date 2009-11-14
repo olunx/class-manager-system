@@ -4,19 +4,20 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 		<title>Insert title here</title>
-<link href="content/images/content.css" rel="stylesheet" type="text/css" />
+		<link href="content/images/content.css" rel="stylesheet" type="text/css" />
+        <script language="javascript" type="text/javascript" src="content/js/jquery.min.js"></script>
+		<script language="javascript" type="text/javascript" src="content/js/common.js"></script>
 	</head>
 <body>
-<h2 class="caption">管理人员基本信息列表</h2>
+<h2 class="caption"><div class="float_right"><a class="btn btn_add" href="#">添加</a><a class="btn btn_del" href="#">删除</a></div>管理人员基本信息列表</h2>
 <table class="table">
-<tr><th>aaa</th><th>bb</th><th>cc</th><th>dd</th></tr>
-<tr><td>11</td><td>22</td><td>33</td><td>44</td></tr>
-<tr><td>11</td><td>22</td><td>33</td><td>44</td></tr>
-<tr><td>11</td><td>22</td><td>33</td><td>44</td></tr>
-<tr><td>11</td><td>22</td><td>33</td><td>44</td></tr>
-<tr><td>11</td><td>22</td><td>33</td><td>44</td></tr>
-<tr><td>11</td><td>22</td><td>33</td><td>44</td></tr>
-<tr><td>11</td><td>22</td><td>33</td><td>44</td></tr>
+<tr><th></th><th>类型</th><th>分数</th><th>删除</th></tr>
+<tr><td><input type="checkbox" name="aids" value="a" /></td><td>22</td><td>33</td><td><a href="#">删除</a></td></tr>
+<tr><td><input type="checkbox" name="aids" value="a" /></td><td>22</td><td>33</td><td><a href="#">删除</a></td></tr>
+<tr><td><input type="checkbox" name="aids" value="a" /></td><td>22</td><td>33</td><td><a href="#">删除</a></td></tr>
+<tr><td><input type="checkbox" name="aids" value="a" /></td><td>22</td><td>33</td><td><a href="#">删除</a></td></tr>
+<tr><td><input type="checkbox" name="aids" value="a" /></td><td>22</td><td>33</td><td><a href="#">删除</a></td></tr>
+<tr><td><input type="checkbox" name="aids" value="a" /></td><td>22</td><td>33</td><td><a href="#">删除</a></td></tr>
 </table>
 </body>
 </html>

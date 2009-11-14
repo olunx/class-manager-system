@@ -149,3 +149,9 @@
     manyDao.delete(thisMany);
 
 方法3 在many-to-one方增加cascade 但值不能是none
+-------------------------------------
+11，诡异的IE6
+-------------------------------------
+IE6的CSS对 position支持不好。
+另外受<?xml version="1.0" encoding="UTF-8" ?>的影响导致右边多出了50像素左右的空白！
+

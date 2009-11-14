@@ -18,8 +18,7 @@ String path = request.getContextPath();
 				你已经投票了		
 			</c:when> 
 			<c:otherwise> 
-				未知方法被执行OMG!!!
-				
+							
 			</c:otherwise> 
 		</c:choose> 
    		<div> <a href="<%=path %>/vote/listvote">返回列表</a> </div>

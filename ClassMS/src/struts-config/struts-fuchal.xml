@@ -26,6 +26,7 @@
 			<result name="query">/WEB-INF/model/vote/voteDetail.jsp</result>
 			<result name="modifylink">/WEB-INF/model/vote/voteModify.jsp</result>
 			<result name="votinglink">/WEB-INF/model/vote/voteLink.jsp</result>
+			<result name="error">/WEB-INF/model/vote/voteErr.jsp</result>
 			<result name="voterexist">/WEB-INF/model/vote/voteErr.jsp?error=voterExist </result>
 		</action>
 		

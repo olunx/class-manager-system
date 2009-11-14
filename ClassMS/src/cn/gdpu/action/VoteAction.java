@@ -47,7 +47,7 @@ public class VoteAction extends ActionSupport implements RequestAware,SessionAwa
 	 */
 	
 	@SuppressWarnings("unchecked")
-	public String doAdd() throws Exception {
+	public String add() throws Exception {
 		Student author = (Student) session.get("student");
 		vote.setAuthor(author);
 		vote.setAirTime(new Date());
@@ -64,7 +64,7 @@ public class VoteAction extends ActionSupport implements RequestAware,SessionAwa
 		}
 		vote.setItems(items);
 		voteService.addVote(vote);
-		request.put("req", vote);
+		request.put("vote", vote);
 		System.out.println("--------新建投票成功-----------");
 		return SUCCESS;		
 	}
@@ -74,10 +74,8 @@ public class VoteAction extends ActionSupport implements RequestAware,SessionAwa
 	 * @return
 	 * @throws Exception
 	 */
-	@SuppressWarnings("unchecked")
-	public String doDelete() throws Exception {
+	public String delete() throws Exception {
 		try {
-			request.put("req", vid);
 			voteService.deleteVote(vid);
 			System.out.println("-------删除班费记录" + vid + "--------");
 			return SUCCESS;
@@ -103,7 +101,7 @@ public class VoteAction extends ActionSupport implements RequestAware,SessionAwa
 	}
 	
 	@SuppressWarnings("unchecked")
-	public String doModify() throws Exception {
+	public String modify() throws Exception {
 		Vote vote1 = voteService.getVote(vote.getVid());
 		if(vote1 != null){
 			try {
@@ -124,7 +122,7 @@ public class VoteAction extends ActionSupport implements RequestAware,SessionAwa
 					items.add(voteItem);
 				}
 				vote1.setItems(items);
-				request.put("req", vote1);
+				request.put("vote", vote1);
 				voteService.updateVote(vote1);
 				System.out.println("-----------修改投票成功-----------");
 				return SUCCESS;
@@ -145,7 +143,7 @@ public class VoteAction extends ActionSupport implements RequestAware,SessionAwa
 	 * @throws Exception
 	 */
 	@SuppressWarnings("unchecked")
-	public String doQuery() throws Exception {
+	public String query() throws Exception {
 		try {
 			vote = voteService.getVote(vid);
 			request.put("vote", vote);

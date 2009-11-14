@@ -14,7 +14,7 @@
 		<many-to-one name="author" column="author" />
 		<property name="title" />
 		<property name="summary" />
-		<set name="items" cascade="all" lazy="false" >
+		<set name="items" cascade="all" lazy="false" order-by="vote_id asc">
 			<key column="vote_id" />
 			<one-to-many class="VoteItem" />
 		</set>
@@ -22,7 +22,7 @@
 		<property name="picType" />
 		<property name="airTime" />
 		<property name="deadline" />
-		<set name="voters" table="t_vote_student"  cascade="all">
+		<set name="voters" table="t_vote_student"  cascade="all" >
 			<key column="vid" />
 			<many-to-many class="Student" column="stuId" />
 		</set>

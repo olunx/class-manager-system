@@ -7,7 +7,7 @@ public class Vote {
 	private int vid;			  	 	//投票ID
 	private Student author;      	    //投票发起人
 	private String title;		   		//投票标题
-	private String summary;		    //投票摘要
+	private String summary;		   		 //投票描述
 	private Set<VoteItem> items;	    //投票选项           一个投票有多个选项(one-to-many)
 	private String type;				//投票类型，多选或许单选
 	private String picType;				//图形的类型，无、柱状图、饼图等

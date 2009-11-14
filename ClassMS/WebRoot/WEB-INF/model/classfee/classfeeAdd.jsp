@@ -39,9 +39,10 @@
 		</style>
 	</head>
 	<body>
+		<div> <a href="<%=path %>/classfee/listclassFee">返回列表</a> </div>
 		<div><h1>新建班费记录</h1> </div>
 		<div>
-			<form action="<%=path %>/addclassFee" method="post">
+			<form action="<%=path %>/classfee/addclassFee" method="post">
 				班费事件：<textarea name="classFee.event" id="demo" rows="50" cols="152" style="width: 900px; height: 295px"></textarea>	<br />
 				班费费用：<input type="text" name="fee" /> <br />
 				          <input type="submit" value="提交" />

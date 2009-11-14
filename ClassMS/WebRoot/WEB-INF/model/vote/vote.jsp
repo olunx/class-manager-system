@@ -10,48 +10,48 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-		<title>班费系统</title>
+		<title>投票管理</title>
 	</head>
 	<body>
 	
 		<c:choose>
 			
-			<c:when test="${classFees==null}">
-					还没有班费记录呢！<a href="<%=path %>/classfee/addLink">新建班费记录？</a>
+			<c:when test="${votes==null}">
+					还没有投票记录呢！<a href="<%=path %>/vote/addLink">新建投票？</a>
 			</c:when>
 			<c:otherwise>
 				<table>
 					<tr>
-						<td>班费串号</td>
-						<td>班费事件</td>
-						<td>费用</td>
-						<td>经手人</td>
-						<td>创建时间</td>
-						<td>修改</td>
+						<td>投票主题</td>
+						<td>投票描述</td>
+						<td>创建人</td>
+						<td>创建日期</td>
+						<td>结束日期</td>
 						<td>删除</td>
+						<td>投票</td>
 					</tr>
-					<c:forEach items="${classFees }" var="classFee">
+					<c:forEach items="${votes }" var="vote">
 						<tr>
 							<td>
-								<a href="<%=path %>/classfee/queryclassFee?fid=${classFee.fid }">${classFee.fid }</a>
+								<a href="<%=path %>/vote/queryvote?vid=${vote.vid }">${vote.title }</a>
 							</td>
 							<td>
-								${classFee.event }
+								${vote.summary }
 							</td>
 							<td>
-								${classFee.fee }
+								${vote.author.realName }
 							</td>
 							<td>
-								${classFee.cmaker.realName }
+								${vote.airTime }
 							</td>
 							<td>
-								${classFee.time }
+								${vote.deadline }
 							</td>
 							<td>
-								<a href="<%=path %>/classfee/modifyLinkclassFee?fid=${classFee.fid }">修改</a>
+								<a href="<%=path %>/vote/deletevote?vid=${vote.vid }">删除</a>
 							</td>
 							<td>
-								<a href="<%=path %>/classfee/deleteclassFee?fid=${classFee.fid }">删除</a>
+								<a href="<%=path %>/vote/votingLinkvote?vid=${vote.vid }" >投票</a>
 							</td>
 						</tr>
 					</c:forEach>

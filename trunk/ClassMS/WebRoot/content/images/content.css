@@ -15,6 +15,7 @@ a.btn:link,a.btn:visited{ color:#FFF; font-weight:normal;}
 .table{ width:100%; border-collapse:collapse; color:#353c44; margin-bottom:10px;}
 .table th{ background:#b9dbe2;}
 .table td,.table th{ border:1px solid #a8c7ce; text-align:center; padding:5px;}
+.table th a{cursor:pointer;}
 .trhover{ background:#d5f4fe;}
 .trselected{ background:#FAF8C5;}
 

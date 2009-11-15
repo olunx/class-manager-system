@@ -26,7 +26,7 @@ public class LeaderServiceTest {
 	@Test
 	public void addDuty() {
 		Leader leader = new Leader();
-		leader.setLeaderName("辅导员");
+		leader.setRealName("辅导员");
 		leader.setUsername("001100");
 		leaderService.add(leader);
 	}

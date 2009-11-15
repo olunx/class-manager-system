@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>ฐเฮ๑ฯตอณ</title>
+<title>็ญๅก็ณป็ป</title>
 </head>
 <frameset rows="126,*,11" framespacing="0" frameborder="no" border="0">
   <frame src="jump?url=header.jsp" noresize="noresize" />

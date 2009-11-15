@@ -70,15 +70,13 @@ $(function() {
 	//选中所有CheckBox
 	$("a[rel='checkall']").click(function() {
 		$(":checkbox").each(function(i) {
-
 			if ($(this).attr("checked")) {
-
 				$(this).attr("checked", false);
-
+				$(this).parent().parent().removeClass("trselected");
 			} else {
 				$(this).attr("checked", true);
+				$(this).parent().parent().addClass("trselected");
 			}
-
 		})
 	});
 	

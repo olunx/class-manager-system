@@ -16,7 +16,7 @@ html, body {
 <table id="center" width="100%" height="100%" border="0" cellspacing="0" cellpadding="0">
   <tr>
     <td id="center_sidebar"><iframe frameborder="0" height="100%" width="100%" src="jump?url=sidebar.jsp"></iframe></td>
-    <td id="center_content"><iframe name="content" frameborder="0" height="100%" width="100%" src="jump?url=first.jsp"></iframe></td>
+    <td id="center_content"><iframe name="content" frameborder="0" height="100%" width="100%" src="first"></iframe></td>
   </tr>
 </table>
 </body>

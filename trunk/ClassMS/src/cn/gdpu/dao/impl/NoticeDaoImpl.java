@@ -27,7 +27,7 @@ public class NoticeDaoImpl extends HibernateDaoSupport implements NoticeDao {
 	@SuppressWarnings("unchecked")
 	public List<Notice> queryAllNotices() {
 		List<Notice> notices = null;
-		notices = this.getHibernateTemplate().find("from Notice");
+		notices = this.getHibernateTemplate().find("from Notice n order by n.nid desc");
 		return notices;
 	}
 

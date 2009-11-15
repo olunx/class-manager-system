@@ -1,6 +1,6 @@
 ﻿@charset "utf-8";
 *{ margin:0; padding:0;}
-body{ padding:3px;}
+body{ padding:10px; font-size: 14px;}
 img{ border:0;}
 a:link,a:visited{ color:#369; text-decoration:none;}
 a:hover{ color:#F93;}
@@ -20,3 +20,9 @@ a.btn:link,a.btn:visited{ color:#FFF; font-weight:normal;}
 .trhover{ background:#d5f4fe;}
 .trselected{ background:#FAF8C5;}
 
+.content{ line-height: 180%; padding: 10px;}
+#notice { border: 1px solid #ccc;}
+#notice H1{font-size: 20px; text-align: center; line-height: 60px;border-bottom: 1px solid #ccc;}
+.post{ border-bottom: 1px dashed #ccc; margin:10px; padding-bottom:5px;}
+.post_info{ color: #666;}
+.post_content{ padding: 10px 0 10px 30px;}

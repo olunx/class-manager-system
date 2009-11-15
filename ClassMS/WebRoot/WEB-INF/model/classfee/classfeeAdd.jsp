@@ -12,6 +12,10 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 		<title>班费系统</title>
+		<script language="javascript" type="text/javascript" src="../content/js/jquery.min.js"></script>
+		<script language="javascript" type="text/javascript" src="../content/js/common.js"></script>
+		<link href="../content/images/content.css" rel="stylesheet" type="text/css" />
+		
 		<!-- 1. 页头引入 editor css -->
 		<link rel="stylesheet" href="<%=path %>/content/kissy/themes/default/editor-min.css" type="text/css"/>
 		<style type="text/css">
@@ -40,18 +44,23 @@
 		</style>
 	</head>
 	<body>
-		<div> <a href="<%=path %>/classfee/listclassFee">返回列表</a> </div>
-		<div>
-			<form action="<%=path %>/classfee/saveclassFee" method="post">
-				<input name="fid" type="hidden" value="${classFee.fid }" />
-				班费事件：<s:fielderror><s:param>classFee.event</s:param></s:fielderror>
-						 <textarea name="classFee.event" id="demo" rows="50" cols="152" style="width: 900px; height: 295px">${classFee.event }</textarea>	<br />
-				班费费用：<s:fielderror><s:param>fee</s:param></s:fielderror>
-						  <input type="text" name="fee" value="${classFee.fee }"/> <br />
-				          <input type="submit" value="提交" />
-				          <input type="reset" value="重置"/>
-			</form>
-		</div>
+		<h2 class="caption">
+			<div class="float_right">
+					<a class="btn" href="<%=path %>/classfee/list">返回列表</a>
+			</div>
+			新建班费
+		</h2>
+		
+		<form action="<%=path %>/classfee/save" method="post">
+			<input name="fid" type="hidden" value="${classFee.fid }" />
+			班费事件：<s:fielderror><s:param>classFee.event</s:param></s:fielderror>
+					 <textarea name="classFee.event" id="demo" rows="50" cols="152" style="width: 900px; height: 295px">${classFee.event }</textarea>	<br />
+			班费费用：<s:fielderror><s:param>fee</s:param></s:fielderror>
+					  <input type="text" name="fee" value="${classFee.fee }"/> <br />
+			          <input type="submit" value="提交" />
+			          <input type="reset" value="重置"/>
+		</form>
+		
 		
 		<!-- 2. 页尾引入 editor js and init code -->
 		<script type="text/javascript" src="<%=path %>/content/kissy/editor-aio.js"></script>

@@ -7,20 +7,29 @@ String path = request.getContextPath();
 
 <html>
   <head>
-    
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title>投票管理</title>
+		<link href="../content/images/content.css" rel="stylesheet" type="text/css" />
+		
 
   </head>
   
   <body>
+  		<h2 class="caption">
+			<div class="float_right">
+					<a class="btn" href="<%=path %>/vote/list">返回列表</a>
+			</div>
+			投票管理
+		</h2>
    		<c:choose> 
 			<c:when test="${param.value eq 'add'}"> 
 				<h1>新建投票成功</h1> 
-				显示投票ID：${vote.vid}记录<br />				
+				显示投票ID：${vote.vid}<br />	
 				投票主题：${vote.title }<br />
 				描述内容：${vote.summary }<br />
 				投票结束时间：${vote.deadline }<br />					
 				<c:forEach items="${vote.items}" var="voteItem" >
-					${voteItem.content }
+					投票选项：${voteItem.content }	<br/>
 				</c:forEach>	<br />				
 			</c:when> 
 			<c:when test="${param.value eq 'list'}"> 
@@ -32,21 +41,6 @@ String path = request.getContextPath();
 					</c:forEach>
 					<br />
 				</c:forEach>
-			</c:when> 
-			<c:when test="${param.value eq 'voteLink'}"> 
-				<form action="<%=path %>/votingvote.action" method="post">
-				显示投票ID：${vote.vid}记录<br />				
-					投票主题：${vote.title }<br />
-					描述内容：${vote.summary }<br />				
-					<c:forEach items="${vote.items}" var="voteItem" varStatus="i">
-						<input type="radio" name="time" value="${voteItem.viid}" />${i.count}:${voteItem.content } 票数：${voteItem.num } <br />
-					</c:forEach>	<br />
-					<input type="submit" value="投票">	<br	/>
-					<a href="<%=path %>/jfreechart.action?vid=${vote.vid }">查看投票结果</a><br /><br />
-					<img src="<%=path %>/jfreechart.action?vid=${vote.vid }"/>	<br />
-					投票结束时间：${vote.deadline }	<br />	
-				</form>
-							
 			</c:when> 
 			<c:when test="${param.value eq 'modify'}"> 
 				修改投票成功<br />
@@ -60,10 +54,13 @@ String path = request.getContextPath();
 				<br />				
 			</c:when> 
 			<c:when test="${param.value eq 'delete'}"> 
-				成功删除投票<br />		
+				删除投票成功<br />		
+			</c:when> 
+			<c:when test="${param.value eq 'deleteMany'}"> 
+				删除投票成功<br />		
 			</c:when> 
 			<c:when test="${param.value eq 'voting'}"> 
-				显示投票ID：${vote.vid}记录<br />				
+				<input type="text" name="vid" value="${vote.vid}">	<br	/>			
 					投票主题：${vote.title }<br />
 					描述内容：${vote.summary }<br />				
 					<c:forEach items="${vote.items}" var="voteItem" varStatus="i">
@@ -77,6 +74,6 @@ String path = request.getContextPath();
 				
 			</c:otherwise> 
 		</c:choose> 
-   		<div> <a href="<%=path %>/vote/listvote">返回列表</a> </div>
+   		<div> <a href="<%=path %>/vote/list">返回列表</a> </div>
   </body>
 </html>

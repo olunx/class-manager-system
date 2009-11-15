@@ -15,15 +15,24 @@
 		<script language="javascript" type="text/javascript" src="../content/js/common.js"></script>
 	</head>
 	<body>
-	
-		<c:choose>
+		<h2 class="caption">
+			<div class="float_right">
+				<a class="btn btn_add" href="<%=path %>/vote/addLink">添加</a>
+			</div>
+			<c:choose>
 			
 			<c:when test="${votes==null}">
-					还没有投票记录呢！<a href="<%=path %>/vote/addLink">新建投票？</a>
-			</c:when>
-			<c:otherwise>
+					没有投票记录</a>
+		</h2>
+		</c:when>
+		<c:otherwise>
+			投票管理</h2>
+			<form action="<%=path %>/vote/deleteMany" method="post">
 				<table class="table">
 					<tr>
+						<th>
+						<a rel="checkall" >全选</a>
+						</th>
 						<th>投票主题</th>
 						<th>投票描述</th>
 						<th>创建人</th>
@@ -33,9 +42,13 @@
 						<th>投票</th>
 					</tr>
 					<c:forEach items="${votes }" var="vote">
-						<tr>
+						<tr>						
 							<td>
-								<a href="<%=path %>/vote/queryvote?vid=${vote.vid }">${vote.title }</a>
+								<input type="checkbox" name="vids" value="${vote.vid}" />
+							</td>
+							
+							<td>
+								<a href="<%=path %>/vote/query?vid=${vote.vid }">${vote.title }</a>
 							</td>
 							<td>
 								${vote.summary }
@@ -50,14 +63,24 @@
 								${vote.deadline }
 							</td>
 							<td>
-								<a href="<%=path %>/vote/deletevote?vid=${vote.vid }">删除</a>
+								<a href="<%=path %>/vote/delete?vid=${vote.vid }" class="btn_del"></a>
 							</td>
 							<td>
-								<a href="<%=path %>/vote/votingLinkvote?vid=${vote.vid }" >投票</a>
+								<a href="<%=path %>/vote/votingLink?vid=${vote.vid }" >投票</a>
 							</td>
 						</tr>
 					</c:forEach>
 				</table>
+				<select name="cmd">
+					<option value="0" selected="selected">
+						批量操作，请选择
+					</option>
+					<option value="1">
+						删除
+					</option>
+				</select>
+				<input type="submit" value="确定" />
+				</form>
 			</c:otherwise>
 		</c:choose>
 			

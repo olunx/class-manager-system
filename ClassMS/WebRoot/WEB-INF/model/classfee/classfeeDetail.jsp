@@ -11,9 +11,18 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 		<title>班费系统</title>
+		<script language="javascript" type="text/javascript" src="../content/js/jquery.min.js"></script>
+		<script language="javascript" type="text/javascript" src="../content/js/common.js"></script>
+		<link href="../content/images/content.css" rel="stylesheet" type="text/css" />
+		
 	</head>
 	<body>
-		<div> <a href="<%=path %>/classfee/listclassFee">返回列表</a> </div>
+		<h2 class="caption">
+			<div class="float_right">
+					<a class="btn" href="<%=path %>/classfee/list">返回列表</a>
+			</div>
+			查看班费
+		</h2>
 		<div>
 			<ul>
 				<li>班费串号：${classFee.fid }</li>
@@ -25,8 +34,8 @@
 			</ul>
 		</div>
 		<div>
-			<a href="<%=path %>/classfee/modifyLinkclassFee.action?fid=${classFee.fid }">修改</a>						
-			<a href="<%=path %>/classfee/deleteclassFee.action?fid=${classFee.fid }">删除</a>
+			<a href="<%=path %>/classfee/modifyLink?fid=${classFee.fid }" class="btn_edit">修改</a>						
+			<a href="<%=path %>/classfee/delete?fid=${classFee.fid }" class="btn_del">删除</a>
 		</div>
 	</body>
 </html>

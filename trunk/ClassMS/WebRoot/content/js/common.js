@@ -67,6 +67,7 @@ $(function() {
 		$(this).removeClass("trhover");
 	});
 
+	//选中所有CheckBox
 	$("a[rel='checkall']").click(function() {
 		$(":checkbox").each(function(i) {
 
@@ -80,4 +81,10 @@ $(function() {
 
 		})
 	});
+	
+	//解决IE6中无法显示无内容A标签的问题
+	if ($.browser.msie) {
+		$(".btn_edit").append("☺");
+		$(".btn_del").append("☻");
+	}
 });

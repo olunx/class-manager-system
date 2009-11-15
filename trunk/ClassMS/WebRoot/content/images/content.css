@@ -1,6 +1,7 @@
 ﻿@charset "utf-8";
 *{ margin:0; padding:0;}
 body{ padding:3px;}
+img{ border:0;}
 a:link,a:visited{ color:#369; text-decoration:none;}
 a:hover{ color:#F93;}
 a.btn:link,a.btn:visited{ color:#FFF; font-weight:normal;}
@@ -9,7 +10,7 @@ a.btn:link,a.btn:visited{ color:#FFF; font-weight:normal;}
 
 .float_right{ float:right;}
 .btn_add{ background:url(add.gif) 5px 2px no-repeat; padding-left:20px; margin-right:10px;}
-.btn_del{ background:url(del.gif) 5px 2px no-repeat; padding-left:20px;margin-right:10px;}
+.btn_del{ background:url(del.gif) 5px 2px no-repeat; padding-left:20px;margin-right:10px; }
 .btn_edit{ background:url(edit.gif) 5px 2px no-repeat; padding-left:20px;margin-right:10px;}
 
 .table{ width:100%; border-collapse:collapse; color:#353c44; margin-bottom:10px;}

@@ -11,29 +11,44 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 		<title>班费系统</title>
+		<link href="../content/images/content.css" rel="stylesheet" type="text/css" />
+		<script language="javascript" type="text/javascript" src="../content/js/jquery.min.js"></script>
+		<script language="javascript" type="text/javascript" src="../content/js/common.js"></script>
 	</head>
 	<body>
-	
-		<c:choose>
+		<h2 class="caption">
+			<div class="float_right">
+				<a class="btn btn_add" href="<%=path %>/classfee/addLink">添加</a>
+			</div>
+			<c:choose>
 			
 			<c:when test="${classFees==null}">
-					还没有班费记录呢！<a href="<%=path %>/classfee/addLink">新建班费记录？</a>
+					没有班费记录</a>
 			</c:when>
-			<c:otherwise>
-				<table>
+		<c:otherwise>
+			班费管理
+			</h2>
+			<form action="<%=path %>/classfee/deleteMany" method="post">
+				<table class="table">
 					<tr>
-						<td>班费串号</td>
-						<td>班费事件</td>
-						<td>费用</td>
-						<td>经手人</td>
-						<td>创建时间</td>
-						<td>修改</td>
-						<td>删除</td>
+						<th>
+						<a rel="checkall" >全选</a>
+						</th>
+						<th>班费串号</th>
+						<th>班费事件</th>
+						<th>费用</th>
+						<th>经手人</th>
+						<th>创建时间</th>
+						<th>修改</th>
+						<th>删除</th>
 					</tr>
 					<c:forEach items="${classFees }" var="classFee">
-						<tr>
+						<tr>						
 							<td>
-								<a href="<%=path %>/classfee/queryclassFee?fid=${classFee.fid }">${classFee.fid }</a>
+								<input type="checkbox" name="fids" value="${classFee.fid}" />
+							</td>
+							<td>
+								<a href="<%=path %>/classfee/query?fid=${classFee.fid }">${classFee.fid }</a>
 							</td>
 							<td>
 								${classFee.event }
@@ -48,14 +63,24 @@
 								${classFee.time }
 							</td>
 							<td>
-								<a href="<%=path %>/classfee/modifyLinkclassFee?fid=${classFee.fid }">修改</a>
+								<a href="<%=path %>/classfee/modifyLink?fid=${classFee.fid }" class="btn_edit"></a>
 							</td>
 							<td>
-								<a href="<%=path %>/classfee/deleteclassFee?fid=${classFee.fid }">删除</a>
+								<a href="<%=path %>/classfee/delete?fid=${classFee.fid }" class="btn_del"></a>
 							</td>
 						</tr>
 					</c:forEach>
 				</table>
+				<select name="cmd">
+					<option value="0" selected="selected">
+						批量操作，请选择
+					</option>
+					<option value="1">
+						删除
+					</option>
+				</select>
+				<input type="submit" value="确定" />
+		</form>
 			</c:otherwise>
 		</c:choose>
 			

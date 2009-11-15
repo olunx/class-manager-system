@@ -11,9 +11,16 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 		<title>投票管理</title>
+		<link href="../content/images/content.css" rel="stylesheet" type="text/css" />
+		
 	</head>
 	<body>
-		<div> <a href="<%=path %>/vote/listvote">返回列表</a> </div>
+		<h2 class="caption">
+			<div class="float_right">
+					<a class="btn" href="<%=path %>/vote/list">返回列表</a>
+			</div>
+			查看投票
+		</h2>
 		<div>
 			<ul>
 				<li>投票主题：${vote.title }</li>
@@ -36,8 +43,8 @@
 
 		</div>
 		<div>
-			<a href="<%=path %>/vote/deletevote?vid=${vote.vid}">删除</a>
-			<a href="<%=path %>/vote/votingLinkvote?vid=${vote.vid}">投票</a>
+			<a href="<%=path %>/vote/delete?vid=${vote.vid}" class="btn_del">删除</a>
+			<a href="<%=path %>/vote/votingLink?vid=${vote.vid}">投票</a>
 		</div>
 	</body>
 </html>

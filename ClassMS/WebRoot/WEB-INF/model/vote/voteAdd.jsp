@@ -10,20 +10,19 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 		<title>投票管理</title>
-		<link href="../content/images/content.css" rel="stylesheet" type="text/css" />
         <script language="javascript" type="text/javascript" src="../content/js/jquery.min.js"></script>
 		<script language="javascript" type="text/javascript" src="../content/js/common.js"></script>
+		<script language="JavaScript" type="text/javascript" src="../content/js/calendar/WdatePicker.js"></script> 
 		<!-- 1. 页头引入 editor css -->
 		<link rel="stylesheet" href="<%=path %>/content/kissy/themes/default/editor-min.css" type="text/css"/>
+		<link href="../content/images/content.css" rel="stylesheet" type="text/css" />
 
 	</head>
 	<body>
-		<div> <a href="<%=path %>/vote/listvote">返回列表</a> </div>
-		<div><h1>新建投票</h1> </div>
+		<h2 class="caption">新建投票</h2>
 		<div>
 			<form action="<%=path %>/vote/addvote.action" method="post">
 			投票主题：<input type="text" name="vote.title" /> <br />
-			描述内容：<textarea name="vote.summary" id="demo" rows="50" cols="152" style="width: 900px; height: 295px"></textarea>	<br />	
 			投票方式：<input type="radio" name="vote.type" value="0" checked="checked"/>单选
 						<input type="radio" name="vote.type" value="radio" />多选 <br />
 			<div id="voteitem">
@@ -33,7 +32,8 @@
 			</div>
 			<a href="#" class="btn_add" onclick="return addNewVote('voteitem');">再添加三项</a>
 			<br/>
-			结束时间：<input type="text" name="time"/> <br />
+			结束时间：<input class="Wdate" type="text" name="time" onfocus="WdatePicker({startDate:'%y-%M-{%d+1} %H:%m:00',minDate:'%y-%M-%d %H:%m'})"/> <br />
+			描述内容：<textarea name="vote.summary" id="demo" rows="50" cols="152" style="width: 500px; height: 195px"></textarea>	<br />	
 					 <input type="submit" value="发布投票"/>
 			</form>
 

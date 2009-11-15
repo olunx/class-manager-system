@@ -1,6 +1,6 @@
 package cn.gdpu.action;
 
-import java.util.ArrayList;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashSet;
@@ -28,9 +28,11 @@ public class VoteAction extends ActionSupport implements RequestAware,SessionAwa
 	private Vote vote;
 	private VoteItem voteItem;
 	private String[] content;	
-	private int time;
+	private String time;
 	private int vid;
+	private int[] vids;
 	private int[] viid;
+	private int cmd;
 
 
 	@SuppressWarnings("unchecked")
@@ -41,7 +43,7 @@ public class VoteAction extends ActionSupport implements RequestAware,SessionAwa
 
 	
 	/**
-	 * CRUD add 新建投票
+	 * 新建投票
 	 * @return
 	 * @throws Exception
 	 */
@@ -51,43 +53,68 @@ public class VoteAction extends ActionSupport implements RequestAware,SessionAwa
 		Student author = (Student) session.get("student");
 		vote.setAuthor(author);
 		vote.setAirTime(new Date());
-		Calendar cal = Calendar.getInstance();
-		Date date = new Date();
-		cal.setTime(date);
-		cal.set(Calendar.DATE,(cal.get(Calendar.DATE)+time));
-		vote.setDeadline(cal.getTime());
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+		Date date = sdf.parse(time);
+		vote.setDeadline(date);
 		Set<VoteItem> items = new HashSet<VoteItem>();
 		for(int i=0;i<content.length;i++){
+			if(content[i] == null || content[i].trim().equals(""))
+				continue;
+			boolean exit = false;
+			for(int j=0 ;j<i ; j++){
+				if(content[j].equals(content[i])){
+					exit = true;
+					break;
+				}					
+			}
+			if(exit)
+				continue;
 			VoteItem voteItem = new VoteItem();
 			voteItem.setContent(content[i]);
 			items.add(voteItem);
 		}
+		if(items.isEmpty()){
+			this.addFieldError("content", "投票选项不能全为空");
+		}
+		if(hasFieldErrors())
+			return INPUT;
 		vote.setItems(items);
 		voteService.addVote(vote);
 		request.put("vote", vote);
-		System.out.println("--------新建投票成功-----------");
 		return SUCCESS;		
 	}
 	
 	/**
-	 * CRUD delete 按ID删除投票记录
+	 * 按ID删除投票记录
 	 * @return
 	 * @throws Exception
 	 */
-	public String delete() throws Exception {
-		try {
-			voteService.deleteVote(vid);
-			System.out.println("-------删除班费记录" + vid + "--------");
+	@SkipValidation
+	public String delete() throws Exception {	
+		voteService.deleteVote(vid);
+		return SUCCESS;
+	
+	}
+	/**
+	 * 删除多个投票记录
+	 * @return
+	 * @throws Exception
+	 */
+	public String deleteMany() {
+		if(cmd == 1){
+			for(int i=0;i<vids.length;i++) {
+				System.out.println(vids[i]);
+				voteService.deleteVote(vids[i]);
+			}
 			return SUCCESS;
-		} catch (Exception e) {
-			System.out.println("-------删除班费记录失败--------");
-			e.printStackTrace();
 		}
-		return ERROR;
+		else{
+			return "list";
+		}
 	}
 	
 	/**
-	 * 修改页面跳转
+	 * 修改页面跳转,暂未使用
 	 * 
 	 * @return
 	 * @throws Exception
@@ -100,82 +127,68 @@ public class VoteAction extends ActionSupport implements RequestAware,SessionAwa
 		return "modifylink";
 	}
 	
+	/**
+	 * 修改投票,暂未使用
+	 * 
+	 * @return
+	 * @throws Exception
+	 */
 	@SuppressWarnings("unchecked")
+	@SkipValidation
 	public String modify() throws Exception {
 		Vote vote1 = voteService.getVote(vote.getVid());
-		if(vote1 != null){
-			try {
-				vote1.setTitle(vote.getTitle());
-				vote1.setSummary(vote.getSummary());
-				vote1.setType(vote.getType());
-				vote1.setPicType(vote.getPicType());
-				vote1.setAirTime(new Date());
-				Calendar cal = Calendar.getInstance();
-				Date date = new Date();
-				cal.setTime(date);
-				cal.set(Calendar.DATE,(cal.get(Calendar.DATE)+time));
-				vote1.setDeadline(cal.getTime());
-				HashSet<VoteItem> items = new HashSet<VoteItem>();				
-				for(int i=0;i<content.length;i++){
-					VoteItem voteItem = new VoteItem();
-					voteItem.setContent(content[i]);
-					items.add(voteItem);
-				}
-				vote1.setItems(items);
-				request.put("vote", vote1);
-				voteService.updateVote(vote1);
-				System.out.println("-----------修改投票成功-----------");
-				return SUCCESS;
-			} catch (RuntimeException e) {
-				System.out.println("-----------修改投票失败-----------");
-				e.printStackTrace();
+		if(vote1 != null){			
+			vote1.setTitle(vote.getTitle());
+			vote1.setSummary(vote.getSummary());
+			vote1.setType(vote.getType());
+			vote1.setPicType(vote.getPicType());
+			vote1.setAirTime(new Date());
+			Calendar cal = Calendar.getInstance();
+			Date date = new Date();
+			cal.setTime(date);
+			cal.set(Calendar.DATE,(cal.get(Calendar.DATE)));
+			vote1.setDeadline(cal.getTime());
+			HashSet<VoteItem> items = new HashSet<VoteItem>();				
+			for(int i=0;i<content.length;i++){
+				VoteItem voteItem = new VoteItem();
+				voteItem.setContent(content[i]);
+				items.add(voteItem);
 			}
-			return ERROR;
+			vote1.setItems(items);
+			request.put("vote", vote1);
+			voteService.updateVote(vote1);
+			return SUCCESS;			
 		}else {
-			System.out.println("-----------修改班费记录失败.找不到ID=" + vote.getVid() + "-----------");
 			return ERROR;
 		}
 	}
 	
 	/**
-	 * CRUD query 按ID查询投票记录
+	 * 按ID查询投票记录
 	 * @return
 	 * @throws Exception
 	 */
 	@SuppressWarnings("unchecked")
+	@SkipValidation
 	public String query() throws Exception {
-		try {
 			vote = voteService.getVote(vid);
 			request.put("vote", vote);
-			System.out.println("-------查询投票记录成功--------");
-			return "query";
-		} catch (Exception e) {
-			System.out.println("-------查询投票记录失败--------");
-			e.printStackTrace();
-		}
-		return ERROR;
+			return SUCCESS;
 	}
 	
 	/**
-	 * CRUD queryAll 列出全部投票
+	 * 列出全部投票
 	 * @return
 	 * @throws Exception
 	 */
 	@SuppressWarnings("unchecked")
+	@SkipValidation
 	public String list() throws Exception {
-		try {
-			List<Vote> votes= new ArrayList<Vote>();
-			votes= voteService.getAllVotes();
-			if(votes.size() == 0)
-				votes = null;
-			request.put("votes", votes);
-			System.out.println("-------查询全部投票记录成功--------");
-			return "list";
-		} catch (Exception e) {
-			System.out.println("-------查询全部投票记录失败--------");
-			e.printStackTrace();
-		}
-		return ERROR;
+		List<Vote> votes = voteService.getAllVotes();
+		if(votes.size() == 0)
+			votes = null;
+		request.put("votes", votes);
+		return SUCCESS;		
 	}
 	
 	/**
@@ -188,24 +201,40 @@ public class VoteAction extends ActionSupport implements RequestAware,SessionAwa
 	@SkipValidation
 	public String votingLink() throws Exception {
 		Vote vote = voteService.getVote(vid);
+		if(new Date().getTime() >= vote.getDeadline().getTime())     //如果投票过期 ，返回timeout
+			request.put("timeout", true);
 		Set<Student> voters = vote.getVoters();
 		Student voter = (Student) session.get("student");
 		for(Student stu : voters ){
-			if(stu.getStuId()==voter.getStuId())
+			if(stu.getStuId()==voter.getStuId())					//如果投票人已经投票，返回voterexist
 				request.put("voterexist", true);
 		}
 		request.put("vote", vote);
-		return "votinglink";
+		return SUCCESS;
 	}
 	
+	/**
+	 * 用户投票
+	 * 
+	 * @return
+	 * @throws Exception
+	 */
 	@SuppressWarnings("unchecked")
+	@SkipValidation
 	public String voting() throws Exception {
-		voteItem = voteService.getVoteItem(viid[0]);		
-		vote = voteItem.getVote();
+		vote =	voteService.getVote(vid);
+		if(viid == null)										//验证投票先是否为空
+			this.addFieldError("viid", "投票选项不能为空");
+		if(hasFieldErrors()){
+			request.put("vote", vote);
+			return INPUT;
+		}
+		if(new Date().getTime() >= vote.getDeadline().getTime())     //如果投票过期 ，返回timeout
+			return "timeout";
 		Set<Student> voters = vote.getVoters();
 		Student voter = (Student) session.get("student");
 		for(Student stu : voters ){
-			if(stu.getStuId()==voter.getStuId())
+			if(stu.getStuId()==voter.getStuId())			//如果投票人已经投票，返回voterexist
 				return "voterexist";
 		}
 		if (!voters.add(voter))
@@ -234,21 +263,18 @@ public class VoteAction extends ActionSupport implements RequestAware,SessionAwa
 	public void setVoteService(VoteService voteService) {
 		this.voteService = voteService;
 	}
-	public int getTime() {
-		return time;
-	}
-	public void setTime(int time) {
-		this.time = time;
-	}
+	
 	public VoteItem getVoteItem() {
 		return voteItem;
 	}
 	public void setVoteItem(VoteItem voteItem) {
 		this.voteItem = voteItem;
 	}
+	
 	public String[] getContent() {
 		return content;
 	}
+	
 	public void setContent(String[] content) {
 		this.content = content;
 	}
@@ -273,12 +299,29 @@ public class VoteAction extends ActionSupport implements RequestAware,SessionAwa
 		this.session = session;
 	}
 	
+	public String getTime() {
+		return time;
+	}
+
+	public void setTime(String time) {
+		this.time = time;
+	}
+
+	
 	public int getVid() {
 		return vid;
 	}
 
 	public void setVid(int vid) {
 		this.vid = vid;
+	}
+	
+	public int[] getVids() {
+		return vids;
+	}
+
+	public void setVids(int[] vids) {
+		this.vids = vids;
 	}
 	
 	public int[] getViid() {
@@ -289,5 +332,12 @@ public class VoteAction extends ActionSupport implements RequestAware,SessionAwa
 		this.viid = viid;
 	}
 
+	public int getCmd() {
+		return cmd;
+	}
+
+	public void setCmd(int cmd) {
+		this.cmd = cmd;
+	}
 
 }

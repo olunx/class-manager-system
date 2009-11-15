@@ -3,17 +3,38 @@
 	PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
 	"http://struts.apache.org/dtds/struts-2.1.dtd" >
 <struts>
-
+	<!--  classfee action	-->
 	<package name="classfee" extends="struts-default" namespace="/classfee">
-		<action name="*classFee" class="cn.gdpu.action.ClassFeeAction" method="{1}">
-			<result name="success">/WEB-INF/model/classfee/classfeeSuc.jsp?value={1}</result>
+		
+		<global-results>
 			<result name="input">/WEB-INF/model/classfee/classfeeAdd.jsp</result>
+			<result name="error">/WEB-INF/model/classfee/classfeeErr.jsp</result>
+			<result type="redirectAction" name="list">list</result>
+		</global-results>
+		
+		<action name="save" class="cn.gdpu.action.ClassFeeAction" method="save">			
 			<result name="addsuc">/WEB-INF/model/classfee/classfeeSuc.jsp?value=add</result>
 			<result name="modifysuc">/WEB-INF/model/classfee/classfeeSuc.jsp?value=modify</result>
-			<result name="queryall">/WEB-INF/model/classfee/classfee.jsp</result>
-			<result name="query">/WEB-INF/model/classfee/classfeeDetail.jsp</result>
-			<result name="error">/WEB-INF/model/classfee/classfeeErr.jsp</result>
-			<result name="modifylink">/WEB-INF/model/classfee/classfeeAdd.jsp</result>
+		</action> 
+		
+		<action name="delete" class="cn.gdpu.action.ClassFeeAction" method="delete">
+			<result>/WEB-INF/model/classfee/classfeeSuc.jsp?value=delete</result>
+		</action> 
+		
+		<action name="deleteMany" class="cn.gdpu.action.ClassFeeAction" method="deleteMany">
+			<result>/WEB-INF/model/classfee/classfeeSuc.jsp?value=deleteMany</result>
+		</action> 
+				
+		<action name="modifyLink" class="cn.gdpu.action.ClassFeeAction" method="modifyLink">
+			<result>/WEB-INF/model/classfee/classfeeAdd.jsp</result>
+		</action> 		
+		
+		<action name="query" class="cn.gdpu.action.ClassFeeAction" method="query">
+			<result>/WEB-INF/model/classfee/classfeeDetail.jsp</result>
+		</action> 
+		
+		<action name="list" class="cn.gdpu.action.ClassFeeAction" method="list">
+			<result>/WEB-INF/model/classfee/classfee.jsp</result>
 		</action> 
 				
 		<action name="addLink">
@@ -21,17 +42,47 @@
 		</action>
 		
 	</package>
-
+	
+	<!--  vote action	-->
 	<package name="vote" extends="struts-default" namespace="/vote">
-		<action name="*vote" class="cn.gdpu.action.VoteAction" method="{1}">
-			<result name="success" >/WEB-INF/model/vote/voteSuc.jsp?value={1}</result>
-			<result name="list">/WEB-INF/model/vote/vote.jsp</result>
-			<result name="query">/WEB-INF/model/vote/voteDetail.jsp</result>
-			<result name="modifylink">/WEB-INF/model/vote/voteModify.jsp</result>
-			<result name="votinglink">/WEB-INF/model/vote/voteLink.jsp</result>
-			<result name="error">/WEB-INF/model/vote/voteErr.jsp</result>
-			<result name="voterexist">/WEB-INF/model/vote/voteErr.jsp?error=voterExist </result>
+			
+		<global-results>
+			<result name="input">/WEB-INF/model/vote/voteErr.jsp</result>
+			<result name="error">/WEB-INF/model/vote/voteErr.jsp</result>		
+			<result type="redirectAction" name="list">list</result>
+		</global-results>
+		
+		<action name="add" class="cn.gdpu.action.VoteAction" method="add">
+			<result>/WEB-INF/model/vote/voteSuc.jsp?value=add</result>	
+			<result name="input">/WEB-INF/model/vote/voteAdd.jsp</result>
 		</action>
+		
+		<action name="delete" class="cn.gdpu.action.VoteAction" method="delete">
+			<result>/WEB-INF/model/vote/voteSuc.jsp?value=delete</result>	
+		</action>
+		
+		<action name="deleteMany" class="cn.gdpu.action.VoteAction" method="deleteMany">
+			<result>/WEB-INF/model/vote/voteSuc.jsp?value=deleteMany</result>	
+		</action>
+		
+		<action name="query" class="cn.gdpu.action.VoteAction" method="query">
+			<result>/WEB-INF/model/vote/voteDetail.jsp</result>	
+		</action>	
+		
+		<action name="list" class="cn.gdpu.action.VoteAction" method="list" >
+			<result>/WEB-INF/model/vote/vote.jsp</result>
+		</action>
+		
+		<action name="votingLink" class="cn.gdpu.action.VoteAction" method="votingLink" >
+			<result>/WEB-INF/model/vote/voteLink.jsp</result>
+		</action>		
+		
+		<action name="voting" class="cn.gdpu.action.VoteAction" method="voting">
+			<result>/WEB-INF/model/vote/voteSuc.jsp?value=voting</result>
+			<result name="input">/WEB-INF/model/vote/voteLink.jsp</result>
+			<result name="voterexist">/WEB-INF/model/vote/voteErr.jsp?error=voterExist </result>
+			<result name="timeout">/WEB-INF/model/vote/voteErr.jsp?error=timeout </result>
+		</action>			
 		
 		<action name="addLink">
 			<result>/WEB-INF/model/vote/voteAdd.jsp</result>

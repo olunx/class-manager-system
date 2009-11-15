@@ -29,10 +29,11 @@ public class ClassFeeAction extends ActionSupport implements RequestAware,Sessio
 	private Map request;
 	@SuppressWarnings("unchecked")
 	private Map session;
-	
-    String fee;
-	String fid;
-	
+	private int cmd;
+   
+	private String fee;
+	private String fid;
+	private String[] fids;
 
 	/**
 	 * 保存班费记录
@@ -81,6 +82,24 @@ public class ClassFeeAction extends ActionSupport implements RequestAware,Sessio
 	}
 	
 	/**
+	 * 删除多个投票记录
+	 * @return
+	 * @throws Exception
+	 */
+	@SkipValidation
+	public String deleteMany() {
+		if(cmd == 1){
+			for(int i=0;i<fids.length;i++) {
+				classFeeService.delete(fids[i]);
+			}
+			return SUCCESS;
+		}
+		else{
+			return "list";
+		}
+	}
+	
+	/**
 	 * 修改页面跳转
 	 * 
 	 * @return
@@ -91,7 +110,7 @@ public class ClassFeeAction extends ActionSupport implements RequestAware,Sessio
 	public String modifyLink() throws Exception {
 		ClassFee classFee = classFeeService.getClassFee(fid);
 		request.put("classFee", classFee);
-		return "modifylink";
+		return SUCCESS;
 	}
 	
 	/**
@@ -105,7 +124,7 @@ public class ClassFeeAction extends ActionSupport implements RequestAware,Sessio
 	public String query() throws Exception{		
 		classFee = classFeeService.getClassFee(fid);
 		request.put("classFee", classFee);
-		return "query";	
+		return SUCCESS;	
 	}
 	
 	/**
@@ -122,7 +141,7 @@ public class ClassFeeAction extends ActionSupport implements RequestAware,Sessio
 		if (classFees.size() == 0)
 			classFees = null;
 		request.put("classFees", classFees);
-		return "queryall";	
+		return SUCCESS;	
 	}
 	
 	//getter,setter	
@@ -155,7 +174,17 @@ public class ClassFeeAction extends ActionSupport implements RequestAware,Sessio
 	@SuppressWarnings("unchecked")
 	public void setSession(Map session) {
 	       this.session = session;
-	    }
+    }
+	
+	 public int getCmd() {
+			return cmd;
+	}
+
+
+	public void setCmd(int cmd) {
+		this.cmd = cmd;
+	}
+
 	
 	public String getFee() {
 		return fee;
@@ -172,5 +201,15 @@ public class ClassFeeAction extends ActionSupport implements RequestAware,Sessio
 	public void setFid(String fid) {
 		this.fid = fid;
 	}
+
+	public String[] getFids() {
+		return fids;
+	}
+
+	public void setFids(String[] fids) {
+		this.fids = fids;
+	}
+
+
 	
 }

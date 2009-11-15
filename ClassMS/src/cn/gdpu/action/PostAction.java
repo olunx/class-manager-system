@@ -4,17 +4,20 @@ import java.util.Date;
 import java.util.Map;
 
 import org.apache.struts2.interceptor.RequestAware;
+import org.apache.struts2.interceptor.SessionAware;
 import org.apache.struts2.interceptor.validation.SkipValidation;
 
 import cn.gdpu.service.NoticeService;
 import cn.gdpu.service.PostService;
 import cn.gdpu.vo.Post;
+import cn.gdpu.vo.Student;
 
 import com.opensymphony.xwork2.ActionSupport;
 
-public class PostAction extends ActionSupport implements RequestAware {
+public class PostAction extends ActionSupport implements RequestAware,SessionAware {
 	private static final long serialVersionUID = 1L;
 	private Map<String, Object> request;
+	private Map<String, Object> session;
 	private PostService postService;
 	private NoticeService noticeService;
 	private String content;
@@ -28,10 +31,9 @@ public class PostAction extends ActionSupport implements RequestAware {
 	 */
 	public String addPost() throws Exception {
 		Post post = new Post();
-		post.setAuthor(null);
+		post.setAuthor((Student) session.get("student"));
 		post.setContent(content);
-		System.out.println(id);
-		System.out.println(noticeService.getNotice(id));
+		System.out.println("nid-----"+id);
 		post.setParent(noticeService.getNotice(id));
 		post.setTime(new Date());
 		postService.add(post);
@@ -108,6 +110,10 @@ public class PostAction extends ActionSupport implements RequestAware {
 
 	public String getContent() {
 		return content;
+	}
+
+	public void setSession(Map<String, Object> session) {
+		this.session = session;
 	}
 
 }

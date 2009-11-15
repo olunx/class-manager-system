@@ -25,7 +25,7 @@
 
 	<package name="post" extends="struts-default" namespace="/notice">
 		<global-results>
-			<result name="detail" type="redirectAction">detail?id=${id}</result>
+			<result name="detail" type="redirect">detail?id=${id}</result>
 		</global-results>
 		<action name="addPost" class="cn.gdpu.action.PostAction" method="addPost">
 			<result name="input">/WEB-INF/model/notice/noticeDetail.jsp</result>
@@ -60,6 +60,12 @@
 	<package name="jump" extends="struts-default" namespace="/">
 		<action name="jump" class="cn.gdpu.action.JumpAction">
 			<result name="success">/WEB-INF/${url}</result>
+		</action>
+	</package>
+	
+	<package name="fistpage" extends="struts-default" namespace="/">
+		<action name="first" class="cn.gdpu.action.IndexAction">
+			<result name="success">/WEB-INF/first.jsp</result>
 		</action>
 	</package>
 

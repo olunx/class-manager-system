@@ -25,7 +25,7 @@ public class LoginAction extends ActionSupport implements SessionAware {
 	private Map<String, Object> session;
 
 	public String login() throws Exception {
-		
+		session.put("userType", userType);
 		switch (userType) {
 			// student
 		case 0: {
@@ -47,7 +47,6 @@ public class LoginAction extends ActionSupport implements SessionAware {
 		}
 			// admin
 		case 2: {
-			System.out.println("2222222");
 			Admin admin = adminService.getAdminByUsernameAndPassword(username, password);
 			if (admin != null) {
 				session.put("admin", admin);

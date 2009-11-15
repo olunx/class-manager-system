@@ -6,6 +6,7 @@ import java.util.Map;
 import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.interceptor.RequestAware;
 
+import cn.gdpu.service.AttendanceService;
 import cn.gdpu.service.StudentService;
 import cn.gdpu.util.excel.StudentExcel;
 import cn.gdpu.vo.Student;
@@ -34,7 +35,7 @@ public class StudentAction extends ActionSupport implements RequestAware {
 	private int[] stuIds;
 	private String fileName;
 	private StudentService studentService;
-
+	private AttendanceService attendanceService;
 	private Map<String, Object> request;
 	
 	//添加一个学生信息
@@ -250,6 +251,14 @@ public class StudentAction extends ActionSupport implements RequestAware {
 
 	public void setStuIds(int[] stuIds) {
 		this.stuIds = stuIds;
+	}
+
+	public AttendanceService getAttendanceService() {
+		return attendanceService;
+	}
+
+	public void setAttendanceService(AttendanceService attendanceService) {
+		this.attendanceService = attendanceService;
 	}
 
 }

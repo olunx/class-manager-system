@@ -31,6 +31,8 @@ public interface DutyDao {
 	 */
 	public abstract Duty queryDutyByName(String dutyName);
 	
+	public abstract Duty queryDutyById(int dutyId);
+	
 	/**
 	 * 获取所有职责信息
 	 * @return

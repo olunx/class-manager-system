@@ -31,6 +31,8 @@ public interface DutyService {
 	 */
 	public abstract Duty getDutyByName(String dutyName);
 	
+	public abstract Duty getDutyById(int dutyId);
+	
 	/**
 	 * 获取所有职责
 	 * @return

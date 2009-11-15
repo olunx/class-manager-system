@@ -31,6 +31,10 @@ public class DutyDaoImpl extends HibernateDaoSupport implements DutyDao {
 		}
 		return duty;
 	}
+	
+	public Duty queryDutyById(int dutyId) {
+		return (Duty) this.getHibernateTemplate().load(Duty.class, dutyId);
+	}
 
 	@SuppressWarnings("unchecked")
 	public List<Duty> queryAllDutys() {

@@ -34,6 +34,10 @@ public class DutyServiceImpl implements DutyService {
 		return dutyDao.queryDutyByName(dutyName);
 	}
 
+	public Duty getDutyById(int dutyId) {
+		return dutyDao.queryDutyById(dutyId);
+	}
+	
 	public void update(Duty duty) {
 		dutyDao.updateDuty(duty);
 	}

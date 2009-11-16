@@ -179,11 +179,7 @@ public class VoteAction extends ActionSupport implements RequestAware,SessionAwa
 			return SUCCESS;
 	}
 	
-	/**
-	 * 列出全部投票
-	 * @return
-	 * @throws Exception
-	 */
+	/*
 	@SuppressWarnings("unchecked")
 	@SkipValidation
 	public String list() throws Exception {
@@ -193,14 +189,17 @@ public class VoteAction extends ActionSupport implements RequestAware,SessionAwa
 		request.put("votes", votes);
 		return SUCCESS;		
 	}
+	*/
 	
 	/**
-	 * 分页
+	 * 分页列出全部投票
+	 * @return
+	 * @throws Exception
 	 */
-	public String listPage() throws Exception {  
+	public String list() throws Exception {  
 	        //分页的pageBean,参数pageSize表示每页显示记录数,page为当前页  
 	    this.pageBean = voteService.queryForPage(15, page); 
-	    if(pageBean.getList().size() == 0);
+	    if(pageBean.getList().size() == 0)
 	    	pageBean.setList(null);
 	    return SUCCESS;  
 	}  

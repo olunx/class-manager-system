@@ -23,8 +23,8 @@
     <li><a href="<%=path %>/attendance/listAttendance">考勤管理</a> - <a href="<%=path %>/attendance/addLinkAttendance">添加</a> </li>
     <li><a href="<%=path %>/notice/list">公告管理</a> - <a href="<%=path %>/notice/addLink">添加</a></li>
     <li><a href="<%=path %>/activity/listStu?sno=${sessionScope.student.sno}">活动加分</a> - <a href="<%=path %>/activity/addLink?sno=${sessionScope.student.sno}">添加</a></li>
-    <li><a href="<%=path %>/classfee/listPage">班费管理</a> - <a href="<%=path %>/classfee/addLink">添加</a> </li>
-	<li><a href="<%=path %>/vote/listPage">投票管理</a> - <a href="<%=path %>/vote/addLink" >添加</a> </li>  
+    <li><a href="<%=path %>/classfee/list">班费管理</a> - <a href="<%=path %>/classfee/addLink">添加</a> </li>
+	<li><a href="<%=path %>/vote/list">投票管理</a> - <a href="<%=path %>/vote/addLink" >添加</a> </li>  
   </ul>
 </div>
 </body>

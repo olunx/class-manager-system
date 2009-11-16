@@ -17,7 +17,7 @@ String path = request.getContextPath();
   <body>
   		<h2 class="caption">
 			<div class="float_right">
-					<a class="btn" href="<%=path %>/vote/list">返回列表</a>
+					<a class="btn" href="<%=path %>/vote/listPage">返回列表</a>
 			</div>
 			投票错误
 		</h2>

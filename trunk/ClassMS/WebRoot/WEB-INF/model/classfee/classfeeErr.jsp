@@ -17,11 +17,11 @@ String path = request.getContextPath();
   <body>
  		<h2 class="caption">
 			<div class="float_right">
-					<a class="btn" href="<%=path %>/classfee/list">返回列表</a>
+					<a class="btn" href="<%=path %>/classfee/listPage">返回列表</a>
 			</div>
 			班费错误
 		</h2>
    		<h1><s:property value="value"/>失败,出错鸟~~~~~^0^~~~~~~~</h1>
-   		<a href="<%=path %>/classfee/list"> 》》》返回班费管理《《《 </a>
+   		<a href="<%=path %>/classfee/listPage"> 》》》返回班费管理《《《 </a>
   </body>
 </html>

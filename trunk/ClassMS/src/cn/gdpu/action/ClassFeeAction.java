@@ -10,6 +10,7 @@ import org.apache.struts2.interceptor.RequestAware;
 import org.apache.struts2.interceptor.SessionAware;
 import org.apache.struts2.interceptor.validation.SkipValidation;
 
+import cn.gdpu.bean.PageBean;
 import cn.gdpu.service.ClassFeeService;
 import cn.gdpu.vo.ClassFee;
 import cn.gdpu.vo.Student;
@@ -21,16 +22,16 @@ public class ClassFeeAction extends ActionSupport implements RequestAware,Sessio
 	private static final long serialVersionUID = 1L;
 
 
-	ClassFeeService classFeeService = null;
-	
+	ClassFeeService classFeeService = null;	
 	ClassFee classFee = null;
+	private PageBean pageBean; 
 	
 	@SuppressWarnings("unchecked")
 	private Map request;
 	@SuppressWarnings("unchecked")
 	private Map session;
 	private int cmd;
-   
+	private int page;
 	private String fee;
 	private String fid;
 	private String[] fids;
@@ -144,6 +145,18 @@ public class ClassFeeAction extends ActionSupport implements RequestAware,Sessio
 		return SUCCESS;	
 	}
 	
+	/**
+	 * 分页
+	 * @return
+	 */
+	@SkipValidation
+	public String listPage() throws Exception {  
+        //分页的pageBean,参数pageSize表示每页显示记录数,page为当前页  
+        this.pageBean = classFeeService.queryForPage(15, page);  
+        if(pageBean.getList().size() == 0);
+    		pageBean.setList(null);
+        return SUCCESS;  
+    }  
 	//getter,setter	
 	public ClassFeeService getClassFeeService() {
 		return classFeeService;
@@ -210,6 +223,20 @@ public class ClassFeeAction extends ActionSupport implements RequestAware,Sessio
 		this.fids = fids;
 	}
 
+	 public int getPage() {  
+	        return page;  
+    }  
+  
+    public void setPage(int page) {        //若URL中无此参数,会默认为第1页  
+        this.page = page;  
+    }  
+  
+    public PageBean getPageBean() {  
+        return pageBean;  
+    }  
+  
+    public void setPageBean(PageBean pageBean) {  
+        this.pageBean = pageBean;  
+    }  
 
-	
 }

@@ -36,6 +36,10 @@
 		<action name="list" class="cn.gdpu.action.ClassFeeAction" method="list">
 			<result>/WEB-INF/model/classfee/classfee.jsp</result>
 		</action> 
+		
+		<action name="listPage" class="cn.gdpu.action.ClassFeeAction" method="listPage">
+			<result>/WEB-INF/model/classfee/classfee.jsp</result>
+		</action> 
 				
 		<action name="addLink">
 			<result>/WEB-INF/model/classfee/classfeeAdd.jsp</result>
@@ -70,6 +74,10 @@
 		</action>	
 		
 		<action name="list" class="cn.gdpu.action.VoteAction" method="list" >
+			<result>/WEB-INF/model/vote/vote.jsp</result>
+		</action>
+		
+		<action name="listPage" class="cn.gdpu.action.VoteAction" method="listPage" >
 			<result>/WEB-INF/model/vote/vote.jsp</result>
 		</action>
 		

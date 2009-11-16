@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@	taglib uri="/struts-tags" prefix="s" %>
 
 <%
 	String path = request.getContextPath();
@@ -21,7 +22,7 @@
 			</div>
 			<c:choose>
 			
-			<c:when test="${votes==null}">
+			<c:when test="${pageBean.list==null}">
 					没有投票记录</a>
 		</h2>
 		</c:when>
@@ -41,35 +42,35 @@
 						<th>删除</th>
 						<th>投票</th>
 					</tr>
-					<c:forEach items="${votes }" var="vote">
+					<s:iterator value="pageBean.list">  
 						<tr>						
 							<td>
-								<input type="checkbox" name="vids" value="${vote.vid}" />
+								<input type="checkbox" name="vids" value="<s:property value="vid"/>" />
 							</td>
 							
 							<td>
-								<a href="<%=path %>/vote/query?vid=${vote.vid }">${vote.title }</a>
+								<a href="<%=path %>/vote/query?vid=<s:property value="vid"/>"><s:property value="title"/></a>
 							</td>
 							<td>
-								${vote.summary }
+								<s:property value="summary"/>
 							</td>
 							<td>
-								${vote.author.realName }
+								<s:property value="author.realName"/>
 							</td>
 							<td>
-								${vote.airTime }
+								<s:property value="airTime"/>
 							</td>
 							<td>
-								${vote.deadline }
+								<s:property value="deadline"/>
 							</td>
 							<td>
-								<a href="<%=path %>/vote/delete?vid=${vote.vid }" class="btn_del"></a>
+								<a href="<%=path %>/vote/delete?vid=<s:property value="vid"/>" class="btn_del"></a>
 							</td>
 							<td>
-								<a href="<%=path %>/vote/votingLink?vid=${vote.vid }" >投票</a>
+								<a href="<%=path %>/vote/votingLink?vid=<s:property value="vid"/>" >投票</a>
 							</td>
 						</tr>
-					</c:forEach>
+					</s:iterator>
 				</table>
 				<select name="cmd">
 					<option value="0" selected="selected">
@@ -80,6 +81,25 @@
 					</option>
 				</select>
 				<input type="submit" value="确定" />
+				
+				<s:if test="%{pageBean.currentPage == 1}">  
+				     第一页 上一页  
+				 </s:if>  
+				 <s:else>  
+				     <a href="<%=path %>/vote/listPage?page=1">第一页</a>  
+				     <a href="<%=path %>/vote/listPage?page=<s:property value="%{pageBean.currentPage-1}"/>">上一页</a>  
+				 </s:else>  
+				 <s:if test="%{pageBean.currentPage != pageBean.totalPage}">  
+				     <a href="<%=path %>/vote/listPage?page=<s:property value="%{pageBean.currentPage+1}"/>">下一页</a>  
+				     <a href="<%=path %>/vote/listPage?page=<s:property value="pageBean.totalPage"/>">最后一页</a>  
+				 </s:if>  
+				 <s:else>  
+				     下一页 最后一页  
+				 </s:else>  
+				 共<s:property value="pageBean.allRow"/> 条记录  
+				 共<s:property value="pageBean.totalPage"/> 页  
+				 当前第<s:property value="pageBean.currentPage"/>页 
+				
 				</form>
 			</c:otherwise>
 		</c:choose>

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@	taglib uri="/struts-tags" prefix="s" %>
 
 <%
 	String path = request.getContextPath();
@@ -22,7 +23,7 @@
 			</div>
 			<c:choose>
 			
-			<c:when test="${classFees==null}">
+			<c:when test="${pageBean.list==null}">
 					没有班费记录</a>
 			</c:when>
 		<c:otherwise>
@@ -42,35 +43,37 @@
 						<th>修改</th>
 						<th>删除</th>
 					</tr>
-					<c:forEach items="${classFees }" var="classFee">
+					<s:iterator value="pageBean.list">  
 						<tr>						
 							<td>
-								<input type="checkbox" name="fids" value="${classFee.fid}" />
+								<input type="checkbox" name="fids" value="<s:property value="fid"/>" />
 							</td>
 							<td>
-								<a href="<%=path %>/classfee/query?fid=${classFee.fid }">${classFee.fid }</a>
+								<a href="<%=path %>/classfee/query?fid=<s:property value="fid"/>"><s:property value="fid"/></a>
 							</td>
 							<td>
-								${classFee.event }
+								<s:property value="event" /> 
 							</td>
 							<td>
-								${classFee.fee }
+								<s:property value="fee"/>
 							</td>
 							<td>
-								${classFee.cmaker.realName }
+								<s:property value="cmaker.realName"/>
 							</td>
 							<td>
-								${classFee.time }
+								<s:property value="time"/>
 							</td>
 							<td>
-								<a href="<%=path %>/classfee/modifyLink?fid=${classFee.fid }" class="btn_edit"></a>
+								<a href="<%=path %>/classfee/modifyLink?fid=<s:property value="fid"/>" class="btn_edit"></a>
 							</td>
 							<td>
-								<a href="<%=path %>/classfee/delete?fid=${classFee.fid }" class="btn_del"></a>
+								<a href="<%=path %>/classfee/delete?fid=<s:property value="fid"/>" class="btn_del"></a>
 							</td>
 						</tr>
-					</c:forEach>
-				</table>
+						
+					 </s:iterator>  
+			 	</table>
+					
 				<select name="cmd">
 					<option value="0" selected="selected">
 						批量操作，请选择
@@ -80,9 +83,52 @@
 					</option>
 				</select>
 				<input type="submit" value="确定" />
+				 				   
+					 <s:if test="%{pageBean.currentPage == 1}">  
+					     第一页 上一页  
+					 </s:if>  
+					 <s:else>  
+					     <a href="<%=path %>/classfee/listPage?page=1">第一页</a>  
+					     <a href="<%=path %>/classfee/listPage?page=<s:property value="%{pageBean.currentPage-1}"/>">上一页</a>  
+					 </s:else>  
+					 <s:if test="%{pageBean.currentPage != pageBean.totalPage}">  
+					     <a href="<%=path %>/classfee/listPage?page=<s:property value="%{pageBean.currentPage+1}"/>">下一页</a>  
+					     <a href="<%=path %>/classfee/listPage?page=<s:property value="pageBean.totalPage"/>">最后一页</a>  
+					 </s:if>  
+					 <s:else>  
+					     下一页 最后一页  
+					 </s:else>  
+					 共<s:property value="pageBean.allRow"/> 条记录  
+					 共<s:property value="pageBean.totalPage"/> 页  
+					 当前第<s:property value="pageBean.currentPage"/>页 
+			
 		</form>
 			</c:otherwise>
 		</c:choose>
-			
-	</body>
+<%--<s:iterator value="pageBean.list">  
+     <s:property value="fid"/>  
+     <s:property value="event"/>  
+     <s:property value="fee"/>  
+     <a href="<%=path %>/classfee/modifyLink?fid=<s:property value="fid"/>">modify</a>  
+     <a href="<%=path %>/classfee/delete?fid=<s:property value="fid"/>" onclick="return askDel()"/>delete</a><br/>  
+ </s:iterator>  
+ 共<s:property value="pageBean.allRow"/> 条记录  
+ 共<s:property value="pageBean.totalPage"/> 页  
+ 当前第<s:property value="pageBean.currentPage"/>页<br/>  
+   
+ <s:if test="%{pageBean.currentPage == 1}">  
+     第一页 上一页  
+ </s:if>  
+ <s:else>  
+     <a href="<%=path %>/classfee/listPage?page=1">第一页</a>  
+     <a href="<%=path %>/classfee/listPage?page=<s:property value="%{pageBean.currentPage-1}"/>">上一页</a>  
+ </s:else>  
+ <s:if test="%{pageBean.currentPage != pageBean.totalPage}">  
+     <a href="<%=path %>/classfee/listPage?page=<s:property value="%{pageBean.currentPage+1}"/>">下一页</a>  
+     <a href="<%=path %>/classfee/listPage?page=<s:property value="pageBean.totalPage"/>">最后一页</a>  
+ </s:if>  
+ <s:else>  
+     下一页 最后一页  
+ </s:else>  
+	--%></body>
 </html>

@@ -13,6 +13,7 @@ import org.apache.struts2.interceptor.RequestAware;
 import org.apache.struts2.interceptor.SessionAware;
 import org.apache.struts2.interceptor.validation.SkipValidation;
 
+import cn.gdpu.bean.PageBean;
 import cn.gdpu.service.VoteService;
 import cn.gdpu.vo.Student;
 import cn.gdpu.vo.Vote;
@@ -25,6 +26,8 @@ public class VoteAction extends ActionSupport implements RequestAware,SessionAwa
 	private static final long serialVersionUID = 1L ;
 	private VoteService voteService;
 	
+	private PageBean pageBean;    //包含分布信息的bean  
+	
 	private Vote vote;
 	private VoteItem voteItem;
 	private String[] content;	
@@ -33,7 +36,7 @@ public class VoteAction extends ActionSupport implements RequestAware,SessionAwa
 	private int[] vids;
 	private int[] viid;
 	private int cmd;
-
+	private int page;    //第几页  
 
 	@SuppressWarnings("unchecked")
 	private Map request;
@@ -192,6 +195,17 @@ public class VoteAction extends ActionSupport implements RequestAware,SessionAwa
 	}
 	
 	/**
+	 * 分页
+	 */
+	public String listPage() throws Exception {  
+	        //分页的pageBean,参数pageSize表示每页显示记录数,page为当前页  
+	    this.pageBean = voteService.queryForPage(15, page); 
+	    if(pageBean.getList().size() == 0);
+	    	pageBean.setList(null);
+	    return SUCCESS;  
+	}  
+	
+	/**
 	 * 投票页面跳转
 	 * 
 	 * @return
@@ -339,5 +353,19 @@ public class VoteAction extends ActionSupport implements RequestAware,SessionAwa
 	public void setCmd(int cmd) {
 		this.cmd = cmd;
 	}
+	public PageBean getPageBean() {
+		return pageBean;
+	}
 
+	public void setPageBean(PageBean pageBean) {
+		this.pageBean = pageBean;
+	}
+
+	public int getPage() {
+		return page;
+	}
+
+	public void setPage(int page) {
+		this.page = page;
+	}
 }

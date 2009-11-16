@@ -23,14 +23,16 @@ public class MailSender {
 		email.setAuthentication("fatkun8@gmail.com", "classmis");// smtp认证的用户名和密码
 		email.setFrom("fatkun8@gmail.com", "班务管理系统");// 发信者
 		if (to != null && to.size() > 0) {
-			email.addTo(to.get(0));// 收信者
-		}
-		if (to != null && to.size() > 1) {
-			// 从第二个联系人开始把其他联系人加入抄送里
-			for (int i = 1; i < to.size(); i++) {
-				email.addCc(to.get(i));
+			for (int i = 0; i < to.size(); i++) {
+				email.addTo(to.get(i));
 			}
+			//email.addTo(to.get(0));// 收信者
+			
 		}
+//		if (to != null && to.size() > 1) {
+//			// 从第二个联系人开始把其他联系人加入抄送里
+//
+//		}
 		email.setSubject(subject);// 标题
 		email.setCharset("UTF-8");// 编码格式
 		email.setMsg(msg);// 内容

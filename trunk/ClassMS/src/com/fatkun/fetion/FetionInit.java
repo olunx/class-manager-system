@@ -6,11 +6,12 @@ import java.util.ArrayList;
 
 /**
  * 飞信初始化
+ * 
  * @author Fatkun http://www.fatkun.com
- *
+ * 
  */
 class FetionInit {
-	String sipc_proxy = "", ssi_app_sign_in = "", ssi_app_sign_out = "", uri = "", sid = "";
+	String sipc_proxy = "", ssi_app_sign_in = "http://uid.fetion.com.cn/ssiportal/SSIAppSignIn.aspx", ssi_app_sign_out = "", uri = "", sid = "";
 	static String sysConfigUrl = "http://nav.fetion.com.cn/nav/getsystemconfig.aspx";
 
 	public String postUrl(String urlStr, String sendData) throws IOException {
@@ -50,8 +51,9 @@ class FetionInit {
 
 	// 初始化
 	public ArrayList<String> InitAction(String phone, String passwd) throws IOException {
-		String loginResult,sidResult;
-		String sysConfigArg = "<config><user mobile-no=\"" + phone
+		String loginResult;
+		String sysConfigArg = "<config><user mobile-no=\""
+				+ phone
 				+ "\" /><client type=\"PC\" version=\"3.3.0370\" platform=\"W5.1\" /><servers version=\"0\" /><service-no version=\"12\" /><parameters version=\"15\" /><hints version=\"13\" /><http-applications version=\"14\" /><client-config version=\"17\" /></config>";
 
 		ArrayList<String> loginInfo = new ArrayList<String>();
@@ -61,19 +63,22 @@ class FetionInit {
 		ssi_app_sign_in = FetionUtil.getInstance().centerStr(loginResult, "<ssi-app-sign-in>(.*?)</ssi-app-sign-in>").get(0);
 		ssi_app_sign_out = FetionUtil.getInstance().centerStr(loginResult, "<ssi-app-sign-out>(.*?)</ssi-app-sign-out>").get(0);
 		ssi_app_sign_in = ssi_app_sign_in.replace("https", "http");
-		
-		sidResult = postUrl(ssi_app_sign_in, "mobileno=" + phone + "&pwd=" + passwd + "");
-		sid = FetionUtil.getInstance().centerStr(sidResult, "<user uri=\"sip:([0-9]+)@fetion.com.cn;p=[0-9]+\"").get(0);
 
 		loginInfo.add(sipc_proxy);
 		loginInfo.add(ssi_app_sign_in);
 		loginInfo.add(ssi_app_sign_out);
-		loginInfo.add(sid);
-		
+
 		System.out.println(loginResult);
-		System.out.println(sidResult);
 		System.out.println(loginInfo);
 		return loginInfo;
+	}
+
+	public String getSid(String phone, String passwd) throws IOException {
+		String sidResult;
+		sidResult = postUrl(ssi_app_sign_in, "mobileno=" + phone + "&pwd=" + passwd + "");
+		sid = FetionUtil.getInstance().centerStr(sidResult, "<user uri=\"sip:([0-9]+)@fetion.com.cn;p=[0-9]+\"").get(0);
+		return sid;
+
 	}
 
 }

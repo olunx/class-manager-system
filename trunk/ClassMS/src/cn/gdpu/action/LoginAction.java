@@ -58,6 +58,11 @@ public class LoginAction extends ActionSupport implements SessionAware {
 		return INPUT;
 
 	}
+	
+	public String logout() throws Exception {
+		session.clear();
+		return "index";
+	}
 
 	public void setSession(Map<String, Object> session) {
 		this.session = session;

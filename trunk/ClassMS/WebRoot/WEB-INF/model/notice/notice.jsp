@@ -13,7 +13,7 @@
 
 	</head>
 	<body>
-		<h2 class="caption"><div class="float_right"><a class="btn btn_add" href="#">添加</a></div>
+		<h2 class="caption"><div class="float_right"><a class="btn btn_add" href="addLink">添加</a></div>
 			公告管理
 		</h2>
 		<c:choose>

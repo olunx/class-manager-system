@@ -4,11 +4,16 @@
 	"http://struts.apache.org/dtds/struts-2.1.dtd" >
 <struts>
 	<package name="login" extends="struts-default" namespace="/">
+		<global-results>
+			<result name="input">/login.html</result>
+		</global-results>
 		<action name="login" class="cn.gdpu.action.LoginAction" method="login">
 			<result name="student">/WEB-INF/main.jsp</result>
 			<result name="leader">/WEB-INF/main.jsp</result>
 			<result name="admin">/WEB-INF/main.jsp</result>
-			<result name="input">/login.html</result>
+		</action>
+		<action name="logout" class="cn.gdpu.action.LoginAction" method="logout">
+			<result name="index" type="redirect">/login.html</result>
 		</action>
 	</package>
 </struts>

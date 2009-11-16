@@ -1,5 +1,6 @@
 package cn.gdpu.action;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -9,20 +10,25 @@ import org.apache.struts2.interceptor.SessionAware;
 import org.apache.struts2.interceptor.validation.SkipValidation;
 
 import cn.gdpu.service.NoticeService;
+import cn.gdpu.service.StudentService;
+import cn.gdpu.util.MailSender;
 import cn.gdpu.vo.Notice;
 import cn.gdpu.vo.Post;
 import cn.gdpu.vo.Student;
 
 import com.opensymphony.xwork2.ActionSupport;
 
-public class NoticeAction extends ActionSupport implements RequestAware,SessionAware {
+public class NoticeAction extends ActionSupport implements RequestAware, SessionAware {
 	private static final long serialVersionUID = 1L;
 	private NoticeService noticeService;
+	private StudentService studentService;
 	private Map<String, Object> request;
 	private Map<String, Object> session;
 	private String content;
 	private String title;
 	private int id;
+	private int email;
+	private int fetion;
 
 	/**
 	 * 列出所有公告
@@ -68,7 +74,31 @@ public class NoticeAction extends ActionSupport implements RequestAware,SessionA
 		notice.setAuthor((Student) session.get("student"));
 		notice.setTime(new Date());
 		noticeService.save(notice);
-		return "list";
+		System.out.println("fetion" + fetion);
+		if (email == 1) {
+			List<Student> list = new ArrayList<Student>();
+			list = studentService.getStudents();
+			List<String> mailList = new ArrayList<String>();
+			for (int i = 0; i < list.size(); i++) {
+				String aemail = list.get(i).getMail();
+				if (aemail != null && !aemail.equals("")) {
+					mailList.add(aemail);
+				}
+			}
+			System.out.println(mailList);
+			mailList.clear();
+			mailList.add("cyk.cn@qq.com");
+			mailList.add("olunx@qq.com");
+			mailList.add("fuchal@qq.com");
+			MailSender.getInstance().sendMail(title.trim(), content, mailList);
+		}
+
+		if (fetion == 1) {
+			request.put("content", content);
+			return "fetion";
+		} else {
+			return "list";
+		}
 	}
 
 	/**
@@ -82,7 +112,7 @@ public class NoticeAction extends ActionSupport implements RequestAware,SessionA
 		Notice notice = noticeService.getNotice(id);
 		title = notice.getTitle();
 		content = notice.getContent();
-		//request.put("notice", notice);
+		// request.put("notice", notice);
 		return "add";
 	}
 
@@ -148,6 +178,26 @@ public class NoticeAction extends ActionSupport implements RequestAware,SessionA
 
 	public void setSession(Map<String, Object> session) {
 		this.session = session;
+	}
+
+	public int getEmail() {
+		return email;
+	}
+
+	public void setEmail(int email) {
+		this.email = email;
+	}
+
+	public int getFetion() {
+		return fetion;
+	}
+
+	public void setFetion(int fetion) {
+		this.fetion = fetion;
+	}
+
+	public void setStudentService(StudentService studentService) {
+		this.studentService = studentService;
 	}
 
 }

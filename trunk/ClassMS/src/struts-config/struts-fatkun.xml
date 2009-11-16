@@ -15,7 +15,12 @@
 			<result name="success">/WEB-INF/model/notice/notice.jsp</result>
 		</action>
 		<action name="addLink" class="cn.gdpu.action.NoticeAction" method="addLink"></action>
-		<action name="save" class="cn.gdpu.action.NoticeAction" method="save"></action>
+		<action name="save" class="cn.gdpu.action.NoticeAction" method="save">
+			<result name="fetion" type="chain">
+				<param name="actionName">sendFetionLink</param>
+				<param name="namespace">/fetion</param>
+			</result>
+		</action>
 		<action name="modify" class="cn.gdpu.action.NoticeAction" method="modify"></action>
 		<action name="del" class="cn.gdpu.action.NoticeAction" method="del"></action>
 		<action name="detail" class="cn.gdpu.action.NoticeAction" method="detail">
@@ -57,13 +62,13 @@
 			<result name="success">/WEB-INF/model/install/install.jsp</result>
 		</action>
 	</package>
-	
+
 	<package name="jump" extends="struts-default" namespace="/">
 		<action name="jump" class="cn.gdpu.action.JumpAction">
 			<result name="success">/WEB-INF/${url}</result>
 		</action>
 	</package>
-	
+
 	<package name="fistpage" extends="struts-default" namespace="/">
 		<action name="first" class="cn.gdpu.action.IndexAction">
 			<result name="success">/WEB-INF/first.jsp</result>

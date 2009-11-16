@@ -140,11 +140,11 @@ public class FetionSocket {
 	public void init() throws IOException {
 		// sid = "";
 		ArrayList<String> loginInfo;
-		loginInfo = new FetionInit().InitAction(phone, passwd);
-		sipc_proxy = loginInfo.get(0);
+		//loginInfo = new FetionInit().InitAction(phone, passwd);
+		sid = new FetionInit().getSid(phone, passwd);
+		//sipc_proxy = loginInfo.get(0);
 		// ssi_app_sign_in = loginInfo.get(1);
 		// ssi_app_sign_out = loginInfo.get(2);
-		sid = loginInfo.get(3);
 
 		openSocket(sipc_proxy);
 	}

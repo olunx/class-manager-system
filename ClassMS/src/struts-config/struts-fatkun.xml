@@ -42,11 +42,12 @@
 	<package name="activity" extends="struts-default" namespace="/activity">
 		<global-results>
 			<result name="input">/WEB-INF/model/activity/activityApplyInput.jsp</result>
-			<result name="liststuAction" type="redirect">listStu?sno=${sno}</result>
+			<result name="liststuAction" type="redirect">listPage?sno=${sno}</result>
 		</global-results>
 		<action name="*" class="cn.gdpu.action.ActivityApplyAction" method="{1}">
 			<result name="list">/WEB-INF/model/activity/activityApply.jsp</result>
 			<result name="liststu">/WEB-INF/model/activity/activityApplyView.jsp</result>
+			<result name="listpage">/WEB-INF/model/activity/activityApplyView.jsp</result>
 			<result name="success">/WEB-INF/model/activity/activityApply.jsp</result>
 		</action>
 	</package>

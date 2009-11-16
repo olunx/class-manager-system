@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@	taglib uri="/struts-tags" prefix="s" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%> 
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <%
 	String path = request.getContextPath();
@@ -42,32 +44,32 @@
 						<th>删除</th>
 						<th>投票</th>
 					</tr>
-					<s:iterator value="pageBean.list">  
+					<s:iterator value="pageBean.list" var="vote">  
 						<tr>						
 							<td>
-								<input type="checkbox" name="vids" value="<s:property value="vid"/>" />
+								<input type="checkbox" name="vids" value="${vote.vid }" />
 							</td>
 							
 							<td>
-								<a href="<%=path %>/vote/query?vid=<s:property value="vid"/>"><s:property value="title"/></a>
+								<a href="<%=path %>/vote/query?vid=<s:property value="vid"/>">${fn:substring(vote.title,0,30)}</a>
 							</td>
 							<td>
-								<s:property value="summary"/>
+								${fn:substring(vote.summary,0,30)}
 							</td>
 							<td>
-								<s:property value="author.realName"/>
+								${vote.author.realName }
 							</td>
 							<td>
-								<s:property value="airTime"/>
+								<fmt:formatDate value="${vote.airTime}" pattern="yyyy-MM-dd HH:mm"/>
 							</td>
 							<td>
-								<s:property value="deadline"/>
+								<fmt:formatDate value="${vote.deadline}" pattern="yyyy-MM-dd HH:mm"/>
 							</td>
 							<td>
-								<a href="<%=path %>/vote/delete?vid=<s:property value="vid"/>" class="btn_del"></a>
+								<a href="<%=path %>/vote/delete?vid=${vote.vid}" class="btn_del"></a>
 							</td>
 							<td>
-								<a href="<%=path %>/vote/votingLink?vid=<s:property value="vid"/>" >投票</a>
+								<a href="<%=path %>/vote/votingLink?vid=${vote.vid}" >投票</a>
 							</td>
 						</tr>
 					</s:iterator>

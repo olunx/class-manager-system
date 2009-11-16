@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%> 
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@	taglib uri="/struts-tags" prefix="s" %>
 
 <%
@@ -43,31 +45,31 @@
 						<th>修改</th>
 						<th>删除</th>
 					</tr>
-					<s:iterator value="pageBean.list">  
+					<s:iterator value="pageBean.list" var="classfee">  
 						<tr>						
 							<td>
-								<input type="checkbox" name="fids" value="<s:property value="fid"/>" />
+								<input type="checkbox" name="fids" value="${classfee.fid }"/>
 							</td>
 							<td>
-								<a href="<%=path %>/classfee/query?fid=<s:property value="fid"/>"><s:property value="fid"/></a>
+								<a href="<%=path %>/classfee/query?fid=${classfee.fid }">${classfee.fid }</a>
 							</td>
 							<td>
-								<s:property value="event" /> 
+								${fn:substring(classfee.event,0,30)}
 							</td>
 							<td>
-								<s:property value="fee"/>
+								${classfee.fee }
 							</td>
 							<td>
-								<s:property value="cmaker.realName"/>
+								${classfee.cmaker.realName }
 							</td>
 							<td>
-								<s:property value="time"/>
+								<fmt:formatDate value="${classfee.time}" pattern="yyyy-MM-dd HH:mm"/>
 							</td>
 							<td>
-								<a href="<%=path %>/classfee/modifyLink?fid=<s:property value="fid"/>" class="btn_edit"></a>
+								<a href="<%=path %>/classfee/modifyLink?fid=${classfee.fid }" class="btn_edit"></a>
 							</td>
 							<td>
-								<a href="<%=path %>/classfee/delete?fid=<s:property value="fid"/>" class="btn_del"></a>
+								<a href="<%=path %>/classfee/delete?fid=${classfee.fid }" class="btn_del"></a>
 							</td>
 						</tr>
 						

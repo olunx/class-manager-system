@@ -46,7 +46,6 @@ public class ClassFeeAction extends ActionSupport implements RequestAware,Sessio
 	public String save() throws Exception{
 		if(fid == null || fid.trim().equals("")){                    //新建班费
 			Student cmaker = (Student) session.get("student");
-			System.out.println(Double.parseDouble(fee));
 			classFee.setFee(Double.parseDouble(fee));
 			classFee.setCmaker(cmaker );
 			Date date = new Date();

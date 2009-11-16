@@ -2,7 +2,9 @@ package cn.gdpu.service;
 
 import java.util.Set;
 
+import cn.gdpu.bean.PageBean;
 import cn.gdpu.vo.ActivityApply;
+import cn.gdpu.vo.Student;
 
 
 public interface ActivityApplyService {
@@ -44,9 +46,18 @@ public interface ActivityApplyService {
 	 */
 	public abstract Set<ActivityApply> getActivityApplysByStuID(int sid);
 	
+	 /** *//** 
+     * 分页查询 
+     * @param currentPage 当前第几页 
+     * @param pageSize 每页大小 
+     * @return 封闭了分页信息(包括记录集list)的Bean 
+     */  
+    public PageBean queryForPage(int pageSize,int currentPage,Student stu);  
+	
 	/**
 	 * 设置申请的状态
 	 * @param pass
 	 */
 	public abstract void setActivityApplyPass(int aid,int pass);
 }
+

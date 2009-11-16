@@ -106,7 +106,6 @@ public class VoteAction extends ActionSupport implements RequestAware,SessionAwa
 	public String deleteMany() {
 		if(cmd == 1){
 			for(int i=0;i<vids.length;i++) {
-				System.out.println(vids[i]);
 				voteService.deleteVote(vids[i]);
 			}
 			return SUCCESS;

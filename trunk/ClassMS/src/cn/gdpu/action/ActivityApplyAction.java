@@ -6,6 +6,7 @@ import java.util.Set;
 
 import org.apache.struts2.interceptor.RequestAware;
 
+import cn.gdpu.bean.PageBean;
 import cn.gdpu.service.ActivityApplyService;
 import cn.gdpu.service.StudentService;
 import cn.gdpu.vo.ActivityApply;
@@ -26,6 +27,25 @@ public class ActivityApplyAction extends ActionSupport implements RequestAware {
 	private int[] aids;
 	private int cmd;// 批量操作命令
 
+	private PageBean pageBean;
+	public PageBean getPageBean() {
+		return pageBean;
+	}
+
+	public void setPageBean(PageBean pageBean) {
+		this.pageBean = pageBean;
+	}
+
+	public int getPage() {
+		return page;
+	}
+
+	public void setPage(int page) {
+		this.page = page;
+	}
+
+	private int page;
+	
 	/**
 	 * 列出所有学生
 	 * 
@@ -54,6 +74,21 @@ public class ActivityApplyAction extends ActionSupport implements RequestAware {
 		request.put("student", stu);
 		request.put("activityApplys", activityApplys);
 		return "liststu";
+	}
+	
+
+	/**
+	 * 分页某个学生的学分申请
+	 * 
+	 * @return
+	 * @throws Exception
+	 */
+	public String listPage() throws Exception {
+		Student stu = studentService.getStudentBySno(sno);
+		this.pageBean = activityApplyService.queryForPage(15, page, stu);  
+		if(pageBean.getList().isEmpty())
+			pageBean = null;
+        return "listpage";
 	}
 
 	/**

@@ -60,7 +60,7 @@ String path = request.getContextPath();
 				删除投票成功<br />		
 			</c:when> 
 			<c:when test="${param.value eq 'voting'}"> 
-				<input type="text" name="vid" value="${vote.vid}">	<br	/>			
+				<input type="hidden" name="vid" value="${vote.vid}">	<br	/>			
 					投票主题：${vote.title }<br />
 					描述内容：${vote.summary }<br />				
 					<c:forEach items="${vote.items}" var="voteItem" varStatus="i">

@@ -128,12 +128,7 @@ public class ClassFeeAction extends ActionSupport implements RequestAware,Sessio
 		return SUCCESS;	
 	}
 	
-	/**
-	 * 列出所有班费
-	 * 
-	 * @return
-	 * @throws Exception
-	 */
+	/*
 	@SkipValidation
 	@SuppressWarnings("unchecked")
 	public String list() throws Exception{		
@@ -143,17 +138,17 @@ public class ClassFeeAction extends ActionSupport implements RequestAware,Sessio
 			classFees = null;
 		request.put("classFees", classFees);
 		return SUCCESS;	
-	}
+	}*/
 	
 	/**
-	 * 分页
+	 * 分页列出所有班费
 	 * @return
 	 */
 	@SkipValidation
-	public String listPage() throws Exception {  
+	public String list() throws Exception {  
         //分页的pageBean,参数pageSize表示每页显示记录数,page为当前页  
         this.pageBean = classFeeService.queryForPage(15, page);  
-        if(pageBean.getList().size() == 0);
+        if(pageBean.getList().size() == 0)
     		pageBean.setList(null);
         return SUCCESS;  
     }  

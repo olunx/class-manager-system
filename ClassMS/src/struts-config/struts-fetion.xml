@@ -1,0 +1,13 @@
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+    <package name="fetion" extends="struts-default" namespace="/fetion">
+        <action name="sendFetionLink" class="cn.gdpu.action.FetionAction" method="sendFetionLink">
+        	<result name="success">/WEB-INF/model/fetion/fetion.jsp</result>
+        </action>
+        <action name="sendFetion" class="cn.gdpu.action.FetionAction" method="sendFetion">
+        	<result name="success">/WEB-INF/model/fetion/fetion.jsp</result>
+        </action>
+    </package>
+</struts>

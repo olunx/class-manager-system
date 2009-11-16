@@ -19,7 +19,7 @@
 <c:otherwise>
 	<table class="table">
 	<c:forEach items="${notices}" var="notice" begin="0" end="7" step="1">
-		<tr><td><a href="<%=path %>/notice/detail?id=${notice.nid }">${notice.title }</a></td><td>${notice.author.realName }</td><td>${notice.time }</td></tr>
+		<tr><td><a href="<%=path %>/notice/detail?id=${notice.nid }">${notice.title }</a></td><td>${notice.author.realName}</td><td>${notice.time }</td></tr>
 		<tr><td colspan="3">${notice.content}</td></tr>
 	</c:forEach>
 	</table>

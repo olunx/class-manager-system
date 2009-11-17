@@ -7,6 +7,7 @@ import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.interceptor.RequestAware;
 
 import cn.gdpu.service.AttendanceService;
+import cn.gdpu.service.DutyService;
 import cn.gdpu.service.StudentService;
 import cn.gdpu.util.excel.StudentExcel;
 import cn.gdpu.vo.Student;
@@ -27,13 +28,14 @@ public class StudentAction extends ActionSupport implements RequestAware {
 	private String sno;
 	private String realName;
 	private String dorm;
-	//private Duty duty;
 	private long phoneNo;
 	private long qq;
 	private String mail;
 
+	private String dutys;
 	private int[] stuIds;
 	private String fileName;
+	private DutyService dutyService;
 	private StudentService studentService;
 	private AttendanceService attendanceService;
 	private Map<String, Object> request;
@@ -79,7 +81,7 @@ public class StudentAction extends ActionSupport implements RequestAware {
 		if (stuId < 0) {
 			return "input";
 		}
-		System.out.println("stuId: " + stuId);
+		//System.out.println("stuId: " + stuId);
 		Student s = studentService.getStudentById(stuId);
 		if (s == null) {
 			return "input";
@@ -102,7 +104,8 @@ public class StudentAction extends ActionSupport implements RequestAware {
 		s.setPhoneNo(phoneNo);
 		s.setQq(qq);
 		s.setMail(mail);
-		
+		System.out.println(dutys);
+		s.setDutys(dutyService.getDutysByDutyNameString(dutys));
 		studentService.update(s);
 		
 		return "index";
@@ -262,6 +265,22 @@ public class StudentAction extends ActionSupport implements RequestAware {
 
 	public void setAttendanceService(AttendanceService attendanceService) {
 		this.attendanceService = attendanceService;
+	}
+
+	public String getDutys() {
+		return dutys;
+	}
+
+	public void setDutys(String dutys) {
+		this.dutys = dutys;
+	}
+
+	public DutyService getDutyService() {
+		return dutyService;
+	}
+
+	public void setDutyService(DutyService dutyService) {
+		this.dutyService = dutyService;
 	}
 
 }

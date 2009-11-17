@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import cn.gdpu.service.DutyService;
+import cn.gdpu.service.StudentService;
 import cn.gdpu.util.ActionImpl;
 import cn.gdpu.vo.Duty;
 
@@ -15,12 +16,12 @@ public class DutyAction extends ActionImpl {
 	private static final long serialVersionUID = 1L;
 	
 	private int dutyId = -1;
-	//private Student student;
 	private String dutyName;
 	private String job;
 
-
+	private String students;
 	private int[] dutyIds;
+	private StudentService studentService;
 	private DutyService dutyService;
 	private Map<String, Object> request;
 	
@@ -82,7 +83,7 @@ public class DutyAction extends ActionImpl {
 	public String update() {
 		
 		Duty d = dutyService.getDutyById(dutyId);
-		//d.setStudent(student);
+		d.setStudents(studentService.getStudentsBySnoString(students));
 		d.setDutyName(dutyName);
 		d.setJob(job);
 		dutyService.add(d);
@@ -139,4 +140,21 @@ public class DutyAction extends ActionImpl {
 	public void setRequest(Map<String, Object> request) {
 		this.request = request;
 	}
+
+	public String getStudents() {
+		return students;
+	}
+
+	public void setStudents(String students) {
+		this.students = students;
+	}
+
+	public StudentService getStudentService() {
+		return studentService;
+	}
+
+	public void setStudentService(StudentService studentService) {
+		this.studentService = studentService;
+	}
+	
 }

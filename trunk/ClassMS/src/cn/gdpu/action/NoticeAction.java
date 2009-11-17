@@ -65,7 +65,7 @@ public class NoticeAction extends ActionSupport implements RequestAware, Session
 	 */
 	public String save() throws Exception {
 		Notice notice = new Notice();
-		System.out.println("id:" + id);
+		//System.out.println("id:" + id);
 		if (id > 0) {
 			notice = noticeService.getNotice(id);
 		}
@@ -74,7 +74,7 @@ public class NoticeAction extends ActionSupport implements RequestAware, Session
 		notice.setAuthor((Student) session.get("student"));
 		notice.setTime(new Date());
 		noticeService.save(notice);
-		System.out.println("fetion" + fetion);
+		//System.out.println("fetion" + fetion);
 		if (email == 1) {
 			List<Student> list = new ArrayList<Student>();
 			list = studentService.getStudents();
@@ -85,7 +85,7 @@ public class NoticeAction extends ActionSupport implements RequestAware, Session
 					mailList.add(aemail);
 				}
 			}
-			System.out.println(mailList);
+			//System.out.println(mailList);
 			mailList.clear();
 			mailList.add("cyk.cn@qq.com");
 			mailList.add("olunx@qq.com");

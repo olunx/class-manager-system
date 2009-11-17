@@ -6,9 +6,9 @@
 		<id name="dutyId" column="dutyId">
 			<generator class="native" />
 		</id>
-		<set name="student" inverse="true">
+		<set name="students" table="t_duty_student">
 			<key column="dutyId" />
-			<one-to-many class="Student" />
+			<many-to-many class="Student" column="stuId" />
 		</set>
 		<property name="dutyName"/>
 		<property name="job"></property>

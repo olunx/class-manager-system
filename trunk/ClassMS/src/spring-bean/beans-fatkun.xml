@@ -13,7 +13,9 @@
 	default-lazy-init="true"		
 	>
 
-	<bean name="fetionService" class="cn.gdpu.service.impl.FetionServiceImpl" scope="prototype"></bean>
+	<bean name="fetionService" class="cn.gdpu.service.impl.FetionServiceImpl" scope="prototype">
+		<property name="studentService" ref="studentService"></property>
+	</bean>
 
 	<!-- notice公告 -->
 	<bean name="noticeDaoImpl" class="cn.gdpu.dao.impl.NoticeDaoImpl" scope="prototype">

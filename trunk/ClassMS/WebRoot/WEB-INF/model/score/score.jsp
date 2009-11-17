@@ -10,30 +10,28 @@
 		<script language="javascript" type="text/javascript" src="../content/js/common.js"></script>
 		<script language="javascript" type="text/javascript" src="../content/js/jquery.tablesorter.min.js"></script>
 		<script type="text/javascript">
-	$( function() {
+	$(function() {
 		$(".table").tablesorter();
 	});
 </script>
 		<title>成绩管理</title>
 	</head>
 	<body>
-		<c:choose>
-			<c:when test="${fileData==null}">
-				<form action="fileUpload" method="post" enctype="multipart/form-data">
-					<!-- file对应的input必须有name属性,name的值必须和action中的变量对应 -->
-					<input type="file" name="documents" />
-					<input type="submit" value="submit" />
-				</form>
-			</c:when>
-			<c:otherwise>
-				<div>
-					${fileData}
-				</div>
-				<form action="sendScore" method="post">
-					<input type="hidden" value="${fileName}" name="fileName" />
-					<input type="submit" value="确定" />
-				</form>
-			</c:otherwise>
-		</c:choose>
+		<form action="fileUpload" method="post" enctype="multipart/form-data">
+			<!-- file对应的input必须有name属性,name的值必须和action中的变量对应 -->
+			<input type="file" name="documents" />
+			<input type="submit" value="submit" />
+		</form>
+		<div>
+			${fileData}
+		</div>
+		<form action="sendScore" method="post">
+			<input type="hidden" value="${fileName}" name="fileName" />
+			手机号：
+			<input type="text" name="phone" />
+			飞信密码：
+			<input type="password" name="pwd" />
+			<input type="submit" value="确定" />
+		</form>
 	</body>
 </html>

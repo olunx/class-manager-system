@@ -3,12 +3,16 @@ package cn.gdpu.service.impl;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import com.fatkun.fetion.FetionSocket;
 
 import cn.gdpu.service.FetionService;
+import cn.gdpu.service.StudentService;
+import cn.gdpu.vo.Student;
 
 public class FetionServiceImpl implements FetionService {
+	private StudentService studentService;
 
 	public void sendFetion(final String phone, final String pwd, final String tophone, final String content) {
 
@@ -42,6 +46,37 @@ public class FetionServiceImpl implements FetionService {
 			}
 		};
 		thread.start();
+	}
+
+	public void sendScore(final String phone, final String pwd, final Map<String, Object> send) {
+		Thread thread = new Thread() {
+
+			@Override
+			public void run() {
+				try {
+					FetionSocket fetionSocket;
+					fetionSocket = new FetionSocket(phone, pwd);
+					fetionSocket.init();
+					fetionSocket.login();
+					for (String key : send.keySet()) {
+						Student stu = studentService.getStudentBySno(key);
+						if (stu != null) {
+							String tophone = String.valueOf(stu.getPhoneNo());
+							fetionSocket.sendMsg((String)send.get(key), tophone);
+						}
+					}
+					fetionSocket.logout();
+					fetionSocket.socketClose();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+		};
+		thread.start();
+	}
+
+	public void setStudentService(StudentService studentService) {
+		this.studentService = studentService;
 	}
 
 }

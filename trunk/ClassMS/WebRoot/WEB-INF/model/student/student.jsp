@@ -10,10 +10,34 @@
 		<script language="javascript" type="text/javascript" src="../content/js/common.js"></script>
 		<script language="javascript" type="text/javascript" src="../content/js/jquery.tablesorter.min.js"></script>
 		<script type="text/javascript">
-			$( function() {
-				$(".table").tablesorter({headers: { 0:{sorter: false}, 12:{sorter: false}, 13:{sorter: false}}});
-			});
-		</script>
+	$( function() {
+		$(".table").tablesorter( {
+			headers : {
+				0 : {
+					sorter :false
+				},
+				1 : {
+					sorter :false
+				},
+				4 : {
+					sorter :false
+				},
+				5 : {
+					sorter :false
+				},
+				6 : {
+					sorter :false
+				},
+				12 : {
+					sorter :false
+				},
+				13 : {
+					sorter :false
+				}
+			}
+		});
+	});
+</script>
 		<title>学生</title>
 	</head>
 	<body>
@@ -24,57 +48,58 @@
 			<c:choose>
 				<c:when test="${students==null}">
 			没有数据			
+		
 		</h2>
 		</c:when>
 		<c:otherwise>
 			学生管理</h2>
 			<form action="deleteManyStudent" method="post">
 				<table class="table">
-				<thead>
-					<tr>
-						<th>
-						<a rel="checkall" >全选</a>
-						</th>
-						<th>
-							ID
-						</th>
-						<th>
-							学号
-						</th>
-						<th>
-							姓名
-						</th>
-						<th>
-							用户名
-						</th>
-						<th>
-							密码
-						</th>
-						<th>
-							头像
-						</th>
-						<th>
-							宿舍
-						</th>
-						<th>
-							职位
-						</th>
-						<th>
-							手机
-						</th>
-						<th>
-							QQ
-						</th>
-						<th>
-							逃课次数
-						</th>
-						<th>
-							修改
-						</th>
-						<th>
-							删除
-						</th>
-					</tr>
+					<thead>
+						<tr>
+							<th>
+								<a rel="checkall">全选</a>
+							</th>
+							<th>
+								ID
+							</th>
+							<th>
+								学号
+							</th>
+							<th>
+								姓名
+							</th>
+							<th>
+								用户名
+							</th>
+							<th>
+								密码
+							</th>
+							<th>
+								头像
+							</th>
+							<th>
+								宿舍
+							</th>
+							<th>
+								职位
+							</th>
+							<th>
+								手机
+							</th>
+							<th>
+								QQ
+							</th>
+							<th>
+								逃课次数
+							</th>
+							<th>
+								修改
+							</th>
+							<th>
+								删除
+							</th>
+						</tr>
 					</thead>
 					<c:forEach items="${students}" var="student">
 						<tr>

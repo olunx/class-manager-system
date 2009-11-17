@@ -9,10 +9,34 @@
 		<script language="javascript" type="text/javascript" src="../content/js/common.js"></script>
 		<script language="javascript" type="text/javascript" src="../content/js/jquery.tablesorter.min.js"></script>
 		<script type="text/javascript">
-			$( function() {
-				$(".table").tablesorter({headers: { 0:{sorter: false}, 6:{sorter: false}, 7:{sorter: false}, 8:{sorter: false}}});
-			});
-		</script>
+	$( function() {
+		$(".table").tablesorter( {
+			headers : {
+				0 : {
+					sorter :false
+				},
+				1 : {
+					sorter :false
+				},
+				3 : {
+					sorter :false
+				},
+				5 : {
+					sorter :false
+				},
+				6 : {
+					sorter :false
+				},
+				7 : {
+					sorter :false
+				},
+				8 : {
+					sorter :false
+				}
+			}
+		});
+	});
+</script>
 		<title>管理员</title>
 	</head>
 	<body>
@@ -23,6 +47,7 @@
 			<c:choose>
 				<c:when test="${admins==null}">
 			没有数据			
+		
 		</h2>
 		</c:when>
 		<c:otherwise>
@@ -30,35 +55,35 @@
 			<form action="deleteManyAdmin" method="post">
 				<table class="table">
 					<thead>
-					<tr>
-						<th>
-						<a rel="checkall" >全选</a>
-						</th>
-						<th>
-							ID
-						</th>
-						<th>
-							用户名
-						</th>
-						<th>
-							密码
-						</th>
-						<th>
-							姓名
-						</th>
-						<th>
-							头像
-						</th>
-						<th>
-							备注
-						</th>
-						<th>
-							修改
-						</th>
-						<th>
-							删除
-						</th>
-					</tr>
+						<tr>
+							<th>
+								<a rel="checkall">全选</a>
+							</th>
+							<th>
+								ID
+							</th>
+							<th>
+								用户名
+							</th>
+							<th>
+								密码
+							</th>
+							<th>
+								姓名
+							</th>
+							<th>
+								头像
+							</th>
+							<th>
+								备注
+							</th>
+							<th>
+								修改
+							</th>
+							<th>
+								删除
+							</th>
+						</tr>
 					</thead>
 					<c:forEach items="${admins}" var="admin">
 						<tr>

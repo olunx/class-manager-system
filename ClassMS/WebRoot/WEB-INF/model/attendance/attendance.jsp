@@ -7,6 +7,12 @@
 		<link href="../content/images/content.css" rel="stylesheet" type="text/css" />
 		<script language="javascript" type="text/javascript" src="../content/js/jquery.min.js"></script>
 		<script language="javascript" type="text/javascript" src="../content/js/common.js"></script>
+		<script language="javascript" type="text/javascript" src="../content/js/jquery.tablesorter.min.js"></script>
+		<script type="text/javascript">
+			$( function() {
+				$(".table").tablesorter({headers: { 0:{sorter: false}, 7:{sorter: false}, 8:{sorter: false}, 9:{sorter: false}}});
+			});
+		</script>
 		<title>考勤</title>
 	</head>
 	<body>
@@ -17,15 +23,17 @@
 			<c:choose>
 				<c:when test="${attendances==null}">
 			没有数据	
+		
 		</h2>
 		</c:when>
 		<c:otherwise>
 			考勤管理	</h2>
 			<form action="deleteManyAttendance" method="post">
 				<table class="table">
+				<thead>
 					<tr>
 						<th>
-						<a rel="checkall" >全选</a>
+							<a rel="checkall">全选</a>
 						</th>
 						<th>
 							ID
@@ -55,7 +63,7 @@
 							删除
 						</th>
 					</tr>
-
+					</thead>
 					<c:forEach items="${attendances}" var="attendance">
 						<tr>
 							<td>

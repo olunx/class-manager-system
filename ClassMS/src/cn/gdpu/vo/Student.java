@@ -17,6 +17,7 @@ public class Student {
 	private long qq;
 	private String mail;
 	private Set<ActivityApply> activityApplys = new HashSet<ActivityApply>();
+	private Set<Attendance> attendances;
 
 	public int getStuId() {
 		return stuId;
@@ -119,6 +120,14 @@ public class Student {
 
 	public Set<ActivityApply> getActivityApplys() {
 		return activityApplys;
+	}
+
+	public Set<Attendance> getAttendances() {
+		return attendances;
+	}
+
+	public void setAttendances(Set<Attendance> attendances) {
+		this.attendances = attendances;
 	}
 
 }

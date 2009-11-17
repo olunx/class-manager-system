@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
@@ -7,6 +8,12 @@
 		<link href="../content/images/content.css" rel="stylesheet" type="text/css" />
 		<script language="javascript" type="text/javascript" src="../content/js/jquery.min.js"></script>
 		<script language="javascript" type="text/javascript" src="../content/js/common.js"></script>
+		<script language="javascript" type="text/javascript" src="../content/js/jquery.tablesorter.min.js"></script>
+		<script type="text/javascript">
+			$( function() {
+				$(".table").tablesorter({headers: { 0:{sorter: false}, 12:{sorter: false}, 13:{sorter: false}}});
+			});
+		</script>
 		<title>学生</title>
 	</head>
 	<body>
@@ -23,6 +30,7 @@
 			学生管理</h2>
 			<form action="deleteManyStudent" method="post">
 				<table class="table">
+				<thead>
 					<tr>
 						<th>
 						<a rel="checkall" >全选</a>
@@ -58,7 +66,7 @@
 							QQ
 						</th>
 						<th>
-							邮箱
+							逃课次数
 						</th>
 						<th>
 							修改
@@ -67,6 +75,7 @@
 							删除
 						</th>
 					</tr>
+					</thead>
 					<c:forEach items="${students}" var="student">
 						<tr>
 							<td>
@@ -103,13 +112,13 @@
 								${student.qq}
 							</td>
 							<td>
-								${student.mail}
+								${fn:length(student.attendances)}
 							</td>
 							<td>
 								<a href="getStudent?stuId=${student.stuId}" class="btn_edit"></a>
 							</td>
 							<td>
-								<a href="deleteStudent?aId=${student.stuId}" class="btn_del"></a>
+								<a href="deleteStudent?stuId=${student.stuId}" class="btn_del"></a>
 							</td>
 						</tr>
 					</c:forEach>

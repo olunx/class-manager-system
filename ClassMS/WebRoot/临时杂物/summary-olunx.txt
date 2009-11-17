@@ -62,3 +62,83 @@ redirect-action，plaintext已经不推荐使用了
     删除了BaseAction-validation.xml文件后就可以正常运行了。
 
     结论：在开发的时候应该尽量不对基类做任何验证，虽然使用继承基类的验证框架可以减少工作量，但是有时会出现不必要的麻烦。应该对具体类实施验证。
+--------------------------------------
+5,解释一个关于Hibernate lazy的问题
+--------------------------------------
+解释一个关于Hibernate lazy的问题
+2007-05-31 09:26作者：出处：论坛整理责任编辑：卢林嘉
+使用Hibernate时意外报错:
+
+Exception in thread "main" org.hibernate.LazyInitializationException: could not initialize proxy - the owning Session was closed
+ at org.hibernate.proxy.AbstractLazyInitializer.initialize(AbstractLazyInitializer.java:53)
+ at org.hibernate.proxy.AbstractLazyInitializer.getImplementation(AbstractLazyInitializer.java:84)
+ at org.hibernate.proxy.CGLIBLazyInitializer.intercept(CGLIBLazyInitializer.java:134)
+ at com.entry.database.bean.OaLoginLink$EnhancerByCGLIB$a418b18d.getName(<generated>)
+ at test.Test.main(Test.java:145)
+很是让我头痛,上网查看相关资料发现这样一个解决方式:
+
+"org.hibernate.LazyInitializationException: could not initialize proxy"延迟抓取出的错,hb3对many-to-one的默认处理是lazy = "proxy"，没有搞懂到底怎么回事，把所有many-to-one,one-to-one都加上lazy="false"...
+
+这个方法理论上没错,但是会让人产生误解,使人以为只是修改<set>中的lazy值,照做后程序依然会报错,看看下面的文章也许就明白了(注意最后一行红色标记)!
+
+lazy initialization
+集合(不包括数组)是可以延迟初始化的,意思是仅仅当应用程序需要访问时，才载入他们的值。
+s = sessions.openSession();
+User u = (User) s.find("from User u where u.name=?", userName,
+Hibernate.STRING).get(0);
+Map permissions = u.getPermissions();
+s.connection().commit();
+s.close();
+Integer accessLevel = (Integer) permissions.get("accounts"); //Error!
+因为在commit之前,permissions没有被用到,permission没有被初始化,而session被close了,导致permissions永远都无法load data.
+解决办法:吧最后一行一道session被提交之前.
+设置:
+<set name="names" table="NAMES" lazy="true" order-by="name asc">
+<key column="group_id"/>
+<element column="NAME" type="string"/>
+</set>
+
+==================================
+
+在做Spring1.2 + Hibernate 3 + struts demo时候遇到一个问题，编辑用户数据时候
+
+用com.jeedev.service.dao.hibernate.UserHibernateDao 中 public TSysuser getUser(int userid) { } 方法，总是不能正常显示编辑数据。具体表现为：
+
+参考 com.jeedev.service.dao.hibernate.UserHibernateDao 第32-45行
+
+java代码:
+
+
+ public TSysuser getUser(int userid) {
+
+ if (this.getHibernateTemplate() == null) { 
+ System.out.println("error at there"); 
+ return null; 
+ }
+
+ TSysuser edituser= (TSysuser) getHibernateTemplate().load(TSysuser.class, new Integer(userid));
+
+ System.out.println(edituser.getUsername()); 
+ System.out.println(edituser.getDeptno());
+
+ return edituser; 
+ }
+ 
+
+如果删除上面的 
+java代码: 
+ System.out.println(edituser.getUsername()); 
+ System.out.println(edituser.getDeptno());
+
+在点击编号，修改时候就会出现错误：
+
+2005-10-27 15:35:59,245 ERROR [org.hibernate.LazyInitializationException] - could not initialize proxy - the owning Session was closed 
+org.hibernate.LazyInitializationException: could not initialize proxy - the owning Session was closed
+
+经过在javaeye论坛大家一致认为 是hibernate lazy的原因
+
+在WEB级别应用时候，会出现意想不到的lazy错误，解决方法就是 设置 lazy="false" 例：
+
+<hibernate-mapping>
+
+ <class name="com.jeedev.hb.TSysuser" table="t_sysuser" lazy="false">

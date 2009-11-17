@@ -49,7 +49,7 @@ public class FileUploadAction extends ActionSupport {
 		List<String> fileData = null;
 
 		if (documents == null) {
-			return "error";
+			return "input";
 		}
 
 		ServletContext context = ServletActionContext.getServletContext();
@@ -103,7 +103,7 @@ public class FileUploadAction extends ActionSupport {
 			context.setAttribute("fileData", sb.toString());
 		}
 
-		return "index";
+		return "addLink";
 	}
 	
 	//产生唯一的文件名  

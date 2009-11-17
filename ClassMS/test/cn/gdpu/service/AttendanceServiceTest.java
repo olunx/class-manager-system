@@ -51,9 +51,15 @@ public class AttendanceServiceTest {
 
 	@Test
 	public void queryAll() {
-		List<Attendance> attendances = attendanceService.getAllAttendances();
-		for (Attendance a : attendances) {
-			System.out.println(a.toString());
-		}
+//		List<Attendance> attendances = attendanceService.getAllAttendances();
+//		for (Attendance a : attendances) {
+//			System.out.println(a.toString());
+////			for(Student s : a.getStudents()) {
+////				System.out.println(s.getRealName());
+////			}
+//		}
+		
+		Attendance a = attendanceService.getAttendanceByAid(3);
+		System.out.println(a.toString());
 	}
 }

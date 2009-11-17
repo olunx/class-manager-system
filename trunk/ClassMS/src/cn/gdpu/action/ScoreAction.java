@@ -1,6 +1,5 @@
 package cn.gdpu.action;
 
-import java.util.List;
 import java.util.Map;
 
 import org.apache.struts2.ServletActionContext;
@@ -31,12 +30,12 @@ public class ScoreAction extends ActionImpl {
 		}
 
 		String filePath = ServletActionContext.getServletContext().getRealPath("/upload") + "/" + fileName;
-		List<String> items = StudentExcel.getStudentRegExcel().getScoreData(filePath);
+		Map<String, Object> items = StudentExcel.getStudentRegExcel().getScoreData(filePath);
 		
 		//这里调用发送数据即可
-		for(String s : items) {
-			System.out.println(s);
-		}
+//		for(String s : items) {
+//			System.out.println(s);
+//		}
 		
 		return "input";
 	}

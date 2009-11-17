@@ -1,7 +1,9 @@
 package cn.gdpu.util.excel;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import cn.gdpu.vo.Student;
 
@@ -111,7 +113,7 @@ public class StudentExcel extends ReadExcel {
 	 * @param filePath
 	 * @return
 	 */
-	public List<String> getScoreData(String filePath) {
+	public Map<String,Object> getScoreData(String filePath) {
 
 		// 获取原始数据
 		List<String> result = super.readExcel(filePath);
@@ -119,7 +121,8 @@ public class StudentExcel extends ReadExcel {
 		if (result != null) {
 
 			// 用于保存返回的数据
-			List<String> resultData = new ArrayList<String>();
+			//List<String> resultData = new ArrayList<String>();
+			Map<String,Object> map = new HashMap<String, Object>();
 
 			int resultLength = result.size();
 			// 获取保存的属性列数
@@ -131,24 +134,36 @@ public class StudentExcel extends ReadExcel {
 			// 保存属性名称
 			String[] columnName;
 			columnName = new String[columns];
+			int snoColumn = -1;//记录学号所在的列数
 			for (int i = 0; i < columns; i++) {
 				columnName[i] = result.get(i);
+				if(columnName[i].equals("学号")) {
+					snoColumn = i;
+				}
 			}
+			
+			
 
 			// 链接每行字符串
 			int lastLoop = resultLength - columns;
 			StringBuffer eachOne;
+			String thisSno = null;//记录学号字符串
 			for (int i = columns; i < lastLoop; i++) {
 				eachOne = new StringBuffer();
 				for (int j = 0; j < columns; j++) {
-					eachOne.append(columnName[j] + ":" + result.get(i++) + "\n");
+					eachOne.append(columnName[j] + ":" + result.get(i) + "\n");
+					if(snoColumn == j) thisSno =  result.get(i);
+					i++;
 				}
 				i--;
-				resultData.add(eachOne.toString());
+				//resultData.add(eachOne.toString());
+				map.put(thisSno,eachOne.toString());
 				//System.out.println(eachOne.toString());
+				//System.out.println(map.toString());
 			}
 
-			return resultData;
+			//return resultData;
+			return map;
 		}
 
 		return null;

@@ -26,7 +26,7 @@ a:hover{ color:#0CF}
 #header_toolbar_content{ position:absolute; top:8px; right:50px; padding-left:10px; background:url(sj.gif) left center no-repeat;}
 
 #sidebar{width:147px;}
-.menu{ background:url(sidebar_menu.jpg) no-repeat; width:147px; height:23px; line-height:23px; text-align:center; font-size:14px; }
+.menu{ background:url(sidebar_menu.jpg) no-repeat; color:#353c44; width:147px; height:23px; line-height:23px; text-align:center; font-size:14px; }
 #sidebar ul{ margin:8px;}
 #sidebar li{ font-size:14px; line-height:170%; background:url(tb.gif) 0 3px no-repeat; padding-left:20px;}
 

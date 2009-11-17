@@ -10,7 +10,7 @@
 		<script language="javascript" type="text/javascript" src="../content/js/common.js"></script>
 	</head>
 	<body>
-		<h2 class="caption">活动加分申请</h2>
+		<h2 class="caption">活动加分申请 - ${requestScope.student.realName }</h2>
 		<form action="add.action" method="post">
 		<input name="sno" type="hidden" value="${param.sno }" />
 			<div id="activity_input">

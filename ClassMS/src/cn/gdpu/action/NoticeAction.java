@@ -27,6 +27,8 @@ public class NoticeAction extends ActionSupport implements RequestAware, Session
 	private String content;
 	private String title;
 	private int id;
+	private int[] nids;
+	private int cmd;
 	private int email;
 	private int fetion;
 
@@ -143,6 +145,26 @@ public class NoticeAction extends ActionSupport implements RequestAware, Session
 		return SUCCESS;
 	}
 
+	/**
+	 * 批量操作
+	 * 
+	 * @return
+	 * @throws Exception
+	 */
+	@SkipValidation
+	public String batch() throws Exception {
+		if (nids != null && nids.length > 0) {
+			switch (cmd) {
+			case 1:
+				for (int i = 0; i < nids.length; i++) {
+					noticeService.delete(nids[i]);
+				}
+				break;
+			}
+		}
+		return "list";
+	}
+
 	public void setNoticeService(NoticeService noticeService) {
 		this.noticeService = noticeService;
 	}
@@ -198,6 +220,22 @@ public class NoticeAction extends ActionSupport implements RequestAware, Session
 
 	public void setStudentService(StudentService studentService) {
 		this.studentService = studentService;
+	}
+
+	public int[] getNids() {
+		return nids;
+	}
+
+	public void setNids(int[] nids) {
+		this.nids = nids;
+	}
+
+	public int getCmd() {
+		return cmd;
+	}
+
+	public void setCmd(int cmd) {
+		this.cmd = cmd;
 	}
 
 }

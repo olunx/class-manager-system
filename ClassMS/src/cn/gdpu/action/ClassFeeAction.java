@@ -27,7 +27,7 @@ public class ClassFeeAction extends ActionSupport implements RequestAware,Sessio
 	private PageBean pageBean; 
 	
 	@SuppressWarnings("unchecked")
-	private Map request;
+	private Map<String, Object> request;
 	@SuppressWarnings("unchecked")
 	private Map session;
 	private int cmd;
@@ -149,6 +149,8 @@ public class ClassFeeAction extends ActionSupport implements RequestAware,Sessio
         this.pageBean = classFeeService.queryForPage(15, page);  
         if(pageBean.getList().size() == 0)
     		pageBean.setList(null);
+        
+        request.put("total", classFeeService.getTotalMoney());
         return SUCCESS;  
     }  
 	//getter,setter	

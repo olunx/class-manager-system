@@ -26,6 +26,7 @@
 		<action name="detail" class="cn.gdpu.action.NoticeAction" method="detail">
 			<result name="success">/WEB-INF/model/notice/noticeDetail.jsp</result>
 		</action>
+		<action name="batch" class="cn.gdpu.action.NoticeAction" method="batch"></action>
 	</package>
 
 	<package name="post" extends="struts-default" namespace="/notice">

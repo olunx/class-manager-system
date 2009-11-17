@@ -7,7 +7,7 @@
 		<title>添加考勤信息</title>
 	</head>
 	<body>
-	<h2 class="caption">
+		<h2 class="caption">
 			添加考勤信息
 		</h2>
 		<form action="addAttendance" method="post">

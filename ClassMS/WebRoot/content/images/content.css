@@ -33,8 +33,8 @@ thead tr .header {
 	cursor: pointer;
 }
 thead tr .headerSortUp {
-	background: url(asc.gif) no-repeat center right;
+	background: #d5f4fe url(asc.gif) no-repeat center right;
 }
 thead tr .headerSortDown {
-	background: url(desc.gif) no-repeat center right;
+	background: #d5f4fe url(desc.gif) no-repeat center right;
 }

@@ -6,7 +6,6 @@ import java.util.Map;
 import cn.gdpu.service.DutyService;
 import cn.gdpu.util.ActionImpl;
 import cn.gdpu.vo.Duty;
-import cn.gdpu.vo.Student;
 
 public class DutyAction extends ActionImpl {
 
@@ -16,7 +15,7 @@ public class DutyAction extends ActionImpl {
 	private static final long serialVersionUID = 1L;
 	
 	private int dutyId = -1;
-	private Student student;
+	//private Student student;
 	private String dutyName;
 	private String job;
 

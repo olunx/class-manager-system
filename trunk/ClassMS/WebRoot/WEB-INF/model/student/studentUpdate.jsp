@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
@@ -47,5 +48,9 @@
 			<input type="submit" value="提交" />
 			<input type="reset" value="重置" />
 		</form>
+		<h2>逃课记录</h2>
+		<c:forEach items="${student.attendances}" var="a">
+		<a href="../attendance/getAttendance?aid=${a.aid}">${a.aid}</a><br/>
+		</c:forEach>
 	</body>
 </html>

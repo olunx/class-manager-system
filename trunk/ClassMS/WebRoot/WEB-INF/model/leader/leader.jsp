@@ -7,6 +7,12 @@
 		<link href="../content/images/content.css" rel="stylesheet" type="text/css" />
 		<script language="javascript" type="text/javascript" src="../content/js/jquery.min.js"></script>
 		<script language="javascript" type="text/javascript" src="../content/js/common.js"></script>
+		<script language="javascript" type="text/javascript" src="../content/js/jquery.tablesorter.min.js"></script>
+		<script type="text/javascript">
+			$( function() {
+				$(".table").tablesorter({headers: { 0:{sorter: false}, 6:{sorter: false}, 7:{sorter: false}, 8:{sorter: false}}});
+			});
+		</script>
 		<title>领导</title>
 	</head>
 	<body>
@@ -23,6 +29,7 @@
 			领导管理	</h2>
 			<form action="deleteManyLeader" method="post">
 				<table class="table">
+				<thead>
 					<tr>
 						<th>
 						<a rel="checkall" >全选</a>
@@ -52,6 +59,7 @@
 							删除
 						</th>
 					</tr>
+					</thead>
 					<c:forEach items="${leaders}" var="leader">
 						<tr>
 							<td>

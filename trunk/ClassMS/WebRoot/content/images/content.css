@@ -26,3 +26,15 @@ a.btn:link,a.btn:visited{ color:#FFF; font-weight:normal;}
 .post{ border-bottom: 1px dashed #ccc; margin:10px; padding-bottom:5px;}
 .post_info{ color: #666;}
 .post_content{ padding: 10px 0 10px 30px;}
+
+/*排序表格专用样式*/
+thead tr .header {
+	background: #b9dbe2 url(asc.gif) no-repeat center right;
+	cursor: pointer;
+}
+thead tr .headerSortUp {
+	background: url(asc.gif) no-repeat center right;
+}
+thead tr .headerSortDown {
+	background: url(desc.gif) no-repeat center right;
+}

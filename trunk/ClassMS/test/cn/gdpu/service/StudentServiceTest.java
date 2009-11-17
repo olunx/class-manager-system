@@ -5,6 +5,7 @@ import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import cn.gdpu.vo.Attendance;
 import cn.gdpu.vo.Student;
 
 public class StudentServiceTest{
@@ -32,8 +33,12 @@ public class StudentServiceTest{
 
 	@Test
 	public void queryStudentBySno() {
-		Student stu = studentService.getStudentBySno("0707501111");
-		System.out.println(stu);
+		Student stu = studentService.getStudentBySno("0707501106");
+		;
+		for(Attendance a : stu.getAttendances()) {
+			System.out.println(a.getAid());
+		}
+		
 	}
 
 	@Test

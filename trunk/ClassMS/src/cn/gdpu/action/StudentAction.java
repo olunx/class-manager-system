@@ -115,6 +115,9 @@ public class StudentAction extends ActionSupport implements RequestAware {
 	}
 	
 	public String deleteMany() {
+		if(stuIds == null || stuIds.length < 1) {
+			return "index";
+		}
 		for(int i=0;i<stuIds.length;i++) {
 			studentService.deleteById(stuIds[i]);
 		}

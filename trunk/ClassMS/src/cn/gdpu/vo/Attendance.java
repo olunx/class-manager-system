@@ -79,8 +79,7 @@ public class Attendance {
 
 	@Override
 	public String toString() {
-		return "Attendance [aid=" + aid + ", clerk=" + clerk + ", day=" + day + ", lesson=" + lesson + ", students=" + students
-				+ ", subject=" + subject + ", time=" + time + ", week=" + week + "]";
+		return "Attendance [aid=" + aid + ", day=" + day + ", lesson=" + lesson + ", subject=" + subject + ", time=" + time + ", week=" + week + "]";
 	}
 
 }

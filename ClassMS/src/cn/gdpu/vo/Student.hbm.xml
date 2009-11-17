@@ -6,7 +6,6 @@
 		<id name="stuId" column="stuId">
 			<generator class="native" />
 		</id>
-		<many-to-one name="duty" column="dutyId" />
 		<property name="avatar" />
 		<property name="username" />
 		<property name="password" />
@@ -23,6 +22,10 @@
 		<set name="attendances" table="t_attendance_student" lazy="false">
 			<key column="stuId" />
 			<many-to-many class="Attendance" column="aId" />
+		</set>
+		<set name="dutys" table="t_duty_student" lazy="false">
+			<key column="stuId" />
+			<many-to-many class="Duty" column="dutyId" />
 		</set>
 	</class>
 </hibernate-mapping>

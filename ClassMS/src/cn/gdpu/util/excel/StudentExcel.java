@@ -36,8 +36,8 @@ public class StudentExcel extends ReadExcel {
 			// 获取保存的属性列数
 			int columns = Integer.parseInt(result.get(resultLength - 1).toString());
 
-			System.out.println("columns  " + columns);
-			System.out.println("result  " + result);
+			//System.out.println("columns  " + columns);
+			//System.out.println("result  " + result);
 
 			int dormOffset = -1;
 			int nameOffset = -1;
@@ -95,7 +95,7 @@ public class StudentExcel extends ReadExcel {
 				}
 
 				resultData.add(stu);
-				System.out.println(stu.toString());
+				//System.out.println(stu.toString());
 				index = index + columns;
 			}
 
@@ -144,7 +144,7 @@ public class StudentExcel extends ReadExcel {
 					eachOne.append(columnName[j] + ":" + result.get(i++) + "\n");
 				}
 				resultData.add(eachOne.toString());
-				System.out.println(eachOne.toString());
+				//System.out.println(eachOne.toString());
 			}
 
 			return resultData;

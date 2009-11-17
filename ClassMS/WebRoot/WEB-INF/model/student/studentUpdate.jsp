@@ -34,7 +34,7 @@
 			<input type="text" name="dorm" value="${student.dorm}" />
 			<br />
 			duty：
-			<input type="text" name="duty" value="${duty}" />
+			<input type="text" name="dutys" value="<c:forEach items="${student.dutys}" var="d">${d.dutyName},</c:forEach>" />
 			<br />
 			phoneNo：
 			<input type="text" name="phoneNo" value="${student.phoneNo}" />

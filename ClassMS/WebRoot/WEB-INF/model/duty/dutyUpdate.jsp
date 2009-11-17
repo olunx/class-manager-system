@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
@@ -15,7 +16,7 @@
 			<input type="text" name="dutyId" value="${duty.dutyId}" readonly="readonly" />
 			<br />
 			student：
-			<input type="text" name="student" value="${duty.student}" />
+			<input type="text" name="students" value="<c:forEach items="${duty.students}" var="s">${s.sno},</c:forEach>" />
 			<br />
 			dutyName：
 			<input type="text" name="dutyName" value="${duty.dutyName}" />

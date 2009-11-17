@@ -19,19 +19,10 @@
 				1 : {
 					sorter :false
 				},
-				4 : {
+				8 : {
 					sorter :false
 				},
-				5 : {
-					sorter :false
-				},
-				6 : {
-					sorter :false
-				},
-				12 : {
-					sorter :false
-				},
-				13 : {
+				9 : {
 					sorter :false
 				}
 			}
@@ -70,15 +61,6 @@
 								姓名
 							</th>
 							<th>
-								用户名
-							</th>
-							<th>
-								密码
-							</th>
-							<th>
-								头像
-							</th>
-							<th>
 								宿舍
 							</th>
 							<th>
@@ -86,9 +68,6 @@
 							</th>
 							<th>
 								手机
-							</th>
-							<th>
-								QQ
 							</th>
 							<th>
 								逃课次数
@@ -116,25 +95,13 @@
 								${student.realName}
 							</td>
 							<td>
-								${student.username}
-							</td>
-							<td>
-								${student.password}
-							</td>
-							<td>
-								${student.avatar}
-							</td>
-							<td>
 								${student.dorm}
 							</td>
 							<td>
-								${duty}
+								<c:forEach items="${student.dutys}" var="d">${d.dutyName},</c:forEach>
 							</td>
 							<td>
 								${student.phoneNo}
-							</td>
-							<td>
-								${student.qq}
 							</td>
 							<td>
 								${fn:length(student.attendances)}

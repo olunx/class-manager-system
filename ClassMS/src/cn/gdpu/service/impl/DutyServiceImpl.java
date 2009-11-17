@@ -1,6 +1,8 @@
 package cn.gdpu.service.impl;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import cn.gdpu.dao.DutyDao;
 import cn.gdpu.service.DutyService;
@@ -40,6 +42,18 @@ public class DutyServiceImpl implements DutyService {
 	
 	public void update(Duty duty) {
 		dutyDao.updateDuty(duty);
+	}
+
+	public Set<Duty> getDutysByDutyNameString(String dutyNames) {
+		
+		String[] names = dutyNames.split("\\,");
+		
+		Set<Duty> dutys = new HashSet<Duty>();
+		for(int i=0;i<names.length;i++) {
+			System.out.println(names[i]);
+			dutys.add(dutyDao.queryDutyByName(names[i]));
+		}
+		return dutys;
 	}
 
 }

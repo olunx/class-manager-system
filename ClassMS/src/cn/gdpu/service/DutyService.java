@@ -1,6 +1,7 @@
 package cn.gdpu.service;
 
 import java.util.List;
+import java.util.Set;
 
 import cn.gdpu.vo.Duty;
 
@@ -31,6 +32,10 @@ public interface DutyService {
 	 */
 	public abstract Duty getDutyByName(String dutyName);
 	
+	/**
+	 * @param dutyId
+	 * @return
+	 */
 	public abstract Duty getDutyById(int dutyId);
 	
 	/**
@@ -39,4 +44,9 @@ public interface DutyService {
 	 */
 	public abstract List<Duty> getAllDutys();
 
+	/**
+	 * @param dutyNames
+	 * @return
+	 */
+	public abstract Set<Duty> getDutysByDutyNameString(String dutyNames);
 }

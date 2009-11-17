@@ -25,7 +25,7 @@ public class DutyDaoImpl extends HibernateDaoSupport implements DutyDao {
 	public Duty queryDutyByName(String dutyName) {
 		//return (Duty) this.getHibernateTemplate().get(Duty.class, dutyName);
 		Duty duty = null;
-		List list = this.getHibernateTemplate().find("form Duty where dutyName=='" + dutyName + "'");
+		List list = this.getHibernateTemplate().find("from Duty d where d.dutyName like '%" + dutyName + "%'");
 		if (list != null && list.size() > 0) {
 			duty = (Duty) list.get(0);
 		}

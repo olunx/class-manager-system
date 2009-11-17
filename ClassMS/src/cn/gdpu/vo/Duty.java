@@ -1,18 +1,28 @@
 package cn.gdpu.vo;
 
+import java.util.Set;
+
 public class Duty {
 
 	private int dutyId;
-	private Student student;
+	private Set<Student> students;
 	private String dutyName;
 	private String job;
 
-	public String getJob() {
-		return job;
+	public int getDutyId() {
+		return dutyId;
 	}
 
-	public void setJob(String job) {
-		this.job = job;
+	public void setDutyId(int dutyId) {
+		this.dutyId = dutyId;
+	}
+
+	public Set<Student> getStudents() {
+		return students;
+	}
+
+	public void setStudents(Set<Student> students) {
+		this.students = students;
 	}
 
 	public String getDutyName() {
@@ -23,21 +33,12 @@ public class Duty {
 		this.dutyName = dutyName;
 	}
 
-	public int getDutyId() {
-		return dutyId;
+	public String getJob() {
+		return job;
 	}
 
-	public void setDutyId(int dutyId) {
-		this.dutyId = dutyId;
+	public void setJob(String job) {
+		this.job = job;
 	}
-
-	public Student getStudent() {
-		return student;
-	}
-
-	public void setStudent(Student student) {
-		this.student = student;
-	}
-
 
 }

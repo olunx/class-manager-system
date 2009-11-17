@@ -24,6 +24,7 @@
   <ul>
     <li><a href="<%=path %>/duty/listDuty">职务管理</a> - <a href="<%=path %>/duty/addLinkDuty">添加</a></li>
     <li><a href="<%=path %>/attendance/listAttendance">考勤管理</a> - <a href="<%=path %>/attendance/addLinkAttendance">添加</a> </li>
+    <li><a href="<%=path %>/score/listScore">成绩管理</a></li>
     <li><a href="<%=path %>/notice/list">公告管理</a> - <a href="<%=path %>/notice/addLink">添加</a></li>
     <li><a href="<%=path %>/activity/listPage?sno=${sessionScope.student.sno}">活动加分</a> - <a href="<%=path %>/activity/addLink?sno=${sessionScope.student.sno}">添加</a></li>
     <li><a href="<%=path %>/classfee/list">班费管理</a> - <a href="<%=path %>/classfee/addLink">添加</a> </li>

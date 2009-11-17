@@ -143,6 +143,7 @@ public class StudentExcel extends ReadExcel {
 				for (int j = 0; j < columns; j++) {
 					eachOne.append(columnName[j] + ":" + result.get(i++) + "\n");
 				}
+				i--;
 				resultData.add(eachOne.toString());
 				//System.out.println(eachOne.toString());
 			}

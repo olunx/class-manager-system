@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8" ?>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%> 
@@ -39,6 +38,7 @@
 						</th>
 						<th>班费串号</th>
 						<th>班费事件</th>
+						<th>类别</th>
 						<th>费用</th>
 						<th>经手人</th>
 						<th>创建时间</th>
@@ -57,7 +57,10 @@
 								${fn:substring(classfee.event,0,30)}
 							</td>
 							<td>
-								${classfee.fee }
+								${classfee.fee<0?"支出":"收入" }
+							</td>
+							<td>
+								${classfee.fee } 元
 							</td>
 							<td>
 								${classfee.cmaker.realName }
@@ -74,6 +77,7 @@
 						</tr>
 						
 					 </s:iterator>  
+					 <tr><td></td><td></td><td></td><td>总计：</td><td>${total }元</td><td></td><td></td><td></td><td></td></tr>
 			 	</table>
 					
 				<select name="cmd">

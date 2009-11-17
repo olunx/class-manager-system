@@ -21,10 +21,12 @@
 					还没有公告呢！
 			</c:when>
 			<c:otherwise>
+				<form method="post" action="batch">
 				<table class="table">
-				<tr><th>标题</th><th>发布人</th><th>内容</th><th>时间</th><th>编辑</th><th>删除</th></tr>
+				<tr><th><a rel="checkall">全选</a></th><th>标题</th><th>发布人</th><th>内容</th><th>时间</th><th>编辑</th><th>删除</th></tr>
 					<c:forEach items="${notices}" var="notice">
 						<tr>
+							<td><input type="checkbox" name="nids" value="${notice.nid}"/></td>
 							<td>
 								<a href="detail?id=${notice.nid}">${notice.title}</a>
 							</td>
@@ -46,6 +48,12 @@
 						</tr>
 					</c:forEach>
 				</table>
+					<select name="cmd">
+						<option value="0" selected="selected">批量操作，请选择</option>
+						<option value="1">删除</option>
+					</select>
+					<input type="submit" value="确定" />
+				</form>
 			</c:otherwise>
 		</c:choose>
 	</body>

@@ -16,8 +16,8 @@
 		<script language="javascript" type="text/javascript" src="../content/js/common.js"></script>
 	</head>
 	<body>
-		<h2 class="caption"><div class="float_right"><a class="btn btn_add" href="#">添加</a></div>
-			活动加分申请情况  - ${student.realName }
+		<h2 class="caption"><div class="float_right"><a class="btn" href="list">审核</a> <a class="btn btn_add" href="addLink?sno=${sno}">添加</a></div>
+			活动加分申请情况  - ${requestScope.student.realName }
 		</h2>
 		
 			<c:choose>
@@ -27,7 +27,7 @@
 				<c:otherwise>
 					<form name="form1" action="batch?sno=${sno}" method="post">
 					<table class="table">
-					<tr><th></th><th>类型</th><th>分数</th><th>加分原因</th><th>状态</th><th>删除</th></tr>
+					<tr><th><a rel="checkall">全选</a></th><th>类型</th><th>分数</th><th>加分原因</th><th>状态</th><th>删除</th></tr>
 					<s:iterator value="pageBean.list" var="activity">  
 						<tr>
 							<td>

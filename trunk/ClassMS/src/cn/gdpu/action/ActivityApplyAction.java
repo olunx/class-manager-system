@@ -85,6 +85,7 @@ public class ActivityApplyAction extends ActionSupport implements RequestAware {
 	 */
 	public String listPage() throws Exception {
 		Student stu = studentService.getStudentBySno(sno);
+		request.put("student", stu);
 		this.pageBean = activityApplyService.queryForPage(15, page, stu);  
 		if(pageBean.getList().isEmpty())
 			pageBean = null;
@@ -98,6 +99,8 @@ public class ActivityApplyAction extends ActionSupport implements RequestAware {
 	 * @throws Exception
 	 */
 	public String addLink() throws Exception {
+		Student stu = studentService.getStudentBySno(sno);
+		request.put("student", stu);
 		return INPUT;
 	}
 
@@ -157,7 +160,6 @@ public class ActivityApplyAction extends ActionSupport implements RequestAware {
 				}
 			}
 		}
-		System.out.println(sno);
 		return "liststuAction";
 	}
 

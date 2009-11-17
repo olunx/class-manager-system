@@ -14,11 +14,14 @@
 </head>
 <body id="sidebar_body">
 <div id="sidebar">
-	<h2 class="menu">用户管理</h2>
+	<h2 class="menu">人员管理</h2>
   <ul>
     <li><a href="<%=path %>/admin/listAdmin">管理员</a> - <a href="<%=path %>/admin/addLinkAdmin">添加</a></li>
     <li><a href="<%=path %>/student/listStudent">学生管理</a> - <a href="<%=path %>/student/addLinkStudent">添加</a></li>
     <li><a href="<%=path %>/leader/listLeader">领导管理</a> - <a href="<%=path %>/leader/addLinkLeader">添加</a></li>
+  </ul>
+  <h2 class="menu">班务管理</h2>
+  <ul>
     <li><a href="<%=path %>/duty/listDuty">职务管理</a> - <a href="<%=path %>/duty/addLinkDuty">添加</a></li>
     <li><a href="<%=path %>/attendance/listAttendance">考勤管理</a> - <a href="<%=path %>/attendance/addLinkAttendance">添加</a> </li>
     <li><a href="<%=path %>/notice/list">公告管理</a> - <a href="<%=path %>/notice/addLink">添加</a></li>

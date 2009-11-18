@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
@@ -116,10 +117,12 @@
 				<input type="hidden" name="lesson" id="lesson"/>
 	
 			</div>
+
 			<div class="clear"></div>
 			<div class="mod">
-			逃课学生(请在下面按住Ctrl键选择)：
+			逃课学生(请在下面按住Ctrl键选择)：<s:fielderror><s:param>students</s:param></s:fielderror>
 			<input type="hidden" name="students" id="students" />
+			
 			
 				<ol id="studentssel"  class="selectable">
 				<c:forEach items="${students}" var="stu">
@@ -129,6 +132,7 @@
 			<input type="hidden" name="clerk" value="${sessionScope.student.sno }" />
 			</div>
 			<div class="clear"></div>
+
 			<button type="submit">
 				提交
 			</button>

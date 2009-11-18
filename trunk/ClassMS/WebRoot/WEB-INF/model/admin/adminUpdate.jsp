@@ -7,43 +7,40 @@
 		<title>修改管理员信息</title>
 	</head>
 	<body>
-		<h2 class="caption">
-			修改管理员信息
-		</h2>
 		<form class="form" action="updateAdmin" method="post">
 			<p>
 				<label>
-					adminId：
+					ID号：
 				</label>
 				<input type="text" name="adminId" value="${admin.adminId}" readonly="readonly" />
 			</p>
 			<p>
 				<label>
-					username：
+					用户名：
 				</label>
 				<input type="text" name="username" value="${admin.username}" />
 			</p>
 			<p>
 				<label>
-					password：
+					密码：
 				</label>
 				<input type="text" name="password" value="${admin.password}" />
 			</p>
 			<p>
 				<label>
-					avatar：
+					头像：
 				</label>
 				<input type="text" name="avatar" value="${admin.avatar}" />
 			</p>
 			<p>
 				<label>
-					realName：
+					姓名：
 				</label>
 				<input type="text" name="realName" value="${admin.realName}" />
 			</p>
 			<p>
 				<label>
-					remark：
+					备注：
 				</label>
 				<input type="text" name="remark" value="${admin.remark}" />
 			</p>

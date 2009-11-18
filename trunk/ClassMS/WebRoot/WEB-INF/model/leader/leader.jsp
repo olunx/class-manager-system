@@ -8,41 +8,15 @@
 		<script language="javascript" type="text/javascript" src="../content/js/jquery.min.js"></script>
 		<script language="javascript" type="text/javascript" src="../content/js/common.js"></script>
 		<script language="javascript" type="text/javascript" src="../content/js/jquery.tablesorter.min.js"></script>
-		<script type="text/javascript">
-	$( function() {
-		$(".table").tablesorter( {
-			headers : {
-				0 : {
-					sorter :false
-				},
-				1 : {
-					sorter :false
-				},
-				3 : {
-					sorter :false
-				},
-				5 : {
-					sorter :false
-				},
-				6 : {
-					sorter :false
-				},
-				7 : {
-					sorter :false
-				},
-				8 : {
-					sorter :false
-				}
-			}
-		});
-	});
-</script>
+		<link rel="stylesheet" type="text/css" href="../content/images/jquery-ui-1.7.2.custom.css" />
+		<script language="javascript" type="text/javascript" src="../content/js/jquery-ui-1.7.2.custom.min.js"></script>
+		<script language="javascript" type="text/javascript" src="../content/js/admin.js"></script>
 		<title>领导</title>
 	</head>
 	<body>
 		<h2 class="caption">
 			<div class="float_right">
-				<a class="btn btn_add" href="addLinkLeader">添加</a>
+				<a class="btn btn_add" id="create" >添加</a>
 			</div>
 			<c:choose>
 				<c:when test="${leaders==null}">
@@ -109,7 +83,7 @@
 								${leader.remark}
 							</td>
 							<td>
-								<a href="getLeader?leaderId=${leader.leaderId}" class="btn_edit"></a>
+								<a rel="update" href="#" value="getLeader?leaderId=${leader.leaderId}" class="btn_edit"></a>
 							</td>
 							<td>
 								<a href="deleteLeader?leaderId=${leader.leaderId}" class="btn_del"></a>
@@ -129,5 +103,44 @@
 			</form>
 		</c:otherwise>
 		</c:choose>
+		<div id="dialog" title="添加领导">
+		<form class="form" action="addLeader" method="post">
+			<p>
+				<label>
+					用户名：
+				</label>
+				<input type="text" name="username" />
+			</p>
+			<p>
+				<label>
+					密码：
+				</label>
+				<input type="text" name="password" />
+			</p>
+			<p>
+				<label>
+					姓名：
+				</label>
+				<input type="text" name="realName" />
+			</p>
+			<p>
+				<label>
+					头像：
+				</label>
+				<input type="text" name="avatar" />
+			</p>
+			<p>
+				<label>
+					备注：
+				</label>
+				<input type="text" name="remark" />
+			</p>
+			<p class="paddingmin">
+				<input type="submit" value="提交" />
+				<input type="reset" value="重置" />
+			</p>
+		</form>
+		</div>
+		<div id="update-dialog" title="修改领导信息"></div>
 	</body>
 </html>

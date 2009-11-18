@@ -8,35 +8,15 @@
 		<script language="javascript" type="text/javascript" src="../content/js/jquery.min.js"></script>
 		<script language="javascript" type="text/javascript" src="../content/js/common.js"></script>
 		<script language="javascript" type="text/javascript" src="../content/js/jquery.tablesorter.min.js"></script>
-		<script type="text/javascript">
-	$( function() {
-		$(".table").tablesorter( {
-			headers : {
-				0 : {
-					sorter :false
-				},
-				1 : {
-					sorter :false
-				},
-				4 : {
-					sorter :false
-				},
-				5 : {
-					sorter :false
-				},
-				6 : {
-					sorter :false
-				}
-			}
-		});
-	});
-</script>
+		<link rel="stylesheet" type="text/css" href="../content/images/jquery-ui-1.7.2.custom.css" />
+		<script language="javascript" type="text/javascript" src="../content/js/jquery-ui-1.7.2.custom.min.js"></script>
+		<script language="javascript" type="text/javascript" src="../content/js/duty.js"></script>
 		<title>职务信息</title>
 	</head>
 	<body>
 		<h2 class="caption">
 			<div class="float_right">
-				<a class="btn btn_add" href="addLinkDuty">添加</a>
+				<a class="btn btn_add" id="create" >添加</a>
 			</div>
 			<c:choose>
 				<c:when test="${dutys==null}">
@@ -90,7 +70,7 @@
 								${duty.job}
 							</td>
 							<td>
-								<a href="getDuty?dutyId=${duty.dutyId}" class="btn_edit"></a>
+								<a rel="update" href="#" value="getDuty?dutyId=${duty.dutyId}" class="btn_edit"></a>
 							</td>
 							<td>
 								<a href="deleteDuty?dutyId=${duty.dutyId}" class="btn_del"></a>
@@ -110,5 +90,26 @@
 			</form>
 		</c:otherwise>
 		</c:choose>
+	<div id="dialog" title="添加职务">
+		<form class="form" action="addDuty" method="post">
+			<p>
+				<label>
+					职务名称：
+				</label>
+				<input type="text" name="dutyName" />
+			</p>
+			<p>
+				<label>
+					职务描述：
+				</label>
+				<input type="text" name="job" />
+			</p>
+			<p class="paddingmin">
+				<input type="submit" value="提交" />
+				<input type="reset" value="重置" />
+			</p>
+		</form>
+	</div>
+	<div id="update-dialog" title="修改职务信息"></div>
 	</body>
 </html>

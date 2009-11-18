@@ -8,31 +8,28 @@
 		<title>修改职务信息</title>
 	</head>
 	<body>
-		<h2 class="caption">
-			修改职务信息
-		</h2>
 		<form class="form" action="updateDuty" method="post">
 			<p>
 				<label>
-					adminId：
+					ID号：
 				</label>
 				<input type="text" name="dutyId" value="${duty.dutyId}" readonly="readonly" />
 			</p>
 			<p>
 				<label>
-					student：
+					担任者：
 				</label>
 				<input type="text" name="students" value="<c:forEach items="${duty.students}" var="s">${s.sno},</c:forEach>" />
 			</p>
 			<p>
 				<label>
-					dutyName：
+					职务名称：
 				</label>
 				<input type="text" name="dutyName" value="${duty.dutyName}" />
 			</p>
 			<p>
 				<label>
-					job：
+					职务描述：
 				</label>
 				<input type="text" name="job" value="${duty.job}" />
 			</p>

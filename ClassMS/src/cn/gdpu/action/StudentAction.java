@@ -5,7 +5,9 @@ import java.util.Map;
 
 import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.interceptor.RequestAware;
+import org.apache.struts2.interceptor.validation.SkipValidation;
 
+import cn.gdpu.bean.PageBean;
 import cn.gdpu.service.AttendanceService;
 import cn.gdpu.service.DutyService;
 import cn.gdpu.service.StudentService;
@@ -39,6 +41,9 @@ public class StudentAction extends ActionSupport implements RequestAware {
 	private StudentService studentService;
 	private AttendanceService attendanceService;
 	private Map<String, Object> request;
+	
+	private PageBean pageBean;    //分页
+	private int page;
 	
 	//添加一个学生信息
 	public String add() {
@@ -127,14 +132,27 @@ public class StudentAction extends ActionSupport implements RequestAware {
 		return "index";
 	}
 
-	// 列出所有学生
+	/*// 列出所有学生
 	public String list() {
 		List<Student> list = studentService.getStudents();
 		if (list != null && list.size() > 0) {
 			request.put("students", list);
 		}
 		return "input";
-	}
+	}*/
+	
+	/**
+	 * 分页列出所有学生
+	 * @return
+	 */
+	@SkipValidation
+	public String list() throws Exception {  
+        //分页的pageBean,参数pageSize表示每页显示记录数,page为当前页  
+        this.pageBean = studentService.queryForPage(15, page);  
+        if(pageBean.getList().isEmpty())
+    		pageBean.setList(null);
+        return "input";  
+    }  
 
 	// 跳转到添加页
 	public String addLink() {
@@ -265,6 +283,22 @@ public class StudentAction extends ActionSupport implements RequestAware {
 
 	public void setAttendanceService(AttendanceService attendanceService) {
 		this.attendanceService = attendanceService;
+	}
+	
+	public PageBean getPageBean() {
+		return pageBean;
+	}
+
+	public void setPageBean(PageBean pageBean) {
+		this.pageBean = pageBean;
+	}
+
+	public int getPage() {
+		return page;
+	}
+
+	public void setPage(int page) {
+		this.page = page;
 	}
 
 	public String getDutys() {

@@ -2,6 +2,7 @@ package cn.gdpu.dao;
 
 import java.util.List;
 
+import cn.gdpu.vo.ClassFee;
 import cn.gdpu.vo.Student;
 
 public interface StudentDao {  
@@ -61,5 +62,18 @@ public interface StudentDao {
      * @param studentId 
      */  
     public abstract List<Student> queryAllStudents();  
+    
+    /** 
+     * 分页获取全部学生信息 
+     * @param studentId 
+     */  
+    public abstract List<Student> queryForPage(final String hql,final int offset,final int length);  
+    
+    /** *//** 
+     * 查询所有记录数 
+     * @param hql 查询的条件 
+     * @return 总记录数 
+     */  
+    public abstract int getAllRowCount(String hql);  
   
 }  

@@ -1,5 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@	taglib uri="/struts-tags" prefix="s" %>
+
+<%
+	String path = request.getContextPath();
+%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
@@ -19,7 +25,7 @@
 				<a class="btn btn_add" id="create" >添加</a>
 			</div>
 			<c:choose>
-				<c:when test="${admins==null}">
+				<c:when test="${pageBean.list==null}">
 			没有数据			
 		
 		</h2>
@@ -59,8 +65,10 @@
 							</th>
 						</tr>
 					</thead>
+
+					<s:iterator value="pageBean.list" var="admin">  
 					<tbody>
-					<c:forEach items="${admins}" var="admin">
+
 						<tr>
 							<td>
 								<input type="checkbox" name="adminIds" value="${admin.adminId}" />
@@ -90,8 +98,8 @@
 								<a href="deleteAdmin?adminId=${admin.adminId}" class="btn_del"></a>
 							</td>
 						</tr>
-					</c:forEach>
-					<tbody>
+					</s:iterator>
+					</tbody>
 				</table>
 				<select name="cmd">
 					<option value="0" selected="selected">
@@ -102,6 +110,25 @@
 					</option>
 				</select>
 				<input type="submit" value="确定" />
+				
+				 <s:if test="%{pageBean.currentPage == 1}">  
+					     第一页 上一页  
+					 </s:if>  
+					 <s:else>  
+					     <a href="<%=path %>/admin/listAdmin?page=1">第一页</a>  
+					     <a href="<%=path %>/admin/listAdmin?page=<s:property value="%{pageBean.currentPage-1}"/>">上一页</a>  
+					 </s:else>  
+					 <s:if test="%{pageBean.currentPage != pageBean.totalPage}">  
+					     <a href="<%=path %>/admin/listAdmin?page=<s:property value="%{pageBean.currentPage+1}"/>">下一页</a>  
+					     <a href="<%=path %>/admin/listAdmin?page=<s:property value="pageBean.totalPage"/>">最后一页</a>  
+					 </s:if>  
+					 <s:else>  
+					     下一页 最后一页  
+					 </s:else>  
+					 共<s:property value="pageBean.allRow"/> 条记录  
+					 共<s:property value="pageBean.totalPage"/> 页  
+					 当前第<s:property value="pageBean.currentPage"/>页 
+				
 			</form>
 		</c:otherwise>
 		</c:choose>

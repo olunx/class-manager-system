@@ -37,18 +37,18 @@ public interface ClassFeeService {
 	 * 获取所有班费
 	 */
 	public abstract List<ClassFee> getAllClassFees();
-	
-	/** *//** 
+	    
+    /**
+     * 剩余金额
+     * @return
+     */
+    public abstract double getTotalMoney();
+    
+    /** *//** 
      * 分页查询 
      * @param currentPage 当前第几页 
      * @param pageSize 每页大小 
      * @return 封闭了分页信息(包括记录集list)的Bean 
      */  
     public abstract PageBean queryForPage(int pageSize,int currentPage);  
-    
-    /**
-     * 剩余金额
-     * @return
-     */
-    public abstract double getTotalMoney();
 }

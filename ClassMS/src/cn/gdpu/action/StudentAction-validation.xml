@@ -3,36 +3,50 @@
           "-//OpenSymphony Group//XWork Validator 1.0//EN" 
           "http://www.opensymphony.com/xwork/xwork-validator-1.0.dtd" >
 <validators>
-<!-- 
-	<field name="week">
+	<field name="username">
 		<field-validator type="requiredstring">
 			<param name="trim">true</param>
-			<message>请填入第几周</message>
+			<message>管理员账号不能为空</message>
 		</field-validator>
 	</field>
-	<field name="day">
+	<field name="password">
 		<field-validator type="requiredstring">
 			<param name="trim">true</param>
-			<message>请填入星期几</message>
+			<message>密码不能为空</message>
 		</field-validator>
 	</field>
-	<field name="lesson">
+	<field name="sno">
 		<field-validator type="requiredstring">
 			<param name="trim">true</param>
-			<message>请选择旷课课时</message>
+			<message>学号不能为空</message>
 		</field-validator>
 	</field>
-	 -->
-	<field name="students">
+	<field name="realName">
 		<field-validator type="requiredstring">
 			<param name="trim">true</param>
-			<message>请填入逃课的学生学号</message>
+			<message>真实名字不为能空</message>
 		</field-validator>
 	</field>
-	<field name="clerk">
+	<field name="dorm">
 		<field-validator type="requiredstring">
 			<param name="trim">true</param>
-			<message>请填入录入人员学号</message>
+			<message>宿舍地址不能为空</message>
+		</field-validator>
+	</field>	
+	<!--
+	<field name="phoneNo">
+		<field-validator type="requiredstring">
+			<param name="trim">true</param>
+			<message>手机号码不能为空</message>
 		</field-validator>
 	</field>
+	-->
+	<!--  
+	<field name="mail">
+		<field-validator type="requiredstring">
+			<param name="trim">true</param>
+			<message>邮箱地址不能为空</message>
+		</field-validator>
+	</field>
+	-->
 </validators>

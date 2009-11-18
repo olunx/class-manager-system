@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
@@ -22,6 +23,7 @@
 			<!-- file对应的input必须有name属性,name的值必须和action中的变量对应 -->
 			成绩Excel文件：<input type="file" name="documents" />
 			<input type="submit" value="提交" />
+			<s:fielderror><s:param>documents</s:param></s:fielderror>
 		</form>
 		<div>
 			${fileData}

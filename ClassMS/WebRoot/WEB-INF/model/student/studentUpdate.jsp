@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
@@ -29,30 +30,35 @@
 					username：
 				</label>
 				<input type="text" name="username" value="${student.username}" />
+				<s:fielderror><s:param>username</s:param></s:fielderror>
 			</p>
 			<p>
 				<label>
 					password：
 				</label>
 				<input type="text" name="password" value="${student.password}" />
+				<s:fielderror><s:param>password</s:param></s:fielderror>
 			</p>
 			<p>
 				<label>
 					sno：
 				</label>
 				<input type="text" name="sno" value="${student.sno}" />
+				<s:fielderror><s:param>sno</s:param></s:fielderror>
 			</p>
 			<p>
 				<label>
 					realName：
 				</label>
 				<input type="text" name="realName" value="${student.realName}" />
+				<s:fielderror><s:param>realName</s:param></s:fielderror>
 			</p>
 			<p>
 				<label>
 					dorm：
 				</label>
 				<input type="text" name="dorm" value="${student.dorm}" />
+				<s:fielderror><s:param>dorm</s:param></s:fielderror>
 			</p>
 			<p>
 				<label>

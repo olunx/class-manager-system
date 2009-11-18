@@ -49,6 +49,7 @@ public class AdminAction extends ActionSupport implements RequestAware {
 	}
 
 	// 获取管理员
+	@SkipValidation
 	public String get() {
 		if (adminId < 0) {
 			return "input";
@@ -76,12 +77,14 @@ public class AdminAction extends ActionSupport implements RequestAware {
 	}
 
 	// 删除管理员信息
+	@SkipValidation
 	public String delete() {
 		adminService.deleteById(adminId);
 		return "index";
 	}
 
 	//批量删除
+	@SkipValidation
 	public String deleteMany() {
 		for(int i=0; i<adminIds.length; i++) {
 			adminService.deleteById(adminIds[i]);
@@ -112,6 +115,7 @@ public class AdminAction extends ActionSupport implements RequestAware {
     }  
 	
 	// 跳转到添加页
+	@SkipValidation
 	public String addLink() {
 		return "addLink";
 	}

@@ -63,8 +63,8 @@ public class StudentAction extends ActionSupport implements RequestAware {
 		return "index";
 	}
 	
-	public String addMany() {
-		
+	@SkipValidation
+	public String addMany() {		
 		if (fileName == null) {
 			return "input";
 		}
@@ -82,6 +82,7 @@ public class StudentAction extends ActionSupport implements RequestAware {
 	}
 
 	// 获取一条考勤信息，用于修改
+	@SkipValidation
 	public String get() {
 		if (stuId < 0) {
 			return "input";
@@ -117,6 +118,7 @@ public class StudentAction extends ActionSupport implements RequestAware {
 	}
 
 	// 删除学生
+	@SkipValidation
 	public String delete() {
 		studentService.deleteById(stuId);
 		return "index";
@@ -155,6 +157,7 @@ public class StudentAction extends ActionSupport implements RequestAware {
     }  
 
 	// 跳转到添加页
+	@SkipValidation
 	public String addLink() {
 		return "addLink";
 	}

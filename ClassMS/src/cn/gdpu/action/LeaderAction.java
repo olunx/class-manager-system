@@ -50,6 +50,7 @@ public class LeaderAction extends ActionSupport implements RequestAware {
 	}
 
 	// 获取管理员
+	@SkipValidation
 	public String get() {
 		if (leaderId < 0) {
 			return "input";
@@ -77,12 +78,14 @@ public class LeaderAction extends ActionSupport implements RequestAware {
 	}
 
 	// 删除管理员信息
+	@SkipValidation
 	public String delete() {
 		leaderService.deleteById(leaderId);
 		return "index";
 	}
 
 	//批量删除
+	@SkipValidation
 	public String deleteMany() {
 		for(int i=0; i<leaderIds.length; i++) {
 			leaderService.deleteById(leaderIds[i]);
@@ -113,6 +116,7 @@ public class LeaderAction extends ActionSupport implements RequestAware {
     }  
 
 	// 跳转到添加页
+	@SkipValidation
 	public String addLink() {
 		return "addLink";
 	}

@@ -43,18 +43,21 @@ public class DutyAction extends ActionImpl {
 	}
 
 	@Override
+	@SkipValidation
 	public String addLink() {
 		// TODO Auto-generated method stub
 		return super.addLink();
 	}
 
 	@Override
+	@SkipValidation
 	public String delete() {
 		dutyService.delete(dutyId);
 		return super.delete();
 	}
 
 	@Override
+	@SkipValidation
 	public String deleteMany() {
 		for(int i=0;i<dutyIds.length;i++) {
 			dutyService.delete(dutyIds[i]);
@@ -63,6 +66,7 @@ public class DutyAction extends ActionImpl {
 	}
 
 	@Override
+	@SkipValidation
 	public String get() {
 		if (dutyId < 0) {
 			return "input";

@@ -14,7 +14,7 @@
 	</head>
 	<body>
 		<h2 class="caption">
-			公告
+			最新公告
 		</h2>
 		<c:choose>
 			<c:when test="${notices==null}">
@@ -22,7 +22,7 @@
 			</c:when>
 			<c:otherwise>
 				<table class="table">
-					<c:forEach items="${notices}" var="notice" begin="0" end="7" step="1">
+					<c:forEach items="${notices}" var="notice" begin="0" end="0" step="1">
 						<tr>
 							<td>
 								<a href="<%=path%>/notice/detail?id=${notice.nid }">${notice.title }</a>
@@ -45,7 +45,7 @@
 		</c:choose>
 		<c:choose>
 			<c:when test="${sessionScope.userType==0}">
-			<h2>逃课记录</h2>
+			<h2 class="caption">逃课记录</h2>
 			<c:forEach items="${sessionScope.student.attendances}" var="a">
 				<a href="<%=path%>/attendance/getAttendance?aid=${a.aid}">${a.aid}</a><br/>
 			</c:forEach>

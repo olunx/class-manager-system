@@ -31,6 +31,7 @@ $(function() {
 	$("#dialog").dialog({
 		bgiframe: true,
 		autoOpen: false,
+		width:310,
 		height: 275,
 		modal: true
 	});
@@ -53,6 +54,7 @@ $(function() {
 		$("#update-dialog").dialog({
 			bgiframe: true,
 			autoOpen: false,
+			width:320,
 			height: 295,
 			modal: true,
 			close: function() {

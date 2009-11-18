@@ -9,6 +9,7 @@ import org.apache.struts2.interceptor.RequestAware;
 import org.apache.struts2.interceptor.SessionAware;
 import org.apache.struts2.interceptor.validation.SkipValidation;
 
+import cn.gdpu.bean.PageBean;
 import cn.gdpu.service.NoticeService;
 import cn.gdpu.service.StudentService;
 import cn.gdpu.util.MailSender;
@@ -31,13 +32,10 @@ public class NoticeAction extends ActionSupport implements RequestAware, Session
 	private int cmd;
 	private int email;
 	private int fetion;
+	private PageBean pageBean;
+	private int page;
 
-	/**
-	 * 列出所有公告
-	 * 
-	 * @return
-	 * @throws Exception
-	 */
+	/*
 	@SkipValidation
 	public String list() throws Exception {
 		List<Notice> notices = null;
@@ -46,7 +44,20 @@ public class NoticeAction extends ActionSupport implements RequestAware, Session
 			notices = null;
 		request.put("notices", notices);
 		return SUCCESS;
-	}
+	}*/
+	
+	/**
+	 * 分页列出所有班费
+	 * @return
+	 */
+	@SkipValidation
+	public String list() throws Exception {  
+        //分页的pageBean,参数pageSize表示每页显示记录数,page为当前页  
+        this.pageBean = noticeService.queryForPage(15, page);  
+        if(pageBean.getList().isEmpty())
+    		pageBean.setList(null);
+        return SUCCESS;  
+    }  
 
 	/**
 	 * 发布公告跳转
@@ -237,5 +248,22 @@ public class NoticeAction extends ActionSupport implements RequestAware, Session
 	public void setCmd(int cmd) {
 		this.cmd = cmd;
 	}
+	
+	public PageBean getPageBean() {
+		return pageBean;
+	}
+
+	public void setPageBean(PageBean pageBean) {
+		this.pageBean = pageBean;
+	}
+
+	public int getPage() {
+		return page;
+	}
+
+	public void setPage(int page) {
+		this.page = page;
+	}
+
 
 }

@@ -3,6 +3,9 @@ package cn.gdpu.action;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.struts2.interceptor.validation.SkipValidation;
+
+import cn.gdpu.bean.PageBean;
 import cn.gdpu.service.DutyService;
 import cn.gdpu.service.StudentService;
 import cn.gdpu.util.ActionImpl;
@@ -24,6 +27,8 @@ public class DutyAction extends ActionImpl {
 	private StudentService studentService;
 	private DutyService dutyService;
 	private Map<String, Object> request;
+	private PageBean pageBean;
+	private int page;
 	
 	@Override
 	public String add() {
@@ -70,14 +75,27 @@ public class DutyAction extends ActionImpl {
 		return super.get();
 	}
 
-	@Override
+	/*@Override
 	public String list() {
 		List<Duty> list = dutyService.getAllDutys();
 		if (list != null && list.size() > 0) {
 			request.put("dutys", list);
 		}
 		return super.list();
-	}
+	}*/
+	/**
+	 * 分页列出所有职务
+	 * @return
+	 */
+	
+	@SkipValidation
+	public String list(){  
+        //分页的pageBean,参数pageSize表示每页显示记录数,page为当前页  
+        this.pageBean = dutyService.queryForPage(15, page);  
+        if(pageBean.getList().isEmpty())
+    		pageBean.setList(null);
+        return super.list();  
+    }  
 
 	@Override
 	public String update() {
@@ -157,4 +175,20 @@ public class DutyAction extends ActionImpl {
 		this.studentService = studentService;
 	}
 	
+	public PageBean getPageBean() {
+		return pageBean;
+	}
+
+	public void setPageBean(PageBean pageBean) {
+		this.pageBean = pageBean;
+	}
+
+	public int getPage() {
+		return page;
+	}
+
+	public void setPage(int page) {
+		this.page = page;
+	}
+
 }

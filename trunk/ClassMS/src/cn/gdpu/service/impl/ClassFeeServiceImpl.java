@@ -39,6 +39,15 @@ public class ClassFeeServiceImpl implements ClassFeeService {
 		this.classFeeDao = classFeeDao;
 	}
 
+	public double getTotalMoney() {
+		List<ClassFee> list = classFeeDao.queryAllClassFees();
+		double total = 0;
+		for (int i = 0; i < list.size(); i++) {
+			total += list.get(i).getFee();
+		}
+		return total;
+	}
+	
 	/** */
 	/**
 	 * 分页查询
@@ -70,13 +79,5 @@ public class ClassFeeServiceImpl implements ClassFeeService {
 		return pageBean;
 	}
 
-	public double getTotalMoney() {
-		List<ClassFee> list = classFeeDao.queryAllClassFees();
-		double total = 0;
-		for (int i = 0; i < list.size(); i++) {
-			total += list.get(i).getFee();
-		}
-		return total;
-	}
 
 }

@@ -147,7 +147,7 @@ public class ClassFeeAction extends ActionSupport implements RequestAware,Sessio
 	public String list() throws Exception {  
         //分页的pageBean,参数pageSize表示每页显示记录数,page为当前页  
         this.pageBean = classFeeService.queryForPage(15, page);  
-        if(pageBean.getList().size() == 0)
+        if(pageBean.getList().isEmpty())
     		pageBean.setList(null);
         
         request.put("total", classFeeService.getTotalMoney());

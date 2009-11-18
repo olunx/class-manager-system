@@ -6,7 +6,9 @@ import java.util.Map;
 import java.util.Set;
 
 import org.apache.struts2.interceptor.RequestAware;
+import org.apache.struts2.interceptor.validation.SkipValidation;
 
+import cn.gdpu.bean.PageBean;
 import cn.gdpu.service.AttendanceService;
 import cn.gdpu.service.StudentService;
 import cn.gdpu.vo.Attendance;
@@ -32,6 +34,9 @@ public class AttendanceAction extends ActionSupport implements RequestAware {
 	private int[] aids;
 	private AttendanceService attendanceService;
 	private StudentService studentService;
+	private PageBean pageBean;
+	private int page;
+	
 
 	private Map<String, Object> request;
 
@@ -101,7 +106,7 @@ public class AttendanceAction extends ActionSupport implements RequestAware {
 		return "index";
 	}
 	
-	// 列出考勤信息
+	/*// 列出考勤信息
 	public String list() {
 		List<Attendance> list = attendanceService.getAllAttendances();
 		if (list != null && list.size() > 0) {
@@ -111,7 +116,20 @@ public class AttendanceAction extends ActionSupport implements RequestAware {
 			return SUCCESS;
 		}
 		return ERROR;
-	}
+	}*/
+	
+	/**
+	 * 分页列出所有考勤信息
+	 * @return
+	 */
+	@SkipValidation
+	public String list() throws Exception {  
+        //分页的pageBean,参数pageSize表示每页显示记录数,page为当前页  
+        this.pageBean = attendanceService.queryForPage(15, page);  
+        if(pageBean.getList().isEmpty())
+    		pageBean.setList(null);
+        return SUCCESS;  
+    }  
 
 	// 跳转到添加页
 	public String addLink() {
@@ -200,4 +218,19 @@ public class AttendanceAction extends ActionSupport implements RequestAware {
 		this.aids = aids;
 	}
 
+	public PageBean getPageBean() {
+		return pageBean;
+	}
+
+	public void setPageBean(PageBean pageBean) {
+		this.pageBean = pageBean;
+	}
+
+	public int getPage() {
+		return page;
+	}
+
+	public void setPage(int page) {
+		this.page = page;
+	}
 }

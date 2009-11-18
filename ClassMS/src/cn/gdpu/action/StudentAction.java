@@ -124,6 +124,7 @@ public class StudentAction extends ActionSupport implements RequestAware {
 		return "index";
 	}
 	
+	@SkipValidation
 	public String deleteMany() {
 		if(stuIds == null || stuIds.length < 1) {
 			return "index";

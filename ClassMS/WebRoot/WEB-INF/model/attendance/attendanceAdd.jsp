@@ -120,7 +120,7 @@
 
 			<div class="clear"></div>
 			<div class="mod">
-			逃课学生(请在下面按住Ctrl键选择)：<s:fielderror><s:param>students</s:param></s:fielderror>
+			逃课学生(请在按住Ctrl键选择)：<s:fielderror><s:param>students</s:param></s:fielderror>
 			<input type="hidden" name="students" id="students" />
 			
 			

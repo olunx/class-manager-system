@@ -16,13 +16,14 @@
 			<message>请填入星期几</message>
 		</field-validator>
 	</field>
+	 -->
 	<field name="lesson">
 		<field-validator type="requiredstring">
 			<param name="trim">true</param>
 			<message>请选择旷课课时</message>
 		</field-validator>
 	</field>
-	 -->
+	
 	<field name="students">
 		<field-validator type="requiredstring">
 			<param name="trim">true</param>

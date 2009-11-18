@@ -11,15 +11,23 @@
 		<h2 class="caption">
 			添加职务
 		</h2>
-		<form action="addDuty" method="post">
-			dutyName：
-			<input type="text" name="dutyName" />
-			<br />
-			job：
-			<input type="text" name="job" />
-			<br />
-			<input type="submit" value="提交" />
-			<input type="reset" value="重置" />
+		<form class="form" action="addDuty" method="post">
+			<p>
+				<label>
+					dutyName：
+				</label>
+				<input type="text" name="dutyName" />
+			</p>
+			<p>
+				<label>
+					job：
+				</label>
+				<input type="text" name="job" />
+			</p>
+			<p class="paddingmin">
+				<input type="submit" value="提交" />
+				<input type="reset" value="重置" />
+			</p>
 		</form>
 	</body>
 </html>

@@ -11,49 +11,81 @@
 		<h2 class="caption">
 			添加学生
 		</h2>
-		<form action="addStudent" method="post">
-			avatar：
-			<input type="text" name="avatar" />
-			<br />
-			username：
-			<input type="text" name="username" />
-			<br />
-			password：
-			<input type="text" name="password" />
-			<br />
-			sno：
-			<input type="text" name="sno" />
-			<br />
-			realName：
-			<input type="text" name="realName" />
-			<br />
-			dorm：
-			<input type="text" name="dorm" />
-			<br />
-			duty：
-			<input type="text" name="duty" />
-			<br />
-			phoneNo：
-			<input type="text" name="phoneNo" />
-			<br />
-			qq：
-			<input type="text" name="qq" />
-			<br />
-			mail：
-			<input type="text" name="mail" />
-			<br />
-			<input type="submit" value="提交" />
-			<input type="reset" value="重置" />
+		<form class="form" action="addStudent" method="post">
+			<p>
+				<label>
+					avatar：
+				</label>
+				<input type="text" name="avatar" />
+			</p>
+			<p>
+				<label>
+					username：
+				</label>
+				<input type="text" name="username" />
+			</p>
+			<p>
+				<label>
+					password：
+				</label>
+				<input type="text" name="password" />
+			</p>
+			<p>
+				<label>
+					sno：
+				</label>
+				<input type="text" name="sno" />
+			</p>
+			<p>
+				<label>
+					realName：
+				</label>
+				<input type="text" name="realName" />
+			</p>
+			<p>
+				<label>
+					dorm：
+				</label>
+				<input type="text" name="dorm" />
+			</p>
+			<p>
+				<label>
+					duty：
+				</label>
+				<input type="text" name="duty" />
+			</p>
+			<p>
+				<label>
+					phoneNo：
+				</label>
+				<input type="text" name="phoneNo" />
+			</p>
+			<p>
+				<label>
+					qq：
+				</label>
+				<input type="text" name="qq" />
+			</p>
+			<p>
+				<label>
+					mail：
+				</label>
+				<input type="text" name="mail" />
+			</p>
+			<p class="paddingmin">
+				<input type="submit" value="提交" />
+				<input type="reset" value="重置" />
+			</p>
 		</form>
-		<h2>
+		<h2 class="caption">
 			批量注册：
 		</h2>
 		<c:choose>
 			<c:when test="${fileData==null}">
 				<form action="fileUpload" method="post" enctype="multipart/form-data">
 					<!-- file对应的input必须有name属性,name的值必须和action中的变量对应 -->
-					<input type="file" name="documents" />
-					<input type="submit" value="submit" />
+					学生数据Excel文件：<input type="file" name="documents" />
+					<input type="submit" value="提交" />
 				</form>
 			</c:when>
 			<c:otherwise>

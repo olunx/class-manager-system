@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8" ?>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%
 	String path = request.getContextPath();
@@ -8,26 +7,29 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 		<title>Insert title here</title>
+		<link href="../content/images/content.css" rel="stylesheet" type="text/css" />
+		<script language="javascript" type="text/javascript" src="../content/js/jquery.min.js"></script>
+		<script language="javascript" type="text/javascript" src="../content/js/common.js"></script>
 	</head>
 	<body>
-		<form action="<%=path %>/fetion/sendFetion" method="post">
+		<form class="form" action="<%=path %>/fetion/sendFetion" method="post">
 			<p>
-				你的手机号码：
+				<label>手机号：</label>
 				<input type="text" name="phone" value="" />
 			</p>
 			<p>
-				你的飞信密码：
+				<label>飞信密码：</label>
 				<input type="password" name="pwd" value="" />
 			</p>
 			<p>
-				发送手机号：
-				<textarea rows="3" cols="60" name="tophones">用逗号隔开</textarea>
+				<label>发送手机号：</label>
+				<textarea rows="5" cols="60" name="tophones">${stuphones }</textarea>
 			</p>
 			<p>
-				发送内容:
-				<textarea rows="5" cols="60" name="content">${content }</textarea>
+				<label>发送内容：</label>
+				<textarea rows="10" cols="60" name="content">${content }</textarea>
 			</p>
-			<p>
+			<p class="paddingmin">
 				<input type="submit" value="发送" />
 			</p>
 		</form>

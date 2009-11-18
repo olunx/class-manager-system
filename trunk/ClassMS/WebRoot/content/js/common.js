@@ -25,7 +25,7 @@ function addZero(num) {
 };
 
 function addNewActivity(obj) {
-	var html = '<div>原因：<input type="text" name="reason" /> 分数：<input type="text" name="mark" />';
+	var html = '<div>原因：<input class="inputmid" type="text" name="reason" /> 分数：<input type="text" name="mark" />';
 	html += ' <select name="type"><option value="德育"> 德育</option><option value="活动">活动</option>';
 	html += '<option value="文体">文体</option></select> <a href="#" class="btn_del" onclick="delActivity(this)">删除</a></div>';
 	for ( var i = 0; i < 3; i++) {
@@ -38,7 +38,7 @@ function delActivity(obj) {
 };
 
 function addNewVote(obj) {
-	var html = '<div>选项：<input type="text" name="content" /> <a href="#" class="btn_del" onclick="return delVote(this)">删除</a></div>';
+	var html = '<div><label>选项：</label><input class="inputmid" type="text" name="content" /> <a href="#" class="btn_del" onclick="return delVote(this)">删除</a></div>';
 	for ( var i = 0; i < 3; i++) {
 		$("#" + obj).append(html);
 	}

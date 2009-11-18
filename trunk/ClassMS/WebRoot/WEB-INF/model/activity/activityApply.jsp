@@ -16,10 +16,12 @@
 				暂时没有信息
 			</c:when>
 			<c:otherwise>
+				<ul id="activitystus">
 				<c:forEach items="${students}" var="stu" varStatus="vs">
-					<a href="listPage?sno=${stu.sno}">${stu.realName }</a> 
-					<c:if test="${(vs.count%10)==0}"><br/><br/></c:if>
+					<li><a href="listPage?sno=${stu.sno}">${stu.realName }</a><br/><span>${stu.sno}</span></li>
+					<c:if test="${(vs.count%10)==0}"></c:if>
 				</c:forEach>
+				</ul>
 			</c:otherwise>
 		</c:choose>
 	</body>

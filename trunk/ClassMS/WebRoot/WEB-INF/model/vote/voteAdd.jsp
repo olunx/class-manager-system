@@ -26,30 +26,30 @@
 			</div>
 			新建投票
 		</h2>
-			<form action="<%=path %>/vote/add" method="post">
-				投票主题：
-				<input type="text" name="vote.title" />	<s:fielderror><s:param>vote.title</s:param></s:fielderror>	
-				<br />
-				描述内容：
-				<textarea name="vote.summary" id="demo" rows="50" cols="152" style="width: 380px; height: 150px"></textarea>
-				<br />	
-				投票方式：
+			<form class="form" action="<%=path %>/vote/add" method="post">
+				<p><label>投票主题：</label>
+				<input class="inputlong" type="text" name="vote.title" />	<s:fielderror><s:param>vote.title</s:param></s:fielderror>
+				</p>
+				<label>描述内容：</label>
+				<textarea name="vote.summary" id="demo" rows="50" cols="152" style="width: 600px; height: 150px"></textarea>
+				<p><label>投票方式：</label>
 				<input type="radio" name="vote.type" value="0" checked="checked"/>单选
-				<input type="radio" name="vote.type" value="1" />多选 <br />
+				<input type="radio" name="vote.type" value="1" />多选
+				</p>
 				<s:fielderror><s:param>content</s:param></s:fielderror>
 				<div id="voteitem">
-					<div>选项：<input type="text" name="content" /> <a href="#" class="btn_del" onclick="return delVote(this)">删除</a></div>
-					<div>选项：<input type="text" name="content" /> <a href="#" class="btn_del" onclick="return delVote(this)">删除</a></div>
-					<div>选项：<input type="text" name="content" /> <a href="#" class="btn_del" onclick="return delVote(this)">删除</a></div>
+					<div><label>选项：</label><input class="inputmid" type="text" name="content" /> <a href="#" class="btn_del" onclick="return delVote(this)">删除</a></div>
+					<div><label>选项：</label><input class="inputmid" type="text" name="content" /> <a href="#" class="btn_del" onclick="return delVote(this)">删除</a></div>
+					<div><label>选项：</label><input class="inputmid" type="text" name="content" /> <a href="#" class="btn_del" onclick="return delVote(this)">删除</a></div>
 				</div>
-				<a href="#" class="btn_add" onclick="return addNewVote('voteitem');">再添加三项</a>
-				<br/>
-				投票期限：
+				<p class="paddingmin"><a href="#" class="btn_add" onclick="return addNewVote('voteitem');">再添加三项</a></p>
+				<p><label>投票期限：</label>
 				<input class="Wdate" type="text" name="time" onfocus="WdatePicker({startDate:'%y-%M-{%d+1} %H:%m:00',minDate:'%y-%M-%d %H:%m:00'})"/> 
 				<s:fielderror><s:param>time</s:param></s:fielderror>
-				<br />
-				
+				</p>
+				<p>
 				<input type="submit" value="发布投票"/>
+				</p>
 			</form>
 
 		</div>

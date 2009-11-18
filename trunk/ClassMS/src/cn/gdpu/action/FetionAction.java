@@ -1,11 +1,17 @@
 package cn.gdpu.action;
 
+import java.util.List;
+import java.util.Map;
+
+import org.apache.struts2.interceptor.RequestAware;
+
 import cn.gdpu.service.FetionService;
 import cn.gdpu.service.StudentService;
+import cn.gdpu.vo.Student;
 
 import com.opensymphony.xwork2.ActionSupport;
 
-public class FetionAction extends ActionSupport {
+public class FetionAction extends ActionSupport implements RequestAware {
 	private static final long serialVersionUID = 1L;
 	private StudentService studentService;
 	private FetionService fetionService;
@@ -13,8 +19,16 @@ public class FetionAction extends ActionSupport {
 	private String phone;
 	private String pwd;
 	private String tophones;
+	private Map<String, Object> request;
 
 	public String sendFetionLink() throws Exception {
+		List<Student> stulist = studentService.getStudents();
+		StringBuffer sb = new StringBuffer();
+		for (Student stu : stulist){
+			sb.append(stu.getPhoneNo()).append(",");
+		}
+		sb.deleteCharAt(sb.length()-1);
+		request.put("stuphones", sb.toString());
 		return SUCCESS;
 	}
 	
@@ -61,6 +75,10 @@ public class FetionAction extends ActionSupport {
 
 	public void setTophones(String tophones) {
 		this.tophones = tophones;
+	}
+
+	public void setRequest(Map<String, Object> request) {
+		this.request = request;
 	}
 
 

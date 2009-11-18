@@ -17,17 +17,17 @@
 
 		<div>
 		 <h2 class="caption">添加新的公告</h2>
-			<form id="noticeform" action="save" method="post">
+			<form class="form" id="noticeform" action="save" method="post">
 				<input name="id" type="hidden" value="${param.id==null?0:param.id}" />
 				<p>
-					标题：<s:fielderror><s:param>title</s:param></s:fielderror>
-					<input name="title" type="text" class="i_title" value="${title}" />
+					<label>标题：</label><s:fielderror><s:param>title</s:param></s:fielderror>
+					<input class="inputlong" name="title" type="text" value="${title}"/>
 				</p>
-				内容：<s:fielderror><s:param>content</s:param></s:fielderror>
+				<label>内容：</label><s:fielderror><s:param>content</s:param></s:fielderror>
 				<textarea name="content" id="content" rows="50" cols="152" style="width: 600px; height: 295px">${content}</textarea>
 				
-				<p><label><input type="checkbox" name="email" value="1" />是否发送邮件？</label> <label><input type="checkbox" name="fetion" value="1" />是否发送飞信？</label></p>
-				<p>
+				<p class="paddingmin"><input type="checkbox" name="email" value="1" />是否发送邮件？  <input type="checkbox" name="fetion" value="1" />是否发送飞信？</p>
+				<p class="paddingmin">
 					<input id="submit-btn" type="submit" value="发布公告" />
 				</p>
 			</form>

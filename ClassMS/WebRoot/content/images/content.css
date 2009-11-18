@@ -23,6 +23,8 @@ a.btn:link,a.btn:visited{ color:#FFF; font-weight:normal;}
 
 .errorMessage{color: red;}
 
+.ul li{ line-height: 150%;}
+
 .content{ line-height: 180%; padding: 10px;}
 #notice { border: 1px solid #ccc;}
 #notice H1{font-size: 20px; text-align: center; line-height: 60px;border-bottom: 1px solid #ccc;}

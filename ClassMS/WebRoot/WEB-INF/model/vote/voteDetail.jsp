@@ -22,7 +22,7 @@
 			查看投票
 		</h2>
 		<div>
-			<ul>
+			<ul class="ul">
 				<li>投票主题：${vote.title }</li>
 				<li>描述内容：${vote.summary }</li>
 				<li>投票类型：${vote.type==0 ? "单选" : "多选" }</li>

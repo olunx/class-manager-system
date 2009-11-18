@@ -20,12 +20,26 @@ a.btn:link,a.btn:visited{ color:#FFF; font-weight:normal;}
 .trhover{ background:#d5f4fe;}
 .trselected{ background:#FAF8C5;}
 
+.errorMessage{color: red;}
+
 .content{ line-height: 180%; padding: 10px;}
 #notice { border: 1px solid #ccc;}
 #notice H1{font-size: 20px; text-align: center; line-height: 60px;border-bottom: 1px solid #ccc;}
 .post{ border-bottom: 1px dashed #ccc; margin:10px; padding-bottom:5px;}
 .post_info{ color: #666;}
 .post_content{ padding: 10px 0 10px 30px;}
+
+.form label{ width: 80px; text-align: right; float:left; line-height: 20px;}
+.form .paddingmin{padding-left: 80px;}
+.form input.inputlong{ width: 600px;}
+.form input.inputmid{width: 300px;}
+.form .labellong{ width: 150px;}
+.form p{ margin: 10px 0;}
+
+#activity_input div{ margin-bottom: 5px;}
+#voteitem div{ margin-bottom: 5px;}
+#activitystus li{width:100px;float:left; height:60px; line-height:20px; text-align: center;}
+#activitystus li span{color:#888;}
 
 /*排序表格专用样式*/
 thead tr .header {

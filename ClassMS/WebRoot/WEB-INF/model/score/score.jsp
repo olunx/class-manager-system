@@ -17,21 +17,26 @@
 		<title>成绩管理</title>
 	</head>
 	<body>
+	<h2 class="caption">成绩发送</h2>
 		<form action="fileUpload" method="post" enctype="multipart/form-data">
 			<!-- file对应的input必须有name属性,name的值必须和action中的变量对应 -->
-			<input type="file" name="documents" />
-			<input type="submit" value="submit" />
+			成绩Excel文件：<input type="file" name="documents" />
+			<input type="submit" value="提交" />
 		</form>
 		<div>
 			${fileData}
 		</div>
-		<form action="sendScore" method="post">
-			<input type="hidden" value="${fileName}" name="fileName" />
-			手机号：
-			<input type="text" name="phone" />
-			飞信密码：
-			<input type="password" name="pwd" />
-			<input type="submit" value="确定" />
-		</form>
+		<c:catch>
+			<c:when test="${fileData!=null}">
+				<form action="sendScore" method="post">
+					<input type="hidden" value="${fileName}" name="fileName" />
+					手机号：
+					<input type="text" name="phone" />
+					飞信密码：
+					<input type="password" name="pwd" />
+					<input type="submit" value="确定" />
+				</form>
+			</c:when>
+		</c:catch>
 	</body>
 </html>

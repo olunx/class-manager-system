@@ -11,11 +11,11 @@
 	</head>
 	<body>
 		<h2 class="caption">活动加分申请 - ${requestScope.student.realName }</h2>
-		<form action="add.action" method="post">
+		<form class="form" action="add.action" method="post">
 		<input name="sno" type="hidden" value="${param.sno }" />
 			<div id="activity_input">
 			<div>
-			原因：<input type="text" name="reason" />
+			原因：<input class="inputmid" type="text" name="reason" />
 			分数：<input type="text" name="mark" />
 			<select name="type">
 				<option value="德育">德育</option>
@@ -25,7 +25,7 @@
 			<a href="#" class="btn_del" onclick="delActivity(this)">删除</a>
 			</div>
 			<div>
-			原因：<input type="text" name="reason" />
+			原因：<input class="inputmid" type="text" name="reason" />
 			分数：<input type="text" name="mark" />
 			<select name="type">
 				<option value="德育">德育</option>
@@ -35,7 +35,7 @@
 			<a href="#" class="btn_del" onclick="delActivity(this)">删除</a>
 			</div>
 			<div>
-			原因：<input type="text" name="reason" />
+			原因：<input class="inputmid" type="text" name="reason" />
 			分数：<input type="text" name="mark" />
 			<select name="type">
 				<option value="德育">德育</option>

@@ -11,46 +11,84 @@
 		<h2 class="caption">
 			修改学生信息
 		</h2>
-		<form action="updateStudent" method="post">
-			stuId：
-			<input type="text" name="stuId" value="${student.stuId}" readonly="readonly" />
-			<br />
-			avatar：
-			<input type="text" name="avatar" value="${student.avatar}" />
-			<br />
-			username：
-			<input type="text" name="username" value="${student.username}" />
-			<br />
-			password：
-			<input type="text" name="password" value="${student.password}" />
-			<br />
-			sno：
-			<input type="text" name="sno" value="${student.sno}" />
-			<br />
-			realName：
-			<input type="text" name="realName" value="${student.realName}" />
-			<br />
-			dorm：
-			<input type="text" name="dorm" value="${student.dorm}" />
-			<br />
-			duty：
-			<input type="text" name="dutys" value="<c:forEach items="${student.dutys}" var="d">${d.dutyName},</c:forEach>" />
-			<br />
-			phoneNo：
-			<input type="text" name="phoneNo" value="${student.phoneNo}" />
-			<br />
-			qq：
-			<input type="text" name="qq" value="${student.qq}" />
-			<br />
-			mail：
-			<input type="text" name="mail" value="${student.mail}" />
-			<br />
-			<input type="submit" value="提交" />
-			<input type="reset" value="重置" />
+		<form class="form" action="updateStudent" method="post">
+			<p>
+				<label>
+					stuId：
+				</label>
+				<input type="text" name="stuId" value="${student.stuId}" readonly="readonly" />
+			</p>
+			<p>
+				<label>
+					avatar：
+				</label>
+				<input type="text" name="avatar" value="${student.avatar}" />
+			</p>
+			<p>
+				<label>
+					username：
+				</label>
+				<input type="text" name="username" value="${student.username}" />
+			</p>
+			<p>
+				<label>
+					password：
+				</label>
+				<input type="text" name="password" value="${student.password}" />
+			</p>
+			<p>
+				<label>
+					sno：
+				</label>
+				<input type="text" name="sno" value="${student.sno}" />
+			</p>
+			<p>
+				<label>
+					realName：
+				</label>
+				<input type="text" name="realName" value="${student.realName}" />
+			</p>
+			<p>
+				<label>
+					dorm：
+				</label>
+				<input type="text" name="dorm" value="${student.dorm}" />
+			</p>
+			<p>
+				<label>
+					duty：
+				</label>
+				<input type="text" name="dutys" value="<c:forEach items="${student.dutys}" var="d">${d.dutyName},</c:forEach>" />
+			</p>
+			<p>
+				<label>
+					phoneNo：
+				</label>
+				<input type="text" name="phoneNo" value="${student.phoneNo}" />
+			</p>
+			<p>
+				<label>
+					qq：
+				</label>
+				<input type="text" name="qq" value="${student.qq}" />
+			</p>
+			<p>
+				<label>
+					mail：
+				</label>
+				<input type="text" name="mail" value="${student.mail}" />
+			</p>
+			<p>
+				<input type="submit" value="提交" />
+				<input type="reset" value="重置" />
+			</p>
 		</form>
-		<h2>逃课记录</h2>
+		<h2 class="caption">
+			逃课记录
+		</h2>
 		<c:forEach items="${student.attendances}" var="a">
-		<a href="../attendance/getAttendance?aid=${a.aid}">${a.aid}</a><br/>
+			<a href="../attendance/getAttendance?aid=${a.aid}">${a.aid}</a>
+			<br />
 		</c:forEach>
 	</body>
 </html>

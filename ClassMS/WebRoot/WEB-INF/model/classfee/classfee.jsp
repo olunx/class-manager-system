@@ -36,7 +36,6 @@
 						<th>
 						<a rel="checkall" >全选</a>
 						</th>
-						<th>班费串号</th>
 						<th>班费事件</th>
 						<th>类别</th>
 						<th>费用</th>
@@ -51,10 +50,7 @@
 								<input type="checkbox" name="fids" value="${classfee.fid }"/>
 							</td>
 							<td>
-								<a href="<%=path %>/classfee/query?fid=${classfee.fid }">${classfee.fid }</a>
-							</td>
-							<td>
-								${fn:substring(classfee.event,0,30)}
+								<a href="<%=path %>/classfee/query?fid=${classfee.fid }">${fn:substring(classfee.event,0,30)}</a>
 							</td>
 							<td>
 								${classfee.fee<0?"支出":"收入" }
@@ -77,7 +73,7 @@
 						</tr>
 						
 					 </s:iterator>  
-					 <tr><td></td><td></td><td></td><td>总计：</td><td>${total }元</td><td></td><td></td><td></td><td></td></tr>
+					 <tr><td></td><td></td><td>总计：</td><td>${total }元</td><td></td><td></td><td></td><td></td></tr>
 			 	</table>
 					
 				<select name="cmd">

@@ -10,27 +10,47 @@
 		<h2 class="caption">
 			修改领导信息
 		</h2>
-		<form action="updateLeader" method="post">
-			leaderId：
-			<input type="text" name="leaderId" value="${leader.leaderId}" readonly="readonly" />
-			<br />
-			username：
-			<input type="text" name="username" value="${leader.username}" />
-			<br />
-			password：
-			<input type="text" name="password" value="${leader.password}" />
-			<br />
-			avatar：
-			<input type="text" name="avatar" value="${leader.avatar}" />
-			<br />
-			realName：
-			<input type="text" name="realName" value="${leader.realName}" />
-			<br />
-			remark：
-			<input type="text" name="remark" value="${leader.remark}" />
-			<br />
-			<input type="submit" value="提交" />
-			<input type="reset" value="重置" />
+		<form class="form" action="updateLeader" method="post">
+			<p>
+				<label>
+					leaderId：
+				</label>
+				<input type="text" name="leaderId" value="${leader.leaderId}" readonly="readonly" />
+			</p>
+			<p>
+				<label>
+					username：
+				</label>
+				<input type="text" name="username" value="${leader.username}" />
+			</p>
+			<p>
+				<label>
+					password：
+				</label>
+				<input type="text" name="password" value="${leader.password}" />
+			</p>
+			<p>
+				<label>
+					avatar：
+				</label>
+				<input type="text" name="avatar" value="${leader.avatar}" />
+			</p>
+			<p>
+				<label>
+					realName：
+				</label>
+				<input type="text" name="realName" value="${leader.realName}" />
+			</p>
+			<p>
+				<label>
+					remark：
+				</label>
+				<input type="text" name="remark" value="${leader.remark}" />
+			</p>
+			<p class="paddingmin">
+				<input type="submit" value="提交" />
+				<input type="reset" value="重置" />
+			</p>
 		</form>
 	</body>
 </html>

@@ -10,17 +10,21 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 		<title>Insert title here</title>
 		<link rel="stylesheet" href="<%=path%>/content/kissy/themes/default/editor-min.css" type="text/css" />
+		<link href="../content/images/content.css" rel="stylesheet" type="text/css" />
+        <script language="javascript" type="text/javascript" src="../content/js/jquery.min.js"></script>
+		<script language="javascript" type="text/javascript" src="../content/js/common.js"></script>
 	</head>
 	<body>
 
 		<div>
-			<form id="postform" action="updatePost.action" method="post">
+		<h2 class="caption">修改评论</h2>
+			<form class="form" id="postform" action="updatePost.action" method="post">
 				<input name="id" type="hidden" value="${param.id==null?0:param.id}" />
 				<input name="pid" type="hidden" value="${param.pid==null?0:param.pid}" />
-				内容:<s:fielderror><s:param>content</s:param></s:fielderror>
-				<textarea name="content" id="content" rows="50" cols="152" style="width: 900px; height: 295px">${post.content}</textarea>
-				<p>
-					<input id="submit-btn" type="submit" value="保存" />
+				<label>内容：</label><s:fielderror><s:param>content</s:param></s:fielderror>
+				<textarea name="content" id="content" rows="50" cols="152" style="width: 600px; height: 200px">${post.content}</textarea>
+				<p class="paddingmin">
+					<input id="submit-btn" type="submit" value="保存修改" />
 				</p>
 			</form>
 		</div>

@@ -11,24 +11,41 @@
 		<h2 class="caption">
 			添加领导信息
 		</h2>
-		<form action="addLeader" method="post">
-			username：
-			<input type="text" name="username" />
-			<br />
-			password：
-			<input type="text" name="password" />
-			<br />
-			realName：
-			<input type="text" name="realName" />
-			<br />
-			avatar：
-			<input type="text" name="avatar" />
-			<br />
-			remark：
-			<input type="text" name="remark" />
-			<br />
-			<input type="submit" value="提交" />
-			<input type="reset" value="重置" />
+		<form class="form" action="addLeader" method="post">
+			<p>
+				<label>
+					username：
+				</label>
+				<input type="text" name="username" />
+			</p>
+			<p>
+				<label>
+					password：
+				</label>
+				<input type="text" name="password" />
+			</p>
+			<p>
+				<label>
+					realName：
+				</label>
+				<input type="text" name="realName" />
+			</p>
+			<p>
+				<label>
+					avatar：
+				</label>
+				<input type="text" name="avatar" />
+			</p>
+			<p>
+				<label>
+					remark：
+				</label>
+				<input type="text" name="remark" />
+			</p>
+			<p class="paddingmin">
+				<input type="submit" value="提交" />
+				<input type="reset" value="重置" />
+			</p>
 		</form>
 	</body>
 </html>

@@ -11,21 +11,35 @@
 		<h2 class="caption">
 			修改职务信息
 		</h2>
-		<form action="updateDuty" method="post">
-			adminId：
-			<input type="text" name="dutyId" value="${duty.dutyId}" readonly="readonly" />
-			<br />
-			student：
-			<input type="text" name="students" value="<c:forEach items="${duty.students}" var="s">${s.sno},</c:forEach>" />
-			<br />
-			dutyName：
-			<input type="text" name="dutyName" value="${duty.dutyName}" />
-			<br />
-			job：
-			<input type="text" name="job" value="${duty.job}" />
-			<br />
-			<input type="submit" value="提交" />
-			<input type="reset" value="重置" />
+		<form class="form" action="updateDuty" method="post">
+			<p>
+				<label>
+					adminId：
+				</label>
+				<input type="text" name="dutyId" value="${duty.dutyId}" readonly="readonly" />
+			</p>
+			<p>
+				<label>
+					student：
+				</label>
+				<input type="text" name="students" value="<c:forEach items="${duty.students}" var="s">${s.sno},</c:forEach>" />
+			</p>
+			<p>
+				<label>
+					dutyName：
+				</label>
+				<input type="text" name="dutyName" value="${duty.dutyName}" />
+			</p>
+			<p>
+				<label>
+					job：
+				</label>
+				<input type="text" name="job" value="${duty.job}" />
+			</p>
+			<p class="paddingmin">
+				<input type="submit" value="提交" />
+				<input type="reset" value="重置" />
+			</p>
 		</form>
 	</body>
 </html>

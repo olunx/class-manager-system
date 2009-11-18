@@ -137,6 +137,8 @@ public class AttendanceAction extends ActionSupport implements RequestAware {
 	// 跳转到添加页
 	@SkipValidation
 	public String addLink() {
+		List<Student> students = studentService.getStudents();
+		request.put("students", students);
 		return "addLink";
 	}
 

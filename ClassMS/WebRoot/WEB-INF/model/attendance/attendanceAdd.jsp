@@ -1,11 +1,46 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="s" uri="/struts-tags" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 		<link href="../content/images/content.css" rel="stylesheet" type="text/css" />
+		<link rel="stylesheet" type="text/css" href="../content/images/jquery-ui-1.7.2.custom.css" />
+		<script language="javascript" type="text/javascript" src="../content/js/jquery.min.js"></script>
+		<script language="javascript" type="text/javascript" src="../content/js/jquery-ui-1.7.2.custom.min.js"></script>
 		<title>添加考勤信息</title>
+		<style type="text/css">
+		.mod{ margin: 10px 0;}
+		.selectable .ui-selecting { background: #FECA40; }
+		.selectable .ui-selected { background: #F39814; color: white; }
+		.selectable { list-style-type: none; margin: 0; padding: 0; }
+		#lessonsel li { margin: 3px; padding: 1px; float: left; width: 20px; height: 20px; font-size: 14px; text-align: center; }
+		#studentssel li { margin: 3px; padding: 1px; float: left; width: 60px; height: 30px; font-size: 14px; text-align: center; padding-top:15px; }
+		</style>
+		<script type="text/javascript">
+		$(function() {
+			$("#lessonsel").selectable({
+				stop: function(){
+				var ret = "";
+					$(".ui-selected", this).each(function(){
+						var index = $("#lessonsel li").index(this);
+						ret+=((index + 1)+",");
+					});
+					$("#lesson").val(ret);
+				}
+			});
+			$("#studentssel").selectable({
+				stop: function(){
+				var ret = "";
+					$(".ui-selected", this).each(function(){
+						if ($(this).attr("title")!="")
+						ret+=$(this).attr("title")+",";
+					});
+					$("#students").val(ret);
+				}
+			});
+		});
+		</script>
 	</head>
 	<body>
 		<h2 class="caption">
@@ -15,30 +50,11 @@
 			<div style="float: left">
 				第
 				<select size="1" name="week">
-					<option selected="selected">
-						1
-					</option>
-					<option>
-						2
-					</option>
-					<option>
-						3
-					</option>
-					<option>
-						4
-					</option>
-					<option>
-						5
-					</option>
-					<option>
-						6
-					</option>
-					<option>
-						7
-					</option>
-					<option>
-						8
-					</option>
+					<%
+						for (int i = 1; i < 21; i++) {
+							out.println("<option>" + i + "</option>");
+						}
+					%>
 				</select>
 				周，
 			</div>
@@ -67,47 +83,52 @@
 						日
 					</option>
 				</select>
-				，
 			</div>
-			<div style="float: left">
-				第
-				<select size="8" multiple="multiple" name="lesson">
-					<option selected="selected">
+			<div class="clear"></div>
+			<div class="mod">
+				第几节课？
+				<ol id="lessonsel" class="selectable">
+					<li class="ui-state-default">
 						1
-					</option>
-					<option>
+					</li>
+					<li class="ui-state-default">
 						2
-					</option>
-					<option>
+					</li>
+					<li class="ui-state-default">
 						3
-					</option>
-					<option>
+					</li>
+					<li class="ui-state-default">
 						4
-					</option>
-					<option>
+					</li>
+					<li class="ui-state-default">
 						5
-					</option>
-					<option>
+					</li>
+					<li class="ui-state-default">
 						6
-					</option>
-					<option>
+					</li>
+					<li class="ui-state-default">
 						7
-					</option>
-					<option>
+					</li>
+					<li class="ui-state-default">
 						8
-					</option>
-				</select>
-				节
+					</li>
+				</ol>
+				<input type="hidden" name="lesson" id="lesson"/>
+	
 			</div>
-			<br />
-			逃课学生：
-			<input type="text" name="students" />
-			<s:fielderror><s:param>students</s:param></s:fielderror>
-			录入人员：
-			<input type="text" name="clerk" />
-			<s:fielderror><s:param>clerk</s:param></s:fielderror>
-			<br />
-			<br />
+			<div class="clear"></div>
+			<div class="mod">
+			逃课学生(请在下面按住Ctrl键选择)：
+			<input type="hidden" name="students" id="students" />
+			
+				<ol id="studentssel"  class="selectable">
+				<c:forEach items="${students}" var="stu">
+					<li class="ui-state-default" title="${stu.sno }">${stu.realName }<br/></li>
+				</c:forEach>
+				</ol>
+			<input type="hidden" name="clerk" value="${sessionScope.student.sno }" />
+			</div>
+			<div class="clear"></div>
 			<button type="submit">
 				提交
 			</button>

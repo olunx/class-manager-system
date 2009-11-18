@@ -2,6 +2,7 @@
 *{ margin:0; padding:0;}
 body{ padding:10px; font-size: 14px;}
 img{ border:0;}
+.clear{ clear: both;}
 a:link,a:visited{ color:#369; text-decoration:none;}
 a:hover{ color:#F93;}
 a.btn:link,a.btn:visited{ color:#FFF; font-weight:normal;}

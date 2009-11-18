@@ -14,13 +14,13 @@
 		<form class="form" action="addDuty" method="post">
 			<p>
 				<label>
-					dutyName：
+					职务名称：
 				</label>
 				<input type="text" name="dutyName" />
 			</p>
 			<p>
 				<label>
-					job：
+					职务描述：
 				</label>
 				<input type="text" name="job" />
 			</p>

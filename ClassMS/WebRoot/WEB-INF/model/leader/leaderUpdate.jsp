@@ -7,43 +7,40 @@
 		<title>修改领导信息</title>
 	</head>
 	<body>
-		<h2 class="caption">
-			修改领导信息
-		</h2>
 		<form class="form" action="updateLeader" method="post">
 			<p>
 				<label>
-					leaderId：
+					ID号：
 				</label>
 				<input type="text" name="leaderId" value="${leader.leaderId}" readonly="readonly" />
 			</p>
 			<p>
 				<label>
-					username：
+					用户名：
 				</label>
 				<input type="text" name="username" value="${leader.username}" />
 			</p>
 			<p>
 				<label>
-					password：
+					密码：
 				</label>
 				<input type="text" name="password" value="${leader.password}" />
 			</p>
 			<p>
 				<label>
-					avatar：
+					头像：
 				</label>
 				<input type="text" name="avatar" value="${leader.avatar}" />
 			</p>
 			<p>
 				<label>
-					realName：
+					姓名：
 				</label>
 				<input type="text" name="realName" value="${leader.realName}" />
 			</p>
 			<p>
 				<label>
-					remark：
+					备注：
 				</label>
 				<input type="text" name="remark" value="${leader.remark}" />
 			</p>

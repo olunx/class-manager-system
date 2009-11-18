@@ -4,45 +4,19 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-		<link href="../content/images/content.css" rel="stylesheet" type="text/css" />
+		<link rel="stylesheet" type="text/css" href="../content/images/content.css" />
 		<script language="javascript" type="text/javascript" src="../content/js/jquery.min.js"></script>
 		<script language="javascript" type="text/javascript" src="../content/js/common.js"></script>
 		<script language="javascript" type="text/javascript" src="../content/js/jquery.tablesorter.min.js"></script>
-		<script type="text/javascript">
-	$( function() {
-		$(".table").tablesorter( {
-			headers : {
-				0 : {
-					sorter :false
-				},
-				1 : {
-					sorter :false
-				},
-				3 : {
-					sorter :false
-				},
-				5 : {
-					sorter :false
-				},
-				6 : {
-					sorter :false
-				},
-				7 : {
-					sorter :false
-				},
-				8 : {
-					sorter :false
-				}
-			}
-		});
-	});
-</script>
+		<link rel="stylesheet" type="text/css" href="../content/images/jquery-ui-1.7.2.custom.css" />
+		<script language="javascript" type="text/javascript" src="../content/js/jquery-ui-1.7.2.custom.min.js"></script>
+		<script language="javascript" type="text/javascript" src="../content/js/admin.js"></script>
 		<title>管理员</title>
 	</head>
 	<body>
 		<h2 class="caption">
 			<div class="float_right">
-				<a class="btn btn_add" href="addLinkAdmin">添加</a>
+				<a class="btn btn_add" id="create" >添加</a>
 			</div>
 			<c:choose>
 				<c:when test="${admins==null}">
@@ -85,6 +59,7 @@
 							</th>
 						</tr>
 					</thead>
+					<tbody>
 					<c:forEach items="${admins}" var="admin">
 						<tr>
 							<td>
@@ -109,13 +84,14 @@
 								${admin.remark}
 							</td>
 							<td>
-								<a href="getAdmin?adminId=${admin.adminId}" class="btn_edit"></a>
+								<a rel="update" href="#" value="getAdmin?adminId=${admin.adminId}" class="btn_edit"></a>
 							</td>
 							<td>
 								<a href="deleteAdmin?adminId=${admin.adminId}" class="btn_del"></a>
 							</td>
 						</tr>
 					</c:forEach>
+					<tbody>
 				</table>
 				<select name="cmd">
 					<option value="0" selected="selected">
@@ -129,5 +105,44 @@
 			</form>
 		</c:otherwise>
 		</c:choose>
+	<div id="dialog" title="添加管理员">
+	<form class="form" action="addAdmin" method="post">
+			<p>
+				<label>
+					用户名：
+				</label>
+				<input type="text" name="username" />
+			</p>
+			<p>
+				<label>
+					密码：
+				</label>
+				<input type="text" name="password" />
+			</p>
+			<p>
+				<label>
+					姓名：
+				</label>
+				<input type="text" name="realName"  />
+			</p>
+			<p>
+				<label>
+					头像：
+				</label>
+				<input type="text" name="avatar" />
+			</p>
+			<p>
+				<label>
+					备注：
+				</label>
+				<input type="text" name="remark"  />
+			</p>
+			<p class="paddingmin">
+				<input type="submit" value="提交" />
+				<input type="reset" value="清空" />
+			</p>
+	</form>
+	</div>
+	<div id="update-dialog" title="修改管理员信息"></div>
 	</body>
 </html>

@@ -9,9 +9,9 @@ a.btn:link,a.btn:visited{ color:#FFF; font-weight:normal;}
 .caption { background:#353c44 url(tb.gif) 5px 6px no-repeat; color:#ccc; font-size:14px; color:#FFF; padding:5px 5px 5px 25px; margin-bottom:3px;}
 
 .float_right{ float:right;}
-.btn_add{ background:url(add.gif) 5px 2px no-repeat; padding-left:20px; margin-right:10px;}
-.btn_del{ background:url(del.gif) 5px 2px no-repeat; padding-left:20px;margin-right:10px; }
-.btn_edit{ background:url(edit.gif) 5px 2px no-repeat; padding-left:20px;margin-right:10px;}
+.btn_add{ background:url(add.gif) 5px 2px no-repeat; padding-left:20px; margin-right:10px;cursor:pointer;}
+.btn_del{ background:url(del.gif) 5px 2px no-repeat; padding-left:20px;margin-right:10px;cursor:pointer;}
+.btn_edit{ background:url(edit.gif) 5px 2px no-repeat; padding-left:20px;margin-right:10px;cursor:pointer;}
 
 .table{ width:100%; border-collapse:collapse; color:#353c44; margin-bottom:10px;}
 .table th{ background:#b9dbe2;}

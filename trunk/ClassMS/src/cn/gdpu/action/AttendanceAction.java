@@ -56,6 +56,7 @@ public class AttendanceAction extends ActionSupport implements RequestAware {
 	}
 
 	// 获取一条考勤信息，用于修改
+	@SkipValidation
 	public String get() {
 		if (aid < 0) {
 			return ERROR;
@@ -93,12 +94,14 @@ public class AttendanceAction extends ActionSupport implements RequestAware {
 	}
 
 	// 删除考勤信息
+	@SkipValidation
 	public String delete() {
 		attendanceService.delete(aid);
 		return "index";
 	}
 
 	//批量删除
+	@SkipValidation
 	public String deleteMany() {
 		for(int i=0; i<aids.length; i++) {
 			attendanceService.delete(aids[i]);
@@ -132,6 +135,7 @@ public class AttendanceAction extends ActionSupport implements RequestAware {
     }  
 
 	// 跳转到添加页
+	@SkipValidation
 	public String addLink() {
 		return "addLink";
 	}

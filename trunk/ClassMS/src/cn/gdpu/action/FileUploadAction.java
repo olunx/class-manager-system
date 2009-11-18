@@ -48,6 +48,11 @@ public class FileUploadAction extends ActionSupport {
 
 		List<String> fileData = null;
 
+		if (documents == null ) {		//批量导入验证
+			this.addFieldError("documents", "导入文件不正确，请重新选择");
+			return "addLink";
+		}
+		
 		if (documents == null) {
 			return "input";
 		}

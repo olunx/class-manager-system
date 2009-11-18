@@ -12,6 +12,12 @@
 			<result name="index" type="redirectAction">listStudent</result>
 			<result name="input">/WEB-INF/model/student/student.jsp</result>
 		</global-results>
+		<action name="addStudent" class="cn.gdpu.action.StudentAction" method="add">
+			<result name="input">/WEB-INF/model/student/studentAdd.jsp</result>
+		</action>
+		<action name="updateStudent" class="cn.gdpu.action.StudentAction" method="update">
+			<result name="input">/WEB-INF/model/student/studentUpdate.jsp</result>
+		</action>
 		<action name="*Student" class="cn.gdpu.action.StudentAction" method="{1}"></action>
 		<action name="fileUpload" class="cn.gdpu.action.FileUploadAction">
 			<interceptor-ref name="fileUpload">
@@ -49,6 +55,12 @@
 			<result name="index" type="redirectAction">listAdmin</result>
 			<result name="input">/WEB-INF/model/admin/admin.jsp</result>
 		</global-results>
+		<action name="addAdmin" class="cn.gdpu.action.AdminAction" method="add">
+			<result name="input">/WEB-INF/model/admin/adminAdd.jsp</result>
+		</action>
+		<action name="updateAdmin" class="cn.gdpu.action.AdminAction" method="update">
+			<result name="input">/WEB-INF/model/admin/adminUpdate.jsp</result>
+		</action>
 		<action name="*Admin" class="cn.gdpu.action.AdminAction" method="{1}">
 		</action>
 	</package>
@@ -60,6 +72,12 @@
 			<result name="index" type="redirectAction">listLeader</result>
 			<result name="input">/WEB-INF/model/leader/leader.jsp</result>
 		</global-results>
+		<action name="addLeader" class="cn.gdpu.action.LeaderAction" method="add">
+			<result name="input">/WEB-INF/model/leader/leaderAdd.jsp</result>
+		</action>
+		<action name="updateLeader" class="cn.gdpu.action.LeaderAction" method="update">
+			<result name="input">/WEB-INF/model/leader/leaderUpdate.jsp</result>
+		</action>
 		<action name="*Leader" class="cn.gdpu.action.LeaderAction" method="{1}">
 		</action>
 	</package>
@@ -71,6 +89,12 @@
 			<result name="index" type="redirectAction">listDuty</result>
 			<result name="input">/WEB-INF/model/duty/duty.jsp</result>
 		</global-results>
+		<action name="addDuty" class="cn.gdpu.action.DutyAction" method="add">
+			<result name="input">/WEB-INF/model/duty/dutyAdd.jsp</result>
+		</action>
+		<action name="updateDuty" class="cn.gdpu.action.DutyAction" method="update">
+			<result name="input">/WEB-INF/model/duty/dutyUpdate.jsp</result>
+		</action>
 		<action name="*Duty" class="cn.gdpu.action.DutyAction" method="{1}">
 		</action>
 	</package>
@@ -84,6 +108,12 @@
 			<result name="index" type="redirectAction">listAttendance</result>
 			<result name="input">/WEB-INF/model/attendance/attendance.jsp</result>
 		</global-results>
+		<action name="addAttendance" class="cn.gdpu.action.AttendanceAction" method="add">
+			<result name="input">/WEB-INF/model/attendance/attendanceAdd.jsp</result>
+		</action>
+		<action name="updateAttendance" class="cn.gdpu.action.AttendanceAction" method="update">
+			<result name="input">/WEB-INF/model/attendance/attendanceUpdate.jsp</result>
+		</action>
 		<action name="*Attendance" class="cn.gdpu.action.AttendanceAction" method="{1}">
 		</action>
 	</package>

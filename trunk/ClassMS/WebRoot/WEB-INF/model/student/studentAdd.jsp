@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
@@ -23,30 +24,35 @@
 					username：
 				</label>
 				<input type="text" name="username" />
+				<s:fielderror><s:param>username</s:param></s:fielderror>
 			</p>
 			<p>
 				<label>
 					password：
 				</label>
 				<input type="text" name="password" />
+				<s:fielderror><s:param>password</s:param></s:fielderror>
 			</p>
 			<p>
 				<label>
 					sno：
 				</label>
 				<input type="text" name="sno" />
+				<s:fielderror><s:param>sno</s:param></s:fielderror>
 			</p>
 			<p>
 				<label>
 					realName：
 				</label>
 				<input type="text" name="realName" />
+				<s:fielderror><s:param>realName</s:param></s:fielderror>
 			</p>
 			<p>
 				<label>
 					dorm：
 				</label>
 				<input type="text" name="dorm" />
+				<s:fielderror><s:param>doem</s:param></s:fielderror>
 			</p>
 			<p>
 				<label>
@@ -84,8 +90,9 @@
 			<c:when test="${fileData==null}">
 				<form action="fileUpload" method="post" enctype="multipart/form-data">
 					<!-- file对应的input必须有name属性,name的值必须和action中的变量对应 -->
-					学生数据Excel文件：<input type="file" name="documents" />
+					学生数据Excel文件：<input type="file" name="documents" />					
 					<input type="submit" value="提交" />
+					<s:fielderror><s:param>documents</s:param></s:fielderror>
 				</form>
 			</c:when>
 			<c:otherwise>

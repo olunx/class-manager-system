@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
@@ -101,8 +102,10 @@
 			<br />
 			逃课学生：
 			<input type="text" name="students" />
+			<s:fielderror><s:param>students</s:param></s:fielderror>
 			录入人员：
 			<input type="text" name="clerk" />
+			<s:fielderror><s:param>clerk</s:param></s:fielderror>
 			<br />
 			<br />
 			<button type="submit">

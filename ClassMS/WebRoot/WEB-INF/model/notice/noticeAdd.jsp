@@ -24,8 +24,9 @@
 					<input class="inputlong" name="title" type="text" value="${title}"/>
 				</p>
 				<label>内容：</label><s:fielderror><s:param>content</s:param></s:fielderror>
+				<div class="paddingmin">
 				<textarea name="content" id="content" rows="50" cols="152" style="width: 600px; height: 295px">${content}</textarea>
-				
+				</div>
 				<p class="paddingmin"><input type="checkbox" name="email" value="1" />是否发送邮件？  <input type="checkbox" name="fetion" value="1" />是否发送飞信？</p>
 				<p class="paddingmin">
 					<input id="submit-btn" type="submit" value="发布公告" />

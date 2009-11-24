@@ -22,7 +22,9 @@
 				<input name="id" type="hidden" value="${param.id==null?0:param.id}" />
 				<input name="pid" type="hidden" value="${param.pid==null?0:param.pid}" />
 				<label>内容：</label><s:fielderror><s:param>content</s:param></s:fielderror>
+				<div class="paddingmin">
 				<textarea name="content" id="content" rows="50" cols="152" style="width: 600px; height: 200px">${post.content}</textarea>
+				</div>
 				<p class="paddingmin">
 					<input id="submit-btn" type="submit" value="保存修改" />
 				</p>

@@ -13,12 +13,14 @@
 	<body>
 
 		<div>
-			<form id="postform" action="updatePost.action" method="post">
+			<form class="form" id="postform" action="updatePost.action" method="post">
 				<input name="id" type="hidden" value="${param.id==null?0:param.id}" />
 				<input name="pid" type="hidden" value="${param.pid==null?0:param.pid}" />
-				内容:
+				<label>内容:</label>
+				<div class="paddingmin">
 				<textarea name="content" id="content" rows="50" cols="152" style="width: 900px; height: 295px">${post.content}</textarea>
-				<p>
+				</div>
+				<p class="paddingmin">
 					<input id="submit-btn" type="submit" value="保存" />
 				</p>
 			</form>

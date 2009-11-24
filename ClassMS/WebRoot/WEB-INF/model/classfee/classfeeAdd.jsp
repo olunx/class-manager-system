@@ -32,8 +32,9 @@
 			<p><label>班费费用：</label><s:fielderror><s:param>fee</s:param></s:fielderror>
 			<input type="text" name="fee" value="${classFee.fee }"/> （例如：支出5元,填写"-5"；收入10元，填写"10"）</p>
 			<label>班费事件：</label><s:fielderror><s:param>classFee.event</s:param></s:fielderror>
+				<div class="paddingmin">
 					 <textarea name="classFee.event" id="demo" rows="50" cols="152" style="width: 600px; height: 195px">${classFee.event }</textarea>	<br />
-			
+				</div>
 			         <p class="paddingmin"> <input type="submit" value="提交" />
 			          <input type="reset" value="重置"/></p>
 		</form>

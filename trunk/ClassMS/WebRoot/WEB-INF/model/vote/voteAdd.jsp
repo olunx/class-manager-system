@@ -31,7 +31,9 @@
 				<input class="inputlong" type="text" name="vote.title" />	<s:fielderror><s:param>vote.title</s:param></s:fielderror>
 				</p>
 				<label>描述内容：</label>
+				<div class="paddingmin">
 				<textarea name="vote.summary" id="demo" rows="50" cols="152" style="width: 600px; height: 150px"></textarea>
+				</div>
 				<p><label>投票方式：</label>
 				<input type="radio" name="vote.type" value="0" checked="checked"/>单选
 				<input type="radio" name="vote.type" value="1" />多选

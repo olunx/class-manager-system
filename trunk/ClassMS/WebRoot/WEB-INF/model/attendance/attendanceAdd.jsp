@@ -126,7 +126,7 @@
 			
 				<ol id="studentssel"  class="selectable">
 				<c:forEach items="${students}" var="stu">
-					<li class="ui-state-default" title="${stu.sno }">${stu.realName }<br/></li>
+					<li class="ui-state-default" title="${stu.sno }">${stu.realName }</li>
 				</c:forEach>
 				</ol>
 			<input type="hidden" name="clerk" value="${sessionScope.student.sno }" />

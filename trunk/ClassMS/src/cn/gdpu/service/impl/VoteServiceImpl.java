@@ -1,9 +1,12 @@
 package cn.gdpu.service.impl;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 
 import cn.gdpu.bean.PageBean;
+import cn.gdpu.bean.VoterComparator;
 import cn.gdpu.dao.VoteDao;
 import cn.gdpu.service.VoteService;
 import cn.gdpu.vo.Vote;
@@ -31,6 +34,13 @@ public class VoteServiceImpl implements VoteService {
 
 	public List<Vote> getAllVotes() {
 		return voteDao.queryAllVotes();
+	}
+	
+	public List<Vote> getHotVotes() {
+		List<Vote> votes = voteDao.queryRealVotes();
+		VoterComparator<Vote> voterComparator = new VoterComparator<Vote>();
+		Collections.sort(votes,voterComparator);
+		return votes;
 	}
 
 	public void updateVote(Vote vote) {

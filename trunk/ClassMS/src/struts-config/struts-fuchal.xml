@@ -72,22 +72,22 @@
 		<action name="list" class="cn.gdpu.action.VoteAction" method="list" >
 			<result>/WEB-INF/model/vote/vote.jsp</result>
 		</action>
-		
+			
 		<action name="votingLink" class="cn.gdpu.action.VoteAction" method="votingLink" >
 			<result>/WEB-INF/model/vote/voteLink.jsp</result>
-		</action>		
-		
+		</action>			
+				
 		<action name="voting" class="cn.gdpu.action.VoteAction" method="voting">
-			<result>/WEB-INF/model/vote/voteSuc.jsp?value=voting</result>
+			<result>/WEB-INF/model/vote/voteSuc.jsp?value=voting</result>	
 			<result name="input">/WEB-INF/model/vote/voteLink.jsp</result>
 			<result name="voterexist">/WEB-INF/model/vote/voteErr.jsp?error=voterExist </result>
 			<result name="timeout">/WEB-INF/model/vote/voteErr.jsp?error=timeout </result>
-		</action>			
-		
+		</action>									
+						
 		<action name="addLink">
 			<result>/WEB-INF/model/vote/voteAdd.jsp</result>
 		</action>
-
+		
 	</package>
 	
 </struts>    

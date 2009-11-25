@@ -103,6 +103,7 @@ public class VoteAction extends ActionSupport implements RequestAware,SessionAwa
 	 * @return
 	 * @throws Exception
 	 */
+	@SkipValidation
 	public String deleteMany() {
 		if(cmd == 1){
 			for(int i=0;i<vids.length;i++) {
@@ -195,6 +196,7 @@ public class VoteAction extends ActionSupport implements RequestAware,SessionAwa
 	 * @return
 	 * @throws Exception
 	 */
+	@SkipValidation
 	public String list() throws Exception {  
 	        //分页的pageBean,参数pageSize表示每页显示记录数,page为当前页  
 	    this.pageBean = voteService.queryForPage(15, page); 

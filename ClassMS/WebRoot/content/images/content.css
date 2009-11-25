@@ -27,7 +27,7 @@ a.btn:link,a.btn:visited{ color:#FFF; font-weight:normal;}
 
 .content{ line-height: 180%; padding: 10px;}
 #notice { border: 1px solid #ccc;}
-#notice H1{font-size: 20px; text-align: center; line-height: 60px;border-bottom: 1px solid #ccc;}
+#notice H1{font-size: 20px; text-align: center; line-height: 60px;}
 .post{ border-bottom: 1px dashed #ccc; margin:10px; padding-bottom:5px;}
 .post_info{ color: #666;}
 .post_content{ padding: 10px 0 10px 30px;}

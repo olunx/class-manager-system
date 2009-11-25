@@ -39,7 +39,7 @@
 								${notice.author.realName}
 							</td>
 							<td>
-								${fn:substring(notice.content,0,30)}...
+								${fn:substring(fn:replace(notice.content,"<","&lt;"),0,30)}...
 							</td>
 							<td>
 								<fmt:formatDate value="${notice.time}" pattern="yyyy-MM-dd HH:mm"/>

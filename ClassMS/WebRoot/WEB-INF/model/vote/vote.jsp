@@ -42,7 +42,6 @@
 						<th>创建日期</th>
 						<th>结束日期</th>
 						<th>删除</th>
-						<th>投票</th>
 					</tr>
 					<s:iterator value="pageBean.list" var="vote">  
 						<tr>						
@@ -51,7 +50,7 @@
 							</td>
 							
 							<td>
-								<a href="<%=path %>/vote/query?vid=<s:property value="vid"/>">${fn:substring(vote.title,0,30)}</a>
+								<a href="<%=path %>/vote/votingLink?vid=${vote.vid}" >${fn:substring(vote.title,0,30)}</a>
 							</td>
 							<td>
 								${fn:substring(vote.summary,0,30)}
@@ -67,9 +66,6 @@
 							</td>
 							<td>
 								<a href="<%=path %>/vote/delete?vid=${vote.vid}" class="btn_del"></a>
-							</td>
-							<td>
-								<a href="<%=path %>/vote/votingLink?vid=${vote.vid}" >投票</a>
 							</td>
 						</tr>
 					</s:iterator>

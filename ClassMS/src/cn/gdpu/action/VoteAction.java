@@ -7,12 +7,14 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.TreeSet;
 
 
 import org.apache.struts2.interceptor.RequestAware;
 import org.apache.struts2.interceptor.SessionAware;
 import org.apache.struts2.interceptor.validation.SkipValidation;
 
+import cn.gdpu.bean.VoteItemComparator;
 import cn.gdpu.bean.PageBean;
 import cn.gdpu.service.VoteService;
 import cn.gdpu.vo.Student;
@@ -59,7 +61,8 @@ public class VoteAction extends ActionSupport implements RequestAware,SessionAwa
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 		Date date = sdf.parse(time);
 		vote.setDeadline(date);
-		Set<VoteItem> items = new HashSet<VoteItem>();
+		VoteItemComparator<VoteItem> voteItemComparator = new VoteItemComparator<VoteItem>();
+		Set<VoteItem> items = new TreeSet<VoteItem>(voteItemComparator);
 		for(int i=0;i<content.length;i++){
 			if(content[i] == null || content[i].trim().equals(""))
 				continue;
@@ -151,7 +154,7 @@ public class VoteAction extends ActionSupport implements RequestAware,SessionAwa
 			cal.setTime(date);
 			cal.set(Calendar.DATE,(cal.get(Calendar.DATE)));
 			vote1.setDeadline(cal.getTime());
-			HashSet<VoteItem> items = new HashSet<VoteItem>();				
+			Set<VoteItem> items = new TreeSet<VoteItem>();				
 			for(int i=0;i<content.length;i++){
 				VoteItem voteItem = new VoteItem();
 				voteItem.setContent(content[i]);

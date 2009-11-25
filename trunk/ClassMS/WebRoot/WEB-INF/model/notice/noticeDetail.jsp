@@ -25,9 +25,11 @@
 
 			<c:forEach items="${posts}" var="post" varStatus="i">
 					<div class="post">
-						<div class="post_info">${i.count}.${post.author.realName} <fmt:formatDate value="${post.time}" pattern="yyyy-MM-dd HH:mm"/>
-						<a class="btn_del" href="delPost?id=${param.id }&pid=${post.pid }">删除</a>
-						<a class="btn_edit" href="modifyPost?id=${param.id }&pid=${post.pid }">编辑</a>
+						<div class="post_info">
+                        <a class="btn_del float_right"  href="delPost?id=${param.id }&pid=${post.pid }">删除</a>
+                        <a class="btn_edit float_right" href="modifyPost?id=${param.id }&pid=${post.pid }">编辑</a>
+                        ${i.count}.${post.author.realName} <fmt:formatDate value="${post.time}" pattern="yyyy-MM-dd HH:mm"/>
+						
 						</div>
 						<div class="post_content">
 						${post.content}

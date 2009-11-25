@@ -11,7 +11,6 @@ import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
 import cn.gdpu.dao.AdminDao;
 import cn.gdpu.vo.Admin;
-import cn.gdpu.vo.Vote;
 
 public class AdminDaoImpl extends HibernateDaoSupport implements AdminDao {
 
@@ -66,7 +65,8 @@ public class AdminDaoImpl extends HibernateDaoSupport implements AdminDao {
      * @param length 一次查询几条记录 
      * @return 
      */  
-    public List<Admin> queryForPage(final String hql,final int offset,final int length){  
+    @SuppressWarnings("unchecked")
+	public List<Admin> queryForPage(final String hql,final int offset,final int length){  
         List list = getHibernateTemplate().executeFind(new HibernateCallback(){  
             public Object doInHibernate(Session session) throws HibernateException,SQLException{  
                 Query query = session.createQuery(hql);  

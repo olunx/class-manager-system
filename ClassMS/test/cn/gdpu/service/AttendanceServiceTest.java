@@ -35,7 +35,7 @@ public class AttendanceServiceTest {
 		Attendance attendance = new Attendance();
 		attendance.setWeek("1");
 		attendance.setDay("1");
-		attendance.setLesson("1,2,3,4");
+		//attendance.setLesson("1,2,3,4");
 		attendance.setTime(new Date());
 		HashSet<Student> students = new HashSet<Student>();
 		// List<Student> stus = studentService.getStudents();

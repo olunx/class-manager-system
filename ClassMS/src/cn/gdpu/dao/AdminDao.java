@@ -3,7 +3,6 @@ package cn.gdpu.dao;
 import java.util.List;
 
 import cn.gdpu.vo.Admin;
-import cn.gdpu.vo.ClassFee;
 
 public interface AdminDao {
 	

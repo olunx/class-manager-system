@@ -9,7 +9,6 @@ import javax.annotation.Resource;
 import cn.gdpu.bean.PageBean;
 import cn.gdpu.dao.StudentDao;
 import cn.gdpu.service.StudentService;
-import cn.gdpu.vo.ClassFee;
 import cn.gdpu.vo.Student;
 
 public class StudentServiceImpl implements StudentService {

@@ -10,7 +10,6 @@ import org.springframework.orm.hibernate3.HibernateCallback;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
 import cn.gdpu.dao.DutyDao;
-import cn.gdpu.vo.ClassFee;
 import cn.gdpu.vo.Duty;
 
 public class DutyDaoImpl extends HibernateDaoSupport implements DutyDao {
@@ -54,7 +53,8 @@ public class DutyDaoImpl extends HibernateDaoSupport implements DutyDao {
      * @param length 一次查询几条记录 
      * @return 
      */  
-    public List<Duty> queryForPage(final String hql,final int offset,final int length){  
+    @SuppressWarnings("unchecked")
+	public List<Duty> queryForPage(final String hql,final int offset,final int length){  
         List list = getHibernateTemplate().executeFind(new HibernateCallback(){  
             public Object doInHibernate(Session session) throws HibernateException,SQLException{  
                 Query query = session.createQuery(hql);  

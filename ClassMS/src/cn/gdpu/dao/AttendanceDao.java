@@ -3,7 +3,6 @@ package cn.gdpu.dao;
 import java.util.List;
 
 import cn.gdpu.vo.Attendance;
-import cn.gdpu.vo.ClassFee;
 
 public interface AttendanceDao {
 	

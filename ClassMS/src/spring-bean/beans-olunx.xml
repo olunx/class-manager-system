@@ -53,4 +53,11 @@
 	<bean id="attendanceService" class="cn.gdpu.service.impl.AttendanceServiceImpl" scope="prototype">
 		<property name="attendanceDao" ref="attendanceDaoImpl"></property>
 	</bean>
+	
+	<bean name="lessonDaoImpl" class="cn.gdpu.dao.impl.LessonDaoImpl" scope="prototype">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="lessonService" class="cn.gdpu.service.impl.LessonServiceImpl" scope="prototype">
+		<property name="lessonDao" ref="lessonDaoImpl"></property>
+	</bean>
 </beans>

@@ -5,7 +5,6 @@ import java.util.List;
 import cn.gdpu.bean.PageBean;
 import cn.gdpu.dao.LeaderDao;
 import cn.gdpu.service.LeaderService;
-import cn.gdpu.vo.ClassFee;
 import cn.gdpu.vo.Leader;
 
 public class LeaderServiceImpl implements LeaderService {

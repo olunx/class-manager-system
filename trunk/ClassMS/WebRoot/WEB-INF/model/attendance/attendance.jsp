@@ -103,7 +103,7 @@
 								${attendance.day}
 							</td>
 							<td>
-								${attendance.lesson}
+								<c:forEach items="${attendance.lessons}" var="l">${l.lessonName},</c:forEach>
 							</td>
 							<td>
 								<c:forEach items="${attendance.students}" var="s">${s.realName},</c:forEach>

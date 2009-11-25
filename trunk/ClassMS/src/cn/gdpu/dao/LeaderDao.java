@@ -2,7 +2,6 @@ package cn.gdpu.dao;
 
 import java.util.List;
 
-import cn.gdpu.vo.ClassFee;
 import cn.gdpu.vo.Leader;
 
 public interface LeaderDao {

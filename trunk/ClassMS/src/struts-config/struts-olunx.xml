@@ -118,4 +118,20 @@
 		</action>
 	</package>
 
+	<package name="lesson" extends="struts-default" namespace="/lesson">
+		<global-results>
+			<result name="addLink">/WEB-INF/model/lesson/lessonAdd.jsp</result>
+			<result name="updateLink">/WEB-INF/model/lesson/lessonUpdate.jsp</result>
+			<result name="index" type="redirectAction">listLesson</result>
+			<result name="input">/WEB-INF/model/lesson/lesson.jsp</result>
+		</global-results>
+		<action name="addLesson" class="cn.gdpu.action.LessonAction" method="add">
+			<result name="input">/WEB-INF/model/lesson/lessonAdd.jsp</result>
+		</action>
+		<action name="updateLesson" class="cn.gdpu.action.LessonAction" method="update">
+			<result name="input">/WEB-INF/model/lesson/lessonUpdate.jsp</result>
+		</action>
+		<action name="*Lesson" class="cn.gdpu.action.LessonAction" method="{1}">
+		</action>
+	</package>
 </struts>    

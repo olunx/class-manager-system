@@ -6,7 +6,6 @@ import cn.gdpu.bean.PageBean;
 import cn.gdpu.dao.AttendanceDao;
 import cn.gdpu.service.AttendanceService;
 import cn.gdpu.vo.Attendance;
-import cn.gdpu.vo.ClassFee;
 
 public class AttendanceServiceImpl implements AttendanceService {
 

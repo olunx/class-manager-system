@@ -10,7 +10,6 @@ import org.springframework.orm.hibernate3.HibernateCallback;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
 import cn.gdpu.dao.LeaderDao;
-import cn.gdpu.vo.ClassFee;
 import cn.gdpu.vo.Leader;
 
 public class LeaderDaoImpl extends HibernateDaoSupport implements LeaderDao {
@@ -68,7 +67,8 @@ public class LeaderDaoImpl extends HibernateDaoSupport implements LeaderDao {
      * @param length 一次查询几条记录 
      * @return 
      */  
-    public List<Leader> queryForPage(final String hql,final int offset,final int length){  
+    @SuppressWarnings("unchecked")
+	public List<Leader> queryForPage(final String hql,final int offset,final int length){  
         List list = getHibernateTemplate().executeFind(new HibernateCallback(){  
             public Object doInHibernate(Session session) throws HibernateException,SQLException{  
                 Query query = session.createQuery(hql);  

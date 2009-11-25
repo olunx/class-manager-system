@@ -7,11 +7,10 @@ public class Attendance {
 	private int aid;
 	private Set<Student> students;
 	private Student clerk;
-	private String subject;
 	private Date time;
 	private String week;
 	private String day;
-	private String lesson;
+	private Set<Lesson> lessons;
 
 	public int getAid() {
 		return aid;
@@ -35,14 +34,6 @@ public class Attendance {
 
 	public void setClerk(Student clerk) {
 		this.clerk = clerk;
-	}
-
-	public String getSubject() {
-		return subject;
-	}
-
-	public void setSubject(String subject) {
-		this.subject = subject;
 	}
 
 	public Date getTime() {
@@ -69,17 +60,17 @@ public class Attendance {
 		this.day = day;
 	}
 
-	public String getLesson() {
-		return lesson;
+	public Set<Lesson> getLessons() {
+		return lessons;
 	}
 
-	public void setLesson(String lesson) {
-		this.lesson = lesson;
+	public void setLessons(Set<Lesson> lessons) {
+		this.lessons = lessons;
 	}
 
 	@Override
 	public String toString() {
-		return "Attendance [aid=" + aid + ", day=" + day + ", lesson=" + lesson + ", subject=" + subject + ", time=" + time + ", week=" + week + "]";
+		return "Attendance [aid=" + aid + ", day=" + day + ", time=" + time + ", week=" + week + "]";
 	}
 
 }

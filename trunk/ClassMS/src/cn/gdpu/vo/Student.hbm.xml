@@ -19,11 +19,11 @@
 			<key column="student_id"></key>
 			<one-to-many class="ActivityApply"/>
 		</set>
-		<set name="attendances" table="t_attendance_student" lazy="false">
+		<set name="attendances" table="t_student_attendance" lazy="false">
 			<key column="stuId" />
 			<many-to-many class="Attendance" column="aId" />
 		</set>
-		<set name="dutys" table="t_duty_student" lazy="false">
+		<set name="dutys" table="t_student_duty" lazy="false">
 			<key column="stuId" />
 			<many-to-many class="Duty" column="dutyId" />
 		</set>

@@ -6,7 +6,6 @@ import cn.gdpu.bean.PageBean;
 import cn.gdpu.dao.AdminDao;
 import cn.gdpu.service.AdminService;
 import cn.gdpu.vo.Admin;
-import cn.gdpu.vo.ClassFee;
 
 public class AdminServiceImpl implements AdminService {
 

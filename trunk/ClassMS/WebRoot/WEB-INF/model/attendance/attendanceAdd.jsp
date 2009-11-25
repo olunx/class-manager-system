@@ -15,7 +15,7 @@
 		.selectable .ui-selecting { background: #FECA40; }
 		.selectable .ui-selected { background: #F39814; color: white; }
 		.selectable { list-style-type: none; margin: 0; padding: 0; }
-		#lessonsel li { margin: 3px; padding: 1px; float: left; width: 20px; height: 20px; font-size: 14px; text-align: center; }
+		#lessonsel li { margin: 3px; padding: 1px; float: left; width: 60px; height: 35px; font-size: 14px; text-align: center; }
 		#studentssel li { margin: 3px; padding: 1px; float: left; width: 60px; height: 30px; font-size: 14px; text-align: center; padding-top:15px; }
 		</style>
 		<script type="text/javascript">
@@ -24,10 +24,10 @@
 				stop: function(){
 				var ret = "";
 					$(".ui-selected", this).each(function(){
-						var index = $("#lessonsel li").index(this);
-						ret+=((index + 1)+",");
+						if ($(this).attr("title")!="")
+						ret+=$(this).attr("title")+",";
 					});
-					$("#lesson").val(ret);
+					$("#lessonIds").val(ret);
 				}
 			});
 			$("#studentssel").selectable({
@@ -87,43 +87,19 @@
 			</div>
 			<div class="clear"></div>
 			<div class="mod">
-				第几节课？
-				<ol id="lessonsel" class="selectable">
-					<li class="ui-state-default">
-						1
-					</li>
-					<li class="ui-state-default">
-						2
-					</li>
-					<li class="ui-state-default">
-						3
-					</li>
-					<li class="ui-state-default">
-						4
-					</li>
-					<li class="ui-state-default">
-						5
-					</li>
-					<li class="ui-state-default">
-						6
-					</li>
-					<li class="ui-state-default">
-						7
-					</li>
-					<li class="ui-state-default">
-						8
-					</li>
+			课程(请按住Ctrl键选择)：<s:fielderror><s:param>lessonIds</s:param></s:fielderror>
+			<input type="hidden" name="lessonIds" id="lessonIds" />			
+				<ol id="lessonsel"  class="selectable">
+				<c:forEach items="${lessons}" var="l">
+					<li class="ui-state-default" title="${l.lessonId }">星期${l.day }, ${l.lessonName }</li>
+				</c:forEach>
 				</ol>
-				<input type="hidden" name="lesson" id="lesson"/>
-	
 			</div>
 
 			<div class="clear"></div>
 			<div class="mod">
-			逃课学生(请在按住Ctrl键选择)：<s:fielderror><s:param>students</s:param></s:fielderror>
-			<input type="hidden" name="students" id="students" />
-			
-			
+			逃课学生(请按住Ctrl键选择)：<s:fielderror><s:param>students</s:param></s:fielderror>
+			<input type="hidden" name="students" id="students" />			
 				<ol id="studentssel"  class="selectable">
 				<c:forEach items="${students}" var="stu">
 					<li class="ui-state-default" title="${stu.sno }">${stu.realName }</li>

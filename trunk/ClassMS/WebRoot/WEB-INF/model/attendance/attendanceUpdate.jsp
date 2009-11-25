@@ -26,7 +26,7 @@
 			<input type="text" name="day" value="${attendance.day}" />
 			<br />
 			逃课课时：
-			<input type="text" name="lesson" value="${attendance.lesson}" />
+			<input type="text" name="lesson" value="" />
 			<br />
 			逃课人员：
 			<input type="text" name="students" value="${students}" />

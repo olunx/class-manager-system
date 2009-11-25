@@ -11,7 +11,6 @@ import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 import org.springframework.transaction.annotation.Transactional;
 
 import cn.gdpu.dao.StudentDao;
-import cn.gdpu.vo.ClassFee;
 import cn.gdpu.vo.Student;
 
 @Transactional
@@ -84,7 +83,8 @@ public class StudentDaoImpl extends HibernateDaoSupport implements StudentDao {
      * @param length 一次查询几条记录 
      * @return 
      */  
-    public List<Student> queryForPage(final String hql,final int offset,final int length){  
+    @SuppressWarnings("unchecked")
+	public List<Student> queryForPage(final String hql,final int offset,final int length){  
         List list = getHibernateTemplate().executeFind(new HibernateCallback(){  
             public Object doInHibernate(Session session) throws HibernateException,SQLException{  
                 Query query = session.createQuery(hql);  

@@ -6,15 +6,17 @@
 		<id name="aid" column="aid" >
 			<generator class="native" />
 		</id>
-		<set name="students" table="t_attendance_student">
+		<set name="students" table="t_student_attendance">
 			<key column="aid" />
 			<many-to-many class="Student" column="stuId" />
 		</set>
 		<many-to-one name="clerk" />
-		<property name="subject" />
 		<property name="time" />
 		<property name="week" />
 		<property name="day" />
-		<property name="lesson" />
+		<set name="lessons" table="t_attendance_lesson">
+			<key column="aid" />
+			<many-to-many class="Lesson" column="lessonId" />
+		</set>
 	</class>
 </hibernate-mapping>

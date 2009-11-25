@@ -5,7 +5,6 @@ import java.util.List;
 import cn.gdpu.bean.PageBean;
 import cn.gdpu.dao.NoticeDao;
 import cn.gdpu.service.NoticeService;
-import cn.gdpu.vo.ClassFee;
 import cn.gdpu.vo.Notice;
 import cn.gdpu.vo.Post;
 

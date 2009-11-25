@@ -10,8 +10,10 @@ import org.apache.struts2.interceptor.validation.SkipValidation;
 
 import cn.gdpu.bean.PageBean;
 import cn.gdpu.service.AttendanceService;
+import cn.gdpu.service.LessonService;
 import cn.gdpu.service.StudentService;
 import cn.gdpu.vo.Attendance;
+import cn.gdpu.vo.Lesson;
 import cn.gdpu.vo.Student;
 
 import com.opensymphony.xwork2.ActionSupport;
@@ -26,7 +28,7 @@ public class AttendanceAction extends ActionSupport implements RequestAware {
 	// private Attendance attendance;// 接收传来的学生对象
 	private String week;
 	private String day;
-	private String lesson;
+	private String lessonIds;
 	private String students;// 接收传来的学生学号字符串
 	private String clerk;// 接收传来的数据录入人员
 	private int aid = -1;// 接收传来的考勤信息ID号
@@ -34,6 +36,7 @@ public class AttendanceAction extends ActionSupport implements RequestAware {
 	private int[] aids;
 	private AttendanceService attendanceService;
 	private StudentService studentService;
+	private LessonService lessonService;
 	private PageBean pageBean;
 	private int page;
 	
@@ -42,11 +45,12 @@ public class AttendanceAction extends ActionSupport implements RequestAware {
 
 	// 添加考勤信息
 	public String add() {
-
+		System.out.println(students);
 		Attendance attendance = new Attendance();
 		attendance.setWeek(week);
 		attendance.setDay(day);
-		attendance.setLesson(lesson);
+		//attendance.setLesson(lesson);
+		attendance.setLessons(lessonService.getLessonsByLessonIdString(lessonIds));
 		attendance.setStudents(studentService.getStudentsBySnoString(students));
 		attendance.setClerk(studentService.getStudentBySno(clerk));
 		attendance.setTime(new Date());
@@ -63,6 +67,11 @@ public class AttendanceAction extends ActionSupport implements RequestAware {
 		}
 		System.out.println("aid: " + aid);
 		Attendance attendance = attendanceService.getAttendanceByAid(aid);
+//		Set<Lesson> lesson = attendance.getLessons();
+//		String lessons = "";
+//		for(Lesson l : lesson) {
+//			lessons = lesson + l.getLessonName();
+//		}
 		Set<Student> stus = attendance.getStudents();
 		String students = "";
 		for (Student stu : stus) {
@@ -74,6 +83,7 @@ public class AttendanceAction extends ActionSupport implements RequestAware {
 		}
 
 		request.put("attendance", attendance);
+//		request.put("lessons", lessons);
 		request.put("students", students);
 		request.put("clerk", clerk);
 
@@ -85,7 +95,7 @@ public class AttendanceAction extends ActionSupport implements RequestAware {
 		Attendance attendance = attendanceService.getAttendanceByAid(aid);
 		attendance.setWeek(week);
 		attendance.setDay(day);
-		attendance.setLesson(lesson);
+		//attendance.setLesson(lesson);
 		attendance.setStudents(studentService.getStudentsBySnoString(students));
 		attendance.setClerk(studentService.getStudentBySno(clerk));
 		attendance.setTime(new Date());
@@ -138,7 +148,9 @@ public class AttendanceAction extends ActionSupport implements RequestAware {
 	@SkipValidation
 	public String addLink() {
 		List<Student> students = studentService.getStudents();
+		List<Lesson> lessons = lessonService.getAllLessons();
 		request.put("students", students);
+		request.put("lessons", lessons);
 		return "addLink";
 	}
 
@@ -160,12 +172,12 @@ public class AttendanceAction extends ActionSupport implements RequestAware {
 		this.day = day;
 	}
 
-	public String getLesson() {
-		return lesson;
+	public String getLessonIds() {
+		return lessonIds;
 	}
 
-	public void setLesson(String lesson) {
-		this.lesson = lesson;
+	public void setLessonIds(String lessonIds) {
+		this.lessonIds = lessonIds;
 	}
 
 	public String getStudents() {
@@ -206,6 +218,14 @@ public class AttendanceAction extends ActionSupport implements RequestAware {
 
 	public void setStudentService(StudentService studentService) {
 		this.studentService = studentService;
+	}
+
+	public LessonService getLessonService() {
+		return lessonService;
+	}
+
+	public void setLessonService(LessonService lessonService) {
+		this.lessonService = lessonService;
 	}
 
 	public Map<String, Object> getRequest() {

@@ -64,7 +64,7 @@ public class StudentAction extends ActionSupport implements RequestAware {
 	}
 	
 	@SkipValidation
-	public String addMany() {		
+	public String addMany() {
 		if (fileName == null) {
 			return "input";
 		}

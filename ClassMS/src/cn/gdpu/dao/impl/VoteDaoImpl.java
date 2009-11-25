@@ -45,7 +45,12 @@ public class VoteDaoImpl extends HibernateDaoSupport implements VoteDao {
 		votes = this.getHibernateTemplate().find("from Vote");
 		return votes;
 	}
-	
+	public List<Vote> queryRealVotes() {
+		List<Vote> votes = null;
+		votes = this.getHibernateTemplate().find("from Vote Where TO_DAYS(deadline) - TO_DAYS(NOW()) > 0 ");
+		return votes;
+	}
+
 	//投票选项
 	
 	public void insertVoteItem(VoteItem voteItem) {

@@ -40,6 +40,11 @@ public interface VoteService {
 	 * 获取所有投票
 	 */
 	public abstract List<Vote> getAllVotes();
+	/**
+	 * 获取热门投票
+	 * @return
+	 */
+	public abstract List<Vote> getHotVotes();
 	
 	//投票选项
 	
@@ -71,6 +76,8 @@ public interface VoteService {
 	 * 获取所有投票选项
 	 */
 	public abstract List<VoteItem> getAllVoteItems();
+	
+
 
 	/** *//** 
      * 分页查询 

@@ -36,7 +36,7 @@
 								<a href="detail?id=${notice.nid}">${notice.title}</a>
 							</td>
 							<td>
-								${notice.author.realName}
+								${notice.author.realName} 
 							</td>
 							<td>
 								${fn:substring(fn:replace(notice.content,"<","&lt;"),0,30)}...

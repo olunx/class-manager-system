@@ -173,4 +173,20 @@ public class VoteServiceTest {
 			e.printStackTrace();
 		}
 	}
+	//热门投票
+	@Test
+	public void getHotVotes(){
+		List<Vote> votes = new ArrayList<Vote>();
+		votes = voteService.getHotVotes();
+		if(votes != null)
+			for(Vote vote : votes){
+				System.out.println("voteId:" + vote.getVid() + ",votesTitle:" + vote.getTitle());
+				for(Iterator iter = vote.getItems().iterator();iter.hasNext(); ){
+					VoteItem voteItem = (VoteItem) iter.next();
+					System.out.println(voteItem.getContent() + ":得票" +voteItem.getNum());
+				}
+					
+			}
+		System.out.println("-----getHotVotes()-----");
+	}
 }

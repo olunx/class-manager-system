@@ -14,7 +14,7 @@
 		<property name="title" />
 		<property name="time" />
 		<property name="content" type="text" />
-		<list name="comment" inverse="false" lazy="false" cascade="all">
+		<list name="comment" inverse="false" lazy="true" cascade="all">
 			<key column="parentid" />
 			<list-index column="commentlistid"/>
 			<one-to-many class="Post" />

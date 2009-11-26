@@ -15,7 +15,7 @@
 		<property name="phoneNo" />
 		<property name="qq" />
 		<property name="mail" />
-		<set name="activityApplys" inverse="true" cascade="all" lazy="false" order-by="aid asc">
+		<set name="activityApplys" inverse="true" cascade="all" lazy="true" order-by="aid asc">
 			<key column="student_id"></key>
 			<one-to-many class="ActivityApply"/>
 		</set>
@@ -23,7 +23,7 @@
 			<key column="stuId" />
 			<many-to-many class="Attendance" column="aId" />
 		</set>
-		<set name="dutys" table="t_student_duty" lazy="false">
+		<set name="dutys" table="t_student_duty" lazy="true">
 			<key column="stuId" />
 			<many-to-many class="Duty" column="dutyId" />
 		</set>

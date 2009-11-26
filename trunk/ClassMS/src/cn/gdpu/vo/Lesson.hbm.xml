@@ -9,7 +9,7 @@
 		<property name="day" />
 		<property name="lessonName" />
 		<property name="lessonPeriod" />
-		<set name="attendances" table="t_attendance_lesson" lazy="false">
+		<set name="attendances" table="t_attendance_lesson" lazy="true">
 			<key column="lessonId" />
 			<many-to-many class="Attendance" column="aId" />
 		</set>

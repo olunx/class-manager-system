@@ -10,7 +10,7 @@
 		<id name="aid" column="aid">
 			<generator class="native" />
 		</id>
-		<many-to-one name="student" column="student_id" lazy="false"/>
+		<many-to-one name="student" column="student_id"/>
 		<property name="mark" />
 		<property name="reason" />
 		<property name="pass" />

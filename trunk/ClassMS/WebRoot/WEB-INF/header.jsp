@@ -18,7 +18,7 @@
 			</div>
 			<div id="header_right">
 				<div id="header_user">
-					<a id="btn_logout" href="logout.action" target="top">退出登录</a><a id="btn_user" href="">用户信息</a><a id="btn_modifypass"
+					<a id="btn_logout" href="logout.action" target="_top">退出登录</a><a id="btn_user" href="">用户信息</a><a id="btn_modifypass"
 						href="<c:choose><c:when test="${sessionScope.userType==0}">student/getStudent?stuId=${sessionScope.student.stuId}</c:when><c:when test="${sessionScope.userType==1}">leader/getLeader?leaderId=${sessionScope.leader.leaderId}</c:when><c:when test="${sessionScope.userType==2}">admin/getAdmin?adminId=${sessionScope.admin.adminId}</c:when></c:choose>">修改密码</a>
 				</div>
 				<span id="header_datetime">当前时间:<script language="javascript" type="text/javascript">

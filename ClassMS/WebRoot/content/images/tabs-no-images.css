@@ -1,0 +1,70 @@
+
+/* root element for tabs  */
+ul.css-tabs {  
+	margin:0 !important; 
+	padding:0;
+	height:30px;
+	/*tab底部边框*/
+	border-bottom:1px solid #207DB5;
+}
+
+/* single tab */
+ul.css-tabs li {  
+	float:left;	 
+	padding:0; 
+	margin:0;  
+	list-style-type:none;	
+}
+
+/* link inside the tab. uses a background image */
+ul.css-tabs a { 
+	float:left;
+	font-size:14px;
+	font-weight:bold;
+	display:block;
+	padding:5px 30px;	
+	text-decoration:none;
+	border-bottom:0px;
+	height:18px;
+	margin-right:2px;
+	-moz-border-radius-topleft: 4px;
+	-moz-border-radius-topright:4px;
+	position:relative;
+	top:1px;
+	/*默认背景色*/
+	color:#353c44;
+	background: #d3eaef;
+	border:1px solid #207DB5;
+	margin-bottom:3px;
+}
+
+ul.css-tabs a:hover {
+	/*鼠标移上后的背景色*/
+	background-color:#b9dbe2;
+	color:#353c44;
+}
+	
+/* selected tab */
+ul.css-tabs a.current {
+	cursor:default;
+	/*选中后的背景色*/
+	background-color:#b9dbe2;
+	border-bottom:1px solid #b9dbe2;	
+	color:#000;	
+}
+
+	
+/* tab pane */
+div.css-panes div {
+	display:none;
+	border-width:0 1px 1px 1px;
+	min-height:350px;
+	padding:15px 20px;
+	background-color:#b9dbe2;
+	border:1px solid #207DB5;
+	border-top:none;
+	background:url(index_bg.jpg) left bottom no-repeat;
+}
+
+
+

@@ -1,82 +1,236 @@
 ﻿@charset "utf-8";
-*{ margin:0; padding:0;}
-body{ padding:10px; font-size: 14px;}
-img{ border:0;}
-.clear{ clear: both;}
-a:link,a:visited{ color:#369; text-decoration:none;}
-a:hover{ color:#F93;}
-a.btn:link,a.btn:visited{ color:#FFF; font-weight:normal;}
 
-.caption { background:#353c44 url(tb.gif) 5px 6px no-repeat; color:#ccc; font-size:14px; color:#FFF; padding:5px 5px 5px 25px; margin-bottom:3px;}
+* {
+	margin: 0;
+	padding: 0;
+}
 
-.float_right{ float:right;}
-.btn_add{ background:url(add.gif) 5px 2px no-repeat; padding-left:20px; margin-right:10px;cursor:pointer;}
-.btn_del{ background:url(del.gif) 5px 2px no-repeat; padding-left:20px;margin-right:10px;cursor:pointer;}
-.btn_edit{ background:url(edit.gif) 5px 2px no-repeat; padding-left:20px;margin-right:10px;cursor:pointer;}
+body {
+	padding: 10px;
+	font-size: 14px;
+}
 
-.table{ width:100%; border-collapse:collapse; color:#353c44; margin-bottom:10px;}
-.table th{ background:#b9dbe2;}
-.table td,.table th{ border:1px solid #a8c7ce; text-align:center; padding:5px;}
-.table th a{cursor:pointer;}
-.trhover{ background:#d5f4fe;}
-.trselected{ background:#FAF8C5;}
+img {
+	border: 0;
+}
 
-.errorMessage{color: red;}
+.clear {
+	clear: both;
+}
 
-.ul li{ line-height: 150%;}
+a:link,a:visited {
+	color: #369;
+	text-decoration: none;
+}
 
-.content{ line-height: 180%; padding: 10px;}
-#notice { border: 1px solid #ccc;}
-#notice H1{font-size: 20px; text-align: center; line-height: 60px;}
-.post{ border-bottom: 1px dashed #ccc; margin:10px; padding-bottom:5px;}
-.post_info{ color: #666;}
-.post_content{ padding: 10px 0 10px 30px;}
+a:hover {
+	color: #F93;
+}
 
-.form label{ width: 80px; text-align: right; float:left; line-height: 20px;}
-.form .paddingmin{padding-left: 80px;}
-.form input.inputlong{ width: 600px;}
-.form input.inputmid{width: 300px;}
-.form .labellong{ width: 150px;}
-.form p{ margin: 10px 0;}
+a.btn:link,a.btn:visited {
+	color: #FFF;
+	font-weight: normal;
+}
 
-#activity_input div{ margin-bottom: 5px;}
-#voteitem div{ margin-bottom: 5px;}
-#activitystus li{width:100px;float:left; height:60px; line-height:20px; text-align: center;}
-#activitystus li span{color:#888;}
+.caption {
+	background: #353c44 url(tb.gif) 5px 6px no-repeat;
+	color: #ccc;
+	font-size: 14px;
+	color: #FFF;
+	padding: 5px 5px 5px 25px;
+	margin-bottom: 3px;
+}
+
+.float_right {
+	float: right;
+}
+
+.btn_add {
+	background: url(add.gif) 5px 2px no-repeat;
+	padding-left: 20px;
+	margin-right: 10px;
+	cursor: pointer;
+}
+
+.btn_del {
+	background: url(del.gif) 5px 2px no-repeat;
+	padding-left: 20px;
+	margin-right: 10px;
+	cursor: pointer;
+}
+
+.btn_edit {
+	background: url(edit.gif) 5px 2px no-repeat;
+	padding-left: 20px;
+	margin-right: 10px;
+	cursor: pointer;
+}
+
+.table {
+	width: 100%;
+	border-collapse: collapse;
+	color: #353c44;
+	margin-bottom: 10px;
+}
+
+.table th {
+	background: #d3eaef;
+}
+
+.table td,.table th {
+	border: 1px solid #a8c7ce;
+	text-align: center;
+	padding: 5px;
+}
+
+.table th a {
+	cursor: pointer;
+}
+
+.odd {
+	background: #F2FCFD;
+}
+.trhover {
+	background: #d5f4fe;
+}
+
+.trselected {
+	background: #FAF8C5;
+}
+
+.errorMessage {
+	color: red;
+}
+
+.ul li {
+	line-height: 150%;
+}
+
+.content {
+	line-height: 180%;
+	padding: 10px;
+}
+
+#notice {
+	border: 1px solid #ccc;
+}
+
+#notice H1 {
+	font-size: 20px;
+	text-align: center;
+	line-height: 60px;
+}
+
+.post {
+	border-bottom: 1px dashed #ccc;
+	margin: 10px;
+	padding-bottom: 5px;
+}
+
+.post_info {
+	color: #666;
+}
+
+.post_content {
+	padding: 10px 0 10px 30px;
+}
+
+.form label {
+	width: 80px;
+	text-align: right;
+	float: left;
+	line-height: 20px;
+}
+
+.form .paddingmin {
+	padding-left: 80px;
+}
+
+.form input.inputlong {
+	width: 600px;
+}
+
+.form input.inputmid {
+	width: 300px;
+}
+
+.form .labellong {
+	width: 150px;
+}
+
+.form p {
+	margin: 10px 0;
+}
+
+#activity_input div {
+	margin-bottom: 5px;
+}
+
+#voteitem div {
+	margin-bottom: 5px;
+}
+
+#activitystus li {
+	width: 100px;
+	float: left;
+	height: 60px;
+	line-height: 20px;
+	text-align: center;
+}
+
+#activitystus li span {
+	color: #888;
+}
 
 #dialogbox-loading{ position:absolute; top:100px; left:45%; background:#ccc; padding:20px;}
 
 /*排序表格专用样式*/
-thead tr .header {background: #b9dbe2 url(asc.gif) no-repeat center right;cursor: pointer;}
-thead tr .headerSortUp {background: #d5f4fe url(asc.gif) no-repeat center right;}
-thead tr .headerSortDown {	background: #d5f4fe url(desc.gif) no-repeat center right;}
-
-/*分页处*/
-#pagecount {
-	float:right;
+thead tr .header {
+	background: #d3eaef url(asc.gif) no-repeat center right;
+	cursor: pointer;
 }
-#pagecount p{
-	float:left;
-	line-height:21px;
-	padding-right:5px;
-	font-size:13px;
-	font-weight:bold;
+
+thead tr .headerSortUp {
+	background: #d5f4fe url(asc.gif) no-repeat center right;
+}
+
+thead tr .headerSortDown {
+	background: #d5f4fe url(desc.gif) no-repeat center right;
+}
+
+/*分页按钮和文字*/
+#pagecount {
+	float: right;
+}
+
+#pagecount p {
+	float: left;
+	line-height: 21px;
+	padding-right: 5px;
+	font-size: 13px;
+	font-weight: bold;
 	color: #295568;
 }
-#pagecount a{
+
+#pagecount a {
 	background: transparent url(btn_page_r.gif) no-repeat scroll top right;
-    color: #295568;
-    float:left;
-    display: block;
-    height: 21px;
-    margin-right: 6px;
-    padding-right: 5px; /* sliding doors padding */
-    text-decoration: none;
-    font-size:13px;
-    }
-#pagecount span{
+	color: #295568;
+	float: left;
+	display: block;
+	height: 21px;
+	margin-right: 6px;
+	padding-right: 5px; /* sliding doors padding */
+	text-decoration: none;
+	font-size: 13px;
+}
+
+#pagecount span {
 	background: transparent url(btn_page_l.gif) no-repeat;
-    display: block;
-    line-height: 14px;
-    padding: 5px 0 5px 5px;
-    }
+	display: block;
+	line-height: 14px;
+	padding: 5px 0 5px 5px;
+}
+
+/*首页表格样式*/
+
+

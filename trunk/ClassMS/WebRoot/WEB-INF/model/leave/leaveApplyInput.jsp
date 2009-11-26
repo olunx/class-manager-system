@@ -16,16 +16,20 @@
 		<form class="form" action="add.action" method="post">
 		<input name="sno" type="hidden" value="${param.sno }" />
 			<div id="activity_input">
-			原因：<input class="inputmid" type="text" name="reason" /> <br />
+			<p><label>原因：</label>
 			<s:fielderror><s:param>reason</s:param></s:fielderror>
-			开始时间：
-			<input class="Wdate" type="text" name="airtime" onfocus="WdatePicker({startDate:'%y-%M-{%d+1} %H:%m:00',minDate:'%y-%M-%d %H:%m:00'})"/>  <br />
+			<input class="inputmid" type="text" name="reason" /> </p>
+			<p><label>开始时间：</label>
 			<s:fielderror><s:param>airtime</s:param></s:fielderror>
-			结束时间：
-			<input class="Wdate" type="text" name="endtime" onfocus="WdatePicker({startDate:'%y-%M-{%d+1} %H:%m:00',minDate:'%y-%M-%d %H:%m:00'})"/> 
+			<input class="Wdate" type="text" name="airtime" onfocus="WdatePicker({startDate:'%y-%M-{%d+1} %H:%m:00',minDate:'%y-%M-%d %H:%m:00'})"/>  </p>
+			<p><label>结束时间：</label>
 			<s:fielderror><s:param>endtime</s:param></s:fielderror>
+			<input class="Wdate" type="text" name="endtime" onfocus="WdatePicker({startDate:'%y-%M-{%d+1} %H:%m:00',minDate:'%y-%M-%d %H:%m:00'})"/> </p>
 			</div>
-			<input type="submit" value="提交申请" />
+			<p class="paddingmin">
+				<input type="submit" value="提交申请" />
+				<input type="reset" value="重置"/>
+			</p>
 		</form>
 	</body>
 </html>

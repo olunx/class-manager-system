@@ -27,18 +27,17 @@ $(function(){
     <li class="icon3"><a href="<%=path %>/admin/listAdmin">管理员　</a> - <a href="<%=path %>/admin/addLinkAdmin">添加</a></li>
     <li class="icon1"><a href="<%=path %>/leader/listLeader">领导管理</a> - <a href="<%=path %>/leader/addLinkLeader">添加</a></li>
     <li class="icon1"><a href="<%=path %>/student/listStudent">学生管理</a> - <a href="<%=path %>/student/addLinkStudent">添加</a></li>
+    <li class="icon4"><a href="<%=path %>/duty/listDuty">职务设置</a> - <a href="<%=path %>/duty/addLinkDuty">添加</a></li>
   </ul>
   <h2 class="menu">班务管理</h2>
   <ul class="pane">
-  <ul>
     <li class="icon1"><a href="<%=path %>/notice/list">公告管理</a> - <a href="<%=path %>/notice/addLink">添加</a></li>
-    <li class="icon4"><a href="<%=path %>/duty/listDuty">职务管理</a> - <a href="<%=path %>/duty/addLinkDuty">添加</a></li>
 	<li class="icon5"><a href="<%=path %>/vote/list">投票管理</a> - <a href="<%=path %>/vote/addLink" >添加</a> </li>  
+	<li class="icon1"><a href="<%=path %>/lesson/listLesson">课程设置</a> - <a href="<%=path %>/lesson/addLinkLesson" >添加</a></li>  
     <li class="icon2"><a href="<%=path %>/attendance/listAttendance">考勤管理</a> - <a href="<%=path %>/attendance/addLinkAttendance">添加</a> </li>
     <li class="icon3"><a href="<%=path %>/activity/listPage?sno=${sessionScope.student.sno}">加分申请</a> - <a href="<%=path %>/activity/addLink?sno=${sessionScope.student.sno}">添加</a></li>
     <li class="icon1"><a href="<%=path %>/classfee/list">班费管理</a> - <a href="<%=path %>/classfee/addLink">添加</a> </li>
-    <li class="icon4"><a href="<%=path %>/score/listScore">成绩管理</a></li>
-	<li class="icon1"><a href="<%=path %>/lesson/listLesson">课程管理</a> - <a href="<%=path %>/lesson/addLinkLesson" >添加</a> </li>  
+    <li class="icon4"><a href="<%=path %>/score/listScore">期末成绩发送</a></li>
   </ul>
 </div>
 </body>

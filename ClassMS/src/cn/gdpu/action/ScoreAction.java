@@ -36,13 +36,9 @@ public class ScoreAction extends ActionImpl {
 		String filePath = ServletActionContext.getServletContext().getRealPath("/upload") + "/" + fileName;
 		Map<String, Object> items = StudentExcel.getStudentRegExcel().getScoreData(filePath);
 		
-		fetionService.sendScore(phone, pwd, items);
-		
-		
-		//这里调用发送数据即可
-//		for(String s : items) {
-//			System.out.println(s);
-//		}
+		System.out.println("发送成绩");
+		//发送飞信
+		//fetionService.sendScore(phone, pwd, items);
 		
 		return "input";
 	}

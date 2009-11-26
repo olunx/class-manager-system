@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.commons.mail.EmailException;
 import org.apache.struts2.interceptor.RequestAware;
 import org.apache.struts2.interceptor.SessionAware;
 import org.apache.struts2.interceptor.validation.SkipValidation;
@@ -89,21 +90,30 @@ public class NoticeAction extends ActionSupport implements RequestAware, Session
 		noticeService.save(notice);
 		//System.out.println("fetion" + fetion);
 		if (email == 1) {
-			List<Student> list = new ArrayList<Student>();
-			list = studentService.getStudents();
-			List<String> mailList = new ArrayList<String>();
-			for (int i = 0; i < list.size(); i++) {
-				String aemail = list.get(i).getMail();
-				if (aemail != null && !aemail.equals("")) {
-					mailList.add(aemail);
+			Thread thread = new Thread() {
+				@Override
+				public void run() {
+					List<Student> list = new ArrayList<Student>();
+					list = studentService.getStudents();
+					List<String> mailList = new ArrayList<String>();
+					for (int i = 0; i < list.size(); i++) {
+						String aemail = list.get(i).getMail();
+						if (aemail != null && !aemail.equals("")) {
+							mailList.add(aemail);
+						}
+					}
+					mailList.clear();
+					mailList.add("cyk.cn@qq.com");
+					mailList.add("olunx@qq.com");
+					mailList.add("fuchal@qq.com");
+					try {
+						MailSender.getInstance().sendMail(title.trim(), content, mailList);
+					} catch (EmailException e) {
+						e.printStackTrace();
+					}
 				}
-			}
-			//System.out.println(mailList);
-			mailList.clear();
-			mailList.add("cyk.cn@qq.com");
-			mailList.add("olunx@qq.com");
-			mailList.add("fuchal@qq.com");
-			MailSender.getInstance().sendMail(title.trim(), content, mailList);
+			};
+			thread.start();
 		}
 
 		if (fetion == 1) {

@@ -86,24 +86,11 @@
 		<h2 class="caption">
 			批量注册：
 		</h2>
-		<c:choose>
-			<c:when test="${fileData==null}">
-				<form action="fileUpload" method="post" enctype="multipart/form-data">
-					<!-- file对应的input必须有name属性,name的值必须和action中的变量对应 -->
-					学生数据Excel文件：<input type="file" name="documents" />					
-					<input type="submit" value="提交" />
-					<s:fielderror><s:param>documents</s:param></s:fielderror>
-				</form>
-			</c:when>
-			<c:otherwise>
-				<div>
-					${fileData}
-				</div>
-				<form action="addManyStudent" method="post">
-					<input type="hidden" value="${fileName}" name="fileName" />
-					<input type="submit" value="确定" />
-				</form>
-			</c:otherwise>
-		</c:choose>
+		<form action="fileUpload" method="post" enctype="multipart/form-data">
+			<!-- file对应的input必须有name属性,name的值必须和action中的变量对应 -->
+			学生数据Excel文件：<input type="file" name="documents" />					
+			<input type="submit" value="提交" />
+			<s:fielderror><s:param>documents</s:param></s:fielderror>
+		</form>
 	</body>
 </html>

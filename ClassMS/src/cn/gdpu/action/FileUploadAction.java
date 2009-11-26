@@ -108,7 +108,7 @@ public class FileUploadAction extends ActionSupport {
 			context.setAttribute("fileData", sb.toString());
 		}
 
-		return "addLink";
+		return "confirmLink";
 	}
 	
 	//产生唯一的文件名  

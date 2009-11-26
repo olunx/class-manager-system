@@ -121,22 +121,13 @@
 						</tr>
 					</s:iterator>
 				</table>
-				<div id="pagepart">
-				<div id="pageaction">
-					<select name="cmd">
-						<option value="0" selected="selected">
-							批量操作，请选择
-						</option>
-						<option value="1">
-							删除
-						</option>
-					</select>
-					<input type="submit" value="确定" />
-						 共<s:property value="pageBean.allRow"/> 条记录  
+
+					 <div id="pagecount">
+					 	<p>
+					 	 共<s:property value="pageBean.allRow"/> 条记录  
 						 共<s:property value="pageBean.totalPage"/> 页  
 						 当前第<s:property value="pageBean.currentPage"/>页 
-					</div>
-					 <div id="pagecount">
+						 </p>
 						 <s:if test="%{pageBean.currentPage == 1}">  
 						 </s:if>  
 						 <s:else>  
@@ -150,7 +141,17 @@
 						 <s:else>  
 						 </s:else>
 					 </div>
-				</div>
+					 
+					<select name="cmd">
+						<option value="0" selected="selected">
+							批量操作，请选择
+						</option>
+						<option value="1">
+							删除
+						</option>
+					</select>
+					<input type="submit" value="确定" />
+
 			</form>
 		</c:otherwise>
 		</c:choose>

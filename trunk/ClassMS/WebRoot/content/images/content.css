@@ -50,23 +50,27 @@ thead tr .headerSortUp {background: #d5f4fe url(asc.gif) no-repeat center right;
 thead tr .headerSortDown {	background: #d5f4fe url(desc.gif) no-repeat center right;}
 
 /*分页处*/
-#pagepart{ color: #295568; }
-#pageaction{ float:left; font-size:13px; font-weight: bold;}
 #pagecount {
 	float:right;
 }
 #pagecount p{
-	display: inline-block;
+	float:left;
+	line-height:21px;
+	padding-right:5px;
+	font-size:13px;
+	font-weight:bold;
+	color: #295568;
 }
 #pagecount a{
 	background: transparent url(btn_page_r.gif) no-repeat scroll top right;
     color: #295568;
-    float:right;
+    float:left;
     display: block;
     height: 21px;
     margin-right: 6px;
     padding-right: 5px; /* sliding doors padding */
     text-decoration: none;
+    font-size:13px;
     }
 #pagecount span{
 	background: transparent url(btn_page_l.gif) no-repeat;

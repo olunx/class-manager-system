@@ -97,6 +97,31 @@
 						</tr>
 					</s:iterator>
 				</table>
+				
+				<div id="pagecount">
+				 	<p>
+				 	 共<s:property value="pageBean.allRow"/> 条记录  
+					 共<s:property value="pageBean.totalPage"/> 页  
+					 当前第<s:property value="pageBean.currentPage"/>页 
+					 </p>
+					 <s:if test="%{pageBean.currentPage == 1}"> 
+					 <a><span>首页</span></a>
+					 <a><span>上一页</span></a>
+					 </s:if>  
+					 <s:else>  
+					     <a href="<%=path %>/leader/listLeader?page=1"><span>首页</span></a>
+					     <a href="<%=path %>/leader/listLeader?page=<s:property value="%{pageBean.currentPage-1}"/>"><span>上一页</span></a>
+					 </s:else>  
+					 <s:if test="%{pageBean.currentPage != pageBean.totalPage}">  
+					     <a href="<%=path %>/leader/listLeader?page=<s:property value="%{pageBean.currentPage+1}"/>"><span>下一页</span></a>
+					     <a href="<%=path %>/leader/listLeader?page=<s:property value="pageBean.totalPage"/>"><span>尾页</span></a>
+					 </s:if>  
+					 <s:else>
+					 <a><span>下一页</span></a>
+					 <a><span>尾页</span></a>
+					 </s:else>
+				 </div>	
+				 
 				<select name="cmd">
 					<option value="0" selected="selected">
 						批量操作，请选择
@@ -106,24 +131,6 @@
 					</option>
 				</select>
 				<input type="submit" value="确定" />
-				
-				 <s:if test="%{pageBean.currentPage == 1}">  
-					     第一页 上一页  
-					 </s:if>  
-					 <s:else>  
-					     <a href="<%=path %>/leader/listLeader?page=1">第一页</a>  
-					     <a href="<%=path %>/leader/listLeader?page=<s:property value="%{pageBean.currentPage-1}"/>">上一页</a>  
-					 </s:else>  
-					 <s:if test="%{pageBean.currentPage != pageBean.totalPage}">  
-					     <a href="<%=path %>/leader/listLeader?page=<s:property value="%{pageBean.currentPage+1}"/>">下一页</a>  
-					     <a href="<%=path %>/leader/listLeader?page=<s:property value="pageBean.totalPage"/>">最后一页</a>  
-					 </s:if>  
-					 <s:else>  
-					     下一页 最后一页  
-					 </s:else>  
-					 共<s:property value="pageBean.allRow"/> 条记录  
-					 共<s:property value="pageBean.totalPage"/> 页  
-					 当前第<s:property value="pageBean.currentPage"/>页 
 				
 			</form>
 		</c:otherwise>

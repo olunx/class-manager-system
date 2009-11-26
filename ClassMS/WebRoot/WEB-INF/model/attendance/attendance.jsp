@@ -69,7 +69,7 @@
 								星期
 							</th>
 							<th>
-								课时
+								课程
 							</th>
 							<th>
 								逃课人员
@@ -79,9 +79,6 @@
 							</th>
 							<th>
 								时间
-							</th>
-							<th>
-								修改
 							</th>
 							<th>
 								删除
@@ -103,7 +100,7 @@
 								${attendance.day}
 							</td>
 							<td>
-								<c:forEach items="${attendance.lessons}" var="l">${l.lessonName},</c:forEach>
+								<c:forEach items="${attendance.lessons}" var="l">周${l.day} - ${l.lessonName}, </c:forEach>
 							</td>
 							<td>
 								<c:forEach items="${attendance.students}" var="s">${s.realName},</c:forEach>
@@ -113,9 +110,6 @@
 							</td>
 							<td>
 								${attendance.time}
-							</td>
-							<td>
-								<a href="getAttendance?aid=${attendance.aid}" class="btn_edit"></a>
 							</td>
 							<td>
 								<a href="deleteAttendance?aid=${attendance.aid}" class="btn_del"></a>

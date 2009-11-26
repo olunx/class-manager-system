@@ -87,7 +87,7 @@ public class VoteAction extends ActionSupport implements RequestAware,SessionAwa
 		vote.setItems(items);
 		voteService.addVote(vote);
 		request.put("vote", vote);
-		return SUCCESS;		
+		return "relist";		
 	}
 	
 	/**
@@ -98,7 +98,7 @@ public class VoteAction extends ActionSupport implements RequestAware,SessionAwa
 	@SkipValidation
 	public String delete() throws Exception {	
 		voteService.deleteVote(vid);
-		return SUCCESS;
+		return "relist";
 	
 	}
 	/**
@@ -112,11 +112,10 @@ public class VoteAction extends ActionSupport implements RequestAware,SessionAwa
 			for(int i=0;i<vids.length;i++) {
 				voteService.deleteVote(vids[i]);
 			}
-			return SUCCESS;
+			
 		}
-		else{
-			return "list";
-		}
+		return "relist";
+	
 	}
 	
 	/**
@@ -125,13 +124,14 @@ public class VoteAction extends ActionSupport implements RequestAware,SessionAwa
 	 * @return
 	 * @throws Exception
 	 */
+	/*
 	@SuppressWarnings("unchecked")
 	@SkipValidation
 	public String modifyLink() throws Exception {
 		Vote vote = voteService.getVote(vid);
 		request.put("vote", vote);
 		return "modifylink";
-	}
+	}*/
 	
 	/**
 	 * 修改投票,暂未使用
@@ -139,7 +139,7 @@ public class VoteAction extends ActionSupport implements RequestAware,SessionAwa
 	 * @return
 	 * @throws Exception
 	 */
-	@SuppressWarnings("unchecked")
+	/*@SuppressWarnings("unchecked")
 	@SkipValidation
 	public String modify() throws Exception {
 		Vote vote1 = voteService.getVote(vote.getVid());
@@ -167,7 +167,7 @@ public class VoteAction extends ActionSupport implements RequestAware,SessionAwa
 		}else {
 			return ERROR;
 		}
-	}
+	}*/
 	
 	/**
 	 * 按ID查询投票记录
@@ -179,7 +179,7 @@ public class VoteAction extends ActionSupport implements RequestAware,SessionAwa
 	public String query() throws Exception {
 			vote = voteService.getVote(vid);
 			request.put("vote", vote);
-			return SUCCESS;
+			return "query";
 	}
 	
 	/*
@@ -205,7 +205,7 @@ public class VoteAction extends ActionSupport implements RequestAware,SessionAwa
 	    this.pageBean = voteService.queryForPage(15, page); 
 	    if(pageBean.getList().size() == 0)
 	    	pageBean.setList(null);
-	    return SUCCESS;  
+	    return "list";  
 	}  
 	
 	/**
@@ -222,6 +222,10 @@ public class VoteAction extends ActionSupport implements RequestAware,SessionAwa
 			request.put("timeout", true);
 		Set<Student> voters = vote.getVoters();
 		Student voter = (Student) session.get("student");
+		if(voter == null){
+			request.put("vote", vote);
+			return "query";
+		}
 		for(Student stu : voters ){
 			if(stu.getStuId()==voter.getStuId())					//如果投票人已经投票，返回voterexist
 				request.put("voterexist", true);
@@ -250,6 +254,8 @@ public class VoteAction extends ActionSupport implements RequestAware,SessionAwa
 			return "timeout";
 		Set<Student> voters = vote.getVoters();
 		Student voter = (Student) session.get("student");
+		if(voter == null)
+			return "list";
 		for(Student stu : voters ){
 			if(stu.getStuId()==voter.getStuId())			//如果投票人已经投票，返回voterexist
 				return "voterexist";

@@ -8,6 +8,7 @@
 	<package name="student" extends="struts-default" namespace="/student">
 		<global-results>
 			<result name="addLink">/WEB-INF/model/student/studentAdd.jsp</result>
+			<result name="confirmLink">/WEB-INF/model/student/studentAddConfirm.jsp</result>
 			<result name="updateLink">/WEB-INF/model/student/studentUpdate.jsp</result>
 			<result name="index" type="redirectAction">listStudent</result>
 			<result name="input">/WEB-INF/model/student/student.jsp</result>
@@ -35,6 +36,7 @@
 		<global-results>
 			<result name="input">/WEB-INF/model/score/score.jsp</result>
 			<result name="addLink">/WEB-INF/model/score/score.jsp</result>
+			<result name="confirmLink">/WEB-INF/model/score/scoreConfirm.jsp</result>
 		</global-results>
 		<action name="*Score" class="cn.gdpu.action.ScoreAction" method="{1}"></action>
 		<action name="fileUpload" class="cn.gdpu.action.FileUploadAction">

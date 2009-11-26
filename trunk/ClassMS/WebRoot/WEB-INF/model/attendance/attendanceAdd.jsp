@@ -15,7 +15,7 @@
 		.selectable .ui-selecting { background: #FECA40; }
 		.selectable .ui-selected { background: #F39814; color: white; }
 		.selectable { list-style-type: none; margin: 0; padding: 0; }
-		#lessonsel li { margin: 3px; padding: 1px; float: left; width: 60px; height: 35px; font-size: 14px; text-align: center; }
+		#lessonsel li { margin: 3px; padding: 1px; float: left; width: 80px; height: 50px; font-size: 14px; text-align: center; }
 		#studentssel li { margin: 3px; padding: 1px; float: left; width: 60px; height: 30px; font-size: 14px; text-align: center; padding-top:15px; }
 		</style>
 		<script type="text/javascript">
@@ -91,7 +91,7 @@
 			<input type="hidden" name="lessonIds" id="lessonIds" />			
 				<ol id="lessonsel"  class="selectable">
 				<c:forEach items="${lessons}" var="l">
-					<li class="ui-state-default" title="${l.lessonId }">星期${l.day }, ${l.lessonName }</li>
+					<li class="ui-state-default" title="${l.lessonId }">周${l.day }, ${l.lessonName }</li>
 				</c:forEach>
 				</ol>
 			</div>

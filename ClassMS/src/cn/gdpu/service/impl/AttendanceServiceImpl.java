@@ -86,9 +86,10 @@ public class AttendanceServiceImpl implements AttendanceService {
 		if (stus != null && stus.size() > 0) {
 			AttendanceComparator<Student> attendanceComparator = new AttendanceComparator<Student>();
 			Collections.sort(stus, attendanceComparator);
-
-			for (int i=0;i<num;i++){
-				if (stus.get(i).getAttendances().size() > 0)	retstus.add(stus.get(i));
+			num = stus.size() < num ? stus.size() : num;
+			for (int i = 0; i < num; i++) {
+				 if (stus.get(i) != null && stus.get(i).getAttendances().size() > 0)
+				 retstus.add(stus.get(i));
 			}
 		}
 		return retstus;

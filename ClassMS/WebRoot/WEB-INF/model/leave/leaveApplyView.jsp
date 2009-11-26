@@ -87,23 +87,29 @@
 							<input type="submit" value="确定" />
 						</c:when>
 				</c:choose>
+				<div id="pagecount">
+					<p>
+					 	 共<s:property value="pageBean.allRow"/> 条记录  
+						 共<s:property value="pageBean.totalPage"/> 页  
+						 当前第<s:property value="pageBean.currentPage"/>页 
+					 </p>
 					 <s:if test="%{pageBean.currentPage == 1}">  
-					     第一页 上一页  
+					     <a><span>首页</span></a>
+						 <a><span>上一页</span></a>
 					 </s:if>  
 					 <s:else>  
-					     <a href="<%=path %>/leave/listPage?page=1">第一页</a>  
-					     <a href="<%=path %>/leave/listPage?page=<s:property value="%{pageBean.currentPage-1}"/>&sno=${sessionScope.student.sno}">上一页</a>  
+					     <a href="<%=path %>/leave/listPage?page=1"><span>第一页</span></a>  
+					     <a href="<%=path %>/leave/listPage?page=<s:property value="%{pageBean.currentPage-1}"/>&sno=${sessionScope.student.sno}"><span>上一页</span></a>  
 					 </s:else>  
 					 <s:if test="%{pageBean.currentPage != pageBean.totalPage}">  
-					     <a href="<%=path %>/leave/listPage?page=<s:property value="%{pageBean.currentPage+1}"/>&sno=${sessionScope.student.sno}"">下一页</a>  
-					     <a href="<%=path %>/leave/listPage?page=<s:property value="pageBean.totalPage"/>&sno=${sessionScope.student.sno}"">最后一页</a>  
+					     <a href="<%=path %>/leave/listPage?page=<s:property value="%{pageBean.currentPage+1}"/>&sno=${sessionScope.student.sno}""><span>下一页</span></a>  
+					     <a href="<%=path %>/leave/listPage?page=<s:property value="pageBean.totalPage"/>&sno=${sessionScope.student.sno}""><span>最后一页</span></a>  
 					 </s:if>  
 					 <s:else>  
-					     下一页 最后一页  
+					     <a><span>下一页</span></a>
+						 <a><span>尾页</span></a>
 					 </s:else>  
-					 共<s:property value="pageBean.allRow"/> 条记录  
-					 共<s:property value="pageBean.totalPage"/> 页  
-					 当前第<s:property value="pageBean.currentPage"/>页 
+					</div>
 					
 					</form>
 				</c:otherwise>

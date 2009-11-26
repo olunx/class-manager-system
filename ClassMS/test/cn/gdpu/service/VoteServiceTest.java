@@ -93,7 +93,7 @@ public class VoteServiceTest {
 	@Test
 	public void queryAllVotes(){
 		List<Vote> votes = new ArrayList<Vote>();
-		votes = voteService.getAllVotes();
+		votes = voteService.getNewVotes();
 		if(votes != null)
 			for(Vote vote : votes){
 				System.out.println("voteId:" + vote.getVid() + ",votesTitle:" + vote.getTitle());

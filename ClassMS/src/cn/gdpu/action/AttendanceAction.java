@@ -113,6 +113,8 @@ public class AttendanceAction extends ActionSupport implements RequestAware {
 	//批量删除
 	@SkipValidation
 	public String deleteMany() {
+		if(aids == null || aids.length < 1)
+			return "index";  
 		for(int i=0; i<aids.length; i++) {
 			attendanceService.delete(aids[i]);
 		}

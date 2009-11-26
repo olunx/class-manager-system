@@ -86,6 +86,8 @@ public class LeaderAction extends ActionSupport implements RequestAware {
 	//批量删除
 	@SkipValidation
 	public String deleteMany() {
+		if(leaderIds == null || leaderIds.length < 1)
+			return "index";  
 		for(int i=0; i<leaderIds.length; i++) {
 			leaderService.deleteById(leaderIds[i]);
 		}

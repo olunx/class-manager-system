@@ -85,6 +85,8 @@ public class AdminAction extends ActionSupport implements RequestAware {
 	//批量删除
 	@SkipValidation
 	public String deleteMany() {
+		if(adminIds == null || adminIds.length < 1)
+			return "index";  
 		for(int i=0; i<adminIds.length; i++) {
 			adminService.deleteById(adminIds[i]);
 		}

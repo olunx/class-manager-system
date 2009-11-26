@@ -30,8 +30,8 @@ a:hover{ color:#0CF}
 #sidebar ul{ margin:8px 0 8px 5px;}
 #sidebar li{ font-size:14px; line-height:170%; padding-left:25px;}
 
-#sidebar a:link,#sidebar a:visited{ color:#265395; padding:2px;}
-#sidebar a:hover{ color:#fff; background:#353c44; padding:2px;}
+#sidebar a:link,#sidebar a:visited{ color:#000; padding:2px;}
+#sidebar a:hover{ color:#000; background: #000 url(tab_bg.gif); padding:2px;}
 #sidebar .icon1{ background: url(icon1.gif) 3px 4px no-repeat;}
 #sidebar .icon2{ background: url(icon2.gif) 3px 4px no-repeat;}
 #sidebar .icon3{ background: url(icon3.gif) 3px 4px no-repeat;}

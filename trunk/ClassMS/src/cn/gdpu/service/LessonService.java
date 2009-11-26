@@ -28,6 +28,7 @@ public interface LessonService {
      * @param pageSize 每页大小 
      * @return 封闭了分页信息(包括记录集list)的Bean 
      */  
-    public abstract PageBean queryForPage(int pageSize,int currentPage);  
+    public abstract PageBean queryForPage(int pageSize,int currentPage);
+    
     
 }

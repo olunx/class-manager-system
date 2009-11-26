@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%
 	String path = request.getContextPath();
 %>
@@ -45,6 +46,14 @@
     <div class="clear"></div>
   </c:otherwise>
 </c:choose>
+
+逃课排行榜
+<ul>
+<c:forEach items="${topTruants}" var="topTruant" varStatus="vs" >
+	<li>${topTruant.realName }(${fn:length(topTruant.attendances)})</li>
+</c:forEach>
+</ul>
+
 <c:choose>
   <c:when test="${sessionScope.userType==0}">
     <h2 class="caption">逃课记录</h2>

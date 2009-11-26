@@ -20,8 +20,7 @@
 			<div class="float_right">
 				<c:choose>
 					<c:when test="${sessionScope.userType==0}"><a class="btn btn_add" href="addLink?sno=${sno}">添加</a></c:when>
-					<c:when test="${sessionScope.userType==1}"><a class="btn" href="list">审核</a> </c:when>
-					<c:when test="${sessionScope.userType==2}"><a class="btn" href="list">审核</a> </c:when>
+					<c:otherwise><a class="btn" href="list">审核</a> </c:otherwise>
 				</c:choose>
 				
 			</div>

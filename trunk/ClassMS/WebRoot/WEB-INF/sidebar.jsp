@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
 	String path = request.getContextPath();
 %>
@@ -38,7 +39,7 @@ $(function(){
     <li class="icon3"><a href="<%=path %>/activity/listPage?sno=${sessionScope.student.sno}">加分申请</a> - <a href="<%=path %>/activity/addLink?sno=${sessionScope.student.sno}">添加</a></li>
     <li class="icon1"><a href="<%=path %>/classfee/list">班费管理</a> - <a href="<%=path %>/classfee/addLink">添加</a> </li>
     <li class="icon4"><a href="<%=path %>/score/listScore">期末成绩发送</a></li>
-	<li><a href="<%=path %>/leave/listPage?sno=${sessionScope.student.sno}">请假申请</a> - <a href="<%=path %>/leave/addLink?sno=${sessionScope.student.sno}">添加</a></li>
+	<li><a href="<%=path %>/leave/listPage?sno=${sessionScope.student.sno}">请假申请</a> - <c:choose><c:when test="${sessionScope.userType==0}"><a class="btn btn_add" href="<%=path %>/leave/addLink?sno=${sno}">添加</a></c:when><c:otherwise><a class="btn" href="<%=path %>/leave/list">审核</a></c:otherwise></c:choose></li>
   </ul>
 </div>
 </body>

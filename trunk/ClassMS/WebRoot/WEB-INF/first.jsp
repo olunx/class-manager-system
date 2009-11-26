@@ -25,7 +25,6 @@ $(function() {
 <h2 class="caption"> 欢迎使用！ </h2>
 <div id="index_notice" style="width:100%; margin:0 auto;">
 
-<<<<<<< .mine
     <!-- tabs --> 
     <ul class="css-tabs skin2"> 
         <li><a href="#">最新公告</a></li> 

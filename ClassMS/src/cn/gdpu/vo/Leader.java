@@ -1,5 +1,8 @@
 package cn.gdpu.vo;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class Leader {
 
 	private int leaderId;
@@ -8,6 +11,7 @@ public class Leader {
 	private String realName;
 	private String avatar;
 	private String remark;
+	private Set<LeaveApply> leaveApplys = new HashSet<LeaveApply>();
 
 	public int getLeaderId() {
 		return leaderId;
@@ -55,6 +59,14 @@ public class Leader {
 
 	public void setAvatar(String avatar) {
 		this.avatar = avatar;
+	}
+	
+	public Set<LeaveApply> getLeaveApplys() {
+		return leaveApplys;
+	}
+
+	public void setLeaveApplys(Set<LeaveApply> leaveApplys) {
+		this.leaveApplys = leaveApplys;
 	}
 
 }

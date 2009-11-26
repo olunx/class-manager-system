@@ -21,5 +21,6 @@
 		<mapping resource="cn/gdpu/vo/VoteItem.hbm.xml" />
 		<mapping resource="cn/gdpu/vo/ActivityApply.hbm.xml" />
 		<mapping resource="cn/gdpu/vo/Lesson.hbm.xml" />
+		<mapping resource="cn/gdpu/vo/LeaveApply.hbm.xml" />
 	</session-factory>
 </hibernate-configuration>

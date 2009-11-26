@@ -90,4 +90,16 @@
 		
 	</package>
 	
+	<package name="leave" extends="struts-default" namespace="/leave">
+		<global-results>
+			<result name="input">/WEB-INF/model/leave/leaveApplyInput.jsp</result>
+			<result name="liststuAction" type="redirect">listPage?sno=${sno}</result>
+		</global-results>
+		<action name="*" class="cn.gdpu.action.LeaveApplyAction" method="{1}">
+			<result name="list">/WEB-INF/model/leave/leaveApply.jsp</result>
+			<result name="liststu">/WEB-INF/model/leave/leaveApplyView.jsp</result>
+			<result name="listpage">/WEB-INF/model/leave/leaveApplyView.jsp</result>
+			<result name="success">/WEB-INF/model/leave/leaveApply.jsp</result>
+		</action>
+	</package>
 </struts>    

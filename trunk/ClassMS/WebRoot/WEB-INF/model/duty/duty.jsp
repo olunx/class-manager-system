@@ -21,7 +21,7 @@
 	<body>
 		<h2 class="caption">
 			<div class="float_right">
-				<a class="btn btn_add" id="create" >添加</a>
+				<a class="btn btn_add" id="create" href="addLinkDuty"  onclick="return showInBox('addLinkDuty','添加职位',310,200);" >添加</a>
 			</div>
 			<c:choose>
 				<c:when test="${pageBean.list==null}">
@@ -75,7 +75,7 @@
 								${duty.job}
 							</td>
 							<td>
-								<a rel="update" href="#" value="getDuty?dutyId=${duty.dutyId}" class="btn_edit"></a>
+								<a rel="update" href="getDuty?dutyId=${duty.dutyId}"  onclick="return showInBox('getDuty?dutyId=${duty.dutyId}','修改职位',310,250);" class="btn_edit"></a>
 							</td>
 							<td>
 								<a href="deleteDuty?dutyId=${duty.dutyId}" class="btn_del"></a>
@@ -120,26 +120,6 @@
 			</form>
 		</c:otherwise>
 		</c:choose>
-	<div id="dialog" title="添加职务">
-		<form class="form" action="addDuty" method="post">
-			<p>
-				<label>
-					职务名称：
-				</label>
-				<input type="text" name="dutyName" />
-			</p>
-			<p>
-				<label>
-					职务描述：
-				</label>
-				<input type="text" name="job" />
-			</p>
-			<p class="paddingmin">
-				<input type="submit" value="提交" />
-				<input type="reset" value="重置" />
-			</p>
-		</form>
-	</div>
-	<div id="update-dialog" title="修改职务信息"></div>
+
 	</body>
 </html>

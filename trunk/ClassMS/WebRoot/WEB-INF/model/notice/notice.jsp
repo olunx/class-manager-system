@@ -14,6 +14,8 @@
 		<title>班务系统</title>
 		<link href="../content/images/content.css" rel="stylesheet" type="text/css" />
         <script language="javascript" type="text/javascript" src="../content/js/jquery.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="../content/images/jquery-ui-1.7.2.custom.css" />
+		<script language="javascript" type="text/javascript" src="../content/js/jquery-ui-1.7.2.custom.min.js"></script>
 		<script language="javascript" type="text/javascript" src="../content/js/common.js"></script>
 
 	</head>

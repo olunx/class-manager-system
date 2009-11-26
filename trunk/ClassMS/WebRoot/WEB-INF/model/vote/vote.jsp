@@ -15,12 +15,14 @@
 		<title>投票管理</title>
 		<link href="../content/images/content.css" rel="stylesheet" type="text/css" />
         <script language="javascript" type="text/javascript" src="../content/js/jquery.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="../content/images/jquery-ui-1.7.2.custom.css" />
+		<script language="javascript" type="text/javascript" src="../content/js/jquery-ui-1.7.2.custom.min.js"></script>
 		<script language="javascript" type="text/javascript" src="../content/js/common.js"></script>
 	</head>
 	<body>
 		<h2 class="caption">
 			<div class="float_right">
-				<a class="btn btn_add" href="<%=path %>/vote/addLink">添加</a>
+				<a class="btn btn_add" href="<%=path %>/vote/addLink" >添加</a>
 			</div>
 			<c:choose>
 			

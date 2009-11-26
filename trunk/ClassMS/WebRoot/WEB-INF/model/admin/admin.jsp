@@ -22,7 +22,7 @@
 	<body>
 		<h2 class="caption">
 			<div class="float_right">
-				<a class="btn btn_add" id="create" >添加</a>
+				<a class="btn btn_add" id="create" href="addLinkAdmin" onclick="return showInBox('addLinkAdmin','添加管理员',310,300);">添加</a>
 			</div>
 			<c:choose>
 				<c:when test="${pageBean.list==null}">
@@ -92,7 +92,7 @@
 								${admin.remark}
 							</td>
 							<td>
-								<a rel="update" href="#" value="getAdmin?adminId=${admin.adminId}" class="btn_edit"></a>
+								<a href="getAdmin?adminId=${admin.adminId}" onclick="return showInBox('getAdmin?adminId=${admin.adminId}','添加管理员',310,300);" class="btn_edit"></a>
 							</td>
 							<td>
 								<a href="deleteAdmin?adminId=${admin.adminId}" class="btn_del"></a>
@@ -139,44 +139,6 @@
 			</form>
 		</c:otherwise>
 		</c:choose>
-	<div id="dialog" title="添加管理员">
-	<form class="form" action="addAdmin" method="post">
-			<p>
-				<label>
-					用户名：
-				</label>
-				<input type="text" name="username" />
-			</p>
-			<p>
-				<label>
-					密码：
-				</label>
-				<input type="text" name="password" />
-			</p>
-			<p>
-				<label>
-					姓名：
-				</label>
-				<input type="text" name="realName"  />
-			</p>
-			<p>
-				<label>
-					头像：
-				</label>
-				<input type="text" name="avatar" />
-			</p>
-			<p>
-				<label>
-					备注：
-				</label>
-				<input type="text" name="remark"  />
-			</p>
-			<p class="paddingmin">
-				<input type="submit" value="提交" />
-				<input type="reset" value="清空" />
-			</p>
-	</form>
-	</div>
-	<div id="update-dialog" title="修改管理员信息"></div>
+
 	</body>
 </html>

@@ -52,7 +52,28 @@
     </c:forEach>
   </c:when>
 </c:choose>
-<h2 class="caption">
+		<h2 class="caption">
+			最新投票Top5
+		</h2>
+		<c:choose>
+			<c:when test="${newvotes==null}">
+				暂时没有投票
+			</c:when>
+			<c:otherwise>
+				<table class="table">
+					<c:forEach items="${newvotes}" var="vote" begin="0" end="4" step="1" >
+						<tr>
+							<td>
+								<a href="<%=path %>/vote/votingLink?vid=${vote.vid}" >${vote.title}</a>
+							</td>
+							
+						</tr>
+					</c:forEach>
+				</table>
+			</c:otherwise>
+		</c:choose>
+		
+		<h2 class="caption">
 			热门投票Top5
 		</h2>
 		<c:choose>

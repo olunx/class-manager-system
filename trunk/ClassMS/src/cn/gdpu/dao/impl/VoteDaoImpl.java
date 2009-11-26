@@ -1,6 +1,9 @@
 package cn.gdpu.dao.impl;
 
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import org.hibernate.HibernateException;
@@ -40,14 +43,17 @@ public class VoteDaoImpl extends HibernateDaoSupport implements VoteDao {
 	}
 	
 	@SuppressWarnings("unchecked")
-	public List<Vote> queryAllVotes() {
+	public List<Vote> queryNewVotes() {
 		List<Vote> votes = null;
-		votes = this.getHibernateTemplate().find("from Vote");
+		votes = this.getHibernateTemplate().find("from Vote order by vid desc");
 		return votes;
 	}
 	public List<Vote> queryRealVotes() {
 		List<Vote> votes = null;
-		votes = this.getHibernateTemplate().find("from Vote Where TO_DAYS(deadline) - TO_DAYS(NOW()) > 0 ");
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+        String str1 = sdf.format(new Date());
+        
+		votes = this.getHibernateTemplate().find("from Vote Where deadline >= '" + str1 + "'");
 		return votes;
 	}
 

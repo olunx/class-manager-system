@@ -44,8 +44,11 @@ public class ClassFeeAction extends ActionSupport implements RequestAware,Sessio
 	 */	
 	@SuppressWarnings("unchecked")
 	public String save() throws Exception{
-		if(fid == null || fid.trim().equals("")){                    //新建班费
+		if(fid == null || fid.trim().equals("")){ 
+			//新建班费
 			Student cmaker = (Student) session.get("student");
+			if(cmaker == null)
+				return "relist";
 			classFee.setFee(Double.parseDouble(fee));
 			classFee.setCmaker(cmaker );
 			Date date = new Date();
@@ -53,17 +56,21 @@ public class ClassFeeAction extends ActionSupport implements RequestAware,Sessio
 			String remarks = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(date) + "：" + cmaker.getRealName() + "，创建班费记录；";
 			classFee.setRemarks(remarks);
 			classFeeService.add(classFee);
-			return "addsuc";
+			return "relist";
 		}
-		else {															//修改班费
+		else {										
+			//修改班费
+			Student cmaker = (Student) session.get("student");
+			if(cmaker == null)
+				return "relist";
 			ClassFee classFee1 = classFeeService.getClassFee(fid) ;
 			classFee1.setEvent(classFee.getEvent());
 			classFee1.setFee(Double.parseDouble(fee));
-			String remarks = classFee1.getRemarks() +new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()) + "：" + classFee1.getCmaker().getRealName() + "，修改了班费记录；";
+			String remarks = classFee1.getRemarks() +new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()) + " " + cmaker.getRealName() + "，修改了班费记录；";
 			classFee1.setRemarks(remarks);
 			classFeeService.update(classFee1);
 			request.put("classFee", classFee1);
-			return "modifysuc";					
+			return "relist";					
 		} 
 		
 	}
@@ -78,7 +85,7 @@ public class ClassFeeAction extends ActionSupport implements RequestAware,Sessio
 	@SkipValidation
 	public String delete() throws Exception{	
 		classFeeService.delete(fid);
-		return SUCCESS;
+		return "relist";
 	}
 	
 	/**
@@ -92,10 +99,10 @@ public class ClassFeeAction extends ActionSupport implements RequestAware,Sessio
 			for(int i=0;i<fids.length;i++) {
 				classFeeService.delete(fids[i]);
 			}
-			return SUCCESS;
+			return "relist";
 		}
 		else{
-			return "list";
+			return "relist";
 		}
 	}
 	
@@ -110,7 +117,7 @@ public class ClassFeeAction extends ActionSupport implements RequestAware,Sessio
 	public String modifyLink() throws Exception {
 		ClassFee classFee = classFeeService.getClassFee(fid);
 		request.put("classFee", classFee);
-		return SUCCESS;
+		return "modifylink";
 	}
 	
 	/**
@@ -124,7 +131,7 @@ public class ClassFeeAction extends ActionSupport implements RequestAware,Sessio
 	public String query() throws Exception{		
 		classFee = classFeeService.getClassFee(fid);
 		request.put("classFee", classFee);
-		return SUCCESS;	
+		return "query";	
 	}
 	
 	/*
@@ -151,7 +158,7 @@ public class ClassFeeAction extends ActionSupport implements RequestAware,Sessio
     		pageBean.setList(null);
         
         request.put("total", classFeeService.getTotalMoney());
-        return SUCCESS;  
+        return "list";  
     }  
 	//getter,setter	
 	public ClassFeeService getClassFeeService() {

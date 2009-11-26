@@ -45,13 +45,32 @@ a.btn:link,a.btn:visited{ color:#FFF; font-weight:normal;}
 #activitystus li span{color:#888;}
 
 /*排序表格专用样式*/
-thead tr .header {
-	background: #b9dbe2 url(asc.gif) no-repeat center right;
-	cursor: pointer;
+thead tr .header {background: #b9dbe2 url(asc.gif) no-repeat center right;cursor: pointer;}
+thead tr .headerSortUp {background: #d5f4fe url(asc.gif) no-repeat center right;}
+thead tr .headerSortDown {	background: #d5f4fe url(desc.gif) no-repeat center right;}
+
+/*分页处*/
+#pagepart{ color: #295568; }
+#pageaction{ float:left; font-size:13px; font-weight: bold;}
+#pagecount {
+	float:right;
 }
-thead tr .headerSortUp {
-	background: #d5f4fe url(asc.gif) no-repeat center right;
+#pagecount p{
+	display: inline-block;
 }
-thead tr .headerSortDown {
-	background: #d5f4fe url(desc.gif) no-repeat center right;
-}
+#pagecount a{
+	background: transparent url(btn_page_r.gif) no-repeat scroll top right;
+    color: #295568;
+    float:right;
+    display: block;
+    height: 21px;
+    margin-right: 6px;
+    padding-right: 5px; /* sliding doors padding */
+    text-decoration: none;
+    }
+#pagecount span{
+	background: transparent url(btn_page_l.gif) no-repeat;
+    display: block;
+    line-height: 14px;
+    padding: 5px 0 5px 5px;
+    }

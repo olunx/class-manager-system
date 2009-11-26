@@ -60,8 +60,7 @@ function showInBox(url,title,width,height){
 	}
 	$("#dialogbox-loading",obj).show(500);
 	$("#dialogbox",obj).empty();
-	$.get(url,data,function(){
-		$("#dialogbox",obj).append(data);
+	$("#dialogbox",obj).load(url,function(){
 		$("#dialogbox",obj).attr("title",title);
 		$("#dialogbox",obj).dialog({
 			bgiframe: true,

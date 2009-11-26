@@ -47,7 +47,7 @@
 								<c:if test="${activity.pass==1}">通过</c:if>
 								<c:if test="${activity.pass==2}">拒绝</c:if>
 							</td>
-							<td><a href="del.action?aid=${activity.aid }&sno=${sno}">删除</a></td>
+							<td><a href="del.action?aid=${activity.aid }&sno=${sno}" class="btn_del"></a></td>
 						</tr>
 					</s:iterator>
 					</table>

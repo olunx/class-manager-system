@@ -55,7 +55,7 @@
 								<c:if test="${leave.pass==1}">通过</c:if>
 								<c:if test="${leave.pass==2}">拒绝</c:if>
 							</td>
-							<td><a href="del.action?lid=${leave.lid }&sno=${sno}">删除</a></td>
+							<td><a href="del.action?lid=${leave.lid }&sno=${sno}" class="btn_del"></a></td>
 						</tr>
 					</s:iterator>
 					</table>

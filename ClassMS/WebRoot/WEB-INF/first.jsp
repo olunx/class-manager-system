@@ -19,7 +19,7 @@
         $(function(){
         $("div.tabs").tabs(".images > div", {effect: 'fade',fadeOutSpeed: "slow",rotate: true}).slideshow();
         });
-        </script>
+</script>
 </head>
 <body>
 <h2 class="caption"> 最新公告 </h2>

@@ -50,6 +50,32 @@ function delVote(obj) {
 	return false;
 };
 
+function showInBox(url,title,width,height){
+	var obj = document.body;
+	if ($(obj).find("#dialogbox").size()==0){
+		$(obj).append("<div id='dialogbox' style='display:none;'></div>");
+	}
+	if ($(obj).find("#dialogbox-loading").size()==0){
+		$(obj).append("<div id='dialogbox-loading'>正在加载，请稍后...</div>");
+	}
+	$("#dialogbox-loading",obj).show(500);
+	$("#dialogbox",obj).empty();
+	$("#dialogbox",obj).load(url,function(){
+		$("#dialogbox",obj).attr("title",title);
+		$("#dialogbox",obj).dialog({
+			bgiframe: true,
+			autoOpen: false,
+			modal: true,
+			width:width,
+			height:height
+		});	
+		$("#dialogbox-loading",obj).hide(500);
+		$("#dialogbox",obj).dialog("open");
+	});
+	return false;
+}
+
+
 $(function() {
 	// 选中checkbox变色
 	$(".table tr :checkbox").click(function() {

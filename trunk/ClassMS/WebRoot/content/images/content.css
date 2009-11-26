@@ -44,6 +44,8 @@ a.btn:link,a.btn:visited{ color:#FFF; font-weight:normal;}
 #activitystus li{width:100px;float:left; height:60px; line-height:20px; text-align: center;}
 #activitystus li span{color:#888;}
 
+#dialogbox-loading{ position:absolute; top:100px; left:45%; background:#ccc; padding:20px;}
+
 /*排序表格专用样式*/
 thead tr .header {background: #b9dbe2 url(asc.gif) no-repeat center right;cursor: pointer;}
 thead tr .headerSortUp {background: #d5f4fe url(asc.gif) no-repeat center right;}

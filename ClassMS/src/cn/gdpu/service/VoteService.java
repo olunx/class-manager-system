@@ -39,7 +39,7 @@ public interface VoteService {
 	/**
 	 * 获取所有投票
 	 */
-	public abstract List<Vote> getAllVotes();
+	public abstract List<Vote> getNewVotes();
 	/**
 	 * 获取热门投票
 	 * @return

@@ -35,6 +35,13 @@ public class IndexAction extends ActionSupport implements RequestAware{
 		if(votes.size() == 0)
 			votes = null;
 		request.put("votes", votes);
+		
+		//列出最新投票
+		List<Vote> newvotes = new ArrayList<Vote>();
+		newvotes = voteService.getNewVotes();
+		if(votes.size() == 0)
+			votes = null;
+		request.put("newvotes", newvotes);
 			
 		return SUCCESS;
 	}

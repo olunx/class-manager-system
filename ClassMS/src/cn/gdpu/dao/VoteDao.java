@@ -35,7 +35,7 @@ public interface VoteDao {
 	/**
 	 * 获取所有投票
 	 */
-	public abstract List<Vote> queryAllVotes();
+	public abstract List<Vote> queryNewVotes();
 	
 	/**
 	 * 获取所有示过期投票

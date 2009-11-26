@@ -218,7 +218,10 @@ public class VoteAction extends ActionSupport implements RequestAware,SessionAwa
 	@SkipValidation
 	public String votingLink() throws Exception {
 		Vote vote = voteService.getVote(vid);
-		if(new Date().after(vote.getDeadline()))     //如果投票过期 ，返回timeout
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+        String str1 = sdf.format(new Date());
+        Date toDay = sdf.parse(str1);
+		if(toDay.after(vote.getDeadline()))     //如果投票过期 ，返回timeout
 			request.put("timeout", true);
 		Set<Student> voters = vote.getVoters();
 		Student voter = (Student) session.get("student");
@@ -250,7 +253,10 @@ public class VoteAction extends ActionSupport implements RequestAware,SessionAwa
 			request.put("vote", vote);
 			return INPUT;
 		}
-		if(new Date().after(vote.getDeadline()))     //如果投票过期 ，返回timeout
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+        String str1 = sdf.format(new Date());
+        Date toDay = sdf.parse(str1);
+		if(toDay.after(vote.getDeadline()))     //如果投票过期 ，返回timeout
 			return "timeout";
 		Set<Student> voters = vote.getVoters();
 		Student voter = (Student) session.get("student");

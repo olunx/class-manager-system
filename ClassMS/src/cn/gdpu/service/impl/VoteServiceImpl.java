@@ -32,8 +32,8 @@ public class VoteServiceImpl implements VoteService {
 		return voteDao.queryVoteById(vid);
 	}
 
-	public List<Vote> getAllVotes() {
-		return voteDao.queryAllVotes();
+	public List<Vote> getNewVotes() {
+		return voteDao.queryNewVotes();
 	}
 	
 	public List<Vote> getHotVotes() {

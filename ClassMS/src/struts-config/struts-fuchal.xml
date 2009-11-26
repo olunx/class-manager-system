@@ -28,34 +28,19 @@
 	<package name="vote" extends="struts-default" namespace="/vote">
 			
 		<global-results>
-			<result name="input">/WEB-INF/model/vote/voteErr.jsp</result>
+			<result name="input">/WEB-INF/model/vote/voteAdd.jsp</result>
 			<result name="error">/WEB-INF/model/vote/voteErr.jsp</result>		
-			<result type="redirectAction" name="list">list</result>
+			<result type="redirectAction" name="relist">list</result>
 		</global-results>
 		
-		<action name="add" class="cn.gdpu.action.VoteAction" method="add">
-			<result>/WEB-INF/model/vote/voteSuc.jsp?value=add</result>	
-			<result name="input">/WEB-INF/model/vote/voteAdd.jsp</result>
+		<action name="*" class="cn.gdpu.action.VoteAction" method="{1}">
+			<result name="list">/WEB-INF/model/vote/vote.jsp</result>
+			<result name="query">/WEB-INF/model/vote/voteDetail.jsp</result>	
 		</action>
 		
-		<action name="delete" class="cn.gdpu.action.VoteAction" method="delete">
-			<result>/WEB-INF/model/vote/voteSuc.jsp?value=delete</result>	
-		</action>
-		
-		<action name="deleteMany" class="cn.gdpu.action.VoteAction" method="deleteMany">
-			<result>/WEB-INF/model/vote/voteSuc.jsp?value=deleteMany</result>	
-		</action>
-		
-		<action name="query" class="cn.gdpu.action.VoteAction" method="query">
-			<result>/WEB-INF/model/vote/voteDetail.jsp</result>	
-		</action>	
-		
-		<action name="list" class="cn.gdpu.action.VoteAction" method="list" >
-			<result>/WEB-INF/model/vote/vote.jsp</result>
-		</action>
-			
 		<action name="votingLink" class="cn.gdpu.action.VoteAction" method="votingLink" >
 			<result>/WEB-INF/model/vote/voteLink.jsp</result>
+			<result name="query">/WEB-INF/model/vote/voteDetail.jsp</result>	
 		</action>			
 				
 		<action name="voting" class="cn.gdpu.action.VoteAction" method="voting">

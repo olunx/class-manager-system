@@ -4,6 +4,7 @@ import java.util.List;
 
 import cn.gdpu.bean.PageBean;
 import cn.gdpu.vo.Attendance;
+import cn.gdpu.vo.Student;
 
 public interface AttendanceService {
 	
@@ -52,4 +53,10 @@ public interface AttendanceService {
      * @return 封闭了分页信息(包括记录集list)的Bean 
      */  
     public abstract PageBean queryForPage(int pageSize,int currentPage);  
+    
+    /**
+     * 前几名逃课学生
+     * @return
+     */
+    public abstract List<Student> getTopTruant(int num);
 }

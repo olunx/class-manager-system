@@ -9,6 +9,7 @@ public class Lesson {
 	private String day;
 	private String lessonName;
 	private String lessonPeriod;
+	private int truants;//逃课总人次
 
 	public int getLessonId() {
 		return lessonId;
@@ -48,6 +49,14 @@ public class Lesson {
 
 	public void setLessonName(String lessonName) {
 		this.lessonName = lessonName;
+	}
+
+	public int getTruants() {
+		return truants;
+	}
+
+	public void setTruants(int truants) {
+		this.truants = truants;
 	}
 
 }

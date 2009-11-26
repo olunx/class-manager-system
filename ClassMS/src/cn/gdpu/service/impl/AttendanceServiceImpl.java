@@ -1,15 +1,21 @@
 package cn.gdpu.service.impl;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
+import cn.gdpu.bean.AttendanceComparator;
 import cn.gdpu.bean.PageBean;
 import cn.gdpu.dao.AttendanceDao;
+import cn.gdpu.dao.StudentDao;
 import cn.gdpu.service.AttendanceService;
 import cn.gdpu.vo.Attendance;
+import cn.gdpu.vo.Student;
 
 public class AttendanceServiceImpl implements AttendanceService {
 
 	AttendanceDao attendanceDao;
+	StudentDao studentDao;
 
 	public void setAttendanceDao(AttendanceDao attendanceDao) {
 		this.attendanceDao = attendanceDao;
@@ -72,6 +78,24 @@ public class AttendanceServiceImpl implements AttendanceService {
 		pageBean.setList(list);
 		pageBean.init();
 		return pageBean;
+	}
+
+	public List<Student> getTopTruant(int num) {
+		List<Student> stus = studentDao.queryAllStudents();
+		List<Student> retstus = new ArrayList<Student>();
+		if (stus != null && stus.size() > 0) {
+			AttendanceComparator<Student> attendanceComparator = new AttendanceComparator<Student>();
+			Collections.sort(stus, attendanceComparator);
+
+			for (int i=0;i<num;i++){
+				if (stus.get(i).getAttendances().size() > 0)	retstus.add(stus.get(i));
+			}
+		}
+		return retstus;
+	}
+
+	public void setStudentDao(StudentDao studentDao) {
+		this.studentDao = studentDao;
 	}
 
 }

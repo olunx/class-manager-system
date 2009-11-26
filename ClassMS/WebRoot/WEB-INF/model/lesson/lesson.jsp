@@ -15,10 +15,12 @@
 		<script language="javascript" type="text/javascript" src="../content/js/jquery.tablesorter.min.js"></script>
 		<link rel="stylesheet" type="text/css" href="../content/images/jquery-ui-1.7.2.custom.css" />
 		<script language="javascript" type="text/javascript" src="../content/js/jquery-ui-1.7.2.custom.min.js"></script>
-		<script language="javascript" type="text/javascript" src="../content/js/duty.js"></script>
+		<script language="javascript" type="text/javascript" src="../content/js/lesson.js"></script>
 		<title>课程信息</title>
+		
 	</head>
 	<body>
+
 		<h2 class="caption">
 			<div class="float_right">
 				<a class="btn btn_add" id="create" >添加</a>
@@ -50,7 +52,7 @@
 							课程课时
 						</th>
 						<th>
-							逃课记录
+							逃课人次
 						</th>
 						<th>
 							修改
@@ -78,7 +80,7 @@
 								${lesson.lessonPeriod}
 							</td>
 							<td>
-								<c:forEach items="${lesson.attendances}" var="a">${a.aid},</c:forEach>
+								${lesson.truants }
 							</td>
 							<td>
 								<a rel="update" href="#" value="getLesson?lessonId=${lesson.lessonId}" class="btn_edit"></a>

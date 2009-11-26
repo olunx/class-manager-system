@@ -19,6 +19,10 @@
 			<key column="student_id"></key>
 			<one-to-many class="ActivityApply"/>
 		</set>
+		<set name="leaveApplys" inverse="true" cascade="all" lazy="false" order-by="lid asc">
+			<key column="stu_leave_id"></key>
+			<one-to-many class="LeaveApply"/>
+		</set>
 		<set name="attendances" table="t_student_attendance" lazy="false">
 			<key column="stuId" />
 			<many-to-many class="Attendance" column="aId" />

@@ -11,5 +11,9 @@
 		<property name="realName"/>
 		<property name="avatar" />
 		<property name="remark"/>
+		<set name="leaveApplys" inverse="true" cascade="all" lazy="false" order-by="lid asc">
+			<key column="leader_leave_id"></key>
+			<one-to-many class="LeaveApply"/>
+		</set>
 	</class>
 </hibernate-mapping>

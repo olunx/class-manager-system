@@ -30,5 +30,12 @@
 		<property name="voteDao" ref="voteDaoImpl"></property>
 	</bean>
 
+	<!-- leave 请假申请 -->
+	<bean name="leaveApplyDaoImpl" class="cn.gdpu.dao.impl.LeaveApplyDaoImpl" scope="prototype">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="leaveApplyService" class="cn.gdpu.service.impl.LeaveApplyServiceImpl" scope="prototype">
+		<property name="leaveApplyDao" ref="leaveApplyDaoImpl"></property>
+	</bean>
 
 </beans>

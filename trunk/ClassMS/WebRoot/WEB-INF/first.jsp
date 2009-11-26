@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%> 
 <%
 	String path = request.getContextPath();
 %>
@@ -35,43 +36,65 @@ $(function() {
     <!-- panes --> 
     <div class="css-panes skin2"> 
         <div style="display:block"> 
+        
+        
+			<c:choose>
+			<c:when test="${notices==null}"> 暂时没有公告 </c:when>
+			<c:otherwise>
+			<table class="table">
+				<c:forEach items="${notices}" var="notice" begin="0" end="2" step="1">
+					<tr>
+						<td style="padding-left:20px;">
+						<a style="float:left;" href="<%=path%>/notice/detail?id=${notice.nid }" >标题：${fn:substring(fn:replace(notice.title,"<","&lt;"),0,20)}，内容：${fn:substring(fn:replace(notice.content,"<","&lt;"),0,30)}...</a>
+						<a style="float:right;">发布者：${notice.author.realName}，发布时间：<fmt:formatDate value="${notice.time}" pattern="yyyy-MM-dd HH:mm"/></a>
+						</td>
+					</tr>
+				</c:forEach>
+			</table>
+			</c:otherwise>
+			</c:choose>
+        
+        
         </div> 
         
         <div>
-        <c:choose>
-			<c:when test="${newvotes==null}">
-				暂时没有投票
-			</c:when>
-			<c:otherwise>
-				<table class="table">
-					<c:forEach items="${newvotes}" var="vote" begin="0" end="4" step="1" >
-						<tr>
-							<td>
-								<a href="<%=path %>/vote/votingLink?vid=${vote.vid}" >${vote.title}</a>
-							</td>
-							
-						</tr>
-					</c:forEach>
-				</table>
-			</c:otherwise>
-		</c:choose>
-		<c:choose>
-			<c:when test="${votes==null}">
-				暂时没有投票
-			</c:when>
-			<c:otherwise>
-				<table class="table">
-					<c:forEach items="${votes}" var="vote" begin="0" end="4" step="1" >
-						<tr>
-							<td>
-								<a href="<%=path %>/vote/votingLink?vid=${vote.vid}" >${vote.title}</a>
-							</td>
-							
-						</tr>
-					</c:forEach>
-				</table>
-			</c:otherwise>
-		</c:choose>
+        	<h3>最新投票</h3>
+	        <c:choose>
+				<c:when test="${newvotes==null}">
+					暂时没有投票
+				</c:when>
+				<c:otherwise>
+					<table class="table">
+						<c:forEach items="${newvotes}" var="vote" begin="0" end="4" step="1" >
+							<tr>
+								<td style="padding-left:20px;">
+									<a style="float:left;" href="<%=path %>/vote/votingLink?vid=${vote.vid}" >主题：${fn:substring(fn:replace(vote.title,"<","&lt;"),0,20)}，内容：${fn:substring(fn:replace(vote.summary,"<","&lt;"),0,30)}...</a>
+									<a style="float:right;">结束时间：${vote.deadline}</a>
+								</td>
+							</tr>
+						</c:forEach>
+					</table>
+				</c:otherwise>
+			</c:choose>
+			<h3>热门投票</h3>
+			<c:choose>
+				<c:when test="${votes==null}">
+					暂时没有投票
+				</c:when>
+				<c:otherwise>
+					<table class="table">
+						<c:forEach items="${votes}" var="vote" begin="0" end="4" step="1" >
+							<tr>
+								<td style="padding-left:20px;">
+									<a style="float:left;" href="<%=path %>/vote/votingLink?vid=${vote.vid}" >主题：${fn:substring(fn:replace(vote.title,"<","&lt;"),0,20)}，内容：${fn:substring(fn:replace(vote.summary,"<","&lt;"),0,30)}...</a>
+									<a style="float:right;">结束时间：${vote.deadline}</a>
+								</td>
+							</tr>
+						</c:forEach>
+					</table>
+				</c:otherwise>
+			</c:choose>
+
         </div> 
         
         <div> 

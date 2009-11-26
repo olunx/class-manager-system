@@ -93,6 +93,9 @@ $(function() {
 		$(this).removeClass("trhover");
 	});
 
+	//偶数行变色变色，添加样式
+	$("tr:nth-child(3n)").addClass("odd");
+	
 	//选中所有CheckBox
 	$("a[rel='checkall']").click(function() {
 		$(":checkbox").each(function(i) {

@@ -58,6 +58,8 @@ public class DutyAction extends ActionImpl {
 	@Override
 	@SkipValidation
 	public String deleteMany() {
+		if(dutyIds == null || dutyIds.length < 1)
+			return "index";  
 		for(int i=0;i<dutyIds.length;i++) {
 			dutyService.delete(dutyIds[i]);
 		}

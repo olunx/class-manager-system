@@ -56,6 +56,8 @@ public class LessonAction extends ActionImpl {
 	@Override
 	@SkipValidation
 	public String deleteMany() {
+		if(lessonIds == null || lessonIds.length < 1)
+			return "index";  
 		for (int i = 0; i < lessonIds.length; i++) {
 			lessonService.delete(lessonIds[i]);
 		}

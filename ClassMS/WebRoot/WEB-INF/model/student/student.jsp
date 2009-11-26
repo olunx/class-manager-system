@@ -15,6 +15,8 @@
 		<script language="javascript" type="text/javascript" src="../content/js/jquery.min.js"></script>
 		<script language="javascript" type="text/javascript" src="../content/js/common.js"></script>
 		<script language="javascript" type="text/javascript" src="../content/js/jquery.tablesorter.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="../content/images/jquery-ui-1.7.2.custom.css" />
+		<script language="javascript" type="text/javascript" src="../content/js/jquery-ui-1.7.2.custom.min.js"></script>
 		<script type="text/javascript">
 	$( function() {
 		$(".table").tablesorter( {
@@ -40,16 +42,17 @@
 	<body>
 		<h2 class="caption">
 			<div class="float_right">
-				<a class="btn btn_add" href="addLinkStudent">添加</a>
+				<a class="btn btn_add" href="addLinkStudent" onclick="return showInBox('addLinkStudent','添加学生',600,400);">添加</a>
 			</div>
+			学生管理
+		</h2>
 			<c:choose>
 				<c:when test="${pageBean.list==null}">
 			没有数据			
 		
-		</h2>
+		
 		</c:when>
 		<c:otherwise>
-			学生管理</h2>
 			<form action="deleteManyStudent" method="post">
 				<table class="table">
 					<thead>
@@ -113,7 +116,7 @@
 								${fn:length(student.attendances)}
 							</td>
 							<td>
-								<a href="getStudent?stuId=${student.stuId}" class="btn_edit"></a>
+								<a href="getStudent?stuId=${student.stuId}" class="btn_edit" onclick="return showInBox('getStudent?stuId=${student.stuId}','修改学生',600,400);"></a>
 							</td>
 							<td>
 								<a href="deleteStudent?stuId=${student.stuId}" class="btn_del"></a>

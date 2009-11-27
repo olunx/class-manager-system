@@ -44,7 +44,7 @@ $(function(){
     <li class="icon2"><a class="add" href="<%=path %>/attendance/addLinkAttendance"><img src="content/images/add.gif" /></a><a class="url" href="<%=path %>/attendance/listAttendance"><span>考勤管理</span></a></li>
     <li class="icon3"><a class="add" href="<%=path %>/activity/addLink?sno=${sessionScope.student.sno}"><img src="content/images/add.gif" /></a><a class="url" href="<%=path %>/activity/listPage?sno=${sessionScope.student.sno}"><span>加分申请</span></a></li>
     <li class="icon1"><a class="add" href="<%=path %>/classfee/addLink"><img src="content/images/add.gif" /></a><a class="url" href="<%=path %>/classfee/list"><span>班费管理</span></a></li>
- 	<li class="icon2"><c:choose><c:when test="${sessionScope.userType==0}"><a class="add" href="<%=path %>/leave/addLink?sno=${sno}"><img src="content/images/add.gif" /></a></c:when><c:otherwise><a class="btn" href="<%=path %>/leave/list">审核</a></c:otherwise></c:choose><a class="url" href="<%=path %>/leave/listPage?sno=${sessionScope.student.sno}"><span>请假申请</span></a></li>
+ 	<li class="icon2"><c:choose><c:when test="${sessionScope.userType==0}"><a class="add" href="<%=path %>/leave/addLink?sno=${sessionScope.student.sno}"><img src="content/images/add.gif" /></a></c:when><c:otherwise><a class="btn" href="<%=path %>/leave/list">审核</a></c:otherwise></c:choose><a class="url" href="<%=path %>/leave/listPage?sno=${sessionScope.student.sno}"><span>请假申请</span></a></li>
     <li class="icon4"><a class="url" href="<%=path %>/score/listScore"><span>期末成绩发送</span></a></li>
   </ul>
 </div>

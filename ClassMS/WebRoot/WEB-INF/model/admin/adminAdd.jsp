@@ -15,34 +15,34 @@
 		<form class="form" action="addAdmin" method="post">
 			<p>
 				<label>
-					username：
+					用户名：
 				</label>
 				<input type="text" name="username" />
 				<s:fielderror><s:param>username</s:param></s:fielderror>
 			</p>
 			<p>
 				<label>
-					password：
+					密码：
 				</label>
 				<input type="text" name="password" />
 				<s:fielderror><s:param>password</s:param></s:fielderror>
 			</p>
 			<p>
 				<label>
-					realName：
+					姓名：
 				</label>
 				<input type="text" name="realName" />
 				<s:fielderror><s:param>realName</s:param></s:fielderror>
 			</p>
 			<p>
 				<label>
-					avatar：
+					头像：
 				</label>
 				<input type="text" name="avatar" />
 			</p>
 			<p>
 				<label>
-					remark：
+					备注：
 				</label>
 				<input type="text" name="remark" />
 			</p>

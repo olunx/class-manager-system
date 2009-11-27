@@ -44,7 +44,7 @@
 			<div class="float_right">
 				<a class="btn btn_add" href="addLinkStudent" onclick="return showInBox('addLinkStudent','添加学生',600,400);">添加</a>
 			</div>
-			学生管理
+			学生列表
 		</h2>
 			<c:choose>
 				<c:when test="${pageBean.list==null}">

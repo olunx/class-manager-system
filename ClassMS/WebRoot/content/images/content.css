@@ -6,7 +6,7 @@
 }
 
 body {
-	padding: 10px;
+	padding: 5px;
 	font-size: 14px;
 }
 
@@ -104,35 +104,6 @@ a.btn:link,a.btn:visited {
 
 .ul li {
 	line-height: 150%;
-}
-
-.content {
-	line-height: 180%;
-	padding: 10px;
-}
-
-#notice {
-	border: 1px solid #ccc;
-}
-
-#notice H1 {
-	font-size: 20px;
-	text-align: center;
-	line-height: 60px;
-}
-
-.post {
-	border-bottom: 1px dashed #ccc;
-	margin: 10px;
-	padding-bottom: 5px;
-}
-
-.post_info {
-	color: #666;
-}
-
-.post_content {
-	padding: 10px 0 10px 30px;
 }
 
 .form label {
@@ -249,11 +220,47 @@ thead tr .headerSortDown {
 	border:1px solid #ccc;
 }
 #toptruant li {line-height:20px; padding-left:20px;}
-#toptruant li span{ float:right; font-family:Georgia; font-size:20px;line-height:18px; color:#666;}
+#toptruant li span{ float:right; font-family:Georgia; font-size:18px;line-height:18px; color:#666;}
 
 .top10_1{background:url(top10_icon1.gif) 0 4px no-repeat;}
 .top10_2{background:url(top10_icon2.gif) 0 4px no-repeat;}
 .top10_3{background:url(top10_icon3.gif) 0 4px no-repeat;}
 .top10_4{background:url(top10_icon4.gif) 0 4px no-repeat;}
 .top10_5{background:url(top10_icon5.gif) 0 4px no-repeat;}
+
+#notice {
+	border: 1px solid #ccc;
+	background:  #f4f4f4;
+}
+
+#notice H1 {
+	font-size: 26px;
+	text-align: center;
+	line-height: 60px;
+}
+#notice H1 span{ font-size:14px; color:#666;}
+
+.content {
+	line-height: 180%;
+	padding: 10px;
+	font-size:16px;
+}
+
+.post {
+	border-bottom: 1px dashed #ccc;
+	margin: 10px;
+	padding-bottom: 5px;
+}
+
+.post_info {
+	color: #666;
+}
+
+.post_content {
+	padding: 10px 0 10px 30px;
+}
+
+#notice_post{
+	margin-top:20px;
+}
 

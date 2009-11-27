@@ -168,7 +168,7 @@ a.btn:link,a.btn:visited {
 	color: #888;
 }
 
-#dialogbox-loading{ position:absolute; top:100px; left:45%; background:#ccc; padding:20px;}
+#dialogbox-loading{ position:absolute; top:100px; left:45%; background: #d3eaef; border:solid 1px #ccc; padding:20px;}
 
 /*排序表格专用样式*/
 thead tr .header {

@@ -16,7 +16,7 @@
 		<div>
 			<div id="notice">
 				<h1>
-					${notice.title }
+					${notice.title } <span>${notice.author.realName }</span>
 				</h1>
 				<div class="content">
 				${notice.content }
@@ -37,7 +37,7 @@
 					</div>
 			</c:forEach>
 		</div>
-		<div>
+		<div id="notice_post">
 			<form action="addPost" method="post">
 				评论：<s:fielderror><s:param>content</s:param></s:fielderror>
 				<input type="hidden" name="id" value="${param.id }" />

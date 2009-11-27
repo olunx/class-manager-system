@@ -16,6 +16,7 @@
 		<script language="javascript" type="text/javascript" src="../content/js/jquery.tablesorter.min.js"></script>
 		<link rel="stylesheet" type="text/css" href="../content/images/jquery-ui-1.7.2.custom.css" />
 		<script language="javascript" type="text/javascript" src="../content/js/jquery-ui-1.7.2.custom.min.js"></script>
+		<script language="javascript" type="text/javascript" src="../content/js/leader.js"></script>
 		<title>领导</title>
 	</head>
 	<body>
@@ -30,7 +31,7 @@
 		</h2>
 		</c:when>
 		<c:otherwise>
-			领导管理	</h2>
+			领导列表	</h2>
 			<form action="deleteManyLeader" method="post">
 				<table class="table">
 					<thead>

@@ -52,10 +52,10 @@
 							</td>
 							
 							<td>
-								<a href="<%=path %>/vote/votingLink?vid=${vote.vid}" >${fn:substring(vote.title,0,30)}</a>
+								<a href="<%=path %>/vote/votingLink?vid=${vote.vid}" >${fn:substring(fn:replace(vote.title,"<","&lt;"),0,20)}</a>
 							</td>
 							<td>
-								${fn:substring(vote.summary,0,30)}
+								${fn:substring(fn:replace(vote.summary,"<","&lt;"),0,20)}...
 							</td>
 							<td>
 								${vote.author.realName }

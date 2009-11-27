@@ -15,66 +15,66 @@
 		<form class="form" action="addStudent" method="post">
 			<p>
 				<label>
-					avatar：
+					头像：
 				</label>
 				<input type="text" name="avatar" />
 			</p>
 			<p>
 				<label>
-					username：
+					用户名：
 				</label>
 				<input type="text" name="username" />
 				<s:fielderror><s:param>username</s:param></s:fielderror>
 			</p>
 			<p>
 				<label>
-					password：
+					密码：
 				</label>
 				<input type="text" name="password" />
 				<s:fielderror><s:param>password</s:param></s:fielderror>
 			</p>
 			<p>
 				<label>
-					sno：
+					学号：
 				</label>
 				<input type="text" name="sno" />
 				<s:fielderror><s:param>sno</s:param></s:fielderror>
 			</p>
 			<p>
 				<label>
-					realName：
+					姓名：
 				</label>
 				<input type="text" name="realName" />
 				<s:fielderror><s:param>realName</s:param></s:fielderror>
 			</p>
 			<p>
 				<label>
-					dorm：
+					宿舍：
 				</label>
 				<input type="text" name="dorm" />
 				<s:fielderror><s:param>doem</s:param></s:fielderror>
 			</p>
 			<p>
 				<label>
-					duty：
+					职务：
 				</label>
 				<input type="text" name="duty" />
 			</p>
 			<p>
 				<label>
-					phoneNo：
+					手机：
 				</label>
 				<input type="text" name="phoneNo" />
 			</p>
 			<p>
 				<label>
-					qq：
+					QQ：
 				</label>
 				<input type="text" name="qq" />
 			</p>
 			<p>
 				<label>
-					mail：
+					邮箱：
 				</label>
 				<input type="text" name="mail" />
 			</p>

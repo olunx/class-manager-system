@@ -35,29 +35,42 @@ $(function() {
  
     <!-- panes --> 
     <div class="css-panes skin2"> 
-        <div style="display:block"> 
-        
-        
+    
+        <div style="display:block" class="adiv"> 
+			<div id="toptruant">
+			<h3>逃课风云榜</h3>
+			<ul>
+			<c:choose>
+				<c:when test="${topTruants==null}"><li>暂时没有考勤数据</li> </c:when>
+				<c:otherwise>
+					<c:forEach items="${topTruants}" var="topTruant" varStatus="vs" >
+						<li class="top10_${vs.count }"><span>${fn:length(topTruant.attendances)}</span>${topTruant.realName }</li>
+					</c:forEach>
+				</c:otherwise>
+			</c:choose>
+ 			</ul>
+ 			</div>
+        	<div id="news">
+        	<h3>最新公告</h3>
 			<c:choose>
 			<c:when test="${notices==null}"> 暂时没有公告 </c:when>
 			<c:otherwise>
 			<table class="table">
 				<c:forEach items="${notices}" var="notice" begin="0" end="2" step="1">
 					<tr>
-						<td style="padding-left:20px;">
-						<a style="float:left;" href="<%=path%>/notice/detail?id=${notice.nid }" >标题：${fn:substring(fn:replace(notice.title,"<","&lt;"),0,20)}，内容：${fn:substring(fn:replace(notice.content,"<","&lt;"),0,30)}...</a>
-						<a style="float:right;">发布者：${notice.author.realName}，发布时间：<fmt:formatDate value="${notice.time}" pattern="yyyy-MM-dd HH:mm"/></a>
+						<td style="padding-left:10px;overflow: hidden;">
+						<a style="float:left;" href="<%=path%>/notice/detail?id=${notice.nid }" >标题：${fn:substring(fn:replace(notice.title,"<","&lt;"),0,20)}，内容：${fn:substring(fn:replace(notice.content,"<","&lt;"),0,20)}...</a>
+						<a style="float:right;">${notice.author.realName}，<fmt:formatDate value="${notice.time}" pattern="yyyy-MM-dd HH:mm"/></a>
 						</td>
 					</tr>
 				</c:forEach>
 			</table>
 			</c:otherwise>
 			</c:choose>
-        
-        
+			</div>
         </div> 
         
-        <div>
+        <div class="adiv">
         	<h3>最新投票</h3>
 	        <c:choose>
 				<c:when test="${newvotes==null}">
@@ -97,7 +110,7 @@ $(function() {
 
         </div> 
         
-        <div> 
+        <div class="adiv"> 
         </div> 
         
     </div> 

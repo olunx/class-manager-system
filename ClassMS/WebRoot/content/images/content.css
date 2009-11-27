@@ -11,8 +11,12 @@ body {
 }
 
 img {
-	border: 0;
+	border: none;
 }
+ul{ list-style: none;}
+
+h2{ font-size:16px;}
+h3{ font-size:14px;}
 
 .clear {
 	clear: both;
@@ -73,14 +77,25 @@ a.btn:link,a.btn:visited {
 	margin-bottom: 10px;
 }
 
-.table th {
+.table caption{
+	text-align:left;
+	font-weight:bold;
+	padding:5px 0 5px 10px;
 	background: #d3eaef;
+	border: 1px solid #a8c7ce;
+	border-bottom:0;
 }
 
 .table td,.table th {
 	border: 1px solid #a8c7ce;
 	text-align: center;
 	padding: 5px;
+
+}
+
+.table th {
+	background: #d3eaef;
+	
 }
 
 .table th a {
@@ -205,20 +220,17 @@ thead tr .headerSortDown {
 /*首页表格样式*/
 
 #news{
-	float:right;
-	background:#fff;
-	padding:10px;
-	border:1px solid #ccc;
-	
+	margin-left:130px;
 }
-
+#news table {float:left;}
 #toptruant{
 	float:left;
-	width:100px;
+	width:120px;
 	background:#fff;
-	padding:10px;
-	border:1px solid #ccc;
+	border: 1px solid #8cd5e5;
 }
+#toptruant h3{background: #8cd5e5; color: #353c44; padding:5px 10px; }
+#toptruant ul {padding:10px;}
 #toptruant li {line-height:20px; padding-left:20px;}
 #toptruant li span{ float:right; font-family:Georgia; font-size:18px;line-height:18px; color:#666;}
 

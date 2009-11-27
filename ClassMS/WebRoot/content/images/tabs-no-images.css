@@ -39,27 +39,29 @@ ul.css-tabs a {
 }
 
 ul.css-tabs a:hover {
-	/*鼠标移上后的背景色*/
-	background-color:#b9dbe2;
+	/*鼠标移上后的背景色background-color:#b9dbe2;*/
+	background-color:#fff;
 	color:#353c44;
 }
 	
 /* selected tab */
 ul.css-tabs a.current {
 	cursor:default;
-	/*选中后的背景色*/
-	background-color:#b9dbe2;
-	border-bottom:1px solid #b9dbe2;	
+	/*选中后的背景色background-color:#b9dbe2;*/
+	background-color:#fff;
+	/*border-bottom:1px solid #b9dbe2;	*/
+	border-bottom:1px solid #fff;
 	color:#000;	
 }
 
 	
 /* tab pane */
-div.css-panes div {
+div.css-panes div.adiv {
 	display:none;
 	border-width:0 1px 1px 1px;
 	min-height:350px;
 	padding:15px 20px;
+	padding-bottom:70px;
 	background-color:#b9dbe2;
 	border:1px solid #207DB5;
 	border-top:none;

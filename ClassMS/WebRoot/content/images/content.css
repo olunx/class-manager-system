@@ -233,4 +233,27 @@ thead tr .headerSortDown {
 
 /*首页表格样式*/
 
+#news{
+	float:right;
+	background:#fff;
+	padding:10px;
+	border:1px solid #ccc;
+	
+}
+
+#toptruant{
+	float:left;
+	width:100px;
+	background:#fff;
+	padding:10px;
+	border:1px solid #ccc;
+}
+#toptruant li {line-height:20px; padding-left:20px;}
+#toptruant li span{ float:right; font-family:Georgia; font-size:20px;line-height:18px; color:#666;}
+
+.top10_1{background:url(top10_icon1.gif) 0 4px no-repeat;}
+.top10_2{background:url(top10_icon2.gif) 0 4px no-repeat;}
+.top10_3{background:url(top10_icon3.gif) 0 4px no-repeat;}
+.top10_4{background:url(top10_icon4.gif) 0 4px no-repeat;}
+.top10_5{background:url(top10_icon5.gif) 0 4px no-repeat;}
 

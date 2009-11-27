@@ -59,9 +59,9 @@ ul.css-tabs a.current {
 div.css-panes div.adiv {
 	display:none;
 	border-width:0 1px 1px 1px;
-	min-height:350px;
+	min-height:300px;
 	padding:15px 20px;
-	padding-bottom:70px;
+	padding-bottom:80px;
 	background-color:#b9dbe2;
 	border:1px solid #207DB5;
 	border-top:none;

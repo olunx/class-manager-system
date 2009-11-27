@@ -51,11 +51,11 @@ $(function() {
  			</ul>
  			</div>
         	<div id="news">
-        	<h3>最新公告</h3>
+			<table class="table">
+			<caption>最新公告</caption>
 			<c:choose>
 			<c:when test="${notices==null}"> 暂时没有公告 </c:when>
 			<c:otherwise>
-			<table class="table">
 				<c:forEach items="${notices}" var="notice" begin="0" end="2" step="1">
 					<tr>
 						<td style="padding-left:10px;overflow: hidden;">
@@ -64,20 +64,20 @@ $(function() {
 						</td>
 					</tr>
 				</c:forEach>
-			</table>
 			</c:otherwise>
 			</c:choose>
+			</table>
 			</div>
         </div> 
         
         <div class="adiv">
-        	<h3>最新投票</h3>
+		<table class="table">
+			<caption>最新投票</caption>
 	        <c:choose>
 				<c:when test="${newvotes==null}">
-					暂时没有投票
+					<td>暂时没有投票</td>
 				</c:when>
 				<c:otherwise>
-					<table class="table">
 						<c:forEach items="${newvotes}" var="vote" begin="0" end="4" step="1" >
 							<tr>
 								<td style="padding-left:20px;">
@@ -86,16 +86,17 @@ $(function() {
 								</td>
 							</tr>
 						</c:forEach>
-					</table>
 				</c:otherwise>
 			</c:choose>
-			<h3>热门投票</h3>
+			</table>
+			<table class="table">
+			<caption>热门投票</caption>
 			<c:choose>
 				<c:when test="${votes==null}">
 					暂时没有投票
 				</c:when>
 				<c:otherwise>
-					<table class="table">
+					
 						<c:forEach items="${votes}" var="vote" begin="0" end="4" step="1" >
 							<tr>
 								<td style="padding-left:20px;">
@@ -104,10 +105,9 @@ $(function() {
 								</td>
 							</tr>
 						</c:forEach>
-					</table>
 				</c:otherwise>
 			</c:choose>
-
+			</table>
         </div> 
         
         <div class="adiv"> 

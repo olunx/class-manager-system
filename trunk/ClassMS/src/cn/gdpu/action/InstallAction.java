@@ -21,6 +21,7 @@ public class InstallAction extends ActionSupport {
 	private LessonService lessonService;
 	private ClassFeeService classFeeService;
 	private VoteService voteService;
+	private AttendanceService attendanceService;
 	
 
 	@Override
@@ -135,6 +136,28 @@ public class InstallAction extends ActionSupport {
 		vote.setItems(items);
 		voteService.addVote(vote);
 		
+		//考勤
+		Attendance attendance = new Attendance();
+		attendance.setClerk(stu);
+		attendance.setDay("三");
+		Set<Lesson> lessons = new HashSet();
+		lessons.add(lesson);
+		attendance.setLessons(lessons);
+		attendance.setWeek("10");
+		Set<Student> stus = new HashSet();
+		stus.add(stu);
+		attendance.setStudents(stus);
+		attendanceService.add(attendance);
+		
+		attendance = new Attendance();
+		attendance.setClerk(stu);
+		attendance.setDay("三");
+
+		attendance.setLessons(lessons);
+		attendance.setWeek("12");
+		attendance.setStudents(stus);
+		attendanceService.add(attendance);
+		
 		return SUCCESS;
 	}
 
@@ -168,6 +191,10 @@ public class InstallAction extends ActionSupport {
 
 	public void setVoteService(VoteService voteService) {
 		this.voteService = voteService;
+	}
+
+	public void setAttendanceService(AttendanceService attendanceService) {
+		this.attendanceService = attendanceService;
 	}
 	
 }
